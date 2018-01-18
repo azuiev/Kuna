@@ -14,18 +14,20 @@ class LoginViewModel {
     
     // MARK: Public Properties
     
-    let subject = PublishSubject<Result<Model>>()
+    let disposeBag = DisposeBag()
+    let loginResult = PublishSubject<Result<Model>>()
     
     // MARK: Initialization
     
-    init(currentUserModel: Model) {
+    init(_ currentUserModel: Model) {
         self.currentUser = currentUserModel
     }
     
     // MARK: Public Functions
     
-    func tryLogin() {
-        LoginContext(currentUser:self.currentUser, subject: self.subject).execute()
+    func onLogin() {
+        print("Login pressed")
+        //LoginContext(currentUser:self.currentUser, subject: self.subject).execute()
     }
     
     // MARK: Private Properties

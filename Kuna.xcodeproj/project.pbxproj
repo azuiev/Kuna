@@ -27,7 +27,6 @@
 		1D573924200BD51500D7E431 /* InternetImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D573908200BD51500D7E431 /* InternetImageModel.swift */; };
 		1D573925200BD51500D7E431 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D573909200BD51500D7E431 /* Model.swift */; };
 		1D573926200BD51500D7E431 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D57390D200BD51500D7E431 /* LoginViewController.swift */; };
-		1D573927200BD51500D7E431 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D57390E200BD51500D7E431 /* LoginViewController.xib */; };
 		1D573928200BD51500D7E431 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D57390F200BD51500D7E431 /* ViewController.swift */; };
 		1D573929200BD51500D7E431 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D573912200BD51500D7E431 /* LoginViewModel.swift */; };
 		1D7591221FFECED200573899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7591141FFECED200573899 /* AppDelegate.swift */; };
@@ -35,6 +34,8 @@
 		1D7591241FFECED200573899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D7591171FFECED200573899 /* Assets.xcassets */; };
 		1D7591251FFECED200573899 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D7591181FFECED200573899 /* LaunchScreen.storyboard */; };
 		1D7591261FFECED200573899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D75911A1FFECED200573899 /* Main.storyboard */; };
+		1DFD536C20112FA500556145 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD536B20112FA500556145 /* LoginView.swift */; };
+		1DFD536E2011311B00556145 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DFD536D2011311B00556145 /* LoginViewController.xib */; };
 		1FE5552D8B5E4588791BC788 /* Pods_Kuna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B6FC9A4D590457BB68ED47 /* Pods_Kuna.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +60,6 @@
 		1D573908200BD51500D7E431 /* InternetImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetImageModel.swift; sourceTree = "<group>"; };
 		1D573909200BD51500D7E431 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1D57390D200BD51500D7E431 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		1D57390E200BD51500D7E431 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		1D57390F200BD51500D7E431 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1D573912200BD51500D7E431 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		1D7590FE1FFECED200573899 /* Kuna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuna.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +68,8 @@
 		1D7591171FFECED200573899 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D7591191FFECED200573899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D75911B1FFECED200573899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1DFD536B20112FA500556145 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1DFD536D2011311B00556145 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		92B6FC9A4D590457BB68ED47 /* Pods_Kuna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kuna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9381D65F42BE6BE7A1C10D23 /* Pods-Kuna.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuna.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kuna/Pods-Kuna.release.xcconfig"; sourceTree = "<group>"; };
 		CCBA8725F3E9D79814540397 /* Pods-Kuna.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuna.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kuna/Pods-Kuna.debug.xcconfig"; sourceTree = "<group>"; };
@@ -261,8 +263,9 @@
 		1D57390C200BD51500D7E431 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1DFD536B20112FA500556145 /* LoginView.swift */,
 				1D57390D200BD51500D7E431 /* LoginViewController.swift */,
-				1D57390E200BD51500D7E431 /* LoginViewController.xib */,
+				1DFD536D2011311B00556145 /* LoginViewController.xib */,
 			);
 			path = LoginViewController;
 			sourceTree = "<group>";
@@ -401,7 +404,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D573927200BD51500D7E431 /* LoginViewController.xib in Resources */,
+				1DFD536E2011311B00556145 /* LoginViewController.xib in Resources */,
 				1D7591251FFECED200573899 /* LaunchScreen.storyboard in Resources */,
 				1D7591241FFECED200573899 /* Assets.xcassets in Resources */,
 				1D7591231FFECED200573899 /* Info.plist in Resources */,
@@ -434,11 +437,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Kuna/Pods-Kuna-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
@@ -478,6 +483,7 @@
 				1D573916200BD51500D7E431 /* FileManager+Extension.swift in Sources */,
 				1D57391A200BD51500D7E431 /* UIWindow+Extension.swift in Sources */,
 				1D573928200BD51500D7E431 /* ViewController.swift in Sources */,
+				1DFD536C20112FA500556145 /* LoginView.swift in Sources */,
 				1D57391D200BD51500D7E431 /* ArrayModel.swift in Sources */,
 				1D573913200BD51500D7E431 /* Context.swift in Sources */,
 				1D57391E200BD51500D7E431 /* ArrayModelAddOption.swift in Sources */,
