@@ -45,14 +45,6 @@ class LoginViewController: ViewController {
         self.rootView?.fill(with: self.viewModel)
     }
     
-    /*override func viewDidAppear(_ animated: Bool) {
-        let view = self.rootView
-        
-        view?.secretKeyTextField?.becomeFirstResponder()
-        view?.publicKeyTextField?.becomeFirstResponder()
-    }
-    */
-    
     // MARK: Private Methods
     
     private func finishLogging(with result: Result<Model>) {

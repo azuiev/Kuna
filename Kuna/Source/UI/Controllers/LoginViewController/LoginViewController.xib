@@ -34,18 +34,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Secret Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Ku-Wh-B3U">
-                    <rect key="frame" x="49" y="230" width="276" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                    <connections>
-                        <outlet property="delegate" destination="i5M-Pr-FkT" id="Qas-1N-myP"/>
-                    </connections>
-                </textField>
                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Public Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lkH-gM-XiH">
-                    <rect key="frame" x="49" y="268" width="276" height="30"/>
+                    <rect key="frame" x="49" y="216" width="276" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -54,8 +44,26 @@
                         <outlet property="delegate" destination="i5M-Pr-FkT" id="KXH-DS-Hb4"/>
                     </connections>
                 </textField>
+                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Secret Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Ku-Wh-B3U">
+                    <rect key="frame" x="49" y="254" width="276" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                    <connections>
+                        <outlet property="delegate" destination="i5M-Pr-FkT" id="Qas-1N-myP"/>
+                    </connections>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="I2A-Mz-v5f">
+                    <rect key="frame" x="253" y="391" width="72" height="65"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                    <state key="normal" title="Fill access fields">
+                        <color key="titleColor" red="1" green="0.0012486093739999999" blue="0.2735051939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paB-GZ-oix">
-                    <rect key="frame" x="49" y="318" width="276" height="30"/>
+                    <rect key="frame" x="49" y="307" width="276" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
                 </button>
@@ -64,6 +72,7 @@
             <gestureRecognizers/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <connections>
+                <outlet property="fillButton" destination="I2A-Mz-v5f" id="2wM-5S-Px3"/>
                 <outlet property="loginButton" destination="paB-GZ-oix" id="LGc-dj-W3J"/>
                 <outlet property="publicKeyTextField" destination="lkH-gM-XiH" id="adO-zy-TIb"/>
                 <outlet property="secretKeyTextField" destination="2Ku-Wh-B3U" id="h8v-2F-bpy"/>

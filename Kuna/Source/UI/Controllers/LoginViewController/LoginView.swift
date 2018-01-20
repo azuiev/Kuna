@@ -15,10 +15,11 @@ class LoginView: UIView, UITextFieldDelegate {
     // MARK: IBOutlets
     
     @IBOutlet var loginButton: UIButton?
-    @IBOutlet var secretKeyTextField: UITextField?
     @IBOutlet var publicKeyTextField: UITextField?
+    @IBOutlet var secretKeyTextField: UITextField?
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer?
-    
+    @IBOutlet var fillButton: UIButton?
+
     // MARK: Public Properties
     
     let disposeBag = DisposeBag()
@@ -37,6 +38,14 @@ class LoginView: UIView, UITextFieldDelegate {
                     self?.endEditing(true)
             })
             .disposed(by: self.disposeBag)
+        
+        self.fillButton?
+            .rx
+            .tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.fillAccessFields()
+            })
+            .disposed(by: self.disposeBag)
     }
     
     // MARK: Public Methods
@@ -45,8 +54,9 @@ class LoginView: UIView, UITextFieldDelegate {
         self.loginButton?
             .rx
             .tap
-            .subscribe(onNext: {
-                viewModel.onLogin()
+            .subscribe(onNext: { [weak self] _ in
+                viewModel.onLogin(with: AccessTokenModel(publicKey: self?.publicKeyTextField?.text,
+                                                         secretKey: self?.secretKeyTextField?.text))
             })
             .disposed(by: self.disposeBag)
     }
@@ -57,5 +67,14 @@ class LoginView: UIView, UITextFieldDelegate {
         }
         
         return true
+    }
+    
+    // MARK: Private Methods
+    
+    func fillAccessFields() {
+        
+        //FullToken
+        self.publicKeyTextField?.text = "xVI2OYUtfNWaFQi6ywAx6qyYhS5fOlfzHtCBjfex"
+        self.secretKeyTextField?.text = "hTx5aoDot1N0a0LoRkzAzk12jjsQSERG7l7FMIu4"
     }
 }

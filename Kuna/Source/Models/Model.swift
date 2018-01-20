@@ -12,14 +12,6 @@ protocol Save {
     func save()
 }
 
-enum ModelState {
-    case didUnload
-    case willLoad
-    case didLoad
-    case didFailLoading
-    case didChange
-}
-
 class Model {
     
     // MARK: Public methods

@@ -25,9 +25,9 @@ class LoginViewModel {
     
     // MARK: Public Functions
     
-    func onLogin() {
-        print("Login pressed")
-        //LoginContext(currentUser:self.currentUser, subject: self.subject).execute()
+    func onLogin(with token: AccessTokenModel) {
+        let result = LoginContext(token: token).executeWithResponse()
+        print("\(result)")
     }
     
     // MARK: Private Properties

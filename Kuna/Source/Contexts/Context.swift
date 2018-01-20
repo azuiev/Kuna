@@ -12,25 +12,16 @@ class Context {
     
     // MARK: Public Properties
     
-    let model: Model
-    
     // MARK: Initialization
     
-    init(model: Model) {
-        self.model = model
+    init() {
+        
     }
     
     // MARK: Public Methods
     
     func execute() {
-        self.execute { _ in
-               //self.model.state = $0
-            
-        }
-    }
-    
-    func execute(withCompletion completionHandler: @escaping (ModelState) -> ()) {
-        
+
     }
     
     func cancel() {

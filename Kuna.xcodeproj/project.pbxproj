@@ -34,6 +34,9 @@
 		1D7591241FFECED200573899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D7591171FFECED200573899 /* Assets.xcassets */; };
 		1D7591251FFECED200573899 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D7591181FFECED200573899 /* LaunchScreen.storyboard */; };
 		1D7591261FFECED200573899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D75911A1FFECED200573899 /* Main.storyboard */; };
+		1D82D6DB201283EA00AC8A84 /* AccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6DA201283EA00AC8A84 /* AccessTokenModel.swift */; };
+		1D82D6DD20128CC800AC8A84 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */; };
+		1D82D6E22012A78D00AC8A84 /* Hmac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6E12012A78D00AC8A84 /* Hmac.swift */; };
 		1DFD536C20112FA500556145 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD536B20112FA500556145 /* LoginView.swift */; };
 		1DFD536E2011311B00556145 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DFD536D2011311B00556145 /* LoginViewController.xib */; };
 		1FE5552D8B5E4588791BC788 /* Pods_Kuna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B6FC9A4D590457BB68ED47 /* Pods_Kuna.framework */; };
@@ -68,6 +71,10 @@
 		1D7591171FFECED200573899 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D7591191FFECED200573899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D75911B1FFECED200573899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1D82D6DA201283EA00AC8A84 /* AccessTokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccessTokenModel.swift; path = AccessTokenModel/AccessTokenModel.swift; sourceTree = "<group>"; };
+		1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		1D82D6DF2012A40200AC8A84 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		1D82D6E12012A78D00AC8A84 /* Hmac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hmac.swift; sourceTree = "<group>"; };
 		1DFD536B20112FA500556145 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1DFD536D2011311B00556145 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		92B6FC9A4D590457BB68ED47 /* Pods_Kuna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kuna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,40 +138,9 @@
 		1D5738ED200BD51500D7E431 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1D5738EE200BD51500D7E431 /* Cache */,
-				1D5738EF200BD51500D7E431 /* ObservableObject */,
-				1D5738F0200BD51500D7E431 /* UserParser */,
-				1D5738F1200BD51500D7E431 /* WeakReference */,
+				1D82D6E02012A77C00AC8A84 /* Hmac */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		1D5738EE200BD51500D7E431 /* Cache */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cache;
-			sourceTree = "<group>";
-		};
-		1D5738EF200BD51500D7E431 /* ObservableObject */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ObservableObject;
-			sourceTree = "<group>";
-		};
-		1D5738F0200BD51500D7E431 /* UserParser */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UserParser;
-			sourceTree = "<group>";
-		};
-		1D5738F1200BD51500D7E431 /* WeakReference */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = WeakReference;
 			sourceTree = "<group>";
 		};
 		1D5738F2200BD51500D7E431 /* Extensions */ = {
@@ -175,6 +151,7 @@
 				1D5738F5200BD51500D7E431 /* UINib+Extension.swift */,
 				1D5738F6200BD51500D7E431 /* UITableView+Extension.swift */,
 				1D5738F7200BD51500D7E431 /* UIWindow+Extension.swift */,
+				1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -190,9 +167,10 @@
 		1D5738FB200BD51500D7E431 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1D573909200BD51500D7E431 /* Model.swift */,
+				1D82D6DA201283EA00AC8A84 /* AccessTokenModel.swift */,
 				1D5738FC200BD51500D7E431 /* ArrayModel */,
 				1D573903200BD51500D7E431 /* ImageModel */,
-				1D573909200BD51500D7E431 /* Model.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,8 +198,8 @@
 		1D573903200BD51500D7E431 /* ImageModel */ = {
 			isa = PBXGroup;
 			children = (
-				1D573904200BD51500D7E431 /* FileSystemImageModel */,
 				1D573906200BD51500D7E431 /* ImageModel.swift */,
+				1D573904200BD51500D7E431 /* FileSystemImageModel */,
 				1D573907200BD51500D7E431 /* InternetImageModel */,
 			);
 			path = ImageModel;
@@ -321,8 +299,17 @@
 				1D7591171FFECED200573899 /* Assets.xcassets */,
 				1D7591181FFECED200573899 /* LaunchScreen.storyboard */,
 				1D75911A1FFECED200573899 /* Main.storyboard */,
+				1D82D6DF2012A40200AC8A84 /* Header.h */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		1D82D6E02012A77C00AC8A84 /* Hmac */ = {
+			isa = PBXGroup;
+			children = (
+				1D82D6E12012A78D00AC8A84 /* Hmac.swift */,
+			);
+			path = Hmac;
 			sourceTree = "<group>";
 		};
 		3B2C1464CCEEAFD2FBA9CB37 /* Pods */ = {
@@ -491,10 +478,13 @@
 				1D573914200BD51500D7E431 /* GetContext.swift in Sources */,
 				1D573917200BD51500D7E431 /* String+Extension.swift in Sources */,
 				1D57391F200BD51500D7E431 /* ArrayModelMoveOption.swift in Sources */,
+				1D82D6E22012A78D00AC8A84 /* Hmac.swift in Sources */,
 				1D573915200BD51500D7E431 /* LoginContext.swift in Sources */,
+				1D82D6DD20128CC800AC8A84 /* Date+Extension.swift in Sources */,
 				1D57391B200BD51500D7E431 /* Global.swift in Sources */,
 				1D573919200BD51500D7E431 /* UITableView+Extension.swift in Sources */,
 				1D573923200BD51500D7E431 /* ImageModel.swift in Sources */,
+				1D82D6DB201283EA00AC8A84 /* AccessTokenModel.swift in Sources */,
 				1D573922200BD51500D7E431 /* FileSystemImageModel.swift in Sources */,
 				1D573925200BD51500D7E431 /* Model.swift in Sources */,
 				1D573920200BD51500D7E431 /* ArrayModelOption.swift in Sources */,
@@ -643,6 +633,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = idap.Kuna;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = Kuna/Resources/Header.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -658,6 +649,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = idap.Kuna;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = Kuna/Resources/Header.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

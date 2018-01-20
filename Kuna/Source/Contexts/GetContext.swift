@@ -7,50 +7,80 @@
 //
 
 import UIKit
+import Alamofire
 
 class GetContext: Context {
     
+    // MARK: Constants
+    
+    private struct Constants {
+        static let accessKeyString  = "access_key"
+        static let tonceString      = "tonce"
+        static let signatureString  = "signature"
+    }
+    
     // MARK: Public Properties
     
+    var httpMethod: HTTPMethod { return .get }
     var graphPath: String { return "" }
-    var parameters: [String : String] { return [:] }
-    var currentUser: Model
+    var parameters: [String : String]
+    var tonce = { return 12345678 }
+    var url = "https://kuna.io/"
+    var urlPath: String { return "" }
+    var fullUrl: String { return self.url + self.urlPath }
+    
+    // MARK: Private Properties
+    
+    private var token: AccessTokenModel
     
     // MARK: Initialization
     
-    init(model: Model, currentUser: Model) {
-        self.currentUser = currentUser
+    init(token: AccessTokenModel) {
+        self.token = token
+        self.parameters = [Constants.accessKeyString : token.publicKey]
         
-        super.init(model: model)
+        super.init()
     }
     
     // MARK: Public Methods
     
-    func token() -> String? {
-        return ""
-    }
-    
-    func finishLoading(with response: [String : Any]) {
+    func executeWithResponse() -> JSON? {
+        self.parameters[Constants.tonceString] = String(Date().currentTimeInMiliseconds)
+        self.parameters[Constants.signatureString] = self.evaluateSecret()
         
-    }
-
-    // MARK: Override Methods
-    
-    override func execute(withCompletion completionHandler: @escaping(ModelState) -> Void) {
-
+        return nil
     }
     
     // MARK: Private methods
     
-    func save(response : JSON) {
+    private func evaluateSecret() -> String {
+        //HEX(HMAC-SHA256("HTTP-verb|URI|params", secret_key))
+        var stringForCoding = String(format: "%@|%@|", self.httpMethod.rawValue, self.urlPath)
+        self.parameters.forEach {
+            stringForCoding.append(String(format:"%@=%@&", $0.key, $0.value))
+        }
+        
+        stringForCoding = String(stringForCoding.dropLast())
+        //let sha256String = stringForCoding.hmac(algorithm: .SHA256, key: self.token.secretKey)
+        
+        let testString = "GET|/api/v2/trades/my|access_key=dV6vEJe1CO&market=btcuah&tonce=1465850766246"
+        let testSecret = "AYifzxC3Xo"
+        	
+        print(testString.hmac(algorithm: .SHA256, key: testSecret).hex())
+        
+        //return sha256String.hex()
+        return ""
+    }
+    
+    private func save(response: JSON) {
         NSKeyedArchiver.archiveRootObject(response, toFile: self.fileName())
     }
     
-    func loadSavedResponse() -> [String : Any]? {
+    private func loadSavedResponse() -> [String : Any]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: self.fileName()) as? [String : Any]
     }
     
-    func fileName() -> String {
+    private func fileName() -> String {
         if let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path {
             return path.appending("/").appending(self.graphPath)
         } else {

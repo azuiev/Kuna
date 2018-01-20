@@ -9,33 +9,26 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Alamofire
 
 class LoginContext: GetContext {
     
-    // MARK: Constants
+    // MARK: Private Properties
     
-    private struct Constants {
-        static let TokenStringPath     = "token.tokenString"
-        static let UserIDStringPath    = "token.userID"
-        static let UserIDString        = "userID"
-        static let TokenString         = "token"
-    }
-    
-    // MARK: Initialization
-    
-    init(currentUser: Model, subject: PublishSubject<Result<Model>>) {
-        self.subject = subject
-        
-        super.init(model: currentUser, currentUser: currentUser)
-    }
+    override var urlPath: String { return "api/v2/members/me" }
     
     // MARK: Public Methods
     
-    override func execute(withCompletion completionHandler: @escaping(ModelState) -> Void) {
+    override func executeWithResponse() -> JSON? {
+        _ = super.executeWithResponse()
 
+        Alamofire.request(self.fullUrl, method: self.httpMethod, parameters: parameters)
+            .responseJSON {
+                print($0)
+        }
+        
+        return nil
     }
     
-    // MARK: Private Properties
-    
-    var subject: PublishSubject<Result<Model>>
+
 }
