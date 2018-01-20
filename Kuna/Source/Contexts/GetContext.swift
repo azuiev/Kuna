@@ -55,21 +55,20 @@ class GetContext: Context {
     
     private func evaluateSecret() -> String {
         //HEX(HMAC-SHA256("HTTP-verb|URI|params", secret_key))
-        var stringForCoding = String(format: "%@|%@|", self.httpMethod.rawValue, self.urlPath)
+        var stringForCoding = String(format: "%@|/%@?", self.httpMethod.rawValue, self.urlPath)
         self.parameters.forEach {
             stringForCoding.append(String(format:"%@=%@&", $0.key, $0.value))
         }
         
         stringForCoding = String(stringForCoding.dropLast())
-        //let sha256String = stringForCoding.hmac(algorithm: .SHA256, key: self.token.secretKey)
+        let signature = stringForCoding.hmac(algorithm: .SHA256, key: self.token.secretKey)
         
-        let testString = "GET|/api/v2/trades/my|access_key=dV6vEJe1CO&market=btcuah&tonce=1465850766246"
-        let testSecret = "AYifzxC3Xo"
-        	
-        print(testString.hmac(algorithm: .SHA256, key: testSecret).hex())
+        print(stringForCoding)
+        print(self.token.secretKey)
+        print(signature)
         
-        //return sha256String.hex()
-        return ""
+        
+        return signature
     }
     
     private func save(response: JSON) {

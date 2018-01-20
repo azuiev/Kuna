@@ -34,7 +34,8 @@
 		1D7591241FFECED200573899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D7591171FFECED200573899 /* Assets.xcassets */; };
 		1D7591251FFECED200573899 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D7591181FFECED200573899 /* LaunchScreen.storyboard */; };
 		1D7591261FFECED200573899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D75911A1FFECED200573899 /* Main.storyboard */; };
-		1D82D6DB201283EA00AC8A84 /* AccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6DA201283EA00AC8A84 /* AccessTokenModel.swift */; };
+		1D77C31820134399004DC212 /* NSData+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D77C31720134399004DC212 /* NSData+Extension.swift */; };
+		1D77C31B20136B73004DC212 /* AccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D77C31A20136B73004DC212 /* AccessTokenModel.swift */; };
 		1D82D6DD20128CC800AC8A84 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */; };
 		1D82D6E22012A78D00AC8A84 /* Hmac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6E12012A78D00AC8A84 /* Hmac.swift */; };
 		1DFD536C20112FA500556145 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFD536B20112FA500556145 /* LoginView.swift */; };
@@ -71,7 +72,8 @@
 		1D7591171FFECED200573899 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D7591191FFECED200573899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D75911B1FFECED200573899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1D82D6DA201283EA00AC8A84 /* AccessTokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccessTokenModel.swift; path = AccessTokenModel/AccessTokenModel.swift; sourceTree = "<group>"; };
+		1D77C31720134399004DC212 /* NSData+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+Extension.swift"; sourceTree = "<group>"; };
+		1D77C31A20136B73004DC212 /* AccessTokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenModel.swift; sourceTree = "<group>"; };
 		1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		1D82D6DF2012A40200AC8A84 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		1D82D6E12012A78D00AC8A84 /* Hmac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hmac.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				1D5738F6200BD51500D7E431 /* UITableView+Extension.swift */,
 				1D5738F7200BD51500D7E431 /* UIWindow+Extension.swift */,
 				1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */,
+				1D77C31720134399004DC212 /* NSData+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -168,7 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				1D573909200BD51500D7E431 /* Model.swift */,
-				1D82D6DA201283EA00AC8A84 /* AccessTokenModel.swift */,
+				1D77C31920136B73004DC212 /* AccessTokenModel */,
 				1D5738FC200BD51500D7E431 /* ArrayModel */,
 				1D573903200BD51500D7E431 /* ImageModel */,
 			);
@@ -302,6 +305,14 @@
 				1D82D6DF2012A40200AC8A84 /* Header.h */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		1D77C31920136B73004DC212 /* AccessTokenModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D77C31A20136B73004DC212 /* AccessTokenModel.swift */,
+			);
+			path = AccessTokenModel;
 			sourceTree = "<group>";
 		};
 		1D82D6E02012A77C00AC8A84 /* Hmac */ = {
@@ -472,6 +483,7 @@
 				1D573928200BD51500D7E431 /* ViewController.swift in Sources */,
 				1DFD536C20112FA500556145 /* LoginView.swift in Sources */,
 				1D57391D200BD51500D7E431 /* ArrayModel.swift in Sources */,
+				1D77C31820134399004DC212 /* NSData+Extension.swift in Sources */,
 				1D573913200BD51500D7E431 /* Context.swift in Sources */,
 				1D57391E200BD51500D7E431 /* ArrayModelAddOption.swift in Sources */,
 				1D573918200BD51500D7E431 /* UINib+Extension.swift in Sources */,
@@ -484,11 +496,11 @@
 				1D57391B200BD51500D7E431 /* Global.swift in Sources */,
 				1D573919200BD51500D7E431 /* UITableView+Extension.swift in Sources */,
 				1D573923200BD51500D7E431 /* ImageModel.swift in Sources */,
-				1D82D6DB201283EA00AC8A84 /* AccessTokenModel.swift in Sources */,
 				1D573922200BD51500D7E431 /* FileSystemImageModel.swift in Sources */,
 				1D573925200BD51500D7E431 /* Model.swift in Sources */,
 				1D573920200BD51500D7E431 /* ArrayModelOption.swift in Sources */,
 				1D573921200BD51500D7E431 /* ArrayModelRemoveOption.swift in Sources */,
+				1D77C31B20136B73004DC212 /* AccessTokenModel.swift in Sources */,
 				1D573924200BD51500D7E431 /* InternetImageModel.swift in Sources */,
 				1D57391C200BD51500D7E431 /* RootView.swift in Sources */,
 			);
