@@ -55,7 +55,7 @@ class GetContext: Context {
     
     private func evaluateSecret() -> String {
         //HEX(HMAC-SHA256("HTTP-verb|URI|params", secret_key))
-        var stringForCoding = String(format: "%@|/%@?", self.httpMethod.rawValue, self.urlPath)
+        var stringForCoding = String(format: "%@|/%@|", self.httpMethod.rawValue, self.urlPath)
         self.parameters.forEach {
             stringForCoding.append(String(format:"%@=%@&", $0.key, $0.value))
         }
