@@ -44,11 +44,9 @@ class GetContext: Context {
     
     // MARK: Public Methods
     
-    func executeWithResponse() -> JSON? {
+    func execute(with completionHandler: @escaping (Result<JSON>) -> ()) {
         self.parameters[Constants.tonceString] = String(Date().currentTimeInMiliseconds)
         self.parameters[Constants.signatureString] = self.evaluateSecret()
-        
-        return nil
     }
     
     // MARK: Private methods

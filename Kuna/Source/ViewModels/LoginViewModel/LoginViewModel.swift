@@ -15,7 +15,7 @@ class LoginViewModel {
     // MARK: Public Properties
     
     let disposeBag = DisposeBag()
-    let loginResult = PublishSubject<Result<Model>>()
+    let loginResult = PublishSubject<Result<JSON>>()
     
     // MARK: Initialization
     
@@ -26,8 +26,9 @@ class LoginViewModel {
     // MARK: Public Functions
     
     func onLogin(with token: AccessTokenModel) {
-        let result = LoginContext(token: token).executeWithResponse()
-        print("\(result)")
+        LoginContext(token: token).execute { [weak self] in
+            self?.loginResult.onNext($0)
+        }
     }
     
     // MARK: Private Properties

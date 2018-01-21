@@ -11,6 +11,12 @@ import RxSwift
 import RxCocoa
 import Alamofire
 
+
+enum JSONError: Error {
+    case ParseError
+}
+
+
 class LoginContext: GetContext {
     
     // MARK: Private Properties
@@ -19,16 +25,22 @@ class LoginContext: GetContext {
     
     // MARK: Public Methods
     
-    override func executeWithResponse() -> JSON? {
-        _ = super.executeWithResponse()
-
+    override func execute(with completionHandler: @escaping (Result<JSON>) -> ()) {
+        super.execute(with: completionHandler)
+        
         Alamofire.request(self.fullUrl, method: self.httpMethod, parameters: parameters)
             .responseJSON {
-                print($0)
+                switch $0.result {
+                case .success(let value):
+                    let json = value as? JSON
+                    json.map {
+                        completionHandler(Result.Success($0))
+                    }
+                    
+                    completionHandler(Result.Failure(JSONError.ParseError))
+                case .failure(let error):
+                    completionHandler(Result.Failure(error))
+                }
         }
-        
-        return nil
     }
-    
-
 }

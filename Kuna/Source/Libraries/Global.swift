@@ -23,7 +23,7 @@ func toString<T>(_ cls: T.Type) -> String {
 
 enum Result<T> {
     case Success(T)
-    case Failure(String)
+    case Failure(Error)
     
     func map<U>(f: (T) -> U) -> Result<U> {
         switch self {
