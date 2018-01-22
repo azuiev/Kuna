@@ -14,18 +14,27 @@ extension UINib {
         return UINib.init(nibName: String(describing: type), bundle: bundle)
     }
     
-    static func object<T>(with type: T.Type, bundle: Bundle? = nil, owner: Any? = nil, options: [AnyHashable : Any]? = nil) -> T? {
+    static func object<T>(with type: T.Type,
+                          bundle: Bundle? = nil,
+                          owner: Any? = nil,
+                          options: [AnyHashable : Any]? = nil) -> T
+    {
         let nib = self.nib(with: type, bundle: bundle)
-        if nib != nil {
-            return nib?.object(with: type, owner: owner, options: options)
+        
+        guard let result = nib?.object(with: type, owner: owner, options: options) else {
+            fatalError("init(coder:) has not been implemented")
         }
         
-        return nil
+        return result
     }
     
-    func object<T>(with type: T.Type, owner: Any? = nil, options: [AnyHashable : Any]?) -> T? {
+    func object<T>(with type: T.Type, owner: Any? = nil, options: [AnyHashable : Any]? = nil) -> T {
         let objects = self.instantiate(withOwner: owner, options: options)
         
-        return objects.first as? T
+        guard let result = objects.first as? T else {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        return result
     }
 }

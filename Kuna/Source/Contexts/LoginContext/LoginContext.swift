@@ -37,7 +37,6 @@ class LoginContext: GetContext {
                         completionHandler(Result.Success($0))
                     }
                     
-                    completionHandler(Result.Failure(JSONError.ParseError))
                 case .failure(let error):
                     completionHandler(Result.Failure(error))
                 }

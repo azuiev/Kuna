@@ -27,9 +27,8 @@
 		1D573924200BD51500D7E431 /* InternetImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D573908200BD51500D7E431 /* InternetImageModel.swift */; };
 		1D573925200BD51500D7E431 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D573909200BD51500D7E431 /* Model.swift */; };
 		1D573929200BD51500D7E431 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D573912200BD51500D7E431 /* LoginViewModel.swift */; };
-		1D6B3DE42014EF92009BBAF7 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DD92014EF92009BBAF7 /* BaseView.swift */; };
-		1D6B3DE52014EF92009BBAF7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DDA2014EF92009BBAF7 /* BaseViewController.swift */; };
-		1D6B3DE62014EF92009BBAF7 /* BaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6B3DDB2014EF92009BBAF7 /* BaseViewController.xib */; };
+		1D6A23052016721500A25F13 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6A23042016721500A25F13 /* HeaderView.xib */; };
+		1D6A23072016723500A25F13 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6A23062016723500A25F13 /* HeaderView.swift */; };
 		1D6B3DE72014EF92009BBAF7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DDD2014EF92009BBAF7 /* LoginView.swift */; };
 		1D6B3DE82014EF92009BBAF7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DDE2014EF92009BBAF7 /* LoginViewController.swift */; };
 		1D6B3DE92014EF92009BBAF7 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6B3DDF2014EF92009BBAF7 /* LoginViewController.xib */; };
@@ -69,9 +68,8 @@
 		1D573908200BD51500D7E431 /* InternetImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetImageModel.swift; sourceTree = "<group>"; };
 		1D573909200BD51500D7E431 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1D573912200BD51500D7E431 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		1D6B3DD92014EF92009BBAF7 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
-		1D6B3DDA2014EF92009BBAF7 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		1D6B3DDB2014EF92009BBAF7 /* BaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseViewController.xib; sourceTree = "<group>"; };
+		1D6A23042016721500A25F13 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		1D6A23062016723500A25F13 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		1D6B3DDD2014EF92009BBAF7 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1D6B3DDE2014EF92009BBAF7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1D6B3DDF2014EF92009BBAF7 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -237,6 +235,7 @@
 		1D57390A200BD51500D7E431 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1D6A2302201671E300A25F13 /* Views */,
 				1D57390B200BD51500D7E431 /* Controllers */,
 			);
 			path = UI;
@@ -245,9 +244,8 @@
 		1D57390B200BD51500D7E431 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1D6B3DE02014EF92009BBAF7 /* BalancesViewController */,
-				1D6B3DD82014EF92009BBAF7 /* BaseViewController */,
 				1D6B3DDC2014EF92009BBAF7 /* LoginViewController */,
+				1D6B3DE02014EF92009BBAF7 /* BalancesViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -268,14 +266,21 @@
 			path = LoginViewModel;
 			sourceTree = "<group>";
 		};
-		1D6B3DD82014EF92009BBAF7 /* BaseViewController */ = {
+		1D6A2302201671E300A25F13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1D6B3DD92014EF92009BBAF7 /* BaseView.swift */,
-				1D6B3DDA2014EF92009BBAF7 /* BaseViewController.swift */,
-				1D6B3DDB2014EF92009BBAF7 /* BaseViewController.xib */,
+				1D6A2303201671E300A25F13 /* HeaderView */,
 			);
-			path = BaseViewController;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1D6A2303201671E300A25F13 /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				1D6A23062016723500A25F13 /* HeaderView.swift */,
+				1D6A23042016721500A25F13 /* HeaderView.xib */,
+			);
+			path = HeaderView;
 			sourceTree = "<group>";
 		};
 		1D6B3DDC2014EF92009BBAF7 /* LoginViewController */ = {
@@ -435,11 +440,11 @@
 			files = (
 				1D7591251FFECED200573899 /* LaunchScreen.storyboard in Resources */,
 				1D6B3DEC2014EF92009BBAF7 /* BalancesViewController.xib in Resources */,
-				1D6B3DE62014EF92009BBAF7 /* BaseViewController.xib in Resources */,
 				1D6B3DE92014EF92009BBAF7 /* LoginViewController.xib in Resources */,
 				1D7591241FFECED200573899 /* Assets.xcassets in Resources */,
 				1D7591231FFECED200573899 /* Info.plist in Resources */,
 				1D7591261FFECED200573899 /* Main.storyboard in Resources */,
+				1D6A23052016721500A25F13 /* HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,12 +514,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D573929200BD51500D7E431 /* LoginViewModel.swift in Sources */,
-				1D6B3DE42014EF92009BBAF7 /* BaseView.swift in Sources */,
 				1D7591221FFECED200573899 /* AppDelegate.swift in Sources */,
 				1D573916200BD51500D7E431 /* FileManager+Extension.swift in Sources */,
 				1D57391A200BD51500D7E431 /* UIWindow+Extension.swift in Sources */,
 				1D6B3DE82014EF92009BBAF7 /* LoginViewController.swift in Sources */,
-				1D6B3DE52014EF92009BBAF7 /* BaseViewController.swift in Sources */,
 				1D57391D200BD51500D7E431 /* ArrayModel.swift in Sources */,
 				1D77C31820134399004DC212 /* NSData+Extension.swift in Sources */,
 				1D573913200BD51500D7E431 /* Context.swift in Sources */,
@@ -535,6 +538,7 @@
 				1D573920200BD51500D7E431 /* ArrayModelOption.swift in Sources */,
 				1D6B3DEB2014EF92009BBAF7 /* BalancesView.swift in Sources */,
 				1D573921200BD51500D7E431 /* ArrayModelRemoveOption.swift in Sources */,
+				1D6A23072016723500A25F13 /* HeaderView.swift in Sources */,
 				1D6B3DEA2014EF92009BBAF7 /* BalancesViewController.swift in Sources */,
 				1D77C31B20136B73004DC212 /* AccessTokenModel.swift in Sources */,
 				1D573924200BD51500D7E431 /* InternetImageModel.swift in Sources */,

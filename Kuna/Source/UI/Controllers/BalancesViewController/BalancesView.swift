@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class BalancesView: BaseView {
+class BalancesView: UIView {
 
     // MARK: IBOutlets
     
@@ -20,11 +20,14 @@ class BalancesView: BaseView {
     
     let disposeBag = DisposeBag()
     
-    // MARK: View Lifecycle
+    // MARK: UI Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        let view = UINib.object(with: HeaderView.self, bundle: .main)
+        
+        self.addSubview(view)
     }
     
     // MARK: Public Methods
