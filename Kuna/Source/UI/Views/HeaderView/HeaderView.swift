@@ -12,8 +12,8 @@ class HeaderView: UIView {
 
     // MARK: IBOutlets
     
-    @IBOutlet var appNameLabel:         UILabel?
-    @IBOutlet var controllerNameLabel:  UILabel?
+    @IBOutlet var windowNameLabel:  UILabel?
+    @IBOutlet var tabNameLabel:     UILabel?
     
     
     // Initialization

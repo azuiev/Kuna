@@ -44,6 +44,7 @@
 		1D77C31B20136B73004DC212 /* AccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D77C31A20136B73004DC212 /* AccessTokenModel.swift */; };
 		1D82D6DD20128CC800AC8A84 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */; };
 		1D82D6E22012A78D00AC8A84 /* Hmac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6E12012A78D00AC8A84 /* Hmac.swift */; };
+		1D8FEF2E2017BCAB00C65D4C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8FEF2D2017BCAB00C65D4C /* MainView.swift */; };
 		1FE5552D8B5E4588791BC788 /* Pods_Kuna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B6FC9A4D590457BB68ED47 /* Pods_Kuna.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		1D82D6DF2012A40200AC8A84 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		1D82D6E12012A78D00AC8A84 /* Hmac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hmac.swift; sourceTree = "<group>"; };
+		1D8FEF2D2017BCAB00C65D4C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		92B6FC9A4D590457BB68ED47 /* Pods_Kuna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kuna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9381D65F42BE6BE7A1C10D23 /* Pods-Kuna.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuna.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kuna/Pods-Kuna.release.xcconfig"; sourceTree = "<group>"; };
 		CCBA8725F3E9D79814540397 /* Pods-Kuna.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuna.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kuna/Pods-Kuna.debug.xcconfig"; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		1D6A2302201671E300A25F13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1D8FEF2C2017BC9900C65D4C /* MainView */,
 				1D6A2303201671E300A25F13 /* HeaderView */,
 			);
 			path = Views;
@@ -357,6 +360,14 @@
 				1D82D6E12012A78D00AC8A84 /* Hmac.swift */,
 			);
 			path = Hmac;
+			sourceTree = "<group>";
+		};
+		1D8FEF2C2017BC9900C65D4C /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				1D8FEF2D2017BCAB00C65D4C /* MainView.swift */,
+			);
+			path = MainView;
 			sourceTree = "<group>";
 		};
 		3B2C1464CCEEAFD2FBA9CB37 /* Pods */ = {
@@ -541,6 +552,7 @@
 				1D6A23072016723500A25F13 /* HeaderView.swift in Sources */,
 				1D6B3DEA2014EF92009BBAF7 /* BalancesViewController.swift in Sources */,
 				1D77C31B20136B73004DC212 /* AccessTokenModel.swift in Sources */,
+				1D8FEF2E2017BCAB00C65D4C /* MainView.swift in Sources */,
 				1D573924200BD51500D7E431 /* InternetImageModel.swift in Sources */,
 				1D57391C200BD51500D7E431 /* RootView.swift in Sources */,
 			);

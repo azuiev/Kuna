@@ -40,6 +40,5 @@ class BalancesViewController: UIViewController {
     
     private func finishLogging(with result: Result<JSON>) {
         print("\(result)")
-
     }
 }

@@ -48,9 +48,19 @@ class LoginViewController: UIViewController {
     // MARK: Private Methods
     
     private func finishLogging(with result: Result<JSON>) {
-        print("\(result)")
+        let tabBarController = UITabBarController()
         
+        let names = ["My Balances", "Tradings", "My Orders", "History"]
+        var controllers: [UIViewController] = []
+        for item in names {
+            let controller = BalancesViewController(self.viewModel)
+            controller.title = item
+            
+            controllers.append(controller)
+        }
         
-        self.present(BalancesViewController(self.viewModel), animated: true, completion: nil)
+        tabBarController.setViewControllers(controllers, animated: true)
+        
+        self.present(tabBarController, animated: true, completion: nil)
     }
 }
