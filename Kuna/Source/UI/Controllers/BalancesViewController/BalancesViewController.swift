@@ -8,11 +8,11 @@
 
 import UIKit
 
-class BalancesViewController: UIViewController {
+class BalancesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     // MARK: Public Properties
     
-    var viewModel: LoginViewModel
+    var viewModel: BalancesViewModel
     
     var rootView: BalancesView? {
         return self.viewIfLoaded as? BalancesView
@@ -20,7 +20,7 @@ class BalancesViewController: UIViewController {
     
     // MARK: Initialization
     
-    init(_ viewModel: LoginViewModel) {
+    init(_ viewModel: BalancesViewModel) {
         self.viewModel = viewModel
 
         super.init(nibName: toString(type(of: self)), bundle: .main)
@@ -33,12 +33,63 @@ class BalancesViewController: UIViewController {
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         self.rootView?.fill(with: self.viewModel)
+        
+        let nib = UINib(nibName: toString(CurrencyCell.self), bundle: .main)
+        
+        self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(CurrencyCell.self))
     }
     
     // MARK: Private Methods
     
     private func finishLogging(with result: Result<JSON>) {
         print("\(result)")
+    }
+    
+    // MARK: protocol UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.reusableCell(with: CurrencyCell.self, indexPath: indexPath)
+        
+        //cell.currency = self.viewModel.balances[indexPath.row]
+        cell.currency = (CurrencyModel(name: "Dollar", shortName: "USD"), Double(indexPath.row))
+        
+        return cell
+    }
+    
+    /*
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        if sourceIndexPath.row == destinationIndexPath.row { return }
+        
+        self.friends.moveRow(from: sourceIndexPath.row, to: destinationIndexPath.row)
+        
+        self.rootView.tableView?.reloadData()
+    }
+    */
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+    
+    // MARK: protocol UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        /*
+         self.friends[indexPath.row]
+         .map { UserViewController(model: $0, currentUser: user) }
+         .map { [weak self] in
+         self?.navigationController?.pushViewController($0, animated: true)
+         }
+         */
     }
 }

@@ -17,6 +17,10 @@ class MainView: UIView {
         static let tabName = "Main"
     }
     
+    // MARK: IBOutlets
+    
+    @IBOutlet var tableView: UITableView?
+    
     // MARK: Public Properteis
     
     var tabName: String { return Constants.tabName }
@@ -35,6 +39,8 @@ class MainView: UIView {
         
         self.headerView = view
         self.setWindowLabelText()
+        view.frame.size.height = self.frame.height / 4
+        self.tableView?.frame.size.height = self.frame.height * 3 / 4
         
         self.addSubview(view)
     }

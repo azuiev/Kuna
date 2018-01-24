@@ -27,6 +27,10 @@
 		1D573924200BD51500D7E431 /* InternetImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D573908200BD51500D7E431 /* InternetImageModel.swift */; };
 		1D573925200BD51500D7E431 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D573909200BD51500D7E431 /* Model.swift */; };
 		1D573929200BD51500D7E431 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D573912200BD51500D7E431 /* LoginViewModel.swift */; };
+		1D62529D20190AEC0047CB7C /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D62529C20190AEC0047CB7C /* CurrencyModel.swift */; };
+		1D6252A020190E710047CB7C /* CurrencyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D62529F20190E710047CB7C /* CurrencyCell.xib */; };
+		1D6252A220190E940047CB7C /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6252A120190E940047CB7C /* CurrencyCell.swift */; };
+		1D6252A42019103B0047CB7C /* BalancesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6252A32019103B0047CB7C /* BalancesViewModel.swift */; };
 		1D6A23052016721500A25F13 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6A23042016721500A25F13 /* HeaderView.xib */; };
 		1D6A23072016723500A25F13 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6A23062016723500A25F13 /* HeaderView.swift */; };
 		1D6B3DE72014EF92009BBAF7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DDD2014EF92009BBAF7 /* LoginView.swift */; };
@@ -69,6 +73,10 @@
 		1D573908200BD51500D7E431 /* InternetImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetImageModel.swift; sourceTree = "<group>"; };
 		1D573909200BD51500D7E431 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1D573912200BD51500D7E431 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		1D62529C20190AEC0047CB7C /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
+		1D62529F20190E710047CB7C /* CurrencyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyCell.xib; sourceTree = "<group>"; };
+		1D6252A120190E940047CB7C /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
+		1D6252A32019103B0047CB7C /* BalancesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancesViewModel.swift; sourceTree = "<group>"; };
 		1D6A23042016721500A25F13 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		1D6A23062016723500A25F13 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		1D6B3DDD2014EF92009BBAF7 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -181,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				1D573909200BD51500D7E431 /* Model.swift */,
+				1D62529B20190AD90047CB7C /* CurrencyModel */,
 				1D77C31920136B73004DC212 /* AccessTokenModel */,
 				1D5738FC200BD51500D7E431 /* ArrayModel */,
 				1D573903200BD51500D7E431 /* ImageModel */,
@@ -248,6 +257,9 @@
 			children = (
 				1D6B3DDC2014EF92009BBAF7 /* LoginViewController */,
 				1D6B3DE02014EF92009BBAF7 /* BalancesViewController */,
+				1D625299201901170047CB7C /* TradingViewController */,
+				1D625298201901100047CB7C /* OrdersViewController */,
+				1D6252972019010A0047CB7C /* HistoryViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -255,6 +267,7 @@
 		1D573910200BD51500D7E431 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1D62529A20190A780047CB7C /* BalancesViewModel */,
 				1D573911200BD51500D7E431 /* LoginViewModel */,
 			);
 			path = ViewModels;
@@ -268,11 +281,58 @@
 			path = LoginViewModel;
 			sourceTree = "<group>";
 		};
+		1D6252972019010A0047CB7C /* HistoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HistoryViewController;
+			sourceTree = "<group>";
+		};
+		1D625298201901100047CB7C /* OrdersViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OrdersViewController;
+			sourceTree = "<group>";
+		};
+		1D625299201901170047CB7C /* TradingViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TradingViewController;
+			sourceTree = "<group>";
+		};
+		1D62529A20190A780047CB7C /* BalancesViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D6252A32019103B0047CB7C /* BalancesViewModel.swift */,
+			);
+			path = BalancesViewModel;
+			sourceTree = "<group>";
+		};
+		1D62529B20190AD90047CB7C /* CurrencyModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D62529C20190AEC0047CB7C /* CurrencyModel.swift */,
+			);
+			path = CurrencyModel;
+			sourceTree = "<group>";
+		};
+		1D62529E20190E320047CB7C /* CurrencyCellView */ = {
+			isa = PBXGroup;
+			children = (
+				1D6252A120190E940047CB7C /* CurrencyCell.swift */,
+				1D62529F20190E710047CB7C /* CurrencyCell.xib */,
+			);
+			path = CurrencyCellView;
+			sourceTree = "<group>";
+		};
 		1D6A2302201671E300A25F13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				1D8FEF2C2017BC9900C65D4C /* MainView */,
 				1D6A2303201671E300A25F13 /* HeaderView */,
+				1D62529E20190E320047CB7C /* CurrencyCellView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -452,6 +512,7 @@
 				1D7591251FFECED200573899 /* LaunchScreen.storyboard in Resources */,
 				1D6B3DEC2014EF92009BBAF7 /* BalancesViewController.xib in Resources */,
 				1D6B3DE92014EF92009BBAF7 /* LoginViewController.xib in Resources */,
+				1D6252A020190E710047CB7C /* CurrencyCell.xib in Resources */,
 				1D7591241FFECED200573899 /* Assets.xcassets in Resources */,
 				1D7591231FFECED200573899 /* Info.plist in Resources */,
 				1D7591261FFECED200573899 /* Main.storyboard in Resources */,
@@ -534,9 +595,12 @@
 				1D573913200BD51500D7E431 /* Context.swift in Sources */,
 				1D57391E200BD51500D7E431 /* ArrayModelAddOption.swift in Sources */,
 				1D573918200BD51500D7E431 /* UINib+Extension.swift in Sources */,
+				1D62529D20190AEC0047CB7C /* CurrencyModel.swift in Sources */,
 				1D573914200BD51500D7E431 /* GetContext.swift in Sources */,
 				1D573917200BD51500D7E431 /* String+Extension.swift in Sources */,
 				1D57391F200BD51500D7E431 /* ArrayModelMoveOption.swift in Sources */,
+				1D6252A220190E940047CB7C /* CurrencyCell.swift in Sources */,
+				1D6252A42019103B0047CB7C /* BalancesViewModel.swift in Sources */,
 				1D82D6E22012A78D00AC8A84 /* Hmac.swift in Sources */,
 				1D573915200BD51500D7E431 /* LoginContext.swift in Sources */,
 				1D82D6DD20128CC800AC8A84 /* Date+Extension.swift in Sources */,

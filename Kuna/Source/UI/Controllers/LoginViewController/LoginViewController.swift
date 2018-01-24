@@ -53,7 +53,7 @@ class LoginViewController: UIViewController {
         let names = ["My Balances", "Tradings", "My Orders", "History"]
         var controllers: [UIViewController] = []
         for item in names {
-            let controller = BalancesViewController(self.viewModel)
+            let controller = BalancesViewController(BalancesViewModel())
             controller.title = item
             
             controllers.append(controller)

@@ -18,10 +18,6 @@ class BalancesView: MainView {
         static let tabName = "My Balances"
     }
     
-    // MARK: IBOutlets
-    
-    @IBOutlet var testLabel: UILabel?
-    
     // MARK: Public Properties
     
     override var tabName: String { return Constants.tabName }
@@ -30,7 +26,7 @@ class BalancesView: MainView {
     
     // MARK: Public Methods
     
-    func fill(with viewModel:LoginViewModel) {
+    func fill(with viewModel:BalancesViewModel) {
         
     }
 }

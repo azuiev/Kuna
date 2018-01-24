@@ -20,9 +20,21 @@ class HeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.configureLayer()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
+        self.configureLayer()
+    }
+    
+    // MARK: Private functiona
+    
+    private func configureLayer() {
+        let layer = self.layer
+        layer.borderWidth = 3
+        layer.borderColor = UIColor.blue.cgColor
     }
 }
