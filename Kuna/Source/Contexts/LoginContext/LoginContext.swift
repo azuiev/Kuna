@@ -13,7 +13,8 @@ import Alamofire
 
 
 enum JSONError: Error {
-    case ParseError
+    case parseError
+    case otherError
 }
 
 
@@ -33,10 +34,13 @@ class LoginContext: GetContext {
                 switch $0.result {
                 case .success(let value):
                     let json = value as? JSON
-                    json.map {
-                        completionHandler(Result.Success($0))
+                    if json?["error"] != nil {
+                        completionHandler(Result.Failure(JSONError.otherError))
+                    } else {
+                        json.map {
+                            completionHandler(Result.Success($0))
+                        }
                     }
-                    
                 case .failure(let error):
                     completionHandler(Result.Failure(error))
                 }

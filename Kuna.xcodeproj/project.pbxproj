@@ -39,6 +39,8 @@
 		1D6B3DEA2014EF92009BBAF7 /* BalancesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DE12014EF92009BBAF7 /* BalancesViewController.swift */; };
 		1D6B3DEB2014EF92009BBAF7 /* BalancesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DE22014EF92009BBAF7 /* BalancesView.swift */; };
 		1D6B3DEC2014EF92009BBAF7 /* BalancesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6B3DE32014EF92009BBAF7 /* BalancesViewController.xib */; };
+		1D73B02E201A47090087A775 /* BalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73B02D201A47090087A775 /* BalanceModel.swift */; };
+		1D73B031201A48310087A775 /* BalanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73B030201A48310087A775 /* BalanceViewModel.swift */; };
 		1D7591221FFECED200573899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7591141FFECED200573899 /* AppDelegate.swift */; };
 		1D7591231FFECED200573899 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D7591151FFECED200573899 /* Info.plist */; };
 		1D7591241FFECED200573899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D7591171FFECED200573899 /* Assets.xcassets */; };
@@ -85,6 +87,8 @@
 		1D6B3DE12014EF92009BBAF7 /* BalancesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesViewController.swift; sourceTree = "<group>"; };
 		1D6B3DE22014EF92009BBAF7 /* BalancesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesView.swift; sourceTree = "<group>"; };
 		1D6B3DE32014EF92009BBAF7 /* BalancesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BalancesViewController.xib; sourceTree = "<group>"; };
+		1D73B02D201A47090087A775 /* BalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceModel.swift; sourceTree = "<group>"; };
+		1D73B030201A48310087A775 /* BalanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewModel.swift; sourceTree = "<group>"; };
 		1D7590FE1FFECED200573899 /* Kuna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D7591141FFECED200573899 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D7591151FFECED200573899 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				1D573909200BD51500D7E431 /* Model.swift */,
+				1D73B02C201A46ED0087A775 /* BalanceModel */,
 				1D62529B20190AD90047CB7C /* CurrencyModel */,
 				1D77C31920136B73004DC212 /* AccessTokenModel */,
 				1D5738FC200BD51500D7E431 /* ArrayModel */,
@@ -267,6 +272,7 @@
 		1D573910200BD51500D7E431 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1D73B02F201A47D90087A775 /* BalanceViewModel */,
 				1D62529A20190A780047CB7C /* BalancesViewModel */,
 				1D573911200BD51500D7E431 /* LoginViewModel */,
 			);
@@ -318,13 +324,13 @@
 			path = CurrencyModel;
 			sourceTree = "<group>";
 		};
-		1D62529E20190E320047CB7C /* CurrencyCellView */ = {
+		1D62529E20190E320047CB7C /* CurrencyCell */ = {
 			isa = PBXGroup;
 			children = (
 				1D6252A120190E940047CB7C /* CurrencyCell.swift */,
 				1D62529F20190E710047CB7C /* CurrencyCell.xib */,
 			);
-			path = CurrencyCellView;
+			path = CurrencyCell;
 			sourceTree = "<group>";
 		};
 		1D6A2302201671E300A25F13 /* Views */ = {
@@ -332,7 +338,7 @@
 			children = (
 				1D8FEF2C2017BC9900C65D4C /* MainView */,
 				1D6A2303201671E300A25F13 /* HeaderView */,
-				1D62529E20190E320047CB7C /* CurrencyCellView */,
+				1D62529E20190E320047CB7C /* CurrencyCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -364,6 +370,22 @@
 				1D6B3DE32014EF92009BBAF7 /* BalancesViewController.xib */,
 			);
 			path = BalancesViewController;
+			sourceTree = "<group>";
+		};
+		1D73B02C201A46ED0087A775 /* BalanceModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D73B02D201A47090087A775 /* BalanceModel.swift */,
+			);
+			path = BalanceModel;
+			sourceTree = "<group>";
+		};
+		1D73B02F201A47D90087A775 /* BalanceViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D73B030201A48310087A775 /* BalanceViewModel.swift */,
+			);
+			path = BalanceViewModel;
 			sourceTree = "<group>";
 		};
 		1D7590F51FFECED200573899 = {
@@ -589,8 +611,10 @@
 				1D7591221FFECED200573899 /* AppDelegate.swift in Sources */,
 				1D573916200BD51500D7E431 /* FileManager+Extension.swift in Sources */,
 				1D57391A200BD51500D7E431 /* UIWindow+Extension.swift in Sources */,
+				1D73B02E201A47090087A775 /* BalanceModel.swift in Sources */,
 				1D6B3DE82014EF92009BBAF7 /* LoginViewController.swift in Sources */,
 				1D57391D200BD51500D7E431 /* ArrayModel.swift in Sources */,
+				1D73B031201A48310087A775 /* BalanceViewModel.swift in Sources */,
 				1D77C31820134399004DC212 /* NSData+Extension.swift in Sources */,
 				1D573913200BD51500D7E431 /* Context.swift in Sources */,
 				1D57391E200BD51500D7E431 /* ArrayModelAddOption.swift in Sources */,

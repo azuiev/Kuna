@@ -17,16 +17,16 @@ class CurrencyCell: UITableViewCell {
     
     // MARK Public Properties
     
-    var currency: (currency:CurrencyModel, count: Double)? {
+    var balance: BalanceModel? {
         willSet {
-            if let user = newValue {
-                self.fill(with: user)
+            newValue.map { [weak self] in
+                self?.fill(with: BalanceViewModel(balance: $0))
             }
         }
     }
     
-    func fill(with model: (currency:CurrencyModel, count: Double)) {
-        self.currencyName?.text = model.currency.name
-        self.count?.text = String(model.count)
+    func fill(with viewModel: BalanceViewModel) {
+        self.currencyName?.text = viewModel.code
+        self.count?.text = viewModel.count
     }
 }

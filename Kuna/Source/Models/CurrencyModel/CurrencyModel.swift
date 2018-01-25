@@ -20,13 +20,15 @@ class CurrencyModel: Hashable {
     
     // MARK: Public property
     
+    let code: String
     let name: String
-    let shortName: String
-    let image: ImageModel? 
-    
-    init(name: String, shortName: String, image: ImageModel? = nil) {
+    let digital: Bool
+    let icon: ImageModel?
+
+    init(code: String, name: String, digital: Bool = false, image: ImageModel? = nil) {
+        self.code = code
         self.name = name
-        self.shortName = shortName
-        self.image = image
+        self.digital = digital
+        self.icon = image
     }
 }

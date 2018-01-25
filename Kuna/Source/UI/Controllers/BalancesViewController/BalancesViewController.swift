@@ -58,7 +58,8 @@ class BalancesViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.reusableCell(with: CurrencyCell.self, indexPath: indexPath)
         
         //cell.currency = self.viewModel.balances[indexPath.row]
-        cell.currency = (CurrencyModel(name: "Dollar", shortName: "USD"), Double(indexPath.row))
+        cell.balance = BalanceModel.init(currency: CurrencyModel(code: "USD", name: "Dollar"),
+                                         count: Double(indexPath.row))
         
         return cell
     }

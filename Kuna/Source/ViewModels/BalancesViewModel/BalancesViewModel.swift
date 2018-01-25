@@ -12,5 +12,5 @@ class BalancesViewModel {
     
     // MARK: Public properties
     
-    var balances: [(currence:CurrencyModel, count: Double)] = []
+    var balances: [BalanceModel] = []
 }

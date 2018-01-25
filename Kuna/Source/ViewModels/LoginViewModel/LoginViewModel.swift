@@ -26,7 +26,6 @@ class LoginViewModel {
     // MARK: Public Functions
     
     func onLogin(with token: AccessTokenModel) {
-        print("ON login")
         LoginContext(token: token).execute { [weak self] in
             self?.loginResult.onNext($0)
         }

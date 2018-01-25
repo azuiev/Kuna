@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
             .asObservable()
             .subscribe({
                 _ = $0.map { [weak self] in
-                    self?.finishLogging(with:$0)
+                    self?.parse(response:$0)
                 }
             })
             .disposed(by: self.viewModel.disposeBag)
@@ -47,7 +47,22 @@ class LoginViewController: UIViewController {
     
     // MARK: Private Methods
     
-    private func finishLogging(with result: Result<JSON>) {
+    private func parse(response: Result<JSON>) {
+        if response.isFailure() {
+            _ = response.map {
+                print($0)
+            }
+        } else {
+            _ = response.map { [weak self] in
+                self?.finish(with: $0)
+            }
+        }
+    }
+    
+    private func finish(with result:JSON) {
+        print(result)
+        
+        /*
         let tabBarController = UITabBarController()
         
         let names = ["My Balances", "Tradings", "My Orders", "History"]
@@ -62,5 +77,6 @@ class LoginViewController: UIViewController {
         tabBarController.setViewControllers(controllers, animated: true)
         
         self.present(tabBarController, animated: true, completion: nil)
+         */
     }
 }
