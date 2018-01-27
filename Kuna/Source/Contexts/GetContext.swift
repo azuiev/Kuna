@@ -59,14 +59,9 @@ class GetContext: Context {
         }
         
         stringForCoding = String(stringForCoding.dropLast())
-        let signature = stringForCoding.hmac(algorithm: .SHA256, key: self.token.secretKey)
+        let binaryData = stringForCoding.hmac(algorithm: .SHA256, key: self.token.secretKey)
         
-        print(stringForCoding)
-        print(self.token.secretKey)
-        print(signature)
-        
-        
-        return signature
+        return binaryData.toHexString()
     }
     
     private func save(response: JSON) {

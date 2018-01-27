@@ -10,14 +10,14 @@ import Foundation
 
 extension String {
     
-    func hmac(algorithm: HMACAlgorithm, key: String) -> String {
+    func hmac(algorithm: HMACAlgorithm, key: String) -> NSData {
         let cKey = key.cString(using: String.Encoding.utf8)
         let cData = self.cString(using: String.Encoding.utf8)
         var result = [CUnsignedChar](repeating: 0, count: Int(algorithm.digestLength()))
         CCHmac(algorithm.toCCHmacAlgorithm(), cKey!, Int(strlen(cKey!)), cData!, Int(strlen(cData!)), &result)
         let hmacData:NSData = NSData(bytes: result, length: (Int(algorithm.digestLength())))
         
-        return hmacData.toHexString()
+        return hmacData
     }
     
     func asURL() -> URL? {

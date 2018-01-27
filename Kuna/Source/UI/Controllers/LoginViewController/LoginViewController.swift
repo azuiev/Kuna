@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
             .asObservable()
             .subscribe({
                 _ = $0.map { [weak self] in
-                    self?.parse(response:$0)
+                    self?.check(result:$0)
                 }
             })
             .disposed(by: self.viewModel.disposeBag)
@@ -47,28 +47,41 @@ class LoginViewController: UIViewController {
     
     // MARK: Private Methods
     
-    private func parse(response: Result<JSON>) {
-        if response.isFailure() {
-            _ = response.map {
+    private func check(result: Result<JSON>) {
+        if result.isFailure() {
+            _ = result.map {
                 print($0)
             }
         } else {
-            _ = response.map { [weak self] in
-                self?.finish(with: $0)
+            _ = result.map { [weak self] in
+                self?.parse(json: $0)
             }
         }
     }
     
-    private func finish(with result:JSON) {
-        print(result)
+    private func parse(json: JSON) {
+        CurrencyModel.load()
+        let activated:Bool = (json["activated"] != nil)
+        let email:String = json["email"] as! String
+        let balances: JSONArray = json["accounts"] as! JSONArray
+        for item in balances {
+            let currency = CurrencyModel.currencyWith(code: item["currency"] as! String)
+            print(currency.name)
+            let count = item["balance"]
+            let lockedCount = item["locked"]
+        }
+    }
+    
+    private func finish(with response:JSON) {
+        print(response)
         
-        /*
+        let balancesViewModel = BalancesViewModel(json: response)
         let tabBarController = UITabBarController()
         
         let names = ["My Balances", "Tradings", "My Orders", "History"]
         var controllers: [UIViewController] = []
         for item in names {
-            let controller = BalancesViewController(BalancesViewModel())
+            let controller = BalancesViewController(balancesViewModel)
             controller.title = item
             
             controllers.append(controller)
@@ -77,6 +90,6 @@ class LoginViewController: UIViewController {
         tabBarController.setViewControllers(controllers, animated: true)
         
         self.present(tabBarController, animated: true, completion: nil)
-         */
+        
     }
 }

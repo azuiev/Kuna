@@ -12,5 +12,19 @@ class BalancesViewModel {
     
     // MARK: Public properties
     
-    var balances: [BalanceModel] = []
+    var balances: ArrayModel<BalanceModel>?
+    
+    init(json: JSON) {
+        let test = parse(json)
+    }
+    
+    // MARK: Private Methods
+    
+    private func parse(_ json: JSON) -> [BalanceModel] {
+        for item in json {
+            print(item)
+        }
+        
+        return [BalanceModel]()
+    }
 }
