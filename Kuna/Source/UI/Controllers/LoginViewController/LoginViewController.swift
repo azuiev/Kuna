@@ -60,16 +60,7 @@ class LoginViewController: UIViewController {
     }
     
     private func parse(json: JSON) {
-        CurrencyModel.load()
-        let activated:Bool = (json["activated"] != nil)
-        let email:String = json["email"] as! String
-        let balances: JSONArray = json["accounts"] as! JSONArray
-        for item in balances {
-            let currency = CurrencyModel.currencyWith(code: item["currency"] as! String)
-            print(currency.name)
-            let count = item["balance"]
-            let lockedCount = item["locked"]
-        }
+        let currentUser = CurrentUserParser().update(user: self.viewModel.currentUser, with: json)
     }
     
     private func finish(with response:JSON) {

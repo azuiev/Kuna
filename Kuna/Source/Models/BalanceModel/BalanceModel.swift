@@ -8,14 +8,16 @@
 
 import Foundation
 
-class BalanceModel: Equatable {
-    
-    // MARK: Protocol Equtable
-    
-    static func ==(lhs: BalanceModel, rhs: BalanceModel) -> Bool {
+// MARK: Protocol Equtable
+
+extension Equatable where Self: BalanceModel {
+    static func ==(lhs: Self, rhs: Self) -> Bool {
         return lhs.currency == rhs.currency && lhs.count == rhs.count
     }
+}
 
+class BalanceModel: Equatable {
+    
     // MARK: Public Properties
     
     let currency: CurrencyModel

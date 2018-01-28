@@ -16,10 +16,11 @@ class LoginViewModel {
     
     let disposeBag = DisposeBag()
     let loginResult = PublishSubject<Result<JSON>>()
+    var currentUser: CurrentUserModel
     
     // MARK: Initialization
     
-    init(_ currentUserModel: Model) {
+    init(_ currentUserModel: CurrentUserModel) {
         self.currentUser = currentUserModel
     }
     
@@ -30,8 +31,4 @@ class LoginViewModel {
             self?.loginResult.onNext($0)
         }
     }
-    
-    // MARK: Private Properties
-    
-    private var currentUser: Model
 }

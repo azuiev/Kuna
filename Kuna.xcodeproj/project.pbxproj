@@ -48,6 +48,9 @@
 		1D7591261FFECED200573899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D75911A1FFECED200573899 /* Main.storyboard */; };
 		1D77C31820134399004DC212 /* NSData+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D77C31720134399004DC212 /* NSData+Extension.swift */; };
 		1D77C31B20136B73004DC212 /* AccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D77C31A20136B73004DC212 /* AccessTokenModel.swift */; };
+		1D7CE9BA201E308500A1F189 /* CurrentUserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7CE9B9201E308500A1F189 /* CurrentUserParser.swift */; };
+		1D7CE9BD201E317600A1F189 /* CurrentUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7CE9BC201E317600A1F189 /* CurrentUserModel.swift */; };
+		1D7CE9C0201E32DC00A1F189 /* BalancesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7CE9BF201E32DC00A1F189 /* BalancesModel.swift */; };
 		1D82D6DD20128CC800AC8A84 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */; };
 		1D82D6E22012A78D00AC8A84 /* Hmac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6E12012A78D00AC8A84 /* Hmac.swift */; };
 		1D8FEF2E2017BCAB00C65D4C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8FEF2D2017BCAB00C65D4C /* MainView.swift */; };
@@ -97,6 +100,9 @@
 		1D75911B1FFECED200573899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D77C31720134399004DC212 /* NSData+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+Extension.swift"; sourceTree = "<group>"; };
 		1D77C31A20136B73004DC212 /* AccessTokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenModel.swift; sourceTree = "<group>"; };
+		1D7CE9B9201E308500A1F189 /* CurrentUserParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserParser.swift; sourceTree = "<group>"; };
+		1D7CE9BC201E317600A1F189 /* CurrentUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserModel.swift; sourceTree = "<group>"; };
+		1D7CE9BF201E32DC00A1F189 /* BalancesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancesModel.swift; sourceTree = "<group>"; };
 		1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		1D82D6DF2012A40200AC8A84 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		1D82D6E12012A78D00AC8A84 /* Hmac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hmac.swift; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				1D5738F8200BD51500D7E431 /* Global.swift */,
+				1D7CE9B7201E307100A1F189 /* Parsers */,
 				1D5738ED200BD51500D7E431 /* Classes */,
 				1D5738F2200BD51500D7E431 /* Extensions */,
 				1D5738F9200BD51500D7E431 /* Protocols */,
@@ -193,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				1D573909200BD51500D7E431 /* Model.swift */,
+				1D7CE9BB201E315C00A1F189 /* CurrentUserModel */,
 				1D73B02C201A46ED0087A775 /* BalanceModel */,
 				1D62529B20190AD90047CB7C /* CurrencyModel */,
 				1D77C31920136B73004DC212 /* AccessTokenModel */,
@@ -206,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				1D5738FD200BD51500D7E431 /* ArrayModel.swift */,
+				1D7CE9BE201E32CF00A1F189 /* BalancesModel */,
 				1D5738FE200BD51500D7E431 /* ArrayModelOptions */,
 			);
 			path = ArrayModel;
@@ -436,6 +445,38 @@
 			path = AccessTokenModel;
 			sourceTree = "<group>";
 		};
+		1D7CE9B7201E307100A1F189 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				1D7CE9B8201E307100A1F189 /* CurrentUserParser */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		1D7CE9B8201E307100A1F189 /* CurrentUserParser */ = {
+			isa = PBXGroup;
+			children = (
+				1D7CE9B9201E308500A1F189 /* CurrentUserParser.swift */,
+			);
+			path = CurrentUserParser;
+			sourceTree = "<group>";
+		};
+		1D7CE9BB201E315C00A1F189 /* CurrentUserModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D7CE9BC201E317600A1F189 /* CurrentUserModel.swift */,
+			);
+			path = CurrentUserModel;
+			sourceTree = "<group>";
+		};
+		1D7CE9BE201E32CF00A1F189 /* BalancesModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D7CE9BF201E32DC00A1F189 /* BalancesModel.swift */,
+			);
+			path = BalancesModel;
+			sourceTree = "<group>";
+		};
 		1D82D6E02012A77C00AC8A84 /* Hmac */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,6 +657,7 @@
 				1D57391D200BD51500D7E431 /* ArrayModel.swift in Sources */,
 				1D73B031201A48310087A775 /* BalanceViewModel.swift in Sources */,
 				1D77C31820134399004DC212 /* NSData+Extension.swift in Sources */,
+				1D7CE9C0201E32DC00A1F189 /* BalancesModel.swift in Sources */,
 				1D573913200BD51500D7E431 /* Context.swift in Sources */,
 				1D57391E200BD51500D7E431 /* ArrayModelAddOption.swift in Sources */,
 				1D573918200BD51500D7E431 /* UINib+Extension.swift in Sources */,
@@ -631,6 +673,7 @@
 				1D57391B200BD51500D7E431 /* Global.swift in Sources */,
 				1D573919200BD51500D7E431 /* UITableView+Extension.swift in Sources */,
 				1D573923200BD51500D7E431 /* ImageModel.swift in Sources */,
+				1D7CE9BA201E308500A1F189 /* CurrentUserParser.swift in Sources */,
 				1D573922200BD51500D7E431 /* FileSystemImageModel.swift in Sources */,
 				1D573925200BD51500D7E431 /* Model.swift in Sources */,
 				1D6B3DE72014EF92009BBAF7 /* LoginView.swift in Sources */,
@@ -640,6 +683,7 @@
 				1D6A23072016723500A25F13 /* HeaderView.swift in Sources */,
 				1D6B3DEA2014EF92009BBAF7 /* BalancesViewController.swift in Sources */,
 				1D77C31B20136B73004DC212 /* AccessTokenModel.swift in Sources */,
+				1D7CE9BD201E317600A1F189 /* CurrentUserModel.swift in Sources */,
 				1D8FEF2E2017BCAB00C65D4C /* MainView.swift in Sources */,
 				1D573924200BD51500D7E431 /* InternetImageModel.swift in Sources */,
 				1D57391C200BD51500D7E431 /* RootView.swift in Sources */,
