@@ -10,25 +10,57 @@ import Foundation
 
 class CurrentUserParser {
     
+    // MARK: Constants
+    
+    private struct Constants {
+        static let activatedKey     = "activated"
+        static let emailKey         = "email"
+        static let currenciesKey    = "accounts"
+        static let currencyKey      = "currency"
+        static let balanceKey       = "accounts"
+        static let lockedBalanceKey = "locked"
+    }
+    
     // MARK: Public Methods
     
-    func update(user: CurrentUserModel, with json: JSON) -> CurrentUserModel {
-        
-        // TODO
-        let activated:Bool = (json["activated"] != nil)
-        let email:String = json["email"] as! String
-        let balances: JSONArray = json["accounts"] as! JSONArray
-        for item in balances {
-            let currency = CurrencyModel.currencyWith(code: item["currency"] as! String)
-            print(currency.name)
-            let count = item["balance"]
-            let lockedCount = item["locked"]
+    func update(user: CurrentUserModel, with json: JSON) -> BalancesModel {
+        if let state = json[Constants.activatedKey] as? Bool {
+            user.activated = state
         }
         
-        return user
+        if let email = json[Constants.emailKey] as? String {
+            user.email = email
+        }
+        
+        let balances = BalancesModel(array: [BalanceModel]())
+        
+        if let currenciesJSON = json[Constants.currenciesKey] as? JSONArray {
+            for currencyJSON in currenciesJSON {
+                if let currencyCode = currencyJSON[Constants.currencyKey] as? String {
+                    let currency = CurrencyModel.currencyWith(code: currencyCode)
+                    let balance = BalanceModel(currency: currency)
+                    
+                    if let count = currencyJSON[Constants.balanceKey] as? Double {
+                        balance.count = count
+                    }
+                    
+                    if let locked = currencyJSON[Constants.lockedBalanceKey] as? Double {
+                        balance.locked = locked
+                    }
+                    
+                    balances.add(object: balance)
+                }
+            }
+        }
+        
+        return balances
     }
     
     func createAndUpdateUserWith(token: AccessTokenModel, json: JSON) -> CurrentUserModel{
-        return self.update(user: CurrentUserModel(token), with: json)
+        let user = CurrentUserModel(token)
+        _ = self.update(user: user, with: json)
+        
+        return user
+        
     }
 }

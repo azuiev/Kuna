@@ -8,23 +8,16 @@
 
 import Foundation
 
-class BalancesViewModel {
+class BalancesViewModel: ViewModel {
     
-    // MARK: Public properties
+    // MARK: Public Properties
     
-    var balances: ArrayModel<BalanceModel>?
+    var balances: BalancesModel
     
-    init(json: JSON) {
-        let test = parse(json)
-    }
-    
-    // MARK: Private Methods
-    
-    private func parse(_ json: JSON) -> [BalanceModel] {
-        for item in json {
-            print(item)
-        }
+    // MARK: Initialization
+    init(user: CurrentUserModel, balances: BalancesModel) {
+        self.balances = balances
         
-        return [BalanceModel]()
+        super.init(user)
     }
 }

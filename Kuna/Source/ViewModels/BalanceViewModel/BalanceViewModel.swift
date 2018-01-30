@@ -20,7 +20,7 @@ class BalanceViewModel {
     var name: String { return self.balance.currency.name }
     var count: String { return String(self.balance.count) }
     
-    // MARK: Initializaation
+    // MARK: Initialization
     
     init(balance: BalanceModel) {
         self.balance = balance

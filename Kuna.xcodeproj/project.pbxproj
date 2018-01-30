@@ -39,6 +39,8 @@
 		1D6B3DEA2014EF92009BBAF7 /* BalancesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DE12014EF92009BBAF7 /* BalancesViewController.swift */; };
 		1D6B3DEB2014EF92009BBAF7 /* BalancesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DE22014EF92009BBAF7 /* BalancesView.swift */; };
 		1D6B3DEC2014EF92009BBAF7 /* BalancesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6B3DE32014EF92009BBAF7 /* BalancesViewController.xib */; };
+		1D7190342020FA7200EA2EC6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7190332020FA7200EA2EC6 /* ViewModel.swift */; };
+		1D71903A2021007F00EA2EC6 /* BalancesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7190392021007F00EA2EC6 /* BalancesModel.swift */; };
 		1D73B02E201A47090087A775 /* BalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73B02D201A47090087A775 /* BalanceModel.swift */; };
 		1D73B031201A48310087A775 /* BalanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73B030201A48310087A775 /* BalanceViewModel.swift */; };
 		1D7591221FFECED200573899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7591141FFECED200573899 /* AppDelegate.swift */; };
@@ -50,7 +52,6 @@
 		1D77C31B20136B73004DC212 /* AccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D77C31A20136B73004DC212 /* AccessTokenModel.swift */; };
 		1D7CE9BA201E308500A1F189 /* CurrentUserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7CE9B9201E308500A1F189 /* CurrentUserParser.swift */; };
 		1D7CE9BD201E317600A1F189 /* CurrentUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7CE9BC201E317600A1F189 /* CurrentUserModel.swift */; };
-		1D7CE9C0201E32DC00A1F189 /* BalancesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7CE9BF201E32DC00A1F189 /* BalancesModel.swift */; };
 		1D82D6DD20128CC800AC8A84 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */; };
 		1D82D6E22012A78D00AC8A84 /* Hmac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6E12012A78D00AC8A84 /* Hmac.swift */; };
 		1D8FEF2E2017BCAB00C65D4C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8FEF2D2017BCAB00C65D4C /* MainView.swift */; };
@@ -90,6 +91,8 @@
 		1D6B3DE12014EF92009BBAF7 /* BalancesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesViewController.swift; sourceTree = "<group>"; };
 		1D6B3DE22014EF92009BBAF7 /* BalancesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesView.swift; sourceTree = "<group>"; };
 		1D6B3DE32014EF92009BBAF7 /* BalancesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BalancesViewController.xib; sourceTree = "<group>"; };
+		1D7190332020FA7200EA2EC6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		1D7190392021007F00EA2EC6 /* BalancesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesModel.swift; sourceTree = "<group>"; };
 		1D73B02D201A47090087A775 /* BalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceModel.swift; sourceTree = "<group>"; };
 		1D73B030201A48310087A775 /* BalanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewModel.swift; sourceTree = "<group>"; };
 		1D7590FE1FFECED200573899 /* Kuna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuna.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,7 +105,6 @@
 		1D77C31A20136B73004DC212 /* AccessTokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenModel.swift; sourceTree = "<group>"; };
 		1D7CE9B9201E308500A1F189 /* CurrentUserParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserParser.swift; sourceTree = "<group>"; };
 		1D7CE9BC201E317600A1F189 /* CurrentUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserModel.swift; sourceTree = "<group>"; };
-		1D7CE9BF201E32DC00A1F189 /* BalancesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancesModel.swift; sourceTree = "<group>"; };
 		1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		1D82D6DF2012A40200AC8A84 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		1D82D6E12012A78D00AC8A84 /* Hmac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hmac.swift; sourceTree = "<group>"; };
@@ -214,7 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				1D5738FD200BD51500D7E431 /* ArrayModel.swift */,
-				1D7CE9BE201E32CF00A1F189 /* BalancesModel */,
+				1D7190382021007F00EA2EC6 /* BalancesModel */,
 				1D5738FE200BD51500D7E431 /* ArrayModelOptions */,
 			);
 			path = ArrayModel;
@@ -281,6 +283,7 @@
 		1D573910200BD51500D7E431 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1D7190332020FA7200EA2EC6 /* ViewModel.swift */,
 				1D73B02F201A47D90087A775 /* BalanceViewModel */,
 				1D62529A20190A780047CB7C /* BalancesViewModel */,
 				1D573911200BD51500D7E431 /* LoginViewModel */,
@@ -381,6 +384,14 @@
 			path = BalancesViewController;
 			sourceTree = "<group>";
 		};
+		1D7190382021007F00EA2EC6 /* BalancesModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D7190392021007F00EA2EC6 /* BalancesModel.swift */,
+			);
+			path = BalancesModel;
+			sourceTree = "<group>";
+		};
 		1D73B02C201A46ED0087A775 /* BalanceModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,14 +478,6 @@
 				1D7CE9BC201E317600A1F189 /* CurrentUserModel.swift */,
 			);
 			path = CurrentUserModel;
-			sourceTree = "<group>";
-		};
-		1D7CE9BE201E32CF00A1F189 /* BalancesModel */ = {
-			isa = PBXGroup;
-			children = (
-				1D7CE9BF201E32DC00A1F189 /* BalancesModel.swift */,
-			);
-			path = BalancesModel;
 			sourceTree = "<group>";
 		};
 		1D82D6E02012A77C00AC8A84 /* Hmac */ = {
@@ -657,7 +660,6 @@
 				1D57391D200BD51500D7E431 /* ArrayModel.swift in Sources */,
 				1D73B031201A48310087A775 /* BalanceViewModel.swift in Sources */,
 				1D77C31820134399004DC212 /* NSData+Extension.swift in Sources */,
-				1D7CE9C0201E32DC00A1F189 /* BalancesModel.swift in Sources */,
 				1D573913200BD51500D7E431 /* Context.swift in Sources */,
 				1D57391E200BD51500D7E431 /* ArrayModelAddOption.swift in Sources */,
 				1D573918200BD51500D7E431 /* UINib+Extension.swift in Sources */,
@@ -665,6 +667,7 @@
 				1D573914200BD51500D7E431 /* GetContext.swift in Sources */,
 				1D573917200BD51500D7E431 /* String+Extension.swift in Sources */,
 				1D57391F200BD51500D7E431 /* ArrayModelMoveOption.swift in Sources */,
+				1D71903A2021007F00EA2EC6 /* BalancesModel.swift in Sources */,
 				1D6252A220190E940047CB7C /* CurrencyCell.swift in Sources */,
 				1D6252A42019103B0047CB7C /* BalancesViewModel.swift in Sources */,
 				1D82D6E22012A78D00AC8A84 /* Hmac.swift in Sources */,
@@ -678,6 +681,7 @@
 				1D573925200BD51500D7E431 /* Model.swift in Sources */,
 				1D6B3DE72014EF92009BBAF7 /* LoginView.swift in Sources */,
 				1D573920200BD51500D7E431 /* ArrayModelOption.swift in Sources */,
+				1D7190342020FA7200EA2EC6 /* ViewModel.swift in Sources */,
 				1D6B3DEB2014EF92009BBAF7 /* BalancesView.swift in Sources */,
 				1D573921200BD51500D7E431 /* ArrayModelRemoveOption.swift in Sources */,
 				1D6A23072016723500A25F13 /* HeaderView.swift in Sources */,

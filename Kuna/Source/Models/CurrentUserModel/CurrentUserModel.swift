@@ -12,7 +12,6 @@ class CurrentUserModel {
     
     // MARK: Public Properties
     
-    var balances: BalancesModel?
     var email: String?
     var activated: Bool = false
     var token: AccessTokenModel

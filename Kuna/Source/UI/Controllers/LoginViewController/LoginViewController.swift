@@ -60,19 +60,19 @@ class LoginViewController: UIViewController {
     }
     
     private func parse(json: JSON) {
-        let currentUser = CurrentUserParser().update(user: self.viewModel.currentUser, with: json)
+        let balances = CurrentUserParser().update(user: self.viewModel.currentUser, with: json)
+        
+        self.finishLogging(with: balances)
     }
     
-    private func finish(with response:JSON) {
-        print(response)
+    private func finishLogging(with balances:BalancesModel) {
         
-        let balancesViewModel = BalancesViewModel(json: response)
         let tabBarController = UITabBarController()
         
         let names = ["My Balances", "Tradings", "My Orders", "History"]
         var controllers: [UIViewController] = []
         for item in names {
-            let controller = BalancesViewController(balancesViewModel)
+            let controller = BalancesViewController(BalancesViewModel(user: self.viewModel.currentUser, balances: balances))
             controller.title = item
             
             controllers.append(controller)

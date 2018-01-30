@@ -8,27 +8,22 @@
 
 import Foundation
 
-class BalancesModel {
+class BalancesModel: ArrayModel<BalanceModel> {
     
-    // MARK: Private Properties
-    
-    private var array: ArrayModel<BalanceModel>
-    
-    // MARK: Public Properties
-    
-    var balances: ArrayModel<BalanceModel> {
-        return self.array
+    // MARK: Public Methods
+
+    override func add(object: BalanceModel) {
+        super.add(object: object)
     }
     
-    // MARK: Initialization
+    // MARK: Subscript
     
-    init (balances: [BalanceModel]) {
-        self.array = ArrayModel<BalanceModel>.init(array: balances)
+    override subscript(index: Int) -> BalanceModel? {
+        get {
+            return self.object(at: index)
+        }
+        set {
+            
+        }
     }
-    
-    init() {
-        self.array = ArrayModel<BalanceModel>.init(array: [BalanceModel]())
-    }
-    
-    //
 }

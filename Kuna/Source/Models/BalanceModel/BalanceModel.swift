@@ -22,11 +22,13 @@ class BalanceModel: Equatable {
     
     let currency: CurrencyModel
     var count: Double
+    var locked: Double
     
     // MARK: Initialization
     
-    init(currency: CurrencyModel, count: Double = 0.0) {
+    init(currency: CurrencyModel, count: Double = 0.0, locked: Double = 0.0) {
         self.currency = currency
         self.count = count
+        self.locked = locked
     }
 }

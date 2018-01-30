@@ -51,16 +51,14 @@ class BalancesViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: protocol UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.viewModel.balances.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.reusableCell(with: CurrencyCell.self, indexPath: indexPath)
         
-        //cell.currency = self.viewModel.balances[indexPath.row]
-        cell.balance = BalanceModel.init(currency: CurrencyModel(code: "USD", name: "Dollar"),
-                                         count: Double(indexPath.row))
-        
+        cell.balance = self.viewModel.balances[indexPath.row]
+       
         return cell
     }
     

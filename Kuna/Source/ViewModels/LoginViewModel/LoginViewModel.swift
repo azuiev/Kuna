@@ -8,23 +8,14 @@
 
 import Foundation
 import RxSwift
-import RxCocoa
 
-class LoginViewModel {
+class LoginViewModel: ViewModel {
     
     // MARK: Public Properties
     
-    let disposeBag = DisposeBag()
     let loginResult = PublishSubject<Result<JSON>>()
-    var currentUser: CurrentUserModel
     
-    // MARK: Initialization
-    
-    init(_ currentUserModel: CurrentUserModel) {
-        self.currentUser = currentUserModel
-    }
-    
-    // MARK: Public Functions
+    // MARK: UI Actions
     
     func onLogin(with token: AccessTokenModel) {
         LoginContext(token: token).execute { [weak self] in
