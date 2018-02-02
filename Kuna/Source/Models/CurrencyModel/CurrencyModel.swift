@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 // MARK: Protocols
 
@@ -18,15 +19,16 @@ extension Hashable where Self: CurrencyModel {
     }
 }
 
-class CurrencyModel: Hashable {
+@objcMembers class CurrencyModel: Object {
     
     // MARK: Class Methods {
     
     static func currencyWith(code: String) -> CurrencyModel {
-        
-        guard let result = CurrencyModel.currencies[code] else {
-            let newCurrency = CurrencyModel(code: code, name: code)
-            CurrencyModel.currencies[code] = newCurrency
+        let lowercaseCode = code.lowercased()
+
+        guard let result = CurrencyModel.currencies[lowercaseCode] else {
+            let newCurrency = CurrencyModel(code: code.uppercased(), name: code)
+            CurrencyModel.currencies[lowercaseCode] = newCurrency
             
             return newCurrency
         }
@@ -34,11 +36,34 @@ class CurrencyModel: Hashable {
         return result
     }
     
+    // MARK: Public property
+    
+    dynamic var code: String = ""
+    dynamic var name: String = ""
+    dynamic var crypto: Bool = true
+    dynamic var icon: ImageModel? = nil
+    
+    // MARK: Private Properties
+    
+    private static var currencies: [String : CurrencyModel] = [:]
+    
+    // MARK: Inititalization
+    
+    convenience init(code: String, name: String, isCrypto: Bool = true, image: ImageModel? = nil) {
+        self.init()
+        
+        self.code = code
+        self.name = name
+        self.crypto = isCrypto
+        self.icon = image
+    }
+    
     // Protocol Loadable
     
-    static func load() {
+    static func performLoading() {
+        let dbCurrencies = RealmService.shared.get(CurrencyModel.self)
         var currencies: [String : CurrencyModel] = [:]
-    
+    /*
         currencies["uah"] = CurrencyModel(code: "UAH", name: "Hryvnia", isCrypto: false)
         currencies["btc"] = CurrencyModel(code: "BTC", name: "Bitcoin")
         currencies["kun"] = CurrencyModel(code: "KUN", name: "KUN")
@@ -52,27 +77,13 @@ class CurrencyModel: Hashable {
         currencies["arn"] = CurrencyModel(code: "ARN", name: "Aeron")
         currencies["evr"] = CurrencyModel(code: "EVR", name: "Everus")
         currencies["b2b"] = CurrencyModel(code: "B2B", name: "B2B")
+    */
+        for (_, value) in currencies {
+            RealmService.shared.create(value)
+        }
         
         CurrencyModel.currencies = currencies
     }
     
-    // MARK: Public property
-    
-    let code: String
-    let name: String
-    let crypto: Bool
-    let icon: ImageModel?
 
-    // MARK: Private Properties
-    
-    private static var currencies: [String : CurrencyModel] = [:]
-    
-    // MARK: Inititalization
-    
-    init(code: String, name: String, isCrypto: Bool = true, image: ImageModel? = nil) {
-        self.code = code
-        self.name = name
-        self.crypto = isCrypto
-        self.icon = image
-    }
 }

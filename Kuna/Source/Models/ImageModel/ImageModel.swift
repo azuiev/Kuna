@@ -7,8 +7,17 @@
 //
 
 import UIKit
+import RealmSwift
 
-class ImageModel: Model {
+// MARK: Protocol Hashable
+
+extension Hashable where Self: ImageModel {
+    var hashValue: Int {
+        return self.url.hashValue
+    }
+}
+
+@objcMembers class ImageModel: Object {
     
     // MARK: Constants
     
@@ -20,16 +29,17 @@ class ImageModel: Model {
     
     typealias CompletionBlock = (UIImage?, Error?) -> ()
 
-    
-    // MARK: Protocol Hashable
-    
-    public var hashValue: Int {
-        return self.url.hashValue
-    }
-    
     // MARK: Public properties
     
-    var image: UIImage?
+    var image: UIImage? = nil
+    dynamic var stringURL: String = ""
+    
+    var url: URL = URL.init(fileURLWithPath: "") {
+        willSet {
+            self.stringURL = newValue.absoluteString
+        }
+    }
+    
     var imagePath: String? {
         get {
             let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
@@ -37,8 +47,6 @@ class ImageModel: Model {
             return documentPath?.appending(Constants.ImageDirectory)
         }
     }
-    
-    var url: URL
     
     // MARK: Initialization
     
@@ -49,21 +57,27 @@ class ImageModel: Model {
         if model == nil {
          */
         let imageType = url.isFileURL ? FileSystemImageModel.self : InternetImageModel.self
-           let model = imageType.init(url: url)
+           let model = imageType.init()
+            //let model = imageType.init(url: URL)
             //cache.set(object: model, for: url)
-        
         
         return model
     }
-    
-    required init(url: URL) {
+ 
+    convenience init(url: URL) {
+        self.init()
+        
         self.url = url
-        super.init()
     }
+    
     
     //MARK: Override Methods
     
-    override func performLoading() {
+    override static func ignoredProperties() -> [String] {
+        return ["image", "url", "downloadTask"]
+    }
+    
+    func performLoading() {
         DispatchQueue.main.asyncAfter(deadline: .now() + Constants.LoadImageDelay) { [weak self] in
             self?.loadImage { (image, error) in
                 DispatchQueue.main.async {

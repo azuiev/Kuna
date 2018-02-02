@@ -60,7 +60,7 @@ class LoginViewController: UIViewController {
     }
     
     private func parse(json: JSON) {
-        let balances = CurrentUserParser().update(user: self.viewModel.currentUser, with: json)
+        let balances = LoginResponseParser().update(user: self.viewModel.currentUser, with: json)
         
         self.finishLogging(with: balances)
     }

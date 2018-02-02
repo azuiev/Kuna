@@ -1,5 +1,5 @@
 //
-//  CurrentUserParser.swift
+//  LoginResponseParser.swift
 //  Kuna
 //
 //  Created by Aleksey Zuiev on 28/01/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CurrentUserParser {
+class LoginResponseParser {
     
     // MARK: Constants
     
