@@ -71,8 +71,13 @@ class LoginViewController: UIViewController {
         
         let names = ["My Balances", "Tradings", "My Orders", "History"]
         var controllers: [UIViewController] = []
+        var controller = UIViewController()
         for item in names {
-            let controller = BalancesViewController(BalancesViewModel(user: self.viewModel.currentUser, balances: balances))
+            if item == "Tradings" {
+                controller = TradingsViewController(BalancesViewModel(user: self.viewModel.currentUser, balances: balances))
+            } else {
+                controller = BalancesViewController(BalancesViewModel(user: self.viewModel.currentUser, balances: balances))
+            }
             controller.title = item
             
             controllers.append(controller)

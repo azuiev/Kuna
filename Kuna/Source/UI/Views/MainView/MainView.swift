@@ -19,30 +19,36 @@ class MainView: UIView {
     
     // MARK: IBOutlets
     
-    @IBOutlet var tableView: UITableView?
+    @IBOutlet var bodyView: UIView?
     
-    // MARK: Public Properteis
+    // MARK: Public Properties
     
     var tabName: String { return Constants.tabName }
     
     // MARK: Private Properties
     
     private var windowName: String { return Constants.windowName }
-    private var headerView: HeaderView?
+    var headerView: HeaderView?
     
     // MARK: UI Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let view = UINib.object(with: HeaderView.self, bundle: .main)
+        let headerView = UINib.object(with: HeaderView.self, bundle: .main)
+        let height = self.frame.height
+        let headerHeight = height / 4
+        let bodyHeight = height - headerHeight
+        let bodyView = self.bodyView
         
-        self.headerView = view
+        headerView.frame.size.height = headerHeight
+        bodyView?.frame.size.height = bodyHeight
+        bodyView?.frame.origin.y = headerHeight
+        
+        self.headerView = headerView
         self.setWindowLabelText()
-        view.frame.size.height = self.frame.height / 4
-        self.tableView?.frame.size.height = self.frame.height * 3 / 4
         
-        self.addSubview(view)
+        self.addSubview(headerView)
     }
 
     // Private Methods

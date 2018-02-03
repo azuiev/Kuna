@@ -30,6 +30,8 @@ extension Hashable where Self: CurrencyModel {
             let newCurrency = CurrencyModel(code: code.uppercased(), name: code)
             CurrencyModel.currencies[lowercaseCode] = newCurrency
             
+            RealmService.shared.create(newCurrency)
+            
             return newCurrency
         }
         
@@ -63,23 +65,25 @@ extension Hashable where Self: CurrencyModel {
     static func performLoading() {
         let dbCurrencies = RealmService.shared.get(CurrencyModel.self)
         var currencies: [String : CurrencyModel] = [:]
-    /*
-        currencies["uah"] = CurrencyModel(code: "UAH", name: "Hryvnia", isCrypto: false)
-        currencies["btc"] = CurrencyModel(code: "BTC", name: "Bitcoin")
-        currencies["kun"] = CurrencyModel(code: "KUN", name: "KUN")
-        currencies["gol"] = CurrencyModel(code: "GOL", name: "GOLOS")
-        currencies["eth"] = CurrencyModel(code: "ETH", name: "Ethereum")
-        currencies["waves"] = CurrencyModel(code: "WAVES", name: "Waves")
-        currencies["bch"] = CurrencyModel(code: "BCH", name: "Bitcoin Cash")
-        currencies["gbg"] = CurrencyModel(code: "GBG", name: "Golos Gold")
-        currencies["rmc"] = CurrencyModel(code: "RMC", name: "Russian miner coin")
-        currencies["r"] = CurrencyModel(code: "R", name: "Revain")
-        currencies["arn"] = CurrencyModel(code: "ARN", name: "Aeron")
-        currencies["evr"] = CurrencyModel(code: "EVR", name: "Everus")
-        currencies["b2b"] = CurrencyModel(code: "B2B", name: "B2B")
-    */
-        for (_, value) in currencies {
-            RealmService.shared.create(value)
+        
+        /*
+         currencies["uah"] = CurrencyModel(code: "UAH", name: "Hryvnia", isCrypto: false)
+         currencies["btc"] = CurrencyModel(code: "BTC", name: "Bitcoin")
+         currencies["kun"] = CurrencyModel(code: "KUN", name: "KUN")
+         currencies["gol"] = CurrencyModel(code: "GOL", name: "GOLOS")
+         currencies["eth"] = CurrencyModel(code: "ETH", name: "Ethereum")
+         currencies["waves"] = CurrencyModel(code: "WAVES", name: "Waves")
+         currencies["bch"] = CurrencyModel(code: "BCH", name: "Bitcoin Cash")
+         currencies["gbg"] = CurrencyModel(code: "GBG", name: "Golos Gold")
+         currencies["rmc"] = CurrencyModel(code: "RMC", name: "Russian miner coin")
+         currencies["r"] = CurrencyModel(code: "R", name: "Revain")
+         currencies["arn"] = CurrencyModel(code: "ARN", name: "Aeron")
+         currencies["evr"] = CurrencyModel(code: "EVR", name: "Everus")
+         currencies["b2b"] = CurrencyModel(code: "B2B", name: "B2B")
+         */
+        
+        for item in dbCurrencies {
+            currencies[item.code.lowercased()] = item
         }
         
         CurrencyModel.currencies = currencies

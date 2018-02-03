@@ -17,7 +17,7 @@ class LoginResponseParser {
         static let emailKey         = "email"
         static let currenciesKey    = "accounts"
         static let currencyKey      = "currency"
-        static let balanceKey       = "accounts"
+        static let balanceKey       = "balance"
         static let lockedBalanceKey = "locked"
     }
     
@@ -40,12 +40,16 @@ class LoginResponseParser {
                     let currency = CurrencyModel.currencyWith(code: currencyCode)
                     let balance = BalanceModel(currency: currency)
                     
-                    if let count = currencyJSON[Constants.balanceKey] as? Double {
-                        balance.count = count
+                    if let count = currencyJSON[Constants.balanceKey] as? String {
+                        Double(count).map {
+                            balance.count = $0
+                        }
                     }
                     
-                    if let locked = currencyJSON[Constants.lockedBalanceKey] as? Double {
-                        balance.locked = locked
+                    if let locked = currencyJSON[Constants.lockedBalanceKey] as? String {
+                        Double(locked).map {
+                            balance.locked = $0
+                        }
                     }
                     
                     balances.add(object: balance)

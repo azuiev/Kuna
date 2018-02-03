@@ -55,6 +55,11 @@
 		1D7CE9BD201E317600A1F189 /* CurrentUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7CE9BC201E317600A1F189 /* CurrentUserModel.swift */; };
 		1D82D6DD20128CC800AC8A84 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */; };
 		1D82D6E22012A78D00AC8A84 /* Hmac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6E12012A78D00AC8A84 /* Hmac.swift */; };
+		1D8B89B720264FC0002F7361 /* TradingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B89B520264FC0002F7361 /* TradingsViewController.swift */; };
+		1D8B89B820264FC0002F7361 /* TradingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D8B89B620264FC0002F7361 /* TradingsViewController.xib */; };
+		1D8B89BA20265918002F7361 /* TradingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B89B920265918002F7361 /* TradingsView.swift */; };
+		1D8B89BE2026615F002F7361 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D8B89BC2026615F002F7361 /* OrderCell.xib */; };
+		1D8B89BF2026615F002F7361 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B89BD2026615F002F7361 /* OrderCell.swift */; };
 		1D8FEF2E2017BCAB00C65D4C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8FEF2D2017BCAB00C65D4C /* MainView.swift */; };
 		1FE5552D8B5E4588791BC788 /* Pods_Kuna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B6FC9A4D590457BB68ED47 /* Pods_Kuna.framework */; };
 /* End PBXBuildFile section */
@@ -110,6 +115,11 @@
 		1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		1D82D6DF2012A40200AC8A84 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		1D82D6E12012A78D00AC8A84 /* Hmac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hmac.swift; sourceTree = "<group>"; };
+		1D8B89B520264FC0002F7361 /* TradingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingsViewController.swift; sourceTree = "<group>"; };
+		1D8B89B620264FC0002F7361 /* TradingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradingsViewController.xib; sourceTree = "<group>"; };
+		1D8B89B920265918002F7361 /* TradingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingsView.swift; sourceTree = "<group>"; };
+		1D8B89BC2026615F002F7361 /* OrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
+		1D8B89BD2026615F002F7361 /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		1D8FEF2D2017BCAB00C65D4C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		92B6FC9A4D590457BB68ED47 /* Pods_Kuna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kuna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9381D65F42BE6BE7A1C10D23 /* Pods-Kuna.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuna.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kuna/Pods-Kuna.release.xcconfig"; sourceTree = "<group>"; };
@@ -276,7 +286,7 @@
 			children = (
 				1D6B3DDC2014EF92009BBAF7 /* LoginViewController */,
 				1D6B3DE02014EF92009BBAF7 /* BalancesViewController */,
-				1D625299201901170047CB7C /* TradingViewController */,
+				1D625299201901170047CB7C /* TradingsViewController */,
 				1D625298201901100047CB7C /* OrdersViewController */,
 				1D6252972019010A0047CB7C /* HistoryViewController */,
 			);
@@ -316,11 +326,14 @@
 			path = OrdersViewController;
 			sourceTree = "<group>";
 		};
-		1D625299201901170047CB7C /* TradingViewController */ = {
+		1D625299201901170047CB7C /* TradingsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1D8B89B920265918002F7361 /* TradingsView.swift */,
+				1D8B89B520264FC0002F7361 /* TradingsViewController.swift */,
+				1D8B89B620264FC0002F7361 /* TradingsViewController.xib */,
 			);
-			path = TradingViewController;
+			path = TradingsViewController;
 			sourceTree = "<group>";
 		};
 		1D62529A20190A780047CB7C /* BalancesViewModel */ = {
@@ -354,6 +367,7 @@
 				1D8FEF2C2017BC9900C65D4C /* MainView */,
 				1D6A2303201671E300A25F13 /* HeaderView */,
 				1D62529E20190E320047CB7C /* CurrencyCell */,
+				1D8B89BB20266148002F7361 /* OrderCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -507,6 +521,15 @@
 			path = Hmac;
 			sourceTree = "<group>";
 		};
+		1D8B89BB20266148002F7361 /* OrderCell */ = {
+			isa = PBXGroup;
+			children = (
+				1D8B89BD2026615F002F7361 /* OrderCell.swift */,
+				1D8B89BC2026615F002F7361 /* OrderCell.xib */,
+			);
+			path = OrderCell;
+			sourceTree = "<group>";
+		};
 		1D8FEF2C2017BC9900C65D4C /* MainView */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,6 +623,8 @@
 				1D6252A020190E710047CB7C /* CurrencyCell.xib in Resources */,
 				1D7591241FFECED200573899 /* Assets.xcassets in Resources */,
 				1D7591231FFECED200573899 /* Info.plist in Resources */,
+				1D8B89BE2026615F002F7361 /* OrderCell.xib in Resources */,
+				1D8B89B820264FC0002F7361 /* TradingsViewController.xib in Resources */,
 				1D7591261FFECED200573899 /* Main.storyboard in Resources */,
 				1D6A23052016721500A25F13 /* HeaderView.xib in Resources */,
 			);
@@ -686,6 +711,7 @@
 				1D573913200BD51500D7E431 /* Context.swift in Sources */,
 				1D57391E200BD51500D7E431 /* ArrayModelAddOption.swift in Sources */,
 				1D573918200BD51500D7E431 /* UINib+Extension.swift in Sources */,
+				1D8B89BA20265918002F7361 /* TradingsView.swift in Sources */,
 				1D62529D20190AEC0047CB7C /* CurrencyModel.swift in Sources */,
 				1D573914200BD51500D7E431 /* GetContext.swift in Sources */,
 				1D573917200BD51500D7E431 /* String+Extension.swift in Sources */,
@@ -696,10 +722,12 @@
 				1D82D6E22012A78D00AC8A84 /* Hmac.swift in Sources */,
 				1D573915200BD51500D7E431 /* LoginContext.swift in Sources */,
 				1D82D6DD20128CC800AC8A84 /* Date+Extension.swift in Sources */,
+				1D8B89B720264FC0002F7361 /* TradingsViewController.swift in Sources */,
 				1D57391B200BD51500D7E431 /* Global.swift in Sources */,
 				1D573919200BD51500D7E431 /* UITableView+Extension.swift in Sources */,
 				1D573923200BD51500D7E431 /* ImageModel.swift in Sources */,
 				1D7CE9BA201E308500A1F189 /* LoginResponseParser.swift in Sources */,
+				1D8B89BF2026615F002F7361 /* OrderCell.swift in Sources */,
 				1D573922200BD51500D7E431 /* FileSystemImageModel.swift in Sources */,
 				1D573925200BD51500D7E431 /* Model.swift in Sources */,
 				1D758AC62024D8CF00419689 /* RealmService.swift in Sources */,

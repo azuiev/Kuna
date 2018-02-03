@@ -8,7 +8,42 @@
 
 import UIKit
 
-class BalancesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+// MARK: Protocol UITableViewDataSource
+
+extension BalancesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel.balances.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.reusableCell(with: CurrencyCell.self, indexPath: indexPath)
+        
+        cell.balance = self.viewModel.balances[indexPath.row]
+        
+        return cell
+    }
+}
+
+// MARK: Protocol UITableViewDelegate
+
+extension BalancesViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        /*
+         self.friends[indexPath.row]
+         .map { UserViewController(model: $0, currentUser: user) }
+         .map { [weak self] in
+         self?.navigationController?.pushViewController($0, animated: true)
+         }
+         */
+    }
+}
+
+class BalancesViewController: UIViewController {
 
     // MARK: Public Properties
     
@@ -48,20 +83,6 @@ class BalancesViewController: UIViewController, UITableViewDelegate, UITableView
         print("\(result)")
     }
     
-    // MARK: protocol UITableViewDataSource
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.balances.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.reusableCell(with: CurrencyCell.self, indexPath: indexPath)
-        
-        cell.balance = self.viewModel.balances[indexPath.row]
-       
-        return cell
-    }
-    
     /*
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -76,19 +97,5 @@ class BalancesViewController: UIViewController, UITableViewDelegate, UITableView
         self.rootView.tableView?.reloadData()
     }
     */
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .none
-    }
     
-    // MARK: protocol UITableViewDelegate
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*
-         self.friends[indexPath.row]
-         .map { UserViewController(model: $0, currentUser: user) }
-         .map { [weak self] in
-         self?.navigationController?.pushViewController($0, animated: true)
-         }
-         */
-    }
 }

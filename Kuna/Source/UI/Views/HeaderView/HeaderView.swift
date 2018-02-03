@@ -15,7 +15,6 @@ class HeaderView: UIView {
     @IBOutlet var windowNameLabel:  UILabel?
     @IBOutlet var tabNameLabel:     UILabel?
     
-    
     // Initialization
     
     override init(frame: CGRect) {
