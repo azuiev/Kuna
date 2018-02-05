@@ -1,8 +1,8 @@
 //
-//  LoginContext.swift
+//  TradingsContext.swift
 //  Kuna
 //
-//  Created by Aleksey Zuiev on 17/01/2018.
+//  Created by Aleksey Zuiev on 05/01/2018.
 //  Copyright © 2018 Aleksey Zuiev. All rights reserved.
 //
 
@@ -11,21 +11,25 @@ import RxSwift
 import RxCocoa
 import Alamofire
 
-enum JSONError: Error {
-    case parseError
-    case otherError
-}
-
-class LoginContext: UserContext {
+class TradingsContext: PublicContext {
+    
+    // MARK: Constants
+    
+    private struct Constants {
+        static let marketKeyString  = "market"
+        static let marketValue      = "btcuah"
+    }
     
     // MARK: Private Properties
     
-    override var urlPath: String { return "api/v2/members/me" }
+    override var urlPath: String { return "api/v2/order_book?market=btcuah" }
     
     // MARK: Public Methods
     
     override func execute(with completionHandler: @escaping (Result<JSON>) -> ()) {
         super.execute(with: completionHandler)
+        
+        self.parameters[Constants.marketKeyString] = Constants.marketValue
         
         Alamofire.request(self.fullUrl, method: self.httpMethod, parameters: parameters)
             .responseJSON {

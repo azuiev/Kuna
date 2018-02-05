@@ -1,5 +1,5 @@
 //
-//  GetContext.swift
+//  UserContext.swift
 //  SwiftFB
 //
 //  Created by Aleksey Zuiev on 03/11/2017.
@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import Alamofire
 
-class GetContext: Context {
+class UserContext: PublicContext {
     
     // MARK: Constants
     
@@ -19,16 +18,6 @@ class GetContext: Context {
         static let signatureString  = "signature"
     }
     
-    // MARK: Public Properties
-    
-    var httpMethod: HTTPMethod { return .get }
-    var graphPath: String { return "" }
-    var parameters: [String : String]
-    var tonce = { return 12345678 }
-    var url = "https://kuna.io/"
-    var urlPath: String { return "" }
-    var fullUrl: String { return self.url + self.urlPath }
-    
     // MARK: Private Properties
     
     private var token: AccessTokenModel
@@ -37,14 +26,15 @@ class GetContext: Context {
     
     init(token: AccessTokenModel) {
         self.token = token
-        self.parameters = [Constants.accessKeyString : token.publicKey]
         
         super.init()
+        
+        self.parameters = [Constants.accessKeyString : token.publicKey]
     }
     
     // MARK: Public Methods
     
-    func execute(with completionHandler: @escaping (Result<JSON>) -> ()) {
+    override func execute(with completionHandler: @escaping (Result<JSON>) -> ()) {
         self.parameters[Constants.tonceString] = String(Date().currentTimeInMiliseconds)
         self.parameters[Constants.signatureString] = self.evaluateSecret()
     }

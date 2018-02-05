@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: ViewController {
 
     // MARK: Public Properties
     
@@ -45,26 +45,16 @@ class LoginViewController: UIViewController {
         self.rootView?.fill(with: self.viewModel)
     }
     
-    // MARK: Private Methods
+    // MARK: Public Methods
     
-    private func check(result: Result<JSON>) {
-        if result.isFailure() {
-            _ = result.map {
-                print($0)
-            }
-        } else {
-            _ = result.map { [weak self] in
-                self?.parse(json: $0)
-            }
-        }
-    }
-    
-    private func parse(json: JSON) {
+    override func parse(json: JSON) {
         let balances = LoginResponseParser().update(user: self.viewModel.currentUser, with: json)
         
         self.finishLogging(with: balances)
     }
     
+    // MARK: Private Methods
+ 
     private func finishLogging(with balances:BalancesModel) {
         
         let tabBarController = UITabBarController()
@@ -74,7 +64,7 @@ class LoginViewController: UIViewController {
         var controller = UIViewController()
         for item in names {
             if item == "Tradings" {
-                controller = TradingsViewController(BalancesViewModel(user: self.viewModel.currentUser, balances: balances))
+                controller = TradingsViewController(TradingsViewModel(user: self.viewModel.currentUser, balances: balances))
             } else {
                 controller = BalancesViewController(BalancesViewModel(user: self.viewModel.currentUser, balances: balances))
             }

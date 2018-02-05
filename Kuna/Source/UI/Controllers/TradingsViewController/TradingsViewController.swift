@@ -11,14 +11,31 @@ import UIKit
 
 extension  TradingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
-            //self.viewModel.balances.count
+        if tableView == self.rootView?.buyOrders {
+            return 5
+        }
+        
+        if tableView == self.rootView?.sellOrders {
+            return 6
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.reusableCell(with: OrderCell.self, indexPath: indexPath)
+        var cell = OrderCell()
         
-        cell.balance = self.viewModel.balances[indexPath.row]
+        if tableView == self.rootView?.buyOrders {
+            cell = tableView.reusableCell(with: BuyOrderCell.self, indexPath: indexPath)
+            
+            cell.balance = self.viewModel.buyOrders[indexPath.row]
+        }
+        
+        if tableView == self.rootView?.sellOrders {
+            cell = tableView.reusableCell(with: SellOrderCell.self, indexPath: indexPath)
+            
+            cell.balance = self.viewModel.sellOrders[indexPath.row]
+        }
         
         return cell
     }
@@ -39,11 +56,11 @@ extension TradingsViewController: UITableViewDelegate {
     }
 }
 
-class TradingsViewController: UIViewController {
+class TradingsViewController: ViewController {
 
     // MARK: Public Properties
     
-    var viewModel: BalancesViewModel
+    var viewModel: TradingsViewModel
     
     var rootView: TradingsView? {
         return self.viewIfLoaded as? TradingsView
@@ -51,10 +68,19 @@ class TradingsViewController: UIViewController {
     
     // MARK: Initialization
     
-    init(_ viewModel: BalancesViewModel) {
+    init(_ viewModel: TradingsViewModel) {
         self.viewModel = viewModel
         
         super.init(nibName: toString(type(of: self)), bundle: .main)
+        
+        self.viewModel.tradingsResult
+            .asObservable()
+            .subscribe({
+                _ = $0.map { [weak self] in
+                    self?.check(result: $0)
+                }
+            })
+            .disposed(by: self.viewModel.disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,11 +92,31 @@ class TradingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.rootView?.fill(with: self.viewModel)
-        
-        let nib = UINib(nibName: toString(OrderCell.self), bundle: .main)
-        
-        self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(OrderCell.self))
-    }
+        let nibBuyCell = UINib(nibName: toString(BuyOrderCell.self), bundle: .main)
+        let nibSellCell = UINib(nibName: toString(SellOrderCell.self), bundle: .main)
 
+        self.rootView?.buyOrders?.register(nibBuyCell, forCellReuseIdentifier: toString(BuyOrderCell.self))
+        self.rootView?.sellOrders?.register(nibSellCell, forCellReuseIdentifier: toString(SellOrderCell.self))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.rootView?.startTimer()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.rootView?.stopTimer()
+    }
+    // MARK: Public Methods
+    
+    override func parse(json: JSON) {
+        let balances = LoginResponseParser().update(user: self.viewModel.currentUser, with: json)
+        
+        self.fillTable(with: balances)
+    }
+    
+    // MARK: Private Methods
+    
+    private func fillTable(with json: BalancesModel) {
+        
+    }
 }
