@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class BalancesModel: ArrayModel<BalanceModel> {
     

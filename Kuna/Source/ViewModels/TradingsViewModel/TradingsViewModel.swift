@@ -16,17 +16,26 @@ class TradingsViewModel: ViewModel {
     let tradingsResult = PublishSubject<Result<JSON>>()
     var buyOrders: BalancesModel
     var sellOrders: BalancesModel
+    var tradings: BalancesModel
+    
+    let buyOrdersVariable: Variable<BalancesModel>
+    let sellOrdersVariable: Variable<BalancesModel>
+    let tradingsVariable: Variable<BalancesModel>
     
     // MARK: Private Properties
     
     var timer: Timer?
-
     
     // MARK: Initialization
     
     init(user: CurrentUserModel, balances: BalancesModel) {
         self.buyOrders = balances
         self.sellOrders = balances
+        self.tradings = balances
+        
+        self.buyOrdersVariable = Variable(self.buyOrders)
+        self.sellOrdersVariable = Variable(self.sellOrders)
+        self.tradingsVariable = Variable(self.tradings)
         
         super.init(user)
     }

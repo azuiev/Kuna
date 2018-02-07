@@ -61,5 +61,17 @@ class TradingsView: MainView {
                 }
             )
             .disposed(by: self.disposeBag)
+        
+        _ = viewModel.buyOrdersVariable.asObservable().subscribe {
+            print("TEST1")
+        }
+        
+        _ = viewModel.sellOrdersVariable.asObservable().subscribe {
+            print("TEST1")
+        }
+        
+        _ = viewModel.tradingsVariable.asObservable().subscribe {
+            print("TEST1")
+        }
     }
 }
