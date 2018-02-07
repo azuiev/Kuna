@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     // Public Methods
-    
+    // TODO ADD COMPLITION
     func check(result: Result<JSON>) {
         if result.isFailure() {
             _ = result.map {

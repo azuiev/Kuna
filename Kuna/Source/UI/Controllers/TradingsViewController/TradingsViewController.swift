@@ -81,6 +81,8 @@ class TradingsViewController: ViewController {
                 }
             })
             .disposed(by: self.viewModel.disposeBag)
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -92,20 +94,15 @@ class TradingsViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.rootView?.fill(with: self.viewModel)
+        
         let nibBuyCell = UINib(nibName: toString(BuyOrderCell.self), bundle: .main)
         let nibSellCell = UINib(nibName: toString(SellOrderCell.self), bundle: .main)
 
         self.rootView?.buyOrders?.register(nibBuyCell, forCellReuseIdentifier: toString(BuyOrderCell.self))
         self.rootView?.sellOrders?.register(nibSellCell, forCellReuseIdentifier: toString(SellOrderCell.self))
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.rootView?.startTimer()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.rootView?.stopTimer()
-    }
+
     // MARK: Public Methods
     
     override func parse(json: JSON) {

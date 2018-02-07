@@ -31,6 +31,5 @@ class ArrayModelOption {
     }
     
     func applyChanges(to tableView: UITableView, with animation: UITableViewRowAnimation = UITableViewRowAnimation.automatic, in section: Int = 0) {
-        
     }
 }

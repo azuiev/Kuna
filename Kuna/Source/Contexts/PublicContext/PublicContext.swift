@@ -1,31 +1,30 @@
 //
-//  LoginContext.swift
+//  PublicContext.swift
 //  Kuna
 //
-//  Created by Aleksey Zuiev on 17/01/2018.
+//  Created by Aleksey Zuiev on 05/02/2018.
 //  Copyright © 2018 Aleksey Zuiev. All rights reserved.
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 import Alamofire
 
-enum JSONError: Error {
-    case parseError
-    case otherError
-}
+class PublicContext: Context {
 
-class LoginContext: UserContext {
+    // MARK: Public Properties
     
-    // MARK: Private Properties
-    
-    override var urlPath: String { return "api/v2/members/me" }
+    var httpMethod: HTTPMethod { return .get }
+    var graphPath: String { return "" }
+    var parameters: [String : String] = [:]
+    var tonce = { return 12345678 }
+    var url = "https://kuna.io/"
+    var urlPath: String { return "" }
+    var fullUrl: String { return self.url + self.urlPath }
     
     // MARK: Public Methods
     
-    override func execute(with completionHandler: @escaping (Result<JSON>) -> ()) {
-        super.execute(with: completionHandler)
+    func execute(with completionHandler: @escaping (Result<JSON>) -> ()) {
+        self.upfateParameters()
         
         Alamofire.request(self.fullUrl, method: self.httpMethod, parameters: parameters)
             .responseJSON {
@@ -43,5 +42,9 @@ class LoginContext: UserContext {
                     completionHandler(Result.Failure(error))
                 }
         }
+    }
+    
+    func upfateParameters() {
+
     }
 }

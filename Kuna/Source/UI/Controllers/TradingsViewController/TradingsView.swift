@@ -9,6 +9,12 @@
 import UIKit
 import RxSwift
 
+enum TableType: Int {
+    case buyTable       = 0
+    case sellTable      = 1
+    case tradingsTable  = 2
+}
+
 class TradingsView: MainView {
     
     // MARK: Constants
@@ -21,6 +27,7 @@ class TradingsView: MainView {
     
     @IBOutlet var buyOrders: UITableView?
     @IBOutlet var sellOrders: UITableView?
+    @IBOutlet var tradings: UITableView?
     @IBOutlet var segmentedView: UISegmentedControl?
     
     // MARK: Public Properties
@@ -29,56 +36,30 @@ class TradingsView: MainView {
     
     let disposeBag = DisposeBag()
     
-    // MARK: Private Properties
+    // MARK: Public Methods
     
-    var timer: Timer?
-    
-    // MARK: View Lifecycle
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
+    func fill(with viewModel: TradingsViewModel) {
         _ = self.segmentedView?
             .rx
             .value
             .asObservable()
             .subscribe({ [weak self] in
-                let item = $0.element ?? 0
+                guard let tableType = TableType(rawValue: $0.element ?? 0) else { return }
+                viewModel.onSelectSegment(with: tableType)
+                
                 let view: UITableView?
-                switch item {
-                    case 0:  view = self?.buyOrders
-                    case 1:  view = self?.sellOrders
-                default:
-                    view = UITableView()
-                }
+                
+                switch tableType {
+                case .buyTable:  view = self?.buyOrders
+                case .sellTable:  view = self?.sellOrders
+                case .tradingsTable:  view = self?.tradings
                 
                 view.map { [weak self] in
                     self?.bodyView?.bringSubview(toFront: $0)
+                    }
                 }
-                
-                //viewModel.onSwitch(with: $0)
-            })
+                }
+            )
             .disposed(by: self.disposeBag)
-        
-    }
-    
-    // MARK: Public Methods
-    
-    func fill(with viewModel: TradingsViewModel) {
-       
-    }
-    
-    func startTimer() {
-        let timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
-            print("Test")
-        }
-        
-        timer.fire()
-        
-        self.timer = timer
-    }
-    
-    func stopTimer() {
-        self.timer?.invalidate()
     }
 }

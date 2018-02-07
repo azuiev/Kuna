@@ -59,7 +59,7 @@
             <connections>
                 <outlet property="bodyView" destination="Qa9-i6-2v1" id="tVY-RZ-iRu"/>
                 <outlet property="buyOrders" destination="RSO-Ka-Gxb" id="mbM-ye-Oqt"/>
-                <outlet property="segmentedView" destination="GMh-lL-HnQ" id="GF1-ig-Oce"/>
+                <outlet property="segmentedView" destination="GMh-lL-HnQ" id="jgv-29-rrj"/>
                 <outlet property="sellOrders" destination="e6Z-hl-VN9" id="OU3-Vb-MfX"/>
             </connections>
             <point key="canvasLocation" x="25.5" y="51.5"/>

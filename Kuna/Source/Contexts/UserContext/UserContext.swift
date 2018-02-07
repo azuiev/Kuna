@@ -28,15 +28,14 @@ class UserContext: PublicContext {
         self.token = token
         
         super.init()
-        
-        self.parameters = [Constants.accessKeyString : token.publicKey]
     }
     
     // MARK: Public Methods
     
-    override func execute(with completionHandler: @escaping (Result<JSON>) -> ()) {
-        self.parameters[Constants.tonceString] = String(Date().currentTimeInMiliseconds)
-        self.parameters[Constants.signatureString] = self.evaluateSecret()
+    override func upfateParameters() {
+        self.parameters[Constants.accessKeyString]  = token.publicKey
+        self.parameters[Constants.tonceString]      = String(Date().currentTimeInMiliseconds)
+        self.parameters[Constants.signatureString]  = self.evaluateSecret()
     }
     
     // MARK: Private methods
