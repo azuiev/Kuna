@@ -12,11 +12,15 @@ import UIKit
 extension  TradingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.rootView?.buyOrders {
-            return 5
+            return self.viewModel.buyOrders.count
         }
         
         if tableView == self.rootView?.sellOrders {
-            return 6
+            return self.viewModel.sellOrders.count
+        }
+        
+        if tableView == self.rootView?.tradings {
+            return self.viewModel.tradings.count
         }
         
         return 0
@@ -28,13 +32,19 @@ extension  TradingsViewController: UITableViewDataSource {
         if tableView == self.rootView?.buyOrders {
             cell = tableView.reusableCell(with: BuyOrderCell.self, indexPath: indexPath)
             
-            cell.balance = self.viewModel.buyOrders[indexPath.row]
+            cell.order = self.viewModel.buyOrders[indexPath.row]
         }
         
         if tableView == self.rootView?.sellOrders {
             cell = tableView.reusableCell(with: SellOrderCell.self, indexPath: indexPath)
             
-            cell.balance = self.viewModel.sellOrders[indexPath.row]
+            cell.order = self.viewModel.sellOrders[indexPath.row]
+        }
+        
+        if tableView == self.rootView?.sellOrders {
+            cell = tableView.reusableCell(with: SellOrderCell.self, indexPath: indexPath)
+            
+            cell.order = self.viewModel.sellOrders[indexPath.row]
         }
         
         return cell
@@ -49,8 +59,6 @@ extension TradingsViewController: UITableViewDelegate {
         return .none
     }
     
-    // MARK: protocol UITableViewDelegate
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
     }
@@ -58,10 +66,13 @@ extension TradingsViewController: UITableViewDelegate {
 
 class TradingsViewController: ViewController {
 
+    // MARK: Enum
+    
     private enum ResultType {
         case orders
         case tradings
     }
+    
     // MARK: Public Properties
     
     var viewModel: TradingsViewModel
@@ -79,24 +90,24 @@ class TradingsViewController: ViewController {
         
         self.viewModel.ordersResult
             .asObservable()
-            .subscribe({
+            .subscribe {
                 _ = $0.map { [weak self] in
                     self?.check(result: $0) { [weak self] in
                         self?.parse(json: $0, with: ResultType.orders)
                     }
                 }
-            })
+            }
             .disposed(by: self.viewModel.disposeBag)
         
         self.viewModel.tradingsResult
             .asObservable()
-            .subscribe({
+            .subscribe {
                 _ = $0.map { [weak self] in
                     self?.check(result: $0) { [weak self] in
                         self?.parse(json: $0, with: ResultType.tradings)
                     }
                 }
-            })
+            }
             .disposed(by: self.viewModel.disposeBag)
         
         
@@ -132,8 +143,6 @@ class TradingsViewController: ViewController {
             let tradings = TradingsResponseParser().createAndUpdateTradingsWith(json: json)
             
             self.viewModel.fillTradings(with: tradings)
-        default:
-            return
         }
     }
 }

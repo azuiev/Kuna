@@ -12,15 +12,15 @@ class OrderCell: UITableViewCell {
     
     // MARK Public Properties
     
-    var balance: BalanceModel? {
+    var order: OrderModel? {
         willSet {
             newValue.map { [weak self] in
-                self?.fill(with: BalanceViewModel(balance: $0))
+                self?.fill(with: OrderViewModel($0))
             }
         }
     }
     
-    func fill(with viewModel: BalanceViewModel) {
+    func fill(with viewModel: OrderViewModel) {
         
     }
 }

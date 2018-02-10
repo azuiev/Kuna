@@ -20,7 +20,7 @@ class CurrencyCell: UITableViewCell {
     var balance: BalanceModel? {
         willSet {
             newValue.map { [weak self] in
-                self?.fill(with: BalanceViewModel(balance: $0))
+                self?.fill(with: BalanceViewModel($0))
             }
         }
     }

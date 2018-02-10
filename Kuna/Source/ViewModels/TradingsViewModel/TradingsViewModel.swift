@@ -15,13 +15,27 @@ class TradingsViewModel: ViewModel {
     
     let tradingsResult = PublishSubject<Result<JSON>>()
     let ordersResult = PublishSubject<Result<JSON>>()
-    let buyOrdersVariable: Variable<BalancesModel>
-    let sellOrdersVariable: Variable<BalancesModel>
-    let tradingsVariable: Variable<BalancesModel>
+    let buyOrdersSubject = PublishSubject<[OrderModel]>()
+    let sellOrdersSubject = PublishSubject<[OrderModel]>()
+    let tradingsSubject = PublishSubject<BalancesModel>()
     
-    var buyOrders: BalancesModel
-    var sellOrders: BalancesModel
-    var tradings: BalancesModel
+    var buyOrders: [OrderModel] {
+        didSet {
+            self.buyOrdersSubject.onNext(self.buyOrders)
+        }
+    }
+    
+    var sellOrders: [OrderModel] {
+        didSet {
+            self.sellOrdersSubject.onNext(sellOrders)
+        }
+    }
+    
+    var tradings: BalancesModel {
+        didSet {
+            self.tradingsSubject.onNext(tradings)
+        }
+    }
     
     // MARK: Private Properties
     
@@ -30,13 +44,9 @@ class TradingsViewModel: ViewModel {
     // MARK: Initialization
     
     init(user: CurrentUserModel, balances: BalancesModel) {
-        self.buyOrders = balances
-        self.sellOrders = balances
+        self.buyOrders = []
+        self.sellOrders = []
         self.tradings = balances
-        
-        self.buyOrdersVariable = Variable(self.buyOrders)
-        self.sellOrdersVariable = Variable(self.sellOrders)
-        self.tradingsVariable = Variable(self.tradings)
         
         super.init(user)
     }
@@ -45,11 +55,11 @@ class TradingsViewModel: ViewModel {
     
     func onSelectSegment(with table: TableType) {
         switch table {
-        case .buyTable, .sellTable: self.startUpdating(with: 10) { _ in
+        case .buyTable, .sellTable: self.startUpdating(with: 30) { _ in
             OrdersContext().execute { [weak self] in
                 self?.ordersResult.onNext($0)
             }}
-        case .tradingsTable:  self.startUpdating(with: 10) { _ in
+        case .tradingsTable:  self.startUpdating(with: 30) { _ in
             OrdersContext().execute { [weak self] in
                 self?.tradingsResult.onNext($0)
             }}

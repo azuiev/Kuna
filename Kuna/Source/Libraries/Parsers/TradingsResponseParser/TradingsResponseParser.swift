@@ -33,31 +33,6 @@ class TradingsResponseParser {
             print(asks)
         }
         
-        let balances = BalancesModel(array: [BalanceModel]())
-        
-        if let currenciesJSON = json[Constants.currenciesKey] as? JSONArray {
-            for currencyJSON in currenciesJSON {
-                if let currencyCode = currencyJSON[Constants.currencyKey] as? String {
-                    let currency = CurrencyModel.currencyWith(code: currencyCode)
-                    let balance = BalanceModel(currency: currency)
-                    
-                    if let count = currencyJSON[Constants.balanceKey] as? String {
-                        Double(count).map {
-                            balance.count = $0
-                        }
-                    }
-                    
-                    if let locked = currencyJSON[Constants.lockedBalanceKey] as? String {
-                        Double(locked).map {
-                            balance.locked = $0
-                        }
-                    }
-                    
-                    balances.add(object: balance)
-                }
-            }
-        }
-        
         return tradings
     }
     

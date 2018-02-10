@@ -22,7 +22,7 @@ class BalanceViewModel {
     
     // MARK: Initialization
     
-    init(balance: BalanceModel) {
+    init(_ balance: BalanceModel) {
         self.balance = balance
     }
 }

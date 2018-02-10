@@ -8,12 +8,12 @@
 
 import UIKit
 
-enum OrderSide {
+enum OrderSide: String {
     case buy
     case sell
 }
 
-enum OrderType {
+enum OrderType: String {
     case limit
     case market
 }
@@ -23,8 +23,8 @@ class OrderModel {
     // MARK: Public Properties
     
     var id: Int = 0
-    var side: OrderSide = .buy
-    var type: OrderType = .limit
+    var side: OrderSide? = .buy
+    var type: OrderType? = .limit
     var price: Double = 0.0
     var averagePrice: Double = 0.0
     var state: String = "wait"

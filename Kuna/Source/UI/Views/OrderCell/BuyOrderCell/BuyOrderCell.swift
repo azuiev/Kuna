@@ -17,8 +17,8 @@ class BuyOrderCell: OrderCell {
     
     // MARK Public Properties
     
-    override func fill(with viewModel: BalanceViewModel) {
-        self.currencyName?.text = viewModel.code
-        self.count?.text = viewModel.count
+    override func fill(with viewModel: OrderViewModel) {
+        self.currencyName?.text = "test"
+        self.count?.text = "test2"
     }
 }

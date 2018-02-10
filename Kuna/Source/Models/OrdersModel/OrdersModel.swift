@@ -8,7 +8,25 @@
 
 import Foundation
 
-struct OrdersModel {
-    let buyOrders: BalancesModel
-    let sellOrders: BalancesModel
+class OrdersModel {
+    
+    // MARK: Private Parameters
+    
+    var buyOrders: [OrderModel]
+    var sellOrders: [OrderModel]
+    
+    // MARK: Initialization
+    
+    init(buyOrders: [OrderModel], sellOrders: [OrderModel]) {
+        self.buyOrders = buyOrders
+        self.sellOrders = sellOrders
+    }
+    
+    convenience init(orders: [OrderModel]) {
+        self.init(buyOrders: [], sellOrders: [])
+        
+        self.buyOrders = orders
+        self.sellOrders = orders
+    }
 }
+

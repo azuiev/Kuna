@@ -39,39 +39,49 @@ class TradingsView: MainView {
     // MARK: Public Methods
     
     func fill(with viewModel: TradingsViewModel) {
-        _ = self.segmentedView?
+        self.segmentedView?
             .rx
             .value
             .asObservable()
-            .subscribe({ [weak self] in
+            .subscribe { [weak self] in
                 guard let tableType = TableType(rawValue: $0.element ?? 0) else { return }
                 viewModel.onSelectSegment(with: tableType)
                 
                 let view: UITableView?
                 
                 switch tableType {
-                case .buyTable:  view = self?.buyOrders
-                case .sellTable:  view = self?.sellOrders
-                case .tradingsTable:  view = self?.tradings
+                case .buyTable: view = self?.buyOrders
+                case .sellTable: view = self?.sellOrders
+                case .tradingsTable: view = self?.tradings
                 
                 view.map { [weak self] in
                     self?.bodyView?.bringSubview(toFront: $0)
                     }
                 }
                 }
-            )
             .disposed(by: self.disposeBag)
         
-        _ = viewModel.buyOrdersVariable.asObservable().subscribe {
-            print("TEST1")
-        }
+        viewModel.buyOrdersSubject
+            .asObservable()
+            .subscribe({ [weak self] _ in
+                self?.buyOrders?.reloadData()
+
+            })
+                
+            .disposed(by: self.disposeBag)
         
-        _ = viewModel.sellOrdersVariable.asObservable().subscribe {
-            print("TEST1")
-        }
+        viewModel.sellOrdersSubject
+            .asObservable()
+            .subscribe {
+                print("TEST2")
+            }
+            .disposed(by: self.disposeBag)
         
-        _ = viewModel.tradingsVariable.asObservable().subscribe {
-            print("TEST1")
-        }
+        viewModel.tradingsSubject
+            .asObservable()
+            .subscribe {
+                print("TEST3")
+            }
+            .disposed(by: self.disposeBag)
     }
 }

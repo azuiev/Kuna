@@ -36,8 +36,8 @@
                 <color key="backgroundColor" red="1" green="0.0012486093739999999" blue="0.2735051939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             </tableViewCellContentView>
             <connections>
-                <outlet property="count" destination="XDb-TH-IJD" id="JUS-qo-q9W"/>
-                <outlet property="currencyName" destination="mF3-IU-uzr" id="Ksg-dZ-HoZ"/>
+                <outlet property="count" destination="XDb-TH-IJD" id="2hn-vQ-anA"/>
+                <outlet property="currencyName" destination="mF3-IU-uzr" id="mkR-Pt-lIc"/>
             </connections>
             <point key="canvasLocation" x="-376" y="17.5"/>
         </tableViewCell>

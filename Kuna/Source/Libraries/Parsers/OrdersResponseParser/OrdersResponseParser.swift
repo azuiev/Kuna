@@ -34,44 +34,18 @@ class OrdersResponseParser {
     
     func update(orders: OrdersModel, with json: JSON) -> OrdersModel {
         if let bids = json[Constants.bidsKey] as? JSONArray {
-            print(bids)
-            var orders = [OrderModel]()
+            var array: [OrderModel] = []
             
             for jsonOrder in bids {
-                var order = OrderModel()
-                if let id = jsonOrder[Constants.idKey] as? Int {
-                    order.id = id
-                }
-                
+                array.append(self.order(with: jsonOrder))
+            }
+            
+            orders.buyOrders = array
         }
-    
         
         if let asks = json[Constants.asksKey] as? JSONArray {
-           print(asks)
-        }
-        
-        let balances = BalancesModel(array: [BalanceModel]())
-        
-        if let currenciesJSON = json[Constants.currenciesKey] as? JSONArray {
-            for currencyJSON in currenciesJSON {
-                if let currencyCode = currencyJSON[Constants.currencyKey] as? String {
-                    let currency = CurrencyModel.currencyWith(code: currencyCode)
-                    let balance = BalanceModel(currency: currency)
-                    
-                    if let count = currencyJSON[Constants.balanceKey] as? String {
-                        Double(count).map {
-                            balance.count = $0
-                        }
-                    }
-                    
-                    if let locked = currencyJSON[Constants.lockedBalanceKey] as? String {
-                        Double(locked).map {
-                            balance.locked = $0
-                        }
-                    }
-                    
-                    balances.add(object: balance)
-                }
+            for jsonOrder in asks {
+                orders.sellOrders.append(self.order(with: jsonOrder))
             }
         }
         
@@ -79,10 +53,36 @@ class OrdersResponseParser {
     }
     
     func createAndUpdateOrdersWith(json: JSON) -> OrdersModel {
-        let orders = OrdersModel(buyOrders: BalancesModel(array: [BalanceModel]()),
-                                 sellOrders: BalancesModel(array: [BalanceModel]()))
+        let orders = OrdersModel(buyOrders: [OrderModel](),
+                                 sellOrders: [OrderModel]())
         _ = self.update(orders: orders, with: json)
         
         return orders
+    }
+    
+    // MARK: Private Methods
+    
+    private func order(with json: JSON) -> OrderModel {
+        let order = OrderModel()
+        
+        if let id = json[Constants.idKey] as? Int { order.id = id }
+        if let side = json[Constants.sideKey] as? String { order.side = OrderSide(rawValue: side) }
+        if let type = json[Constants.typeKey] as? String { order.type = OrderType(rawValue: type) }
+        if let price = json[Constants.priceKey] as? Double { order.price = price }
+        if let averagePrice = json[Constants.averagePriceKey] as? Double { order.averagePrice = averagePrice }
+        if let state = json[Constants.stateKey] as? String { order.state = state }
+        if let market = json[Constants.marketKey] as? String { order.market = market }
+        if let date = json[Constants.dateKey] as? Date { order.createdTime = date }
+        if let volume = json[Constants.volumeKey] as? Double { order.volume = volume }
+        if let tradesCount = json[Constants.tradesCountKey] as? Int { order.tradesCount = tradesCount }
+        if let remainingVolume = json[Constants.remainingVolumeKey] as? Double {
+            order.remainingVolume = remainingVolume
+        }
+        
+        if let executedVolume = json[Constants.executedVolumeKey] as? Double {
+            order.executedVolume = executedVolume
+        }
+        
+        return order
     }
 }
