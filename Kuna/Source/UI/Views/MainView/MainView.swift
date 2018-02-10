@@ -36,8 +36,10 @@ class MainView: UIView {
         super.awakeFromNib()
         
         let headerView = UINib.object(with: HeaderView.self, bundle: .main)
-        let height = self.frame.height
-        let headerHeight = height / 4
+        self.addSubview(headerView)
+        
+        let height = UIScreen.main.bounds.height
+        let headerHeight = height / 5
         let bodyHeight = height - headerHeight
         let bodyView = self.bodyView
         
@@ -47,8 +49,6 @@ class MainView: UIView {
         
         self.headerView = headerView
         self.setWindowLabelText()
-        
-        self.addSubview(headerView)
     }
 
     // Private Methods

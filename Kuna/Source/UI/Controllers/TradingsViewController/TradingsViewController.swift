@@ -58,6 +58,10 @@ extension TradingsViewController: UITableViewDelegate {
 
 class TradingsViewController: ViewController {
 
+    private enum ResultType {
+        case orders
+        case tradings
+    }
     // MARK: Public Properties
     
     var viewModel: TradingsViewModel
@@ -73,11 +77,24 @@ class TradingsViewController: ViewController {
         
         super.init(nibName: toString(type(of: self)), bundle: .main)
         
+        self.viewModel.ordersResult
+            .asObservable()
+            .subscribe({
+                _ = $0.map { [weak self] in
+                    self?.check(result: $0) { [weak self] in
+                        self?.parse(json: $0, with: ResultType.orders)
+                    }
+                }
+            })
+            .disposed(by: self.viewModel.disposeBag)
+        
         self.viewModel.tradingsResult
             .asObservable()
             .subscribe({
                 _ = $0.map { [weak self] in
-                    self?.check(result: $0)
+                    self?.check(result: $0) { [weak self] in
+                        self?.parse(json: $0, with: ResultType.tradings)
+                    }
                 }
             })
             .disposed(by: self.viewModel.disposeBag)
@@ -103,17 +120,20 @@ class TradingsViewController: ViewController {
         self.rootView?.sellOrders?.register(nibSellCell, forCellReuseIdentifier: toString(SellOrderCell.self))
     }
 
-    // MARK: Public Methods
-    
-    override func parse(json: JSON) {
-        let balances = LoginResponseParser().update(user: self.viewModel.currentUser, with: json)
-        
-        self.fillTable(with: balances)
-    }
-    
     // MARK: Private Methods
     
-    private func fillTable(with json: BalancesModel) {
-        
+    private func parse(json: JSON, with type: ResultType) {
+        switch type {
+        case .orders:
+            let orders = OrdersResponseParser().createAndUpdateOrdersWith(json: json)
+            
+            self.viewModel.fillOrders(with: orders)
+        case .tradings:
+            let tradings = TradingsResponseParser().createAndUpdateTradingsWith(json: json)
+            
+            self.viewModel.fillTradings(with: tradings)
+        default:
+            return
+        }
     }
 }

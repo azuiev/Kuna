@@ -14,17 +14,18 @@ class TradingsViewModel: ViewModel {
     // MARK: Public Properties
     
     let tradingsResult = PublishSubject<Result<JSON>>()
-    var buyOrders: BalancesModel
-    var sellOrders: BalancesModel
-    var tradings: BalancesModel
-    
+    let ordersResult = PublishSubject<Result<JSON>>()
     let buyOrdersVariable: Variable<BalancesModel>
     let sellOrdersVariable: Variable<BalancesModel>
     let tradingsVariable: Variable<BalancesModel>
     
+    var buyOrders: BalancesModel
+    var sellOrders: BalancesModel
+    var tradings: BalancesModel
+    
     // MARK: Private Properties
     
-    var timer: Timer?
+    private var timer: Timer?
     
     // MARK: Initialization
     
@@ -46,13 +47,22 @@ class TradingsViewModel: ViewModel {
         switch table {
         case .buyTable, .sellTable: self.startUpdating(with: 10) { _ in
             OrdersContext().execute { [weak self] in
-                self?.tradingsResult.onNext($0)
+                self?.ordersResult.onNext($0)
             }}
         case .tradingsTable:  self.startUpdating(with: 10) { _ in
             OrdersContext().execute { [weak self] in
                 self?.tradingsResult.onNext($0)
             }}
         }
+    }
+    
+    func fillOrders(with orders: OrdersModel) {
+        self.buyOrders = orders.buyOrders
+        self.sellOrders = orders.sellOrders
+    }
+    
+    func fillTradings(with tradings: BalancesModel) {
+        self.tradings = tradings
     }
     
     // Private Methods

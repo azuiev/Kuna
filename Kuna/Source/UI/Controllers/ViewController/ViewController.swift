@@ -12,14 +12,14 @@ class ViewController: UIViewController {
 
     // Public Methods
     // TODO ADD COMPLITION
-    func check(result: Result<JSON>) {
+    func check(result: Result<JSON>, with completionHandler: (JSON) -> ()) {
         if result.isFailure() {
             _ = result.map {
                 print($0)
             }
         } else {
-            _ = result.map { [weak self] in
-                self?.parse(json: $0)
+            _ = result.map {
+               completionHandler($0)
             }
         }
     }

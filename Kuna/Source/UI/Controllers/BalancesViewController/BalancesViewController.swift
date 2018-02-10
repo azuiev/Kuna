@@ -82,20 +82,4 @@ class BalancesViewController: UIViewController {
     private func finishLogging(with result: Result<JSON>) {
         print("\(result)")
     }
-    
-    /*
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        if sourceIndexPath.row == destinationIndexPath.row { return }
-        
-        self.friends.moveRow(from: sourceIndexPath.row, to: destinationIndexPath.row)
-        
-        self.rootView.tableView?.reloadData()
-    }
-    */
-    
 }

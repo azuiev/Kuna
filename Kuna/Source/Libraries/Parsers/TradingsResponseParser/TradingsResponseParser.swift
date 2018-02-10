@@ -1,20 +1,21 @@
 //
-//  LoginResponseParser.swift
+//  TradingsResponseParser.swift
 //  Kuna
 //
-//  Created by Aleksey Zuiev on 28/01/2018.
+//  Created by Aleksey Zuiev on 10/02/2018.
 //  Copyright © 2018 Aleksey Zuiev. All rights reserved.
 //
 
 import Foundation
 
-class LoginResponseParser {
+class TradingsResponseParser {
     
     // MARK: Constants
     
     private struct Constants {
-        static let activatedKey     = "activated"
-        static let emailKey         = "email"
+        static let bidsKey          = "bids"
+        static let asksKey          = "asks"
+        
         static let currenciesKey    = "accounts"
         static let currencyKey      = "currency"
         static let balanceKey       = "balance"
@@ -23,13 +24,13 @@ class LoginResponseParser {
     
     // MARK: Public Methods
     
-    func update(user: CurrentUserModel, with json: JSON) -> BalancesModel {
-        if let state = json[Constants.activatedKey] as? Bool {
-            user.activated = state
+    func update(tradings: BalancesModel, with json: JSON) -> BalancesModel {
+        if let bids = json[Constants.bidsKey] as? JSONArray {
+            print(bids)
         }
         
-        if let email = json[Constants.emailKey] as? String {
-            user.email = email
+        if let asks = json[Constants.asksKey] as? JSONArray {
+            print(asks)
         }
         
         let balances = BalancesModel(array: [BalanceModel]())
@@ -57,13 +58,13 @@ class LoginResponseParser {
             }
         }
         
-        return balances
+        return tradings
     }
     
-    func createAndUpdateUserWith(token: AccessTokenModel, json: JSON) -> CurrentUserModel{
-        let user = CurrentUserModel(token)
-        _ = self.update(user: user, with: json)
+    func createAndUpdateTradingsWith(json: JSON) -> BalancesModel {
+        let tradings = BalancesModel(array: [BalanceModel]())
+        _ = self.update(tradings: tradings, with: json)
         
-        return user
+        return tradings
     }
 }

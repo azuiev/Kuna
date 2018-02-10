@@ -29,7 +29,9 @@ class LoginViewController: ViewController {
             .asObservable()
             .subscribe({
                 _ = $0.map { [weak self] in
-                    self?.check(result:$0)
+                    self?.check(result:$0) { [weak self] in
+                        self?.parse(json: $0)
+                    }
                 }
             })
             .disposed(by: self.viewModel.disposeBag)

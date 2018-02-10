@@ -60,6 +60,10 @@
 		1D7875712028F73A006C07C3 /* SellOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D78756D2028F73A006C07C3 /* SellOrderCell.swift */; };
 		1D7875722028F73A006C07C3 /* SellOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D78756E2028F73A006C07C3 /* SellOrderCell.xib */; };
 		1D78757620290569006C07C3 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D78757520290569006C07C3 /* OrderCell.swift */; };
+		1D7C6D43202ED94F00D99F7D /* OrdersResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7C6D42202ED94F00D99F7D /* OrdersResponseParser.swift */; };
+		1D7C6D46202EDADE00D99F7D /* OrdersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7C6D45202EDADE00D99F7D /* OrdersModel.swift */; };
+		1D7C6D48202EF94700D99F7D /* TradingsResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7C6D47202EF94700D99F7D /* TradingsResponseParser.swift */; };
+		1D7C6D4B202EFC1700D99F7D /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7C6D4A202EFC1700D99F7D /* OrderModel.swift */; };
 		1D7CE9BA201E308500A1F189 /* LoginResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7CE9B9201E308500A1F189 /* LoginResponseParser.swift */; };
 		1D7CE9BD201E317600A1F189 /* CurrentUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7CE9BC201E317600A1F189 /* CurrentUserModel.swift */; };
 		1D82D6DD20128CC800AC8A84 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */; };
@@ -126,6 +130,10 @@
 		1D78756D2028F73A006C07C3 /* SellOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellOrderCell.swift; sourceTree = "<group>"; };
 		1D78756E2028F73A006C07C3 /* SellOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SellOrderCell.xib; sourceTree = "<group>"; };
 		1D78757520290569006C07C3 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		1D7C6D42202ED94F00D99F7D /* OrdersResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersResponseParser.swift; sourceTree = "<group>"; };
+		1D7C6D45202EDADE00D99F7D /* OrdersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersModel.swift; sourceTree = "<group>"; };
+		1D7C6D47202EF94700D99F7D /* TradingsResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingsResponseParser.swift; sourceTree = "<group>"; };
+		1D7C6D4A202EFC1700D99F7D /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		1D7CE9B9201E308500A1F189 /* LoginResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseParser.swift; sourceTree = "<group>"; };
 		1D7CE9BC201E317600A1F189 /* CurrentUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserModel.swift; sourceTree = "<group>"; };
 		1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -211,11 +219,13 @@
 			isa = PBXGroup;
 			children = (
 				1D573909200BD51500D7E431 /* Model.swift */,
+				1D7C6D49202EFB5200D99F7D /* OrderModel */,
 				1D7CE9BB201E315C00A1F189 /* CurrentUserModel */,
 				1D73B02C201A46ED0087A775 /* BalanceModel */,
 				1D62529B20190AD90047CB7C /* CurrencyModel */,
 				1D77C31920136B73004DC212 /* AccessTokenModel */,
 				1D5738FC200BD51500D7E431 /* ArrayModel */,
+				1D7C6D44202EDACF00D99F7D /* OrdersModel */,
 				1D573903200BD51500D7E431 /* ImageModel */,
 			);
 			path = Models;
@@ -575,9 +585,43 @@
 			path = SellOrderCell;
 			sourceTree = "<group>";
 		};
+		1D7C6D40202ED92E00D99F7D /* TradingsResponseParser */ = {
+			isa = PBXGroup;
+			children = (
+				1D7C6D47202EF94700D99F7D /* TradingsResponseParser.swift */,
+			);
+			path = TradingsResponseParser;
+			sourceTree = "<group>";
+		};
+		1D7C6D41202ED92E00D99F7D /* OrdersResponseParser */ = {
+			isa = PBXGroup;
+			children = (
+				1D7C6D42202ED94F00D99F7D /* OrdersResponseParser.swift */,
+			);
+			path = OrdersResponseParser;
+			sourceTree = "<group>";
+		};
+		1D7C6D44202EDACF00D99F7D /* OrdersModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D7C6D45202EDADE00D99F7D /* OrdersModel.swift */,
+			);
+			path = OrdersModel;
+			sourceTree = "<group>";
+		};
+		1D7C6D49202EFB5200D99F7D /* OrderModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D7C6D4A202EFC1700D99F7D /* OrderModel.swift */,
+			);
+			path = OrderModel;
+			sourceTree = "<group>";
+		};
 		1D7CE9B7201E307100A1F189 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				1D7C6D41202ED92E00D99F7D /* OrdersResponseParser */,
+				1D7C6D40202ED92E00D99F7D /* TradingsResponseParser */,
 				1D7CE9B8201E307100A1F189 /* LoginResponseParser */,
 			);
 			path = Parsers;
@@ -785,11 +829,13 @@
 				1D73B02E201A47090087A775 /* BalanceModel.swift in Sources */,
 				1D6B3DE82014EF92009BBAF7 /* LoginViewController.swift in Sources */,
 				1D5D1553202B6F10001DB417 /* PublicContext.swift in Sources */,
+				1D7C6D43202ED94F00D99F7D /* OrdersResponseParser.swift in Sources */,
 				1D57391D200BD51500D7E431 /* ArrayModel.swift in Sources */,
 				1D73B031201A48310087A775 /* BalanceViewModel.swift in Sources */,
 				1D77C31820134399004DC212 /* NSData+Extension.swift in Sources */,
 				1D57391E200BD51500D7E431 /* ArrayModelAddOption.swift in Sources */,
 				1D573918200BD51500D7E431 /* UINib+Extension.swift in Sources */,
+				1D7C6D48202EF94700D99F7D /* TradingsResponseParser.swift in Sources */,
 				1D78757620290569006C07C3 /* OrderCell.swift in Sources */,
 				1D8B89BA20265918002F7361 /* TradingsView.swift in Sources */,
 				1D62529D20190AEC0047CB7C /* CurrencyModel.swift in Sources */,
@@ -803,6 +849,7 @@
 				1D82D6E22012A78D00AC8A84 /* Hmac.swift in Sources */,
 				1D82D6DD20128CC800AC8A84 /* Date+Extension.swift in Sources */,
 				1D7875712028F73A006C07C3 /* SellOrderCell.swift in Sources */,
+				1D7C6D4B202EFC1700D99F7D /* OrderModel.swift in Sources */,
 				1D8B89B720264FC0002F7361 /* TradingsViewController.swift in Sources */,
 				1D57391B200BD51500D7E431 /* Global.swift in Sources */,
 				1D78755F2028CCD5006C07C3 /* TradingsViewModel.swift in Sources */,
@@ -820,6 +867,7 @@
 				1D5D1556202B6F10001DB417 /* UserContext.swift in Sources */,
 				1D573921200BD51500D7E431 /* ArrayModelRemoveOption.swift in Sources */,
 				1D6A23072016723500A25F13 /* HeaderView.swift in Sources */,
+				1D7C6D46202EDADE00D99F7D /* OrdersModel.swift in Sources */,
 				1D78756F2028F73A006C07C3 /* BuyOrderCell.swift in Sources */,
 				1D6B3DEA2014EF92009BBAF7 /* BalancesViewController.swift in Sources */,
 				1D77C31B20136B73004DC212 /* AccessTokenModel.swift in Sources */,
