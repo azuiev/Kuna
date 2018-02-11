@@ -43,7 +43,7 @@ extension Hashable where Self: CurrencyModel {
     dynamic var code: String = ""
     dynamic var name: String = ""
     dynamic var crypto: Bool = true
-    dynamic var icon: ImageModel? = nil
+    dynamic var image: String = "default"
     
     // MARK: Private Properties
     
@@ -51,22 +51,30 @@ extension Hashable where Self: CurrencyModel {
     
     // MARK: Inititalization
     
-    convenience init(code: String, name: String, isCrypto: Bool = true, image: ImageModel? = nil) {
+    convenience init(code: String, name: String, isCrypto: Bool = true) {
         self.init()
         
-        self.code = code
+        let uppercaseCode = code.uppercased()
+        self.code = uppercaseCode
         self.name = name
         self.crypto = isCrypto
-        self.icon = image
+        self.image = code.lowercased()
+    }
+    
+    convenience init(code: String) {
+        let uppercaseCode = code.uppercased()
+        
+        self.init(code: uppercaseCode, name: uppercaseCode)
     }
     
     // Protocol Loadable
     
     static func performLoading() {
-        let dbCurrencies = RealmService.shared.get(CurrencyModel.self)
+      
         var currencies: [String : CurrencyModel] = [:]
         
         /*
+        RealmService.shared.deleteAll()
          currencies["uah"] = CurrencyModel(code: "UAH", name: "Hryvnia", isCrypto: false)
          currencies["btc"] = CurrencyModel(code: "BTC", name: "Bitcoin")
          currencies["kun"] = CurrencyModel(code: "KUN", name: "KUN")
@@ -80,14 +88,20 @@ extension Hashable where Self: CurrencyModel {
          currencies["arn"] = CurrencyModel(code: "ARN", name: "Aeron")
          currencies["evr"] = CurrencyModel(code: "EVR", name: "Everus")
          currencies["b2b"] = CurrencyModel(code: "B2B", name: "B2B")
-         */
+         currencies["xrp"] = CurrencyModel(code: "XRP", name: "Ripple")
+         currencies["eos"] = CurrencyModel(code: "EOS", name: "EOS")
+         currencies["food"] = CurrencyModel(code: "FOOD", name: "FoodCoin")
+         currencies["otx"] = CurrencyModel(code: "OTX", name: "Octanox")
+        for (_, value) in currencies {
+            RealmService.shared.create(value)
+        }
+        */
         
+        let dbCurrencies = RealmService.shared.get(CurrencyModel.self)
         for item in dbCurrencies {
             currencies[item.code.lowercased()] = item
         }
         
         CurrencyModel.currencies = currencies
     }
-    
-
 }

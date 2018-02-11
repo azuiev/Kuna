@@ -16,10 +16,9 @@ class OrderViewModel {
     
     // MARK: Public Properties
     
-    var code: String { return self.order.market }
-    var name: String { return String(self.order.price) }
-    var count: String { return String(self.order.volume) }
-    
+    var price: String { return String(self.order.price) }
+    var countMainCurrency: String { return String(self.order.volume) }
+    var countSecondCurrency: String { return String(self.order.price * self.order.volume) }
     // MARK: Initialization
     
     init(_ order: OrderModel) {

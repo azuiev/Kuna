@@ -29,6 +29,11 @@ class HeaderView: UIView {
         self.configureLayer()
     }
     
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        
+    }
     // MARK: Private functiona
     
     private func configureLayer() {

@@ -68,19 +68,38 @@ class OrdersResponseParser {
         if let id = json[Constants.idKey] as? Int { order.id = id }
         if let side = json[Constants.sideKey] as? String { order.side = OrderSide(rawValue: side) }
         if let type = json[Constants.typeKey] as? String { order.type = OrderType(rawValue: type) }
-        if let price = json[Constants.priceKey] as? Double { order.price = price }
-        if let averagePrice = json[Constants.averagePriceKey] as? Double { order.averagePrice = averagePrice }
         if let state = json[Constants.stateKey] as? String { order.state = state }
         if let market = json[Constants.marketKey] as? String { order.market = market }
         if let date = json[Constants.dateKey] as? Date { order.createdTime = date }
-        if let volume = json[Constants.volumeKey] as? Double { order.volume = volume }
         if let tradesCount = json[Constants.tradesCountKey] as? Int { order.tradesCount = tradesCount }
-        if let remainingVolume = json[Constants.remainingVolumeKey] as? Double {
-            order.remainingVolume = remainingVolume
+        if let volumeString = json[Constants.volumeKey] as? String {
+            Double(volumeString).map {
+                order.volume = $0
+            }
         }
         
-        if let executedVolume = json[Constants.executedVolumeKey] as? Double {
-            order.executedVolume = executedVolume
+        if let priceString = json[Constants.priceKey] as? String {
+            Double(priceString).map {
+                order.price = $0
+            }
+        }
+        
+        if let averagePriceString = json[Constants.averagePriceKey] as? String {
+            Double(averagePriceString).map {
+                order.averagePrice = $0
+            }
+        }
+        
+        if let remainingVolumeString = json[Constants.remainingVolumeKey] as? String {
+            Double(remainingVolumeString).map {
+                order.remainingVolume = $0
+            }
+        }
+        
+        if let executedVolumeString = json[Constants.executedVolumeKey] as? String {
+            Double(executedVolumeString).map {
+                order.executedVolume = $0
+            }
         }
         
         return order

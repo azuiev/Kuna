@@ -10,13 +10,4 @@ import UIKit
 
 class SellOrderCell: OrderCell {
 
-    // MARK: IBOutlets
-
-    @IBOutlet var currencyName: UILabel?
-    @IBOutlet var count: UILabel?
-    
-    override func fill(with viewModel: OrderViewModel) {
-        self.currencyName?.text = viewModel.code
-        self.count?.text = viewModel.count
-    }
 }

@@ -12,8 +12,9 @@ class CurrencyCell: UITableViewCell {
 
     // MARK: IBOutlets
 
-    @IBOutlet var currencyName: UILabel?
-    @IBOutlet var count: UILabel?
+    @IBOutlet var currencyNameLabel: UILabel?
+    @IBOutlet var countLabel: UILabel?
+    @IBOutlet var currencyImageView: UIImageView?
     
     // MARK Public Properties
     
@@ -26,7 +27,8 @@ class CurrencyCell: UITableViewCell {
     }
     
     func fill(with viewModel: BalanceViewModel) {
-        self.currencyName?.text = viewModel.code
-        self.count?.text = viewModel.count
+        self.currencyNameLabel?.text = viewModel.name
+        self.countLabel?.text = viewModel.count
+        self.currencyImageView?.image = viewModel.image
     }
 }

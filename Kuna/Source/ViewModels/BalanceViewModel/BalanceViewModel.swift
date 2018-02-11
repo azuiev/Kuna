@@ -6,7 +6,7 @@
 //  Copyright © 2018 Aleksey Zuiev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class BalanceViewModel {
     
@@ -19,6 +19,7 @@ class BalanceViewModel {
     var code: String { return self.balance.currency.code }
     var name: String { return self.balance.currency.name }
     var count: String { return String(self.balance.count) }
+    var image: UIImage { return  UIImage(named: balance.currency.image) ?? UIImage(named: "btc")! }
     
     // MARK: Initialization
     

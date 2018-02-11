@@ -10,6 +10,12 @@ import UIKit
 
 class OrderCell: UITableViewCell {
     
+    // MARK: IBOutlets
+    
+    @IBOutlet var priceLabel: UILabel?
+    @IBOutlet var countMainCurrencyLabel: UILabel?
+    @IBOutlet var countSecondCurrencyLabel: UILabel?
+    
     // MARK Public Properties
     
     var order: OrderModel? {
@@ -21,6 +27,8 @@ class OrderCell: UITableViewCell {
     }
     
     func fill(with viewModel: OrderViewModel) {
-        
+        self.priceLabel?.text = viewModel.price
+        self.countMainCurrencyLabel?.text = viewModel.countMainCurrency
+        self.countSecondCurrencyLabel?.text = viewModel.countSecondCurrency
     }
 }

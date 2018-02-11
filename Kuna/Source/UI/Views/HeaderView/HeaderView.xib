@@ -37,7 +37,7 @@
                 <outlet property="tabNameLabel" destination="Oml-ZF-Wdm" id="2Tr-Hm-C72"/>
                 <outlet property="windowNameLabel" destination="9pM-h8-odF" id="s6w-Oh-jyZ"/>
             </connections>
-            <point key="canvasLocation" x="24.5" y="52.5"/>
+            <point key="canvasLocation" x="-180" y="210"/>
         </view>
     </objects>
 </document>
