@@ -1,5 +1,5 @@
 //
-//  CurrencyCell.swift
+//  BalanceCell.swift
 //  Kuna
 //
 //  Created by Aleksey Zuiev on 24/01/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrencyCell: UITableViewCell {
+class BalanceCell: UITableViewCell {
 
     // MARK: IBOutlets
 

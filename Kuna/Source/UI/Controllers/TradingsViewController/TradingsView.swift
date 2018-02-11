@@ -102,15 +102,15 @@ class TradingsView: MainView {
         let imageView2 = UIImageView(image: UIImage(named: "btc"))
         let imageView3 = UIImageView(image: UIImage(named: "uah"))
         let stackView = UIStackView(arrangedSubviews: [imageView, imageView2, imageView3])
-        //stackView.translatesAutoresizingMaskIntoConstraints = false
+
         stackView.axis = .horizontal
         stackView.frame.size.height = 33
         stackView.frame.size.width = 100
         stackView.frame.origin.x = unwprappedHeaderView.frame.width - stackView.frame.width
         stackView.frame.origin.y = unwprappedHeaderView.frame.height - stackView.frame.height
         
-//        stackView.bottomAnchor.constraint(equalTo: unwprappedHeaderView.bottomAnchor)
-//        stackView.trailingAnchor.constraint(equalTo: unwprappedHeaderView.trailingAnchor)
+        stackView.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin]
+        
         unwprappedHeaderView.addSubview(stackView)
     }
 }

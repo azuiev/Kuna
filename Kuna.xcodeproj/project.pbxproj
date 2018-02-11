@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D1567F620309ED800BE0D0A /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1567F520309ED800BE0D0A /* MarketModel.swift */; };
 		1D573916200BD51500D7E431 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738F3200BD51500D7E431 /* FileManager+Extension.swift */; };
 		1D573917200BD51500D7E431 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738F4200BD51500D7E431 /* String+Extension.swift */; };
 		1D573918200BD51500D7E431 /* UINib+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738F5200BD51500D7E431 /* UINib+Extension.swift */; };
@@ -30,8 +31,8 @@
 		1D5D1555202B6F10001DB417 /* LoginContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5D1550202B6F10001DB417 /* LoginContext.swift */; };
 		1D5D1556202B6F10001DB417 /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5D1551202B6F10001DB417 /* UserContext.swift */; };
 		1D62529D20190AEC0047CB7C /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D62529C20190AEC0047CB7C /* CurrencyModel.swift */; };
-		1D6252A020190E710047CB7C /* CurrencyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D62529F20190E710047CB7C /* CurrencyCell.xib */; };
-		1D6252A220190E940047CB7C /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6252A120190E940047CB7C /* CurrencyCell.swift */; };
+		1D6252A020190E710047CB7C /* BalanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D62529F20190E710047CB7C /* BalanceCell.xib */; };
+		1D6252A220190E940047CB7C /* BalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6252A120190E940047CB7C /* BalanceCell.swift */; };
 		1D6252A42019103B0047CB7C /* BalancesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6252A32019103B0047CB7C /* BalancesViewModel.swift */; };
 		1D6A23052016721500A25F13 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6A23042016721500A25F13 /* HeaderView.xib */; };
 		1D6A23072016723500A25F13 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6A23062016723500A25F13 /* HeaderView.swift */; };
@@ -77,6 +78,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D1567F520309ED800BE0D0A /* MarketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketModel.swift; sourceTree = "<group>"; };
 		1D5738F3200BD51500D7E431 /* FileManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		1D5738F4200BD51500D7E431 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1D5738F5200BD51500D7E431 /* UINib+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINib+Extension.swift"; sourceTree = "<group>"; };
@@ -100,8 +102,8 @@
 		1D5D1550202B6F10001DB417 /* LoginContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginContext.swift; sourceTree = "<group>"; };
 		1D5D1551202B6F10001DB417 /* UserContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
 		1D62529C20190AEC0047CB7C /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
-		1D62529F20190E710047CB7C /* CurrencyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyCell.xib; sourceTree = "<group>"; };
-		1D6252A120190E940047CB7C /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
+		1D62529F20190E710047CB7C /* BalanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceCell.xib; sourceTree = "<group>"; };
+		1D6252A120190E940047CB7C /* BalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCell.swift; sourceTree = "<group>"; };
 		1D6252A32019103B0047CB7C /* BalancesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancesViewModel.swift; sourceTree = "<group>"; };
 		1D6A23042016721500A25F13 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		1D6A23062016723500A25F13 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D1567F420309EC800BE0D0A /* MarketModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D1567F520309ED800BE0D0A /* MarketModel.swift */,
+			);
+			path = MarketModel;
+			sourceTree = "<group>";
+		};
 		1D5738E6200BD51500D7E431 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				1D573909200BD51500D7E431 /* Model.swift */,
+				1D1567F420309EC800BE0D0A /* MarketModel */,
 				1D7C6D49202EFB5200D99F7D /* OrderModel */,
 				1D7CE9BB201E315C00A1F189 /* CurrentUserModel */,
 				1D73B02C201A46ED0087A775 /* BalanceModel */,
@@ -407,13 +418,13 @@
 			path = CurrencyModel;
 			sourceTree = "<group>";
 		};
-		1D62529E20190E320047CB7C /* CurrencyCell */ = {
+		1D62529E20190E320047CB7C /* BalanceCell */ = {
 			isa = PBXGroup;
 			children = (
-				1D6252A120190E940047CB7C /* CurrencyCell.swift */,
-				1D62529F20190E710047CB7C /* CurrencyCell.xib */,
+				1D6252A120190E940047CB7C /* BalanceCell.swift */,
+				1D62529F20190E710047CB7C /* BalanceCell.xib */,
 			);
-			path = CurrencyCell;
+			path = BalanceCell;
 			sourceTree = "<group>";
 		};
 		1D6A2302201671E300A25F13 /* Views */ = {
@@ -421,7 +432,7 @@
 			children = (
 				1D8FEF2C2017BC9900C65D4C /* MainView */,
 				1D6A2303201671E300A25F13 /* HeaderView */,
-				1D62529E20190E320047CB7C /* CurrencyCell */,
+				1D62529E20190E320047CB7C /* BalanceCell */,
 				1D7875682028F73A006C07C3 /* OrderCell */,
 			);
 			path = Views;
@@ -753,7 +764,7 @@
 				1D6B3DEC2014EF92009BBAF7 /* BalancesViewController.xib in Resources */,
 				1D6B3DE92014EF92009BBAF7 /* LoginViewController.xib in Resources */,
 				1D7875722028F73A006C07C3 /* SellOrderCell.xib in Resources */,
-				1D6252A020190E710047CB7C /* CurrencyCell.xib in Resources */,
+				1D6252A020190E710047CB7C /* BalanceCell.xib in Resources */,
 				1D7591241FFECED200573899 /* Assets.xcassets in Resources */,
 				1D7591231FFECED200573899 /* Info.plist in Resources */,
 				1D8B89B820264FC0002F7361 /* TradingsViewController.xib in Resources */,
@@ -854,7 +865,7 @@
 				1D573917200BD51500D7E431 /* String+Extension.swift in Sources */,
 				1D57391F200BD51500D7E431 /* ArrayModelMoveOption.swift in Sources */,
 				1D71903A2021007F00EA2EC6 /* BalancesModel.swift in Sources */,
-				1D6252A220190E940047CB7C /* CurrencyCell.swift in Sources */,
+				1D6252A220190E940047CB7C /* BalanceCell.swift in Sources */,
 				1D6252A42019103B0047CB7C /* BalancesViewModel.swift in Sources */,
 				1D5D1555202B6F10001DB417 /* LoginContext.swift in Sources */,
 				1D5D1552202B6F10001DB417 /* Context.swift in Sources */,
@@ -865,6 +876,7 @@
 				1D8B89B720264FC0002F7361 /* TradingsViewController.swift in Sources */,
 				1D57391B200BD51500D7E431 /* Global.swift in Sources */,
 				1D78755F2028CCD5006C07C3 /* TradingsViewModel.swift in Sources */,
+				1D1567F620309ED800BE0D0A /* MarketModel.swift in Sources */,
 				1D573919200BD51500D7E431 /* UITableView+Extension.swift in Sources */,
 				1D573923200BD51500D7E431 /* ImageModel.swift in Sources */,
 				1D7CE9BA201E308500A1F189 /* LoginResponseParser.swift in Sources */,

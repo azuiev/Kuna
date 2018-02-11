@@ -16,7 +16,7 @@ extension BalancesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.reusableCell(with: CurrencyCell.self, indexPath: indexPath)
+        let cell = tableView.reusableCell(with: BalanceCell.self, indexPath: indexPath)
         
         cell.balance = self.viewModel.balances[indexPath.row]
         
@@ -72,9 +72,9 @@ class BalancesViewController: UIViewController {
         
         self.rootView?.fill(with: self.viewModel)
         
-        let nib = UINib(nibName: toString(CurrencyCell.self), bundle: .main)
+        let nib = UINib(nibName: toString(BalanceCell.self), bundle: .main)
         
-        self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(CurrencyCell.self))
+        self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(BalanceCell.self))
     }
     
     // MARK: Private Methods
