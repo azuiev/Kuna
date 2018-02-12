@@ -7,11 +7,26 @@
 //
 
 import UIKit
+import RxSwift
 
 class ViewController: UIViewController {
 
+    // MARK: Public Properties
+    
+    var viewModel: ViewModel?
+    
+    init(_ viewModel: ViewModel) {
+        super.init(nibName: toString(type(of: self)), bundle: .main)
+        
+        self.viewModel = viewModel
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     // Public Methods
-    // TODO ADD COMPLITION
+
     func check(result: Result<JSON>, with completionHandler: (JSON) -> ()) {
         if result.isFailure() {
             _ = result.map {

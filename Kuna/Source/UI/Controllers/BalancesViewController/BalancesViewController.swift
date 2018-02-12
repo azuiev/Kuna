@@ -12,13 +12,13 @@ import UIKit
 
 extension BalancesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.balances.count
+        return self.mainViewModel.balances.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.reusableCell(with: BalanceCell.self, indexPath: indexPath)
         
-        cell.balance = self.viewModel.balances[indexPath.row]
+        cell.balance = self.mainViewModel.balances[indexPath.row]
         
         return cell
     }
@@ -43,22 +43,19 @@ extension BalancesViewController: UITableViewDelegate {
     }
 }
 
-class BalancesViewController: UIViewController {
+// MARK: Protocol ViewViewModel
 
-    // MARK: Public Properties
-    
-    var viewModel: BalancesViewModel
-    
-    var rootView: BalancesView? {
-        return self.viewIfLoaded as? BalancesView
-    }
-    
+extension BalancesViewController: ViewViewModel {
+    typealias ViewType = BalancesView
+    typealias ViewModelType = BalancesViewModel
+}
+
+class BalancesViewController: ViewController {
+
     // MARK: Initialization
     
     init(_ viewModel: BalancesViewModel) {
-        self.viewModel = viewModel
-
-        super.init(nibName: toString(type(of: self)), bundle: .main)
+        super.init(viewModel)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -70,7 +67,7 @@ class BalancesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.rootView?.fill(with: self.viewModel)
+        self.rootView?.fill(with: self.mainViewModel)
         
         let nib = UINib(nibName: toString(BalanceCell.self), bundle: .main)
         

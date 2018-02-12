@@ -14,7 +14,7 @@
 		1D573919200BD51500D7E431 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738F6200BD51500D7E431 /* UITableView+Extension.swift */; };
 		1D57391A200BD51500D7E431 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738F7200BD51500D7E431 /* UIWindow+Extension.swift */; };
 		1D57391B200BD51500D7E431 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738F8200BD51500D7E431 /* Global.swift */; };
-		1D57391C200BD51500D7E431 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738FA200BD51500D7E431 /* RootView.swift */; };
+		1D57391C200BD51500D7E431 /* ViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738FA200BD51500D7E431 /* ViewViewModel.swift */; };
 		1D57391D200BD51500D7E431 /* ArrayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738FD200BD51500D7E431 /* ArrayModel.swift */; };
 		1D57391E200BD51500D7E431 /* ArrayModelAddOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738FF200BD51500D7E431 /* ArrayModelAddOption.swift */; };
 		1D57391F200BD51500D7E431 /* ArrayModelMoveOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D573900200BD51500D7E431 /* ArrayModelMoveOption.swift */; };
@@ -85,7 +85,7 @@
 		1D5738F6200BD51500D7E431 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		1D5738F7200BD51500D7E431 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
 		1D5738F8200BD51500D7E431 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		1D5738FA200BD51500D7E431 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		1D5738FA200BD51500D7E431 /* ViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewViewModel.swift; sourceTree = "<group>"; };
 		1D5738FD200BD51500D7E431 /* ArrayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayModel.swift; sourceTree = "<group>"; };
 		1D5738FF200BD51500D7E431 /* ArrayModelAddOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayModelAddOption.swift; sourceTree = "<group>"; };
 		1D573900200BD51500D7E431 /* ArrayModelMoveOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayModelMoveOption.swift; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 		1D5738F9200BD51500D7E431 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				1D5738FA200BD51500D7E431 /* RootView.swift */,
+				1D5738FA200BD51500D7E431 /* ViewViewModel.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -898,7 +898,7 @@
 				1D7CE9BD201E317600A1F189 /* CurrentUserModel.swift in Sources */,
 				1D8FEF2E2017BCAB00C65D4C /* MainView.swift in Sources */,
 				1D573924200BD51500D7E431 /* InternetImageModel.swift in Sources */,
-				1D57391C200BD51500D7E431 /* RootView.swift in Sources */,
+				1D57391C200BD51500D7E431 /* ViewViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1037,7 +1037,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6R6MW3CR4E;
 				INFOPLIST_FILE = Kuna/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = idap.Kuna;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1053,7 +1055,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6R6MW3CR4E;
 				INFOPLIST_FILE = Kuna/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = idap.Kuna;
 				PRODUCT_NAME = "$(TARGET_NAME)";

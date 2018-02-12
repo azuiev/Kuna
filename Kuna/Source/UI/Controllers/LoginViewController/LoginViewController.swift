@@ -7,25 +7,23 @@
 //
 
 import UIKit
+import RxSwift
+
+// MARK: Protocol ViewViewModel
+
+extension LoginViewController: ViewViewModel {
+    typealias ViewType = LoginView
+    typealias ViewModelType = LoginViewModel
+}
 
 class LoginViewController: ViewController {
-
-    // MARK: Public Properties
-    
-    var viewModel: LoginViewModel
-    
-    var rootView: LoginView? {
-        return self.viewIfLoaded as? LoginView
-    }
     
     // MARK: Initialization
     
     init(_ viewModel: LoginViewModel) {
-        self.viewModel = viewModel
-        
-        super.init(nibName: toString(type(of: self)), bundle: .main)
-        
-        self.viewModel.loginResult
+        super.init(viewModel)
+
+        self.mainViewModel.loginResult
             .asObservable()
             .subscribe({
                 _ = $0.map { [weak self] in
@@ -34,7 +32,7 @@ class LoginViewController: ViewController {
                     }
                 }
             })
-            .disposed(by: self.viewModel.disposeBag)
+            .disposed(by: self.mainViewModel.disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -44,13 +42,13 @@ class LoginViewController: ViewController {
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
-        self.rootView?.fill(with: self.viewModel)
+        self.rootView?.fill(with: self.mainViewModel)
     }
     
     // MARK: Public Methods
     
     override func parse(json: JSON) {
-        let balances = LoginResponseParser().update(user: self.viewModel.currentUser, with: json)
+        let balances = LoginResponseParser().update(user: self.mainViewModel.currentUser, with: json)
         
         self.finishLogging(with: balances)
     }
@@ -66,9 +64,9 @@ class LoginViewController: ViewController {
         var controller = UIViewController()
         for item in names {
             if item == "Tradings" {
-                controller = TradingsViewController(TradingsViewModel(user: self.viewModel.currentUser, balances: balances))
+                controller = TradingsViewController(TradingsViewModel(user: self.mainViewModel.currentUser, balances: balances))
             } else {
-                controller = BalancesViewController(BalancesViewModel(user: self.viewModel.currentUser, balances: balances))
+                controller = BalancesViewController(BalancesViewModel(user: self.mainViewModel.currentUser, balances: balances))
             }
             controller.title = item
             
