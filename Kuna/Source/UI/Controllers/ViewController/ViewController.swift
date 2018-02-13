@@ -26,20 +26,19 @@ class ViewController: UIViewController {
     }
     
     // Public Methods
-
-    func check(result: Result<JSON>, with completionHandler: (JSON) -> ()) {
-        if result.isFailure() {
-            _ = result.map {
-                print($0)
-            }
-        } else {
-            _ = result.map {
-               completionHandler($0)
-            }
+    
+    func check(response: Result<JSON>, with completionHandler: (JSON) -> ()) {
+        let result = response.map {
+            completionHandler($0)
         }
+        
+        if case Result.Failure(let error) = result {
+            self.showAlert(with: error.localizedDescription)
+        }
+        
     }
     
-    func parse(json: JSON) {
-
+    func showAlert(with description: String) {
+        AlertService.addAlert(to: self, with: description)
     }
 }

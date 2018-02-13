@@ -11,11 +11,6 @@ import RxSwift
 import RxCocoa
 import Alamofire
 
-enum JSONError: Error {
-    case parseError
-    case otherError
-}
-
 class LoginContext: UserContext {
     
     // MARK: Private Properties

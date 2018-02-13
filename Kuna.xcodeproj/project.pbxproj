@@ -30,6 +30,7 @@
 		1D5D1554202B6F10001DB417 /* OrdersContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5D154D202B6F10001DB417 /* OrdersContext.swift */; };
 		1D5D1555202B6F10001DB417 /* LoginContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5D1550202B6F10001DB417 /* LoginContext.swift */; };
 		1D5D1556202B6F10001DB417 /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5D1551202B6F10001DB417 /* UserContext.swift */; };
+		1D5D78C9203359F2009906C3 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5D78C8203359F2009906C3 /* AlertService.swift */; };
 		1D62529D20190AEC0047CB7C /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D62529C20190AEC0047CB7C /* CurrencyModel.swift */; };
 		1D6252A020190E710047CB7C /* BalanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D62529F20190E710047CB7C /* BalanceCell.xib */; };
 		1D6252A220190E940047CB7C /* BalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6252A120190E940047CB7C /* BalanceCell.swift */; };
@@ -101,6 +102,7 @@
 		1D5D154D202B6F10001DB417 /* OrdersContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersContext.swift; sourceTree = "<group>"; };
 		1D5D1550202B6F10001DB417 /* LoginContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginContext.swift; sourceTree = "<group>"; };
 		1D5D1551202B6F10001DB417 /* UserContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
+		1D5D78C8203359F2009906C3 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		1D62529C20190AEC0047CB7C /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		1D62529F20190E710047CB7C /* BalanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceCell.xib; sourceTree = "<group>"; };
 		1D6252A120190E940047CB7C /* BalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCell.swift; sourceTree = "<group>"; };
@@ -378,6 +380,14 @@
 			path = LoginContext;
 			sourceTree = "<group>";
 		};
+		1D5D78C7203359E0009906C3 /* AlertService */ = {
+			isa = PBXGroup;
+			children = (
+				1D5D78C8203359F2009906C3 /* AlertService.swift */,
+			);
+			path = AlertService;
+			sourceTree = "<group>";
+		};
 		1D6252972019010A0047CB7C /* HistoryViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +504,7 @@
 		1D758AC32024D89000419689 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1D5D78C7203359E0009906C3 /* AlertService */,
 				1D758AC42024D89000419689 /* RealmService */,
 			);
 			path = Services;
@@ -874,6 +885,7 @@
 				1D7875712028F73A006C07C3 /* SellOrderCell.swift in Sources */,
 				1D7C6D4B202EFC1700D99F7D /* OrderModel.swift in Sources */,
 				1D8B89B720264FC0002F7361 /* TradingsViewController.swift in Sources */,
+				1D5D78C9203359F2009906C3 /* AlertService.swift in Sources */,
 				1D57391B200BD51500D7E431 /* Global.swift in Sources */,
 				1D78755F2028CCD5006C07C3 /* TradingsViewModel.swift in Sources */,
 				1D1567F620309ED800BE0D0A /* MarketModel.swift in Sources */,

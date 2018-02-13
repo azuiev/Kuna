@@ -15,7 +15,7 @@ extension Hashable where Self: CurrencyModel {
     var hashValue: Int { return self.name.hashValue }
     
     static func ==(lhs: Self, rhs: Self) -> Bool {
-        return lhs.name == rhs.name
+        return lhs.code == rhs.code
     }
 }
 
@@ -54,17 +54,15 @@ extension Hashable where Self: CurrencyModel {
     convenience init(code: String, name: String, isCrypto: Bool = true) {
         self.init()
         
-        let uppercaseCode = code.uppercased()
-        self.code = uppercaseCode
+        let lowercaseCode = code.lowercased()
+        self.code = lowercaseCode
         self.name = name
         self.crypto = isCrypto
-        self.image = code.lowercased()
+        self.image = lowercaseCode
     }
     
     convenience init(code: String) {
-        let uppercaseCode = code.uppercased()
-        
-        self.init(code: uppercaseCode, name: uppercaseCode)
+        self.init(code: code, name: code.uppercased())
     }
     
     // Protocol Loadable

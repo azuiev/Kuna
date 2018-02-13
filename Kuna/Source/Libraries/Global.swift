@@ -29,8 +29,8 @@ enum Result<T> {
         switch self {
         case .Success(let value):
             return .Success(f(value))
-        case .Failure(let description):
-            return .Failure(description)
+        case .Failure(let error):
+            return .Failure(error)
         }
     }
     

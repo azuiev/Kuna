@@ -27,7 +27,7 @@ class LoginViewController: ViewController {
             .asObservable()
             .subscribe({
                 _ = $0.map { [weak self] in
-                    self?.check(result:$0) { [weak self] in
+                    self?.check(response:$0) { [weak self] in
                         self?.parse(json: $0)
                     }
                 }
@@ -47,7 +47,7 @@ class LoginViewController: ViewController {
     
     // MARK: Public Methods
     
-    override func parse(json: JSON) {
+    func parse(json: JSON) {
         let balances = LoginResponseParser().update(user: self.mainViewModel.currentUser, with: json)
         
         self.finishLogging(with: balances)

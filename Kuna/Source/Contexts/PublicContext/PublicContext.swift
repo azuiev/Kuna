@@ -9,6 +9,22 @@
 import UIKit
 import Alamofire
 
+enum JSONError: Error {
+    case parseError(String)
+    case otherError(String)
+}
+
+extension JSONError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .parseError(let description):
+            return "Unable to parse json: " + description
+        case .otherError(let description):
+            return description
+        }
+    }
+}
+
 class PublicContext: Context {
 
     // MARK: Public Properties
@@ -31,8 +47,9 @@ class PublicContext: Context {
                 switch $0.result {
                 case .success(let value):
                     let json = value as? JSON
-                    if json?["error"] != nil {
-                        completionHandler(Result.Failure(JSONError.otherError))
+                    if let jsonError = json?["error"] as? JSON {
+                        
+                        completionHandler(Result.Failure(JSONError.otherError(jsonError["message"] as? String ?? "")))
                     } else {
                         json.map {
                             completionHandler(Result.Success($0))
