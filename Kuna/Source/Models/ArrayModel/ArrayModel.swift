@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArrayModel<T: Equatable>: Model {
+class ArrayModel<T: Equatable> {
     
     // MARK: Public Properties
     
@@ -24,8 +24,6 @@ class ArrayModel<T: Equatable>: Model {
     
     init(array: Array<T>) {
         self.array = array
-        
-        super.init()
     }
     
     // MARK: Public Methods

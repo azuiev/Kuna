@@ -15,7 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
  
-        CurrencyModel.performLoading()
+        CurrencyModel.prepareDefaultItems()
+        let currencies = DBModel.loadObjects(type: CurrencyModel.self)
+        print(currencies)
         MarketModel.performLoading()
         self.window?.perform {
             let controller = LoginViewController(LoginViewModel(CurrentUserModel(AccessTokenModel(publicKey: "", secretKey: ""))))

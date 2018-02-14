@@ -34,6 +34,4 @@ class OrderModel {
     var remainingVolume: Double = 0.0
     var executedVolume: Double = 0.0
     var tradesCount: Int = 0
-    
-    
 }

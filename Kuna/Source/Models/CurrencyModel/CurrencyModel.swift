@@ -19,7 +19,7 @@ extension Hashable where Self: CurrencyModel {
     }
 }
 
-@objcMembers class CurrencyModel: Object {
+@objcMembers class CurrencyModel: DBModel {
     
     // MARK: Class Methods {
     
@@ -65,41 +65,25 @@ extension Hashable where Self: CurrencyModel {
         self.init(code: code, name: code.uppercased())
     }
     
-    // Protocol Loadable
-    
-    static func performLoading() {
-      
-        var currencies: [String : CurrencyModel] = [:]
+    static func prepareDefaultItems() {
+        DBModel.deleteAll()
         
-        /*
-        RealmService.shared.deleteAll()
-         currencies["uah"] = CurrencyModel(code: "UAH", name: "Hryvnia", isCrypto: false)
-         currencies["btc"] = CurrencyModel(code: "BTC", name: "Bitcoin")
-         currencies["kun"] = CurrencyModel(code: "KUN", name: "KUN")
-         currencies["gol"] = CurrencyModel(code: "GOL", name: "GOLOS")
-         currencies["eth"] = CurrencyModel(code: "ETH", name: "Ethereum")
-         currencies["waves"] = CurrencyModel(code: "WAVES", name: "Waves")
-         currencies["bch"] = CurrencyModel(code: "BCH", name: "Bitcoin Cash")
-         currencies["gbg"] = CurrencyModel(code: "GBG", name: "Golos Gold")
-         currencies["rmc"] = CurrencyModel(code: "RMC", name: "Russian miner coin")
-         currencies["r"] = CurrencyModel(code: "R", name: "Revain")
-         currencies["arn"] = CurrencyModel(code: "ARN", name: "Aeron")
-         currencies["evr"] = CurrencyModel(code: "EVR", name: "Everus")
-         currencies["b2b"] = CurrencyModel(code: "B2B", name: "B2B")
-         currencies["xrp"] = CurrencyModel(code: "XRP", name: "Ripple")
-         currencies["eos"] = CurrencyModel(code: "EOS", name: "EOS")
-         currencies["food"] = CurrencyModel(code: "FOOD", name: "FoodCoin")
-         currencies["otx"] = CurrencyModel(code: "OTX", name: "Octanox")
-        for (_, value) in currencies {
-            RealmService.shared.create(value)
-        }
-        */
-        
-        let dbCurrencies = RealmService.shared.get(CurrencyModel.self)
-        for item in dbCurrencies {
-            currencies[item.code.lowercased()] = item
-        }
-        
-        CurrencyModel.currencies = currencies
+        CurrencyModel(code: "UAH", name: "Hryvnia", isCrypto: false).create()
+        CurrencyModel(code: "BTC", name: "Bitcoin").create()
+        CurrencyModel(code: "KUN", name: "KUN").create()
+        CurrencyModel(code: "GOL", name: "GOLOS").create()
+        CurrencyModel(code: "ETH", name: "Ethereum").create()
+        CurrencyModel(code: "WAVES", name: "Waves").create()
+        CurrencyModel(code: "BCH", name: "Bitcoin Cash").create()
+        CurrencyModel(code: "GBG", name: "Golos Gold").create()
+        CurrencyModel(code: "RMC", name: "Russian miner coin").create()
+        CurrencyModel(code: "R", name: "Revain").create()
+        CurrencyModel(code: "ARN", name: "Aeron").create()
+        CurrencyModel(code: "EVR", name: "Everus").create()
+        CurrencyModel(code: "B2B", name: "B2B").create()
+        CurrencyModel(code: "XRP", name: "Ripple").create()
+        CurrencyModel(code: "EOS", name: "EOS").create()
+        CurrencyModel(code: "FOOD", name: "FoodCoin").create()
+        CurrencyModel(code: "OTX", name: "Octanox").create()
     }
 }
