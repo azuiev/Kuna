@@ -19,71 +19,55 @@ extension Hashable where Self: CurrencyModel {
     }
 }
 
-@objcMembers class CurrencyModel: DBModel {
+extension CurrencyModel: Loadable {
     
-    // MARK: Class Methods {
-    
-    static func currencyWith(code: String) -> CurrencyModel {
-        let lowercaseCode = code.lowercased()
-
-        guard let result = CurrencyModel.currencies[lowercaseCode] else {
-            let newCurrency = CurrencyModel(code: code.uppercased(), name: code)
-            CurrencyModel.currencies[lowercaseCode] = newCurrency
-            
-            RealmService.shared.create(newCurrency)
-            
-            return newCurrency
-        }
+    static func performLoading() {
+        DBModel.deleteObjectsWith(type: self)
         
-        return result
+        let currencies = [("UAH", "Hryvnia"),
+                          ("BTC", "Bitcoin"),
+                          ("KUN", "KUN"),
+                          ("GOL", "GOLOS"),
+                          ("ETH", "Ethereum"),
+                          ("WAVES", "Waves"),
+                          ("BCH", "Bitcoin Cash"),
+                          ("GBG", "Golos Gold"),
+                          ("RMC", "Russian miner coin"),
+                          ("R", "Revain"),
+                          ("ARN", "Aeron"),
+                          ("EVR", "Everus"),
+                          ("B2B", "B2B"),
+                          ("XRP", "Ripple"),
+                          ("EOS", "EOS"),
+                          ("FOOD", "FoodCoin"),
+                          ("OTX", "Octanox")]
+        
+        for (code, name) in currencies {
+            CurrencyModel(code: code, name: name).create()
+        }
     }
+}
+
+@objcMembers class CurrencyModel: DBModel {
     
     // MARK: Public property
     
     dynamic var code: String = ""
     dynamic var name: String = ""
-    dynamic var crypto: Bool = true
     dynamic var image: String = "default"
-    
-    // MARK: Private Properties
-    
-    private static var currencies: [String : CurrencyModel] = [:]
     
     // MARK: Inititalization
     
-    convenience init(code: String, name: String, isCrypto: Bool = true) {
+    convenience init(code: String, name: String) {
         self.init()
         
         let lowercaseCode = code.lowercased()
         self.code = lowercaseCode
         self.name = name
-        self.crypto = isCrypto
         self.image = lowercaseCode
     }
     
     convenience init(code: String) {
         self.init(code: code, name: code.uppercased())
-    }
-    
-    static func prepareDefaultItems() {
-        DBModel.deleteAll()
-        
-        CurrencyModel(code: "UAH", name: "Hryvnia", isCrypto: false).create()
-        CurrencyModel(code: "BTC", name: "Bitcoin").create()
-        CurrencyModel(code: "KUN", name: "KUN").create()
-        CurrencyModel(code: "GOL", name: "GOLOS").create()
-        CurrencyModel(code: "ETH", name: "Ethereum").create()
-        CurrencyModel(code: "WAVES", name: "Waves").create()
-        CurrencyModel(code: "BCH", name: "Bitcoin Cash").create()
-        CurrencyModel(code: "GBG", name: "Golos Gold").create()
-        CurrencyModel(code: "RMC", name: "Russian miner coin").create()
-        CurrencyModel(code: "R", name: "Revain").create()
-        CurrencyModel(code: "ARN", name: "Aeron").create()
-        CurrencyModel(code: "EVR", name: "Everus").create()
-        CurrencyModel(code: "B2B", name: "B2B").create()
-        CurrencyModel(code: "XRP", name: "Ripple").create()
-        CurrencyModel(code: "EOS", name: "EOS").create()
-        CurrencyModel(code: "FOOD", name: "FoodCoin").create()
-        CurrencyModel(code: "OTX", name: "Octanox").create()
     }
 }

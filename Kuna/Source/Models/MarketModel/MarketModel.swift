@@ -8,67 +8,96 @@
 
 import Foundation
 
-extension MarketModel: Hashable {
+// MARK: Protocol Hashable
+
+extension Hashable where Self: MarketModel {
     var hashValue: Int { return self.marketName.hashValue }
     
-    static func ==(lhs: MarketModel, rhs: MarketModel) -> Bool {
+    static func ==(lhs: Self, rhs: Self) -> Bool {
         return lhs.marketName == rhs.marketName
     }
 }
 
-class MarketModel {
+// MARK: Protocol Loadable
+
+extension MarketModel: Loadable {
+    static func performLoading() {
+        
+        // MARK: Local functions
+        
+        func createMarket(_ mainCurrency: CurrencyModel?) -> ((CurrencyModel?) -> MarketModel?)? {
+            if let unwrappedMainCurrency = mainCurrency {
+                func createMarketNested(_ secondCurrency: CurrencyModel?) -> MarketModel? {
+                    if let unwrappedSecondCurrency = secondCurrency {
+                        return MarketModel(mainCurrency: unwrappedMainCurrency,
+                                           secondaryCurrency: unwrappedSecondCurrency)
+                    }
+                    
+                    return nil
+                }
+                
+                return createMarketNested
+            }
+            
+            return nil
+        }
+        
+        DBModel.deleteObjectsWith(type: self)
+        
+        let markets = [("btc", "uah"),
+                       ("eth", "uah"),
+                       ("waves", "uah"),
+                       ("gbg", "uah"),
+                       ("bch", "uah"),
+                       ("kun", "btc"),
+                       ("gol", "gbg"),
+                       ("bch", "btc"),
+                       ("rmc", "btc"),
+                       ("r", "btc"),
+                       ("arn", "btc"),
+                       ("evr", "btc"),
+                       ("b2b", "btc"),
+                       ("xrp", "uah"),
+                       ("eos", "btc"),
+                       ("food", "btc"),
+                       ("otx", "btc")]
+        
+        let currencies = CurrencyiesModel(DBModel.getObjectsWith(type: CurrencyModel.self))
+        for(mainCurrencyCode, secondaryCurrencyCode) in markets {
+            createMarket(currencies.getCurrency(with: mainCurrencyCode))?(currencies.getCurrency(with: secondaryCurrencyCode))
+                .map {
+                    $0.create()
+            }
+        }
+    }
+}
+
+@objcMembers class MarketModel: DBModel {
     
     // MARK: Public Properties
     
-    var mainCurrency: CurrencyModel
-    var secondaryCurrency: CurrencyModel
+    dynamic var mainCurrency: CurrencyModel? = nil
+    dynamic var secondaryCurrency: CurrencyModel? = nil
 
     var marketName: String {
-        return String(format: "%@%@", self.mainCurrency.code, self.secondaryCurrency.code)
+        return String(format: "%@%@", self.mainCurrency?.code ?? "", self.secondaryCurrency?.code ?? "")
     }
     
     // MARK: Initialization
     
-    init(mainCurrency: CurrencyModel, secondaryCurrency: CurrencyModel) {
+    convenience init(mainCurrency: CurrencyModel, secondaryCurrency: CurrencyModel) {
+        self.init()
+        
         self.mainCurrency = mainCurrency
         self.secondaryCurrency = secondaryCurrency
     }
     
-    convenience init (_ mainCurrencyCode: String, _ secondaryCurrencyCode: String) {
-        self.init(mainCurrency: CurrencyModel.currencyWith(code: mainCurrencyCode),
-                  secondaryCurrency: CurrencyModel.currencyWith(code: secondaryCurrencyCode))
-    }
     
-    static func performLoading() {
+    convenience init (_ mainCurrencyCode: String, _ secondaryCurrencyCode: String) {
+        let currencies = CurrencyiesModel(DBModel.getObjectsWith(type: CurrencyModel.self))
         
-        let markets: ArrayModel<MarketModel> = ArrayModel<MarketModel>(array: [])
-        
-        //RealmService.shared.deleteAll()
-        markets.add(object: MarketModel("btc", "uah"))
-        markets.add(object: MarketModel("eth", "uah"))
-        markets.add(object: MarketModel("waves", "uah"))
-        markets.add(object: MarketModel("gbg", "uah"))
-        markets.add(object: MarketModel("bch", "uah"))
-        markets.add(object: MarketModel("kun", "btc"))
-        markets.add(object: MarketModel("gol", "gbg"))
-        markets.add(object: MarketModel("bch", "btc"))
-        markets.add(object: MarketModel("rmc", "btc"))
-        markets.add(object: MarketModel("r", "btc"))
-        markets.add(object: MarketModel("arn", "btc"))
-        markets.add(object: MarketModel("evr", "btc"))
-        markets.add(object: MarketModel("b2b", "btc"))
-        markets.add(object: MarketModel("xrp", "uah"))
-        markets.add(object: MarketModel("eos", "btc"))
-        markets.add(object: MarketModel("food", "btc"))
-        markets.add(object: MarketModel("otx", "btc"))
-        
-        for index in 0...markets.count - 1 {
-            markets[index].map {
-                print($0.marketName)
-            }
-            //RealmService.shared.create(markets[index])
-        }
-        
-        //let dbMarketModels = RealmService.shared.get(MarketModel.self)
+        self.init(mainCurrency: currencies.getCurrency(with: mainCurrencyCode),
+                  secondaryCurrency: currencies.getCurrency(with: secondaryCurrencyCode))
     }
+ 
 }

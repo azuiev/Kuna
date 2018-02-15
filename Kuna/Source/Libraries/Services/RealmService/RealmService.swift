@@ -21,8 +21,19 @@ class RealmService {
     
     // MARK: Public Methods
     
-    func get<T: Object>(_ object: T.Type) -> [T] {
-        return Array(realm.objects(T.self))
+    func getObjectsWith<T: Object>(type: T.Type) -> [T] {
+        return Array(realm.objects(type))
+    }
+    
+    func deleteObjectsWith<T: Object>(type: T.Type) {
+        let allUploadingObjects = realm.objects(type)
+        do {
+            try realm.write {
+                realm.delete(allUploadingObjects)
+            }
+        } catch {
+            print(error)
+        }
     }
     
     func create<T: Object>(_ object: T) {

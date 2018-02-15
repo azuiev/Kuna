@@ -44,6 +44,7 @@
 		1D6B3DEA2014EF92009BBAF7 /* BalancesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DE12014EF92009BBAF7 /* BalancesViewController.swift */; };
 		1D6B3DEB2014EF92009BBAF7 /* BalancesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DE22014EF92009BBAF7 /* BalancesView.swift */; };
 		1D6B3DEC2014EF92009BBAF7 /* BalancesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6B3DE32014EF92009BBAF7 /* BalancesViewController.xib */; };
+		1D6F74FD20361560003E4326 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F74FC20361560003E4326 /* Loadable.swift */; };
 		1D7190342020FA7200EA2EC6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7190332020FA7200EA2EC6 /* ViewModel.swift */; };
 		1D71903A2021007F00EA2EC6 /* BalancesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7190392021007F00EA2EC6 /* BalancesModel.swift */; };
 		1D73B02E201A47090087A775 /* BalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73B02D201A47090087A775 /* BalanceModel.swift */; };
@@ -117,6 +118,7 @@
 		1D6B3DE12014EF92009BBAF7 /* BalancesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesViewController.swift; sourceTree = "<group>"; };
 		1D6B3DE22014EF92009BBAF7 /* BalancesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesView.swift; sourceTree = "<group>"; };
 		1D6B3DE32014EF92009BBAF7 /* BalancesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BalancesViewController.xib; sourceTree = "<group>"; };
+		1D6F74FC20361560003E4326 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		1D7190332020FA7200EA2EC6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		1D7190392021007F00EA2EC6 /* BalancesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesModel.swift; sourceTree = "<group>"; };
 		1D73B02D201A47090087A775 /* BalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceModel.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				1D5738FA200BD51500D7E431 /* ViewViewModel.swift */,
+				1D6F74FC20361560003E4326 /* Loadable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -886,6 +889,7 @@
 				1D62529D20190AEC0047CB7C /* CurrencyModel.swift in Sources */,
 				1D573917200BD51500D7E431 /* String+Extension.swift in Sources */,
 				1D57391F200BD51500D7E431 /* ArrayModelMoveOption.swift in Sources */,
+				1D6F74FD20361560003E4326 /* Loadable.swift in Sources */,
 				1D71903A2021007F00EA2EC6 /* BalancesModel.swift in Sources */,
 				1D5D463A2034BF8700EF6384 /* CurrenciesModel.swift in Sources */,
 				1D6252A220190E940047CB7C /* BalanceCell.swift in Sources */,

@@ -13,11 +13,12 @@ class DBModel: Object {
     
     // MARK: Class Methods
     
-    static func loadObjects<T: DBModel>(type: T.Type) -> [T] {
-        let result = RealmService.shared.get(T.self)
-        print(result)
-        
-        return result
+    static func getObjectsWith<T: DBModel>(type: T.Type) -> [T] {
+        return RealmService.shared.getObjectsWith(type: type)
+    }
+    
+    static func deleteObjectsWith<T: DBModel>(type: T.Type) {
+        RealmService.shared.deleteObjectsWith(type: type)
     }
     
     static func deleteAll() {

@@ -11,8 +11,21 @@ import RealmSwift
 
 class CurrencyiesModel {
     
+    // MARK: Private Properties
+    
+    private var currencies: [String : CurrencyModel] = [:]
+    
     // MARK: Initialization
     
-    var currencies: [String : CurrencyModel] = [:]
+    init(_ currencies: [CurrencyModel]) {
+        for currency in currencies {
+            self.currencies[currency.code] = currency
+        }
+    }
     
+    // Public Methods
+    
+    func getCurrency(with code: String) -> CurrencyModel {
+        return self.currencies[code]!
+    }
 }
