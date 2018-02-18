@@ -23,6 +23,7 @@ class OrdersContext: PublicContext {
     // MARK: Private Properties
     
     override var urlPath: String { return "api/v2/order_book" }
+    
     // MARK: Public Methods
     
     override func upfateParameters() {

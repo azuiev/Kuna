@@ -35,7 +35,16 @@ class ViewController: UIViewController {
         if case Result.Failure(let error) = result {
             self.showAlert(with: error.localizedDescription)
         }
+    }
+    
+    func check(response: Result<JSONArray>, with completionHandler: (JSONArray) -> ()) {
+        let result = response.map {
+            completionHandler($0)
+        }
         
+        if case Result.Failure(let error) = result {
+            self.showAlert(with: error.localizedDescription)
+        }
     }
     
     func showAlert(with description: String) {

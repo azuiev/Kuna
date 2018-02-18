@@ -16,12 +16,18 @@ class OrderViewModel {
     
     // MARK: Public Properties
     
-    var price: String { return String(self.order.price) }
-    var countMainCurrency: String { return String(self.order.volume) }
-    var countSecondCurrency: String { return String(self.order.price * self.order.volume) }
+    let priceFormatter = NumberFormatter()
+    
+    var price: String { return priceFormatter.string(from: NSNumber(value: self.order.price)) ?? "" }
+    var countMainCurrency: String { return String(format: "%.8f", self.order.volume) }
+    var countSecondCurrency: String { return String(format: "%.8f", self.order.price * self.order.volume) }
+    
     // MARK: Initialization
     
     init(_ order: OrderModel) {
         self.order = order
+        
+        self.priceFormatter.minimumFractionDigits = 0
+        self.priceFormatter.maximumFractionDigits = 8
     }
 }

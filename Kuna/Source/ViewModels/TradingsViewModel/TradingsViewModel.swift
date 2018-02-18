@@ -13,11 +13,11 @@ class TradingsViewModel: ViewModel {
     
     // MARK: Public Properties
     
-    let tradingsResult = PublishSubject<Result<JSON>>()
+    let tradingsResult = PublishSubject<Result<JSONArray>>()
     let ordersResult = PublishSubject<Result<JSON>>()
     let buyOrdersSubject = PublishSubject<[OrderModel]>()
     let sellOrdersSubject = PublishSubject<[OrderModel]>()
-    let tradingsSubject = PublishSubject<BalancesModel>()
+    let tradingsSubject = PublishSubject<[TradingModel]>()
     
     var buyOrders: [OrderModel] {
         didSet {
@@ -27,13 +27,13 @@ class TradingsViewModel: ViewModel {
     
     var sellOrders: [OrderModel] {
         didSet {
-            self.sellOrdersSubject.onNext(sellOrders)
+            self.sellOrdersSubject.onNext(self.sellOrders)
         }
     }
     
-    var tradings: BalancesModel {
+    var tradings: [TradingModel] {
         didSet {
-            self.tradingsSubject.onNext(tradings)
+            self.tradingsSubject.onNext(self.tradings)
         }
     }
     
@@ -46,7 +46,7 @@ class TradingsViewModel: ViewModel {
     init(user: CurrentUserModel, balances: BalancesModel) {
         self.buyOrders = []
         self.sellOrders = []
-        self.tradings = balances
+        self.tradings = []
         
         super.init(user)
     }
@@ -60,7 +60,7 @@ class TradingsViewModel: ViewModel {
                 self?.ordersResult.onNext($0)
             }}
         case .tradingsTable:  self.startUpdating(with: 30) { _ in
-            OrdersContext().execute { [weak self] in
+            TradingsContext().execute { [weak self] in
                 self?.tradingsResult.onNext($0)
             }}
         }
@@ -71,7 +71,7 @@ class TradingsViewModel: ViewModel {
         self.sellOrders = orders.sellOrders
     }
     
-    func fillTradings(with tradings: BalancesModel) {
+    func fillTradings(with tradings: [TradingModel]) {
         self.tradings = tradings
     }
     

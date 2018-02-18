@@ -39,11 +39,14 @@ class MainView: UIView {
         self.addSubview(headerView)
         
         let height = UIScreen.main.bounds.height
+        let width = UIScreen.main.bounds.width
         let headerHeight = height / 5
         let bodyHeight = height - headerHeight
         let bodyView = self.bodyView
         
         headerView.frame.size.height = headerHeight
+        headerView.frame.size.width = width
+        
         bodyView?.frame.size.height = bodyHeight
         bodyView?.frame.origin.y = headerHeight
         

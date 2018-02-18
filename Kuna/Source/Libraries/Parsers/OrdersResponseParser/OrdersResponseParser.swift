@@ -27,7 +27,6 @@ class OrdersResponseParser {
         static let remainingVolumeKey   = "remaining_volume"
         static let executedVolumeKey    = "executed_volume"
         static let tradesCountKey       = "trades_count"
-        
     }
     
     // MARK: Public Methods

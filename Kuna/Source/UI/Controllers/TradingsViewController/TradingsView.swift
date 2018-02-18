@@ -44,7 +44,6 @@ class TradingsView: MainView {
         self.setupHeader()
     }
 
-    
     // MARK: Public Methods
     
     func fill(with viewModel: TradingsViewModel) {

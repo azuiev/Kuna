@@ -11,7 +11,7 @@ import UIKit
 
 extension  TradingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.rootView?.buyOrders {
+        if tableView == self.rootView?.buyOrders  {
             return self.mainViewModel.buyOrders.count
         }
         
@@ -28,23 +28,18 @@ extension  TradingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = OrderCell()
+        cell = tableView.reusableCell(with: OrderCell.self, indexPath: indexPath)
         
         if tableView == self.rootView?.buyOrders {
-            cell = tableView.reusableCell(with: BuyOrderCell.self, indexPath: indexPath)
-            
             cell.order = self.mainViewModel.buyOrders[indexPath.row]
         }
         
         if tableView == self.rootView?.sellOrders {
-            cell = tableView.reusableCell(with: SellOrderCell.self, indexPath: indexPath)
-            
             cell.order = self.mainViewModel.sellOrders[indexPath.row]
         }
         
-        if tableView == self.rootView?.sellOrders {
-            cell = tableView.reusableCell(with: SellOrderCell.self, indexPath: indexPath)
-            
-            cell.order = self.mainViewModel.sellOrders[indexPath.row]
+        if tableView == self.rootView?.tradings {
+            cell.trading = self.mainViewModel.tradings[indexPath.row]
         }
         
         return cell
@@ -89,7 +84,7 @@ class TradingsViewController: ViewController {
             .subscribe {
                 _ = $0.map { [weak self] in
                     self?.check(response: $0) { [weak self] in
-                        self?.parse(json: $0, with: ResultType.orders)
+                        self?.parseOrders(with: $0)
                     }
                 }
             }
@@ -100,7 +95,7 @@ class TradingsViewController: ViewController {
             .subscribe {
                 _ = $0.map { [weak self] in
                     self?.check(response: $0) { [weak self] in
-                        self?.parse(json: $0, with: ResultType.tradings)
+                        self?.parseTradings(with: $0 as! JSONArray)
                     }
                 }
             }
@@ -118,25 +113,22 @@ class TradingsViewController: ViewController {
         
         self.rootView?.fill(with: self.mainViewModel)
         
-        let nibBuyCell = UINib(nibName: toString(BuyOrderCell.self), bundle: .main)
-        let nibSellCell = UINib(nibName: toString(SellOrderCell.self), bundle: .main)
-
-        self.rootView?.buyOrders?.register(nibBuyCell, forCellReuseIdentifier: toString(BuyOrderCell.self))
-        self.rootView?.sellOrders?.register(nibSellCell, forCellReuseIdentifier: toString(SellOrderCell.self))
+        let nib = UINib(nibName: toString(OrderCell.self), bundle: .main)
+        
+        self.rootView?.buyOrders?.register(nib, forCellReuseIdentifier: toString(OrderCell.self))
+        self.rootView?.sellOrders?.register(nib, forCellReuseIdentifier: toString(OrderCell.self))
+        self.rootView?.tradings?.register(nib, forCellReuseIdentifier: toString(OrderCell.self))
     }
 
     // MARK: Private Methods
     
-    private func parse(json: JSON, with type: ResultType) {
-        switch type {
-        case .orders:
-            let orders = OrdersResponseParser().createAndUpdateOrdersWith(json: json)
-            
-            self.mainViewModel.fillOrders(with: orders)
-        case .tradings:
-            let tradings = TradingsResponseParser().createAndUpdateTradingsWith(json: json)
-            
-            self.mainViewModel.fillTradings(with: tradings)
-        }
+    private func parseOrders(with json: JSON) {
+        let orders = OrdersResponseParser().createAndUpdateOrdersWith(json: json)
+        self.mainViewModel.fillOrders(with: orders)
+    }
+    
+    private func parseTradings(with jsonArray: JSONArray) {
+        let tradings = TradingsResponseParser().createAndUpdateTradingsWith(jsonArray: jsonArray)
+        self.mainViewModel.fillTradings(with: tradings)
     }
 }
