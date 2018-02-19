@@ -31,30 +31,44 @@ class OrdersResponseParser {
     
     // MARK: Public Methods
     
-    func update(orders: OrdersModel, with json: JSON) -> OrdersModel {
+    func update(orders: [OrderModel], with json: JSON) -> [OrderModel] {
+        var mutableOrders = orders
         if let bids = json[Constants.bidsKey] as? JSONArray {
-            var array: [OrderModel] = []
-            
+   
             for jsonOrder in bids {
-                array.append(self.order(with: jsonOrder))
+                mutableOrders.append(self.order(with: jsonOrder))
             }
-            
-            orders.buyOrders = array
         }
         
         if let asks = json[Constants.asksKey] as? JSONArray {
             for jsonOrder in asks {
-                orders.sellOrders.append(self.order(with: jsonOrder))
+                mutableOrders.append(self.order(with: jsonOrder))
             }
         }
+        
+        return mutableOrders
+    }
+    
+    func update(orders: [OrderModel], with jsonArray: JSONArray) -> [OrderModel] {
+        var mutableOrders = orders
+        
+        for jsonOrder in jsonArray {
+            mutableOrders.append(self.order(with: jsonOrder))
+        }
+        
+        return mutableOrders
+    }
+    
+    func createAndUpdateOrdersWith(jsonArray: JSONArray) -> [OrderModel] {
+        var orders: [OrderModel] = []
+        orders = self.update(orders: orders, with: jsonArray)
         
         return orders
     }
     
-    func createAndUpdateOrdersWith(json: JSON) -> OrdersModel {
-        let orders = OrdersModel(buyOrders: [OrderModel](),
-                                 sellOrders: [OrderModel]())
-        _ = self.update(orders: orders, with: json)
+    func createAndUpdateOrdersWith(json: JSON) -> [OrderModel] {
+        var orders: [OrderModel] = []
+        orders = self.update(orders: orders, with: json)
         
         return orders
     }

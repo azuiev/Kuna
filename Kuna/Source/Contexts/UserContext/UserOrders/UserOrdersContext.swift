@@ -1,30 +1,32 @@
 //
-//  TradingsContext.swift
+//  UserOrdersContext.swift
 //  Kuna
 //
-//  Created by Aleksey Zuiev on 18/02/2018.
+//  Created by Aleksey Zuiev on 19/02/2018.
 //  Copyright © 2018 Aleksey Zuiev. All rights reserved.
 //
 
+import Foundation
+
 import UIKit
+import RxSwift
+import RxCocoa
 import Alamofire
 
-class TradingsContext: PublicContext {
+class UserOrdersContext: UserContext {
     
     // MARK: Constants
     
     private struct Constants {
         static let marketKeyString  = "market"
-        static let marketValue      = "btcuah"
+        static let marketValue      = "wavesuah"
     }
     
-    // MARK: Private Properties
+    // MARK: Public Properties
     
-    override var urlPath: String { return "api/v2/trades" }
+    override var urlPath: String { return "api/v2/orders" }
     
-    // MARK: Public Methods
-    
-    // MARK: Public Methods
+    // Public Methods
     
     func execute(with completionHandler: @escaping (Result<JSONArray>) -> ()) {
         self.updateParameters()
@@ -46,5 +48,7 @@ class TradingsContext: PublicContext {
     
     override func updateParameters() {
         self.parameters[Constants.marketKeyString]  = Constants.marketValue
+        
+        super.updateParameters()
     }
 }

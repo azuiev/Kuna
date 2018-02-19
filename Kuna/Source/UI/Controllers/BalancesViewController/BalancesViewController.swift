@@ -27,19 +27,8 @@ extension BalancesViewController: UITableViewDataSource {
 // MARK: Protocol UITableViewDelegate
 
 extension BalancesViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .none
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*
-         self.friends[indexPath.row]
-         .map { UserViewController(model: $0, currentUser: user) }
-         .map { [weak self] in
-         self?.navigationController?.pushViewController($0, animated: true)
-         }
-         */
     }
 }
 
@@ -72,11 +61,5 @@ class BalancesViewController: ViewController {
         let nib = UINib(nibName: toString(BalanceCell.self), bundle: .main)
         
         self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(BalanceCell.self))
-    }
-    
-    // MARK: Private Methods
-    
-    private func finishLogging(with result: Result<JSON>) {
-        print("\(result)")
     }
 }

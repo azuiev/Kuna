@@ -56,26 +56,20 @@ class LoginViewController: ViewController {
     // MARK: Private Methods
  
     private func finishLogging(with balances:BalancesModel) {
+        let balancesController = BalancesViewController(BalancesViewModel(user: self.mainViewModel.currentUser, balances: balances))
+        balancesController.title = "My Balances"
+        let tradingsController = TradingsViewController(TradingsViewModel(user: self.mainViewModel.currentUser, balances: balances))
+        tradingsController.title = "Tradings"
+        let ordersController = OrdersViewController(OrdersViewModel(user: self.mainViewModel.currentUser, orders: []))
+        ordersController.title = "My Orders"
+        let historyController = HistoryViewController(HistoryViewModel(user: self.mainViewModel.currentUser, orders: []))
+        historyController.title = "History"
         
+        var controllers = [balancesController, tradingsController, ordersController, historyController]
+
         let tabBarController = UITabBarController()
-        
-        let names = ["My Balances", "Tradings", "My Orders", "History"]
-        var controllers: [UIViewController] = []
-        var controller = UIViewController()
-        for item in names {
-            if item == "Tradings" {
-                controller = TradingsViewController(TradingsViewModel(user: self.mainViewModel.currentUser, balances: balances))
-            } else {
-                controller = BalancesViewController(BalancesViewModel(user: self.mainViewModel.currentUser, balances: balances))
-            }
-            controller.title = item
-            
-            controllers.append(controller)
-        }
-        
         tabBarController.setViewControllers(controllers, animated: true)
         
         self.present(tabBarController, animated: true, completion: nil)
-        
     }
 }

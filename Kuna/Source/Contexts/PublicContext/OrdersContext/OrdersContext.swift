@@ -26,7 +26,7 @@ class OrdersContext: PublicContext {
     
     // MARK: Public Methods
     
-    override func upfateParameters() {
-        self.parameters[Constants.marketKeyString]  = Constants.marketValue
+    override func updateParameters() {
+        self.parameters[Constants.marketKeyString] = Constants.marketValue
     }
 }

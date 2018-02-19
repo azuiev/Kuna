@@ -49,6 +49,15 @@
 		1D71903A2021007F00EA2EC6 /* BalancesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7190392021007F00EA2EC6 /* BalancesModel.swift */; };
 		1D73B02E201A47090087A775 /* BalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73B02D201A47090087A775 /* BalanceModel.swift */; };
 		1D73B031201A48310087A775 /* BalanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73B030201A48310087A775 /* BalanceViewModel.swift */; };
+		1D746A5F203B3D9000153CAF /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D746A5C203B3D8F00153CAF /* OrdersViewController.swift */; };
+		1D746A60203B3D9000153CAF /* OrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D746A5D203B3D9000153CAF /* OrdersViewController.xib */; };
+		1D746A61203B3D9000153CAF /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D746A5E203B3D9000153CAF /* OrdersView.swift */; };
+		1D746A64203B3EF300153CAF /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D746A63203B3EF300153CAF /* OrdersViewModel.swift */; };
+		1D746A67203B458400153CAF /* UserOrdersContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D746A66203B458400153CAF /* UserOrdersContext.swift */; };
+		1D746A6B203B7DFC00153CAF /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D746A68203B7DFC00153CAF /* HistoryViewController.swift */; };
+		1D746A6C203B7DFC00153CAF /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D746A69203B7DFC00153CAF /* HistoryViewController.xib */; };
+		1D746A6D203B7DFC00153CAF /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D746A6A203B7DFC00153CAF /* HistoryView.swift */; };
+		1D746A70203B7ED600153CAF /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D746A6F203B7ED500153CAF /* HistoryViewModel.swift */; };
 		1D758AC62024D8CF00419689 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D758AC52024D8CF00419689 /* RealmService.swift */; };
 		1D7591221FFECED200573899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7591141FFECED200573899 /* AppDelegate.swift */; };
 		1D7591231FFECED200573899 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D7591151FFECED200573899 /* Info.plist */; };
@@ -123,6 +132,15 @@
 		1D7190392021007F00EA2EC6 /* BalancesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesModel.swift; sourceTree = "<group>"; };
 		1D73B02D201A47090087A775 /* BalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceModel.swift; sourceTree = "<group>"; };
 		1D73B030201A48310087A775 /* BalanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewModel.swift; sourceTree = "<group>"; };
+		1D746A5C203B3D8F00153CAF /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		1D746A5D203B3D9000153CAF /* OrdersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrdersViewController.xib; sourceTree = "<group>"; };
+		1D746A5E203B3D9000153CAF /* OrdersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
+		1D746A63203B3EF300153CAF /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
+		1D746A66203B458400153CAF /* UserOrdersContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOrdersContext.swift; sourceTree = "<group>"; };
+		1D746A68203B7DFC00153CAF /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		1D746A69203B7DFC00153CAF /* HistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
+		1D746A6A203B7DFC00153CAF /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		1D746A6F203B7ED500153CAF /* HistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		1D758AC52024D8CF00419689 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		1D7590FE1FFECED200573899 /* Kuna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D7591141FFECED200573899 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -327,8 +345,10 @@
 			isa = PBXGroup;
 			children = (
 				1D7190332020FA7200EA2EC6 /* ViewModel.swift */,
+				1D746A6E203B7ED500153CAF /* HistoryViewModel */,
 				1D7B919C203A2D710068EEAC /* TradingViewModel */,
 				1D7C6D4C202F3F7E00D99F7D /* OrderViewModel */,
+				1D746A62203B3EDB00153CAF /* OrdersViewModel */,
 				1D573911200BD51500D7E431 /* LoginViewModel */,
 				1D73B02F201A47D90087A775 /* BalanceViewModel */,
 				1D62529A20190A780047CB7C /* BalancesViewModel */,
@@ -377,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				1D5D1551202B6F10001DB417 /* UserContext.swift */,
+				1D746A65203B456E00153CAF /* UserOrders */,
 				1D5D154F202B6F10001DB417 /* LoginContext */,
 			);
 			path = UserContext;
@@ -409,6 +430,9 @@
 		1D6252972019010A0047CB7C /* HistoryViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1D746A6A203B7DFC00153CAF /* HistoryView.swift */,
+				1D746A68203B7DFC00153CAF /* HistoryViewController.swift */,
+				1D746A69203B7DFC00153CAF /* HistoryViewController.xib */,
 			);
 			path = HistoryViewController;
 			sourceTree = "<group>";
@@ -416,6 +440,9 @@
 		1D625298201901100047CB7C /* OrdersViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1D746A5E203B3D9000153CAF /* OrdersView.swift */,
+				1D746A5C203B3D8F00153CAF /* OrdersViewController.swift */,
+				1D746A5D203B3D9000153CAF /* OrdersViewController.xib */,
 			);
 			path = OrdersViewController;
 			sourceTree = "<group>";
@@ -517,6 +544,30 @@
 				1D73B030201A48310087A775 /* BalanceViewModel.swift */,
 			);
 			path = BalanceViewModel;
+			sourceTree = "<group>";
+		};
+		1D746A62203B3EDB00153CAF /* OrdersViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D746A63203B3EF300153CAF /* OrdersViewModel.swift */,
+			);
+			path = OrdersViewModel;
+			sourceTree = "<group>";
+		};
+		1D746A65203B456E00153CAF /* UserOrders */ = {
+			isa = PBXGroup;
+			children = (
+				1D746A66203B458400153CAF /* UserOrdersContext.swift */,
+			);
+			path = UserOrders;
+			sourceTree = "<group>";
+		};
+		1D746A6E203B7ED500153CAF /* HistoryViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D746A6F203B7ED500153CAF /* HistoryViewModel.swift */,
+			);
+			path = HistoryViewModel;
 			sourceTree = "<group>";
 		};
 		1D758AC32024D89000419689 /* Services */ = {
@@ -803,10 +854,12 @@
 			files = (
 				1D7B919B203A2B100068EEAC /* OrderCell.xib in Resources */,
 				1D7591251FFECED200573899 /* LaunchScreen.storyboard in Resources */,
+				1D746A60203B3D9000153CAF /* OrdersViewController.xib in Resources */,
 				1D6B3DEC2014EF92009BBAF7 /* BalancesViewController.xib in Resources */,
 				1D6B3DE92014EF92009BBAF7 /* LoginViewController.xib in Resources */,
 				1D6252A020190E710047CB7C /* BalanceCell.xib in Resources */,
 				1D7591241FFECED200573899 /* Assets.xcassets in Resources */,
+				1D746A6C203B7DFC00153CAF /* HistoryViewController.xib in Resources */,
 				1D7591231FFECED200573899 /* Info.plist in Resources */,
 				1D8B89B820264FC0002F7361 /* TradingsViewController.xib in Resources */,
 				1D7591261FFECED200573899 /* Main.storyboard in Resources */,
@@ -894,6 +947,7 @@
 				1D7C6D43202ED94F00D99F7D /* OrdersResponseParser.swift in Sources */,
 				1D57391D200BD51500D7E431 /* ArrayModel.swift in Sources */,
 				1D73B031201A48310087A775 /* BalanceViewModel.swift in Sources */,
+				1D746A6D203B7DFC00153CAF /* HistoryView.swift in Sources */,
 				1D77C31820134399004DC212 /* NSData+Extension.swift in Sources */,
 				1D7C6D4E202F3F9200D99F7D /* OrderViewModel.swift in Sources */,
 				1D57391E200BD51500D7E431 /* ArrayModelAddOption.swift in Sources */,
@@ -908,6 +962,7 @@
 				1D71903A2021007F00EA2EC6 /* BalancesModel.swift in Sources */,
 				1D5D463A2034BF8700EF6384 /* CurrenciesModel.swift in Sources */,
 				1D6252A220190E940047CB7C /* BalanceCell.swift in Sources */,
+				1D746A61203B3D9000153CAF /* OrdersView.swift in Sources */,
 				1D6252A42019103B0047CB7C /* BalancesViewModel.swift in Sources */,
 				1D5D1555202B6F10001DB417 /* LoginContext.swift in Sources */,
 				1D5D1552202B6F10001DB417 /* Context.swift in Sources */,
@@ -917,7 +972,9 @@
 				1D8B89B720264FC0002F7361 /* TradingsViewController.swift in Sources */,
 				1D5D78C9203359F2009906C3 /* AlertService.swift in Sources */,
 				1D57391B200BD51500D7E431 /* Global.swift in Sources */,
+				1D746A6B203B7DFC00153CAF /* HistoryViewController.swift in Sources */,
 				1D78755F2028CCD5006C07C3 /* TradingsViewModel.swift in Sources */,
+				1D746A5F203B3D9000153CAF /* OrdersViewController.swift in Sources */,
 				1D1567F620309ED800BE0D0A /* MarketModel.swift in Sources */,
 				1D573919200BD51500D7E431 /* UITableView+Extension.swift in Sources */,
 				1D7B9199203A29D10068EEAC /* TradingsContext.swift in Sources */,
@@ -933,15 +990,18 @@
 				1D6B3DEB2014EF92009BBAF7 /* BalancesView.swift in Sources */,
 				1D5D1556202B6F10001DB417 /* UserContext.swift in Sources */,
 				1D573921200BD51500D7E431 /* ArrayModelRemoveOption.swift in Sources */,
+				1D746A70203B7ED600153CAF /* HistoryViewModel.swift in Sources */,
 				1D7B919E203A2D900068EEAC /* TradingViewModel.swift in Sources */,
 				1D6A23072016723500A25F13 /* HeaderView.swift in Sources */,
 				1D7C6D46202EDADE00D99F7D /* OrdersModel.swift in Sources */,
 				1D6B3DEA2014EF92009BBAF7 /* BalancesViewController.swift in Sources */,
 				1D77C31B20136B73004DC212 /* AccessTokenModel.swift in Sources */,
+				1D746A67203B458400153CAF /* UserOrdersContext.swift in Sources */,
 				1D7B9196203A21F30068EEAC /* TradingModel.swift in Sources */,
 				1D7CE9BD201E317600A1F189 /* CurrentUserModel.swift in Sources */,
 				1D8FEF2E2017BCAB00C65D4C /* MainView.swift in Sources */,
 				1D573924200BD51500D7E431 /* InternetImageModel.swift in Sources */,
+				1D746A64203B3EF300153CAF /* OrdersViewModel.swift in Sources */,
 				1D57391C200BD51500D7E431 /* ViewViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

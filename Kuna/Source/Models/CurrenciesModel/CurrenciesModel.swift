@@ -26,6 +26,15 @@ class CurrencyiesModel {
     // Public Methods
     
     func getCurrency(with code: String) -> CurrencyModel {
-        return self.currencies[code]!
+        if let result = self.currencies[code] {
+            return result
+        }
+        
+        let currency = CurrencyModel(code: code)
+        currency.create()
+        
+        self.currencies[code] = currency
+        
+        return currency
     }
 }

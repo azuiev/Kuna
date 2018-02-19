@@ -18,6 +18,8 @@ class LoginViewModel: ViewModel {
     // MARK: UI Actions
     
     func onLogin(with token: AccessTokenModel) {
+        self.currentUser.token = token
+        
         LoginContext(token: token).execute { [weak self] in
             self?.loginResult.onNext($0)
         }

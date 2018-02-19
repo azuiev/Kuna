@@ -32,8 +32,8 @@ class UserContext: PublicContext {
     
     // MARK: Public Methods
     
-    override func upfateParameters() {
-        self.parameters[Constants.accessKeyString]  = token.publicKey
+    override func updateParameters() {
+        self.parameters[Constants.accessKeyString]  = self.token.publicKey
         self.parameters[Constants.tonceString]      = String(Date().currentTimeInMiliseconds)
         self.parameters[Constants.signatureString]  = self.evaluateSecret()
     }
@@ -43,30 +43,15 @@ class UserContext: PublicContext {
     private func evaluateSecret() -> String {
         //HEX(HMAC-SHA256("HTTP-verb|URI|params", secret_key))
         var stringForCoding = String(format: "%@|/%@|", self.httpMethod.rawValue, self.urlPath)
-        self.parameters.forEach {
-            stringForCoding.append(String(format:"%@=%@&", $0.key, $0.value))
+        let keys = self.parameters.keys.sorted()
+        for key in keys {
+            stringForCoding.append(String(format:"%@=%@&", key, self.parameters[key] ?? ""))
         }
         
         stringForCoding = String(stringForCoding.dropLast())
         let binaryData = stringForCoding.hmac(algorithm: .SHA256, key: self.token.secretKey)
         
         return binaryData.toHexString()
-    }
-    
-    private func save(response: JSON) {
-        NSKeyedArchiver.archiveRootObject(response, toFile: self.fileName())
-    }
-    
-    private func loadSavedResponse() -> [String : Any]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: self.fileName()) as? [String : Any]
-    }
-    
-    private func fileName() -> String {
-        if let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.path {
-            return path.appending("/").appending(self.graphPath)
-        } else {
-            return ""
-        }
     }
 }
 

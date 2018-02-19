@@ -40,7 +40,7 @@ class PublicContext: Context {
     // MARK: Public Methods
     
     func execute(with completionHandler: @escaping (Result<JSON>) -> ()) {
-        self.upfateParameters()
+        self.updateParameters()
         
         Alamofire.request(self.fullUrl, method: self.httpMethod, parameters: parameters)
             .responseJSON {
@@ -61,7 +61,7 @@ class PublicContext: Context {
         }
     }
     
-    func upfateParameters() {
+    func updateParameters() {
 
     }
 }

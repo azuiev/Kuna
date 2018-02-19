@@ -23,10 +23,14 @@ class OrdersModel {
     }
     
     convenience init(orders: [OrderModel]) {
-        self.init(buyOrders: [], sellOrders: [])
+        var buyOrders: [OrderModel] = []
+        var sellOrders: [OrderModel] = []
         
-        self.buyOrders = orders
-        self.sellOrders = orders
+        for order in orders {
+            order.side == .buy ? buyOrders.append(order) : sellOrders.append(order)
+        }
+        
+        self.init(buyOrders: buyOrders, sellOrders: sellOrders)
     }
 }
 

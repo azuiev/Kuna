@@ -124,7 +124,7 @@ class TradingsViewController: ViewController {
     
     private func parseOrders(with json: JSON) {
         let orders = OrdersResponseParser().createAndUpdateOrdersWith(json: json)
-        self.mainViewModel.fillOrders(with: orders)
+        self.mainViewModel.fillOrders(with: OrdersModel(orders: orders))
     }
     
     private func parseTradings(with jsonArray: JSONArray) {
