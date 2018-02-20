@@ -20,7 +20,7 @@ class LoginViewModel: ViewModel {
     func onLogin(with token: AccessTokenModel) {
         self.currentUser.token = token
         
-        LoginContext(token: token).execute { [weak self] in
+        LoginContext(token: token).execute(with: JSON.self) { [weak self] in
             self?.loginResult.onNext($0)
         }
     }

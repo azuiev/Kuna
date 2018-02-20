@@ -32,7 +32,7 @@ class HistoryViewModel: ViewModel {
     // MARK: Public Methods
     
     func updateOrders() {
-        UserOrdersContext(token: self.currentUser.token).execute { [weak self] in
+        UserHistoryContext(token: self.currentUser.token).execute(with: JSONArray.self) { [weak self] in
             self?.ordersResult.onNext($0)
         }
     }

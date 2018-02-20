@@ -16,4 +16,16 @@ class LoginContext: UserContext {
     // MARK: Private Properties
     
     override var urlPath: String { return "api/v2/members/me" }
+    
+    // MARK: Public Methods
+    
+    override func parseSuccessResponse<T>(response: T, with completionHandler: (Result<T>) -> ()) {
+        if let json = response as? JSON {
+            if let jsonError = json["error"] as? JSON {
+                completionHandler(Result.Failure(JSONError.otherError(jsonError["message"] as? String ?? "")))
+            }
+        }
+        
+        completionHandler(Result.Success(response))
+    }
 }

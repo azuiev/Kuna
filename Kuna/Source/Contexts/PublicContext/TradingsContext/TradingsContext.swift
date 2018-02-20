@@ -24,26 +24,6 @@ class TradingsContext: PublicContext {
     
     // MARK: Public Methods
     
-    // MARK: Public Methods
-    
-    func execute(with completionHandler: @escaping (Result<JSONArray>) -> ()) {
-        self.updateParameters()
-        
-        Alamofire.request(self.fullUrl, method: self.httpMethod, parameters: parameters)
-            .responseJSON {
-                switch $0.result {
-                case .success(let value):
-                    if let json = value as? JSONArray {
-                        completionHandler(Result.Success(json))
-                    } else {
-                        completionHandler(Result.Failure(JSONError.parseError("Cant convert to JSONArray")))
-                    }
-                case .failure(let error):
-                    completionHandler(Result.Failure(error))
-                }
-        }
-    }
-    
     override func updateParameters() {
         self.parameters[Constants.marketKeyString]  = Constants.marketValue
     }

@@ -66,6 +66,7 @@
 		1D7591261FFECED200573899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D75911A1FFECED200573899 /* Main.storyboard */; };
 		1D77C31820134399004DC212 /* NSData+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D77C31720134399004DC212 /* NSData+Extension.swift */; };
 		1D77C31B20136B73004DC212 /* AccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D77C31A20136B73004DC212 /* AccessTokenModel.swift */; };
+		1D77F36B203C8EC40037D760 /* UserHistoryContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D77F36A203C8EC40037D760 /* UserHistoryContext.swift */; };
 		1D78755F2028CCD5006C07C3 /* TradingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D78755E2028CCD5006C07C3 /* TradingsViewModel.swift */; };
 		1D7875652028EFA7006C07C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7875642028EFA7006C07C3 /* ViewController.swift */; };
 		1D78757620290569006C07C3 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D78757520290569006C07C3 /* OrderCell.swift */; };
@@ -150,6 +151,7 @@
 		1D75911B1FFECED200573899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D77C31720134399004DC212 /* NSData+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+Extension.swift"; sourceTree = "<group>"; };
 		1D77C31A20136B73004DC212 /* AccessTokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenModel.swift; sourceTree = "<group>"; };
+		1D77F36A203C8EC40037D760 /* UserHistoryContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHistoryContext.swift; sourceTree = "<group>"; };
 		1D78755E2028CCD5006C07C3 /* TradingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingsViewModel.swift; sourceTree = "<group>"; };
 		1D7875642028EFA7006C07C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1D78757520290569006C07C3 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				1D5D1551202B6F10001DB417 /* UserContext.swift */,
+				1D77F369203C8EC40037D760 /* UserHistoryContext */,
 				1D746A65203B456E00153CAF /* UserOrders */,
 				1D5D154F202B6F10001DB417 /* LoginContext */,
 			);
@@ -633,6 +636,14 @@
 				1D77C31A20136B73004DC212 /* AccessTokenModel.swift */,
 			);
 			path = AccessTokenModel;
+			sourceTree = "<group>";
+		};
+		1D77F369203C8EC40037D760 /* UserHistoryContext */ = {
+			isa = PBXGroup;
+			children = (
+				1D77F36A203C8EC40037D760 /* UserHistoryContext.swift */,
+			);
+			path = UserHistoryContext;
 			sourceTree = "<group>";
 		};
 		1D78755D2028CCB1006C07C3 /* TradingsViewModel */ = {
@@ -965,6 +976,7 @@
 				1D746A61203B3D9000153CAF /* OrdersView.swift in Sources */,
 				1D6252A42019103B0047CB7C /* BalancesViewModel.swift in Sources */,
 				1D5D1555202B6F10001DB417 /* LoginContext.swift in Sources */,
+				1D77F36B203C8EC40037D760 /* UserHistoryContext.swift in Sources */,
 				1D5D1552202B6F10001DB417 /* Context.swift in Sources */,
 				1D82D6E22012A78D00AC8A84 /* Hmac.swift in Sources */,
 				1D82D6DD20128CC800AC8A84 /* Date+Extension.swift in Sources */,

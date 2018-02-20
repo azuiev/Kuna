@@ -18,7 +18,7 @@ extension JSONError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .parseError(let description):
-            return "Unable to parse json: " + description
+            return description
         case .otherError(let description):
             return description
         }
@@ -39,26 +39,30 @@ class PublicContext: Context {
     
     // MARK: Public Methods
     
-    func execute(with completionHandler: @escaping (Result<JSON>) -> ()) {
+    func execute<T>(with resultType: T.Type, completionHandler: @escaping (Result<T>) -> ()) {
         self.updateParameters()
         
         Alamofire.request(self.fullUrl, method: self.httpMethod, parameters: parameters)
             .responseJSON {
                 switch $0.result {
                 case .success(let value):
-                    let json = value as? JSON
-                    if let jsonError = json?["error"] as? JSON {
-                        
-                        completionHandler(Result.Failure(JSONError.otherError(jsonError["message"] as? String ?? "")))
+                    if let result = value as? T {
+                        return self.parseSuccessResponse(response: result, with: completionHandler)
                     } else {
-                        json.map {
-                            completionHandler(Result.Success($0))
-                        }
+                        return self.parseFailedResponse(response: value, with: completionHandler)
                     }
                 case .failure(let error):
                     completionHandler(Result.Failure(error))
                 }
         }
+    }
+    
+    func parseSuccessResponse<T>(response: T, with completionHandler: (Result<T>) -> ()) {
+        completionHandler(Result.Success(response))
+    }
+    
+    func parseFailedResponse<T>(response: Any, with completionHandler: (Result<T>) -> ()) {
+        return completionHandler(Result.Failure(JSONError.parseError("Unable to convert \(response) to type \(T.self)")))
     }
     
     func updateParameters() {

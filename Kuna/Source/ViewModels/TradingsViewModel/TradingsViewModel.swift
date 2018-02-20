@@ -56,11 +56,11 @@ class TradingsViewModel: ViewModel {
     func onSelectSegment(with table: TableType) {
         switch table {
         case .buyTable, .sellTable: self.startUpdating(with: 30) { _ in
-            OrdersContext().execute { [weak self] in
+            OrdersContext().execute(with: JSON.self) { [weak self] in
                 self?.ordersResult.onNext($0)
             }}
         case .tradingsTable:  self.startUpdating(with: 30) { _ in
-            TradingsContext().execute { [weak self] in
+            TradingsContext().execute(with: JSONArray.self) { [weak self] in
                 self?.tradingsResult.onNext($0)
             }}
         }
@@ -86,7 +86,7 @@ class TradingsViewModel: ViewModel {
         self.timer = timer
     }
     
-    private func disableUpdating() {
+    func disableUpdating() {
         self.timer?.invalidate()
     }
 }

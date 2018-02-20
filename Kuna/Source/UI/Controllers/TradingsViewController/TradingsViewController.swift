@@ -120,6 +120,11 @@ class TradingsViewController: ViewController {
         self.rootView?.tradings?.register(nib, forCellReuseIdentifier: toString(OrderCell.self))
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.mainViewModel.disableUpdating()
+    }
     // MARK: Private Methods
     
     private func parseOrders(with json: JSON) {

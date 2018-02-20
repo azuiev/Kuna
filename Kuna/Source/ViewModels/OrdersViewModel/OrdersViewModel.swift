@@ -34,7 +34,7 @@ class OrdersViewModel: ViewModel {
     // MARK: Public Methods
     
     func updateOrders() {
-        UserOrdersContext(token: self.currentUser.token).execute { [weak self] in
+        UserOrdersContext(token: self.currentUser.token).execute(with: JSONArray.self) { [weak self] in
             self?.ordersResult.onNext($0)
         }
     }
