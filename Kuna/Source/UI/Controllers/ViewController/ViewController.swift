@@ -18,6 +18,13 @@ class ViewController: UIViewController {
     init(_ viewModel: ViewModel) {
         super.init(nibName: toString(type(of: self)), bundle: .main)
         
+        viewModel.marketSubject
+            .asObservable()
+            .subscribe({ [weak self] _ in
+                self?.selectMarket()
+            })
+            .disposed(by: viewModel.disposeBag)
+        
         self.viewModel = viewModel
     }
     
@@ -49,5 +56,9 @@ class ViewController: UIViewController {
     
     func showAlert(with description: String) {
         AlertService.addAlert(to: self, with: description)
+    }
+    
+    func selectMarket() {
+        AlertService.addAlert(to: self, with: "ADD MARKET")
     }
 }

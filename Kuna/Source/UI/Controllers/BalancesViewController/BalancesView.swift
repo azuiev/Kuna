@@ -25,12 +25,4 @@ class BalancesView: MainView {
     // MARK: Public Properties
     
     override var tabName: String { return Constants.tabName }
-    
-    let disposeBag = DisposeBag()
-    
-    // MARK: Public Methods
-    
-    func fill(with viewModel:BalancesViewModel) {
-        
-    }
 }

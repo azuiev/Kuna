@@ -15,6 +15,10 @@ class HeaderView: UIView {
     @IBOutlet var windowNameLabel:  UILabel?
     @IBOutlet var tabNameLabel:     UILabel?
     
+    // MARK: Public Properties
+    
+    var marketTapGestureRecognizer: UITapGestureRecognizer?
+    
     // Initialization
     
     override init(frame: CGRect) {
@@ -29,11 +33,6 @@ class HeaderView: UIView {
         self.configureLayer()
     }
     
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        
-        
-    }
     // MARK: Private functiona
     
     private func configureLayer() {

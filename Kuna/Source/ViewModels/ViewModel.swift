@@ -15,7 +15,10 @@ class ViewModel {
     // MARK: Public Properties
     
     let disposeBag = DisposeBag()
+    let marketSubject = PublishSubject<MarketModel>()
+    
     var currentUser: CurrentUserModel
+    var market: MarketModel?
     
     // MARK: Initialization
     

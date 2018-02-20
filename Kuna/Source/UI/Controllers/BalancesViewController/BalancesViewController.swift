@@ -45,6 +45,7 @@ class BalancesViewController: ViewController {
     
     init(_ viewModel: BalancesViewModel) {
         super.init(viewModel)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

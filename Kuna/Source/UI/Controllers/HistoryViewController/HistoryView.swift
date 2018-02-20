@@ -26,11 +26,11 @@ class HistoryView: MainView {
     
     override var tabName: String { return Constants.tabName }
     
-    let disposeBag = DisposeBag()
-    
     // MARK: Public Methods
     
     func fill(with viewModel: HistoryViewModel) {
+        super.fill(with: viewModel)
+        
         viewModel.ordersSubject
             .asObservable()
             .subscribe({ [weak self] _ in

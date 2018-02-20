@@ -28,7 +28,6 @@ class OrdersViewModel: ViewModel {
         self.orders = orders
         
         super.init(user)
-
     }
     
     // MARK: Public Methods

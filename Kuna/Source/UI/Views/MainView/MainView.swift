@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class MainView: UIView {
 
@@ -23,6 +24,7 @@ class MainView: UIView {
     
     // MARK: Public Properties
     
+    let disposeBag = DisposeBag()
     var tabName: String { return Constants.tabName }
     
     // MARK: Private Properties
@@ -51,10 +53,45 @@ class MainView: UIView {
         bodyView?.frame.origin.y = headerHeight
         
         self.headerView = headerView
+        self.setupHeaderItems()
         self.setWindowLabelText()
     }
-
-    // Private Methods
+    
+    // MARK: Public Methods
+    
+    func fill<T: ViewModel>(with viewModel: T) {
+        self.headerView?.marketTapGestureRecognizer?
+            .rx
+            .event
+            .asObservable()
+            .subscribe({ [weak self] _ in
+                viewModel.marketSubject.onNext(MarketModel())
+            })
+            .disposed(by: self.disposeBag)
+    }
+    
+    func setupHeaderItems() {
+        guard let unwprappedHeaderView = self.headerView else { return }
+        
+        let imageView = UIImageView(image: UIImage(named: "btc"))
+        let imageView2 = UIImageView(image: UIImage(named: "btc"))
+        let imageView3 = UIImageView(image: UIImage(named: "uah"))
+        let stackView = UIStackView(arrangedSubviews: [imageView, imageView2, imageView3])
+        
+        stackView.axis = .horizontal
+        stackView.frame.size.height = 33
+        stackView.frame.size.width = 100
+        stackView.frame.origin.x = unwprappedHeaderView.frame.width - stackView.frame.width
+        stackView.frame.origin.y = unwprappedHeaderView.frame.height - stackView.frame.height
+        
+        stackView.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin]
+        
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        stackView.addGestureRecognizer(tapGestureRecognizer)
+        unwprappedHeaderView.marketTapGestureRecognizer = tapGestureRecognizer
+        
+        unwprappedHeaderView.addSubview(stackView)
+    }
     
     private func setWindowLabelText() {
         self.headerView.map { [weak self] in
