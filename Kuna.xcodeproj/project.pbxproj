@@ -47,6 +47,9 @@
 		1D6F74FD20361560003E4326 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F74FC20361560003E4326 /* Loadable.swift */; };
 		1D7190342020FA7200EA2EC6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7190332020FA7200EA2EC6 /* ViewModel.swift */; };
 		1D71903A2021007F00EA2EC6 /* BalancesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7190392021007F00EA2EC6 /* BalancesModel.swift */; };
+		1D72CEA7203E134C00288DED /* MarketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72CEA4203E134B00288DED /* MarketsView.swift */; };
+		1D72CEA8203E134C00288DED /* MarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72CEA5203E134B00288DED /* MarketsViewController.swift */; };
+		1D72CEA9203E134C00288DED /* MarketsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D72CEA6203E134B00288DED /* MarketsViewController.xib */; };
 		1D73B02E201A47090087A775 /* BalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73B02D201A47090087A775 /* BalanceModel.swift */; };
 		1D73B031201A48310087A775 /* BalanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73B030201A48310087A775 /* BalanceViewModel.swift */; };
 		1D746A5F203B3D9000153CAF /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D746A5C203B3D8F00153CAF /* OrdersViewController.swift */; };
@@ -131,6 +134,9 @@
 		1D6F74FC20361560003E4326 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		1D7190332020FA7200EA2EC6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		1D7190392021007F00EA2EC6 /* BalancesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesModel.swift; sourceTree = "<group>"; };
+		1D72CEA4203E134B00288DED /* MarketsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsView.swift; sourceTree = "<group>"; };
+		1D72CEA5203E134B00288DED /* MarketsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsViewController.swift; sourceTree = "<group>"; };
+		1D72CEA6203E134B00288DED /* MarketsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketsViewController.xib; sourceTree = "<group>"; };
 		1D73B02D201A47090087A775 /* BalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceModel.swift; sourceTree = "<group>"; };
 		1D73B030201A48310087A775 /* BalanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewModel.swift; sourceTree = "<group>"; };
 		1D746A5C203B3D8F00153CAF /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
@@ -334,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				1D7875632028EF8A006C07C3 /* ViewController */,
+				1D72CEA3203E134B00288DED /* MarketViewController */,
 				1D6B3DDC2014EF92009BBAF7 /* LoginViewController */,
 				1D6B3DE02014EF92009BBAF7 /* BalancesViewController */,
 				1D625299201901170047CB7C /* TradingsViewController */,
@@ -531,6 +538,16 @@
 				1D7190392021007F00EA2EC6 /* BalancesModel.swift */,
 			);
 			path = BalancesModel;
+			sourceTree = "<group>";
+		};
+		1D72CEA3203E134B00288DED /* MarketViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D72CEA4203E134B00288DED /* MarketsView.swift */,
+				1D72CEA5203E134B00288DED /* MarketsViewController.swift */,
+				1D72CEA6203E134B00288DED /* MarketsViewController.xib */,
+			);
+			path = MarketViewController;
 			sourceTree = "<group>";
 		};
 		1D73B02C201A46ED0087A775 /* BalanceModel */ = {
@@ -865,6 +882,7 @@
 			files = (
 				1D7B919B203A2B100068EEAC /* OrderCell.xib in Resources */,
 				1D7591251FFECED200573899 /* LaunchScreen.storyboard in Resources */,
+				1D72CEA9203E134C00288DED /* MarketsViewController.xib in Resources */,
 				1D746A60203B3D9000153CAF /* OrdersViewController.xib in Resources */,
 				1D6B3DEC2014EF92009BBAF7 /* BalancesViewController.xib in Resources */,
 				1D6B3DE92014EF92009BBAF7 /* LoginViewController.xib in Resources */,
@@ -991,6 +1009,8 @@
 				1D573919200BD51500D7E431 /* UITableView+Extension.swift in Sources */,
 				1D7B9199203A29D10068EEAC /* TradingsContext.swift in Sources */,
 				1D573923200BD51500D7E431 /* ImageModel.swift in Sources */,
+				1D72CEA7203E134C00288DED /* MarketsView.swift in Sources */,
+				1D72CEA8203E134C00288DED /* MarketsViewController.swift in Sources */,
 				1D7CE9BA201E308500A1F189 /* LoginResponseParser.swift in Sources */,
 				1D573922200BD51500D7E431 /* FileSystemImageModel.swift in Sources */,
 				1D7875652028EFA7006C07C3 /* ViewController.swift in Sources */,

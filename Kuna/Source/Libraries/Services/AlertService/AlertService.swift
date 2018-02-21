@@ -22,5 +22,4 @@ class AlertService {
     // MARK: Initialization
     
     private init() {}
-    
 }

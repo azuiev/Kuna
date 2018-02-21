@@ -21,7 +21,11 @@ class ViewController: UIViewController {
         viewModel.marketSubject
             .asObservable()
             .subscribe({ [weak self] _ in
-                self?.selectMarket()
+                if let currentUser = self?.viewModel?.currentUser {
+                    let controller = MarketsViewController(LoginViewModel(currentUser), presentingViewController: self)
+                        controller.modalPresentationStyle = .overCurrentContext
+                    self?.present(controller, animated: true, completion: nil)
+                }
             })
             .disposed(by: viewModel.disposeBag)
         
