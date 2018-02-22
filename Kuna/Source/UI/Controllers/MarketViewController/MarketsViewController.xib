@@ -10,13 +10,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BalancesViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MarketsViewController" customModule="Kuna">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="3TM-M6-iIv"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="AZU-9R-3Oq"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="MarketsView" customModule="Kuna" customModuleProvider="target">
+        <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="MarketsView" customModule="Kuna">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -27,16 +27,38 @@
                         <constraint firstAttribute="height" constant="358" id="84Z-4E-OqC"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HhJ-4Q-OqV">
-                        <size key="itemSize" width="50" height="50"/>
+                        <size key="itemSize" width="200" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="2eQ-tb-Mhv"/>
-                        <outlet property="delegate" destination="-1" id="Vev-jw-ndc"/>
+                        <outlet property="dataSource" destination="-1" id="FQA-pg-A0G"/>
+                        <outlet property="delegate" destination="-1" id="0dQ-i2-EYN"/>
                     </connections>
                 </collectionView>
+                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ekx-No-iX4">
+                    <rect key="frame" x="18" y="520" width="339" height="45"/>
+                    <color key="backgroundColor" red="1" green="0.99516557719999998" blue="0.99950863860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                    <state key="normal" title="Cancel"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>
@@ -44,11 +66,15 @@
                 <constraint firstItem="D62-Su-n2R" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="4ZR-tc-LmX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="D62-Su-n2R" secondAttribute="trailing" constant="18" id="9QU-wA-gX1"/>
                 <constraint firstItem="D62-Su-n2R" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Rvv-wF-QQ2"/>
+                <constraint firstItem="Ekx-No-iX4" firstAttribute="trailing" secondItem="D62-Su-n2R" secondAttribute="trailing" id="TQr-dt-aHM"/>
+                <constraint firstItem="Ekx-No-iX4" firstAttribute="leading" secondItem="D62-Su-n2R" secondAttribute="leading" id="Tve-ls-Bnx"/>
+                <constraint firstItem="Ekx-No-iX4" firstAttribute="top" secondItem="D62-Su-n2R" secondAttribute="bottom" constant="8" id="kiO-uh-ADP"/>
                 <constraint firstItem="D62-Su-n2R" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="oZe-wx-z03"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <connections>
-                <outlet property="markets" destination="D62-Su-n2R" id="hpf-Rs-KA9"/>
+                <outlet property="cancelButton" destination="Ekx-No-iX4" id="Ow6-81-icQ"/>
+                <outlet property="collectionView" destination="D62-Su-n2R" id="ddK-ry-yfe"/>
             </connections>
             <point key="canvasLocation" x="24.5" y="50.5"/>
         </view>

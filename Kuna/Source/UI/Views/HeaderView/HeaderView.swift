@@ -37,7 +37,7 @@ class HeaderView: UIView {
     
     private func configureLayer() {
         let layer = self.layer
-        layer.borderWidth = 2
+        layer.borderWidth = 1
         layer.borderColor = UIColor.blue.cgColor
     }
 }

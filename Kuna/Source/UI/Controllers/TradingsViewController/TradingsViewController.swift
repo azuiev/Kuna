@@ -7,20 +7,33 @@
 //
 
 import UIKit
-// MARK: Protocol UITableViewDataSource
 
-extension  TradingsViewController: UITableViewDataSource {
+// MARK: Protocol RootView
+
+extension TradingsViewController: RootView {
+    typealias ViewType = TradingsView
+}
+
+class TradingsViewController: ViewController<TradingsViewModel>, UITableViewDataSource {
+
+    // MARK: Enum
+    
+    private enum ResultType {
+        case orders
+        case tradings
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.rootView?.buyOrders  {
-            return self.mainViewModel.buyOrders.count
+            return self.viewModel.buyOrders.count
         }
         
         if tableView == self.rootView?.sellOrders {
-            return self.mainViewModel.sellOrders.count
+            return self.viewModel.sellOrders.count
         }
         
         if tableView == self.rootView?.tradings {
-            return self.mainViewModel.tradings.count
+            return self.viewModel.tradings.count
         }
         
         return 0
@@ -31,55 +44,25 @@ extension  TradingsViewController: UITableViewDataSource {
         cell = tableView.reusableCell(with: OrderCell.self, indexPath: indexPath)
         
         if tableView == self.rootView?.buyOrders {
-            cell.order = self.mainViewModel.buyOrders[indexPath.row]
+            cell.order = self.viewModel.buyOrders[indexPath.row]
         }
         
         if tableView == self.rootView?.sellOrders {
-            cell.order = self.mainViewModel.sellOrders[indexPath.row]
+            cell.order = self.viewModel.sellOrders[indexPath.row]
         }
         
         if tableView == self.rootView?.tradings {
-            cell.trading = self.mainViewModel.tradings[indexPath.row]
+            cell.trading = self.viewModel.tradings[indexPath.row]
         }
         
         return cell
     }
-}
-
-// MARK: Protocol UITableViewDelegate
-
-extension TradingsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .none
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-    }
-}
-
-// MARK: Protocol ViewViewModel
-
-extension TradingsViewController: ViewViewModel {
-    typealias ViewType = TradingsView
-    typealias ViewModelType = TradingsViewModel
-}
-
-class TradingsViewController: ViewController {
-
-    // MARK: Enum
-    
-    private enum ResultType {
-        case orders
-        case tradings
-    }
-    
     // MARK: Initialization
     
-    init(_ viewModel: TradingsViewModel) {
+    override init(_ viewModel: TradingsViewModel) {
         super.init(viewModel)
         
-        self.mainViewModel.ordersResult
+        self.viewModel.ordersResult
             .asObservable()
             .subscribe {
                 _ = $0.map { [weak self] in
@@ -88,18 +71,18 @@ class TradingsViewController: ViewController {
                     }
                 }
             }
-            .disposed(by: self.mainViewModel.disposeBag)
+            .disposed(by: self.viewModel.disposeBag)
         
-        self.mainViewModel.tradingsResult
+        self.viewModel.tradingsResult
             .asObservable()
             .subscribe {
                 _ = $0.map { [weak self] in
                     self?.check(response: $0) { [weak self] in
-                        self?.parseTradings(with: $0 as! JSONArray)
+                        self?.parseTradings(with: $0)
                     }
                 }
             }
-            .disposed(by: self.mainViewModel.disposeBag)
+            .disposed(by: self.viewModel.disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -111,7 +94,7 @@ class TradingsViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.rootView?.fill(with: self.mainViewModel)
+        self.rootView?.fill(with: self.viewModel)
         
         let nib = UINib(nibName: toString(OrderCell.self), bundle: .main)
         
@@ -123,17 +106,17 @@ class TradingsViewController: ViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.mainViewModel.disableUpdating()
+        self.viewModel.disableUpdating()
     }
     // MARK: Private Methods
     
     private func parseOrders(with json: JSON) {
         let orders = OrdersResponseParser().createAndUpdateOrdersWith(json: json)
-        self.mainViewModel.fillOrders(with: OrdersModel(orders: orders))
+        self.viewModel.fillOrders(with: OrdersModel(orders: orders))
     }
     
     private func parseTradings(with jsonArray: JSONArray) {
         let tradings = TradingsResponseParser().createAndUpdateTradingsWith(jsonArray: jsonArray)
-        self.mainViewModel.fillTradings(with: tradings)
+        self.viewModel.fillTradings(with: tradings)
     }
 }

@@ -14,7 +14,8 @@ class MarketsView: UIView {
 
     // IBOutlets
     
-    @IBOutlet var markets: UICollectionView?
+    @IBOutlet var collectionView: UICollectionView?
+    @IBOutlet var cancelButton: UIButton?
     
     // MARK: Public Methods
     

@@ -8,45 +8,34 @@
 
 import UIKit
 
-// MARK: Protocol UITableViewDataSource
+// MARK: Protocol RootView
 
-extension HistoryViewController: UITableViewDataSource {
+extension HistoryViewController: RootView {
+    typealias ViewType = HistoryView
+}
+
+class HistoryViewController: ViewController<HistoryViewModel>, UITableViewDataSource {
+
+    // MARK: Protocol UITableViewDataSource
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.mainViewModel.orders.count
+        return self.viewModel.orders.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.reusableCell(with: OrderCell.self, indexPath: indexPath)
         
-        cell.order = self.mainViewModel.orders[indexPath.row]
+        cell.order = self.viewModel.orders[indexPath.row]
         
         return cell
     }
-}
-
-// MARK: Protocol UITableViewDelegate
-
-extension HistoryViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .none
-    }
-}
-
-// MARK: Protocol ViewViewModel
-
-extension HistoryViewController: ViewViewModel {
-    typealias ViewType = HistoryView
-    typealias ViewModelType = HistoryViewModel
-}
-
-class HistoryViewController: ViewController {
-
+    
     // MARK: View Lifecycle
     
-    init(_ viewModel: HistoryViewModel) {
+    override init(_ viewModel: HistoryViewModel) {
         super.init(viewModel)
         
-        self.mainViewModel.ordersResult
+        self.viewModel.ordersResult
             .asObservable()
             .subscribe {
                 _ = $0.map { [weak self] in
@@ -55,7 +44,7 @@ class HistoryViewController: ViewController {
                     }
                 }
             }
-            .disposed(by: self.mainViewModel.disposeBag)
+            .disposed(by: self.viewModel.disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -65,7 +54,7 @@ class HistoryViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.rootView?.fill(with: self.mainViewModel)
+        self.rootView?.fill(with: self.viewModel)
         
         let nib = UINib(nibName: toString(OrderCell.self), bundle: .main)
         
@@ -73,13 +62,13 @@ class HistoryViewController: ViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.mainViewModel.updateOrders()
+        self.viewModel.updateOrders()
     }
     
     // MARK: Private Methods
     
     private func parseOrders(with jsonArray: JSONArray) {
         let orders = OrdersResponseParser().createAndUpdateOrdersWith(jsonArray: jsonArray)
-        self.mainViewModel.fill(with: orders)
+        self.viewModel.fill(with: orders)
     }
 }

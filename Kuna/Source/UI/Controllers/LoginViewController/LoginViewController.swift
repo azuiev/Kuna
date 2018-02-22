@@ -11,19 +11,18 @@ import RxSwift
 
 // MARK: Protocol ViewViewModel
 
-extension LoginViewController: ViewViewModel {
+extension LoginViewController: RootView {
     typealias ViewType = LoginView
-    typealias ViewModelType = LoginViewModel
 }
 
-class LoginViewController: ViewController {
+class LoginViewController: ViewController<LoginViewModel> {
     
     // MARK: Initialization
     
-    init(_ viewModel: LoginViewModel) {
+    override init(_ viewModel: LoginViewModel) {
         super.init(viewModel)
 
-        self.mainViewModel.loginResult
+        self.viewModel.loginResult
             .asObservable()
             .subscribe({
                 _ = $0.map { [weak self] in
@@ -32,7 +31,7 @@ class LoginViewController: ViewController {
                     }
                 }
             })
-            .disposed(by: self.mainViewModel.disposeBag)
+            .disposed(by: self.disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,13 +41,13 @@ class LoginViewController: ViewController {
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
-        self.rootView?.fill(with: self.mainViewModel)
+        self.rootView?.fill(with: self.viewModel)
     }
     
     // MARK: Public Methods
     
     func parse(json: JSON) {
-        let balances = LoginResponseParser().update(user: self.mainViewModel.currentUser, with: json)
+        let balances = LoginResponseParser().update(user: self.viewModel.currentUser, with: json)
         
         self.finishLogging(with: balances)
     }
@@ -56,16 +55,16 @@ class LoginViewController: ViewController {
     // MARK: Private Methods
  
     private func finishLogging(with balances:BalancesModel) {
-        let balancesController = BalancesViewController(BalancesViewModel(user: self.mainViewModel.currentUser, balances: balances))
+        let balancesController = BalancesViewController(BalancesViewModel(user: self.viewModel.currentUser, balances: balances))
         balancesController.title = "My Balances"
-        let tradingsController = TradingsViewController(TradingsViewModel(user: self.mainViewModel.currentUser, balances: balances))
+        let tradingsController = TradingsViewController(TradingsViewModel(user: self.viewModel.currentUser, balances: balances))
         tradingsController.title = "Tradings"
-        let ordersController = OrdersViewController(OrdersViewModel(user: self.mainViewModel.currentUser, orders: []))
+        let ordersController = OrdersViewController(OrdersViewModel(user: self.viewModel.currentUser, orders: []))
         ordersController.title = "My Orders"
-        let historyController = HistoryViewController(HistoryViewModel(user: self.mainViewModel.currentUser, orders: []))
+        let historyController = HistoryViewController(HistoryViewModel(user: self.viewModel.currentUser, orders: []))
         historyController.title = "History"
         
-        var controllers = [balancesController, tradingsController, ordersController, historyController]
+        let controllers = [balancesController, tradingsController, ordersController, historyController]
 
         let tabBarController = UITabBarController()
         tabBarController.setViewControllers(controllers, animated: true)

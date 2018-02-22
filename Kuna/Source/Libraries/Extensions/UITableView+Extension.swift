@@ -13,7 +13,11 @@ extension UITableView {
     func reusableCell<T: UITableViewCell>(with cls: T.Type, indexPath: IndexPath) -> T {
         let cell = self.dequeueReusableCell(withIdentifier: toString(cls), for: indexPath)
         
-        return cell as! T
+        guard let result = cell as? T else {
+            fatalError("Unable to get cell with type \(T.self)")
+        }
+        
+        return result
     }
     
     func applyChanges(with object: ArrayModelOption) {

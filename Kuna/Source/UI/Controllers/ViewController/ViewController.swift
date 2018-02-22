@@ -9,31 +9,35 @@
 import UIKit
 import RxSwift
 
-class ViewController: UIViewController {
+class ViewController<T: ViewModel>: UIViewController {
 
     // MARK: Public Properties
     
-    var viewModel: ViewModel?
+    var disposeBag = DisposeBag()
+    var viewModel: T
     
-    init(_ viewModel: ViewModel) {
+    init(_ viewModel: T) {
+        self.viewModel = viewModel
+        
         super.init(nibName: toString(type(of: self)), bundle: .main)
         
         viewModel.marketSubject
             .asObservable()
             .subscribe({ [weak self] _ in
-                if let currentUser = self?.viewModel?.currentUser {
-                    let controller = MarketsViewController(LoginViewModel(currentUser), presentingViewController: self)
-                        controller.modalPresentationStyle = .overCurrentContext
-                    self?.present(controller, animated: true, completion: nil)
+                if let currentUser = self?.viewModel.currentUser {
+                    let controller = MarketsViewController(MarketsViewModel(user: currentUser)) { [weak self] in
+                        self?.viewModel.market = $0
+                    }
+                    
+                    controller.modalPresentationStyle = .overCurrentContext
+                    self?.present(controller, animated: true)
                 }
             })
             .disposed(by: viewModel.disposeBag)
-        
-        self.viewModel = viewModel
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     // Public Methods

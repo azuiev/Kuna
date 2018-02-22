@@ -8,62 +8,68 @@
 
 import UIKit
 
-// MARK: Protocol UICollectionViewDataSource
+// MARK: Protocol ViewViewModel
 
-extension MarketsViewController: UICollectionViewDataSource {
+extension MarketsViewController: RootView {
+    typealias ViewType = MarketsView
+}
+
+class MarketsViewController: ViewController<MarketsViewModel>, UICollectionViewDataSource, UICollectionViewDelegate {
+
+    // MARK: Protocol UICollectionViewDelegate
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.completion(self.markets[indexPath.row])
+        self.dismiss(animated: true)
+    }
+    
+    // MARK: Protocol UICollectionViewDataSource
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.markets.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath)
-        cell.backgroundColor = UIColor.yellow
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MarketCell", for: indexPath)
+        if let marketCell = cell as? MarketCell {
+            marketCell.market = self.markets[indexPath.row]
+            marketCell.backgroundColor = UIColor.lightGray
+            
+            return marketCell
+        }
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let cellSize = CGSize(width: 30, height: 30)
-        return cellSize
-    }
-}
-
-// MARK: Protocol UICollectionViewDelegate
-
-extension MarketsViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.dismiss(animated: true) { [weak self] in
-            self?.presentingController?.viewModel?.market = MarketModel("waves", "uah")
-        }
-    }
-}
-
-// MARK: Protocol ViewViewModel
-
-extension MarketsViewController: ViewViewModel {
-    typealias ViewType = MarketsView
-    typealias ViewModelType = LoginViewModel
-}
-
-class MarketsViewController: ViewController {
-
+    // MARK: Public Properties
+    
+    var market: MarketModel?
+    var completion: (MarketModel) -> ()?
+    
     // MARK: Private Properties
     
-    private var presentingController: ViewController?
+    var markets: [MarketModel]
     
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.rootView?.cancelButton?
+            .rx
+            .tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.dismiss(animated: true)
+            })
+            .disposed(by: self.viewModel.disposeBag)
         
-        self.rootView?.markets?.backgroundColor = UIColor.red
-        self.rootView?.markets?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionCell")
+        let nib = UINib(nibName: toString(MarketCell.self), bundle: .main)
+        self.rootView?.collectionView?.register(nib, forCellWithReuseIdentifier: "MarketCell")
     }
     
-    // MARK: Initialization
-    
-    init(_ viewModel: ViewModel, presentingViewController: ViewController?) {
-        self.presentingController = presentingViewController
+    init(_ viewModel: MarketsViewModel, completion: @escaping (MarketModel) -> ()) {
+        self.completion = completion
+        self.markets = DBModel.getObjectsWith(type: MarketModel.self)
         
         super.init(viewModel)
     }

@@ -8,25 +8,15 @@
 
 import UIKit
 
-protocol ViewViewModel {
+protocol RootView {
     associatedtype ViewType: UIView
-    associatedtype ViewModelType: ViewModel
     
     var rootView: ViewType? { get }
-    var mainViewModel: ViewModelType { get }
 }
 
-extension ViewViewModel where Self: ViewController {
+extension RootView where Self: UIViewController {
     var rootView: ViewType? {
         return self.viewIfLoaded as? ViewType
-    }
-    
-    var mainViewModel: ViewModelType {
-        guard let result = self.viewModel as? ViewModelType else {
-            fatalError()
-        }
-        
-        return result
     }
 }
 

@@ -64,7 +64,7 @@ class MainView: UIView {
             .rx
             .event
             .asObservable()
-            .subscribe({ [weak self] _ in
+            .subscribe({ _ in 
                 viewModel.marketSubject.onNext(MarketModel())
             })
             .disposed(by: self.disposeBag)
