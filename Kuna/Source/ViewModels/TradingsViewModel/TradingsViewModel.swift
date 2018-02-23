@@ -15,6 +15,7 @@ class TradingsViewModel: ViewModel {
     
     let tradingsResult = PublishSubject<Result<JSONArray>>()
     let ordersResult = PublishSubject<Result<JSON>>()
+    let newOrderSubject = PublishSubject<Void>()
     let buyOrdersSubject = PublishSubject<[OrderModel]>()
     let sellOrdersSubject = PublishSubject<[OrderModel]>()
     let tradingsSubject = PublishSubject<[TradingModel]>()

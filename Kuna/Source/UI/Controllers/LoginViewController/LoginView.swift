@@ -12,6 +12,16 @@ import RxCocoa
 
 class LoginView: UIView, UITextFieldDelegate {
 
+    // MARK: Protocol UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.returnKeyType == .done {
+            textField.resignFirstResponder()
+        }
+        
+        return true
+    }
+    
     // MARK: IBOutlets
     
     @IBOutlet var loginButton: UIButton?
@@ -59,14 +69,6 @@ class LoginView: UIView, UITextFieldDelegate {
                                                          secretKey: self?.secretKeyTextField?.text))
             })
             .disposed(by: self.disposeBag)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.returnKeyType == .done {
-            textField.resignFirstResponder()
-        }
-        
-        return true
     }
     
     // MARK: Private Methods

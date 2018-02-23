@@ -25,10 +25,20 @@ class TradingsView: MainView {
     
     // IBOutlets
     
+    @IBOutlet var createOrder: UIButton?
     @IBOutlet var buyOrders: UITableView?
     @IBOutlet var sellOrders: UITableView?
     @IBOutlet var tradings: UITableView?
     @IBOutlet var segmentedView: UISegmentedControl?
+    
+    
+    // MARK: View Lifecycle
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.createOrder?.layer.borderColor = UIColor.init(red: 0, green: 128, blue: 255).cgColor
+    }
     
     // MARK: Public Properties
     
@@ -38,6 +48,15 @@ class TradingsView: MainView {
     
     func fill(with viewModel: TradingsViewModel) {
         super.fill(with: viewModel)
+        
+        self.createOrder?
+            .rx
+            .tap
+            .asObservable()
+            .subscribe({ _ in
+                viewModel.newOrderSubject.onNext(())
+            })
+            .disposed(by: self.disposeBag)
         
         self.segmentedView?
             .rx

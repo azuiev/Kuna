@@ -16,6 +16,8 @@ extension BalancesViewController: RootView {
 
 class BalancesViewController: ViewController<BalancesViewModel>, UITableViewDataSource {
 
+    // MARK: Protocol UITableViewDataSource
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel.balances.count
     }
@@ -26,17 +28,6 @@ class BalancesViewController: ViewController<BalancesViewModel>, UITableViewData
         cell.balance = self.viewModel.balances[indexPath.row]
         
         return cell
-    }
-    
-    // MARK: Initialization
-    
-    override init(_ viewModel: BalancesViewModel) {
-        super.init(viewModel)
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: View Lifecycle

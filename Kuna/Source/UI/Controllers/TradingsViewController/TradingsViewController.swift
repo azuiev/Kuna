@@ -62,6 +62,20 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
     override init(_ viewModel: TradingsViewModel) {
         super.init(viewModel)
         
+        self.viewModel.newOrderSubject
+            .asObservable()
+            .subscribe { [weak self] _ in
+                if let currentUser = self?.viewModel.currentUser {
+                    let controller = NewOrderViewController(ViewModel(currentUser)) { 
+                        print($0)
+                    }
+                    
+                    controller.modalPresentationStyle = .overCurrentContext
+                    self?.present(controller, animated: true)
+                }
+            }
+            .disposed(by: self.viewModel.disposeBag)
+        
         self.viewModel.ordersResult
             .asObservable()
             .subscribe {

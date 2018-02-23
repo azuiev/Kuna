@@ -42,7 +42,7 @@ class MainView: UIView {
         
         let height = UIScreen.main.bounds.height
         let width = UIScreen.main.bounds.width
-        let headerHeight = height / 5
+        let headerHeight = height / 6
         let bodyHeight = height - headerHeight
         let bodyView = self.bodyView
         
@@ -74,15 +74,15 @@ class MainView: UIView {
         guard let unwprappedHeaderView = self.headerView else { return }
         
         let imageView = UIImageView(image: UIImage(named: "btc"))
-        let imageView2 = UIImageView(image: UIImage(named: "btc"))
+        let imageView2 = UIImageView(image: UIImage(named: "arrow"))
         let imageView3 = UIImageView(image: UIImage(named: "uah"))
         let stackView = UIStackView(arrangedSubviews: [imageView, imageView2, imageView3])
         
         stackView.axis = .horizontal
         stackView.frame.size.height = 33
         stackView.frame.size.width = 100
-        stackView.frame.origin.x = unwprappedHeaderView.frame.width - stackView.frame.width
-        stackView.frame.origin.y = unwprappedHeaderView.frame.height - stackView.frame.height
+        stackView.frame.origin.x = unwprappedHeaderView.frame.width - stackView.frame.width - 5
+        stackView.frame.origin.y = unwprappedHeaderView.frame.height - stackView.frame.height - 5
         
         stackView.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin]
         
