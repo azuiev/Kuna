@@ -16,9 +16,16 @@ class ViewModel {
     
     let disposeBag = DisposeBag()
     let marketSubject = PublishSubject<MarketModel>()
+    let selectMarketSubject = PublishSubject<Void>()
     
     var currentUser: CurrentUserModel
-    var market: MarketModel?
+    var market: MarketModel? = MarketsModel.shared.markets.first {
+        didSet {
+            if let market = self.market {
+                self.marketSubject.onNext(market)
+            }
+        }
+    }
     
     // MARK: Initialization
     

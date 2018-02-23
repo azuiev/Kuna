@@ -18,6 +18,7 @@ class HeaderView: UIView {
     // MARK: Public Properties
     
     var marketTapGestureRecognizer: UITapGestureRecognizer?
+    var marketView: MarketView?
     
     // Initialization
     

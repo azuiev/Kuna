@@ -30,6 +30,16 @@ class BalancesViewController: ViewController<BalancesViewModel>, UITableViewData
         return cell
     }
     
+    // MARK: Initialization
+    
+    override init(_ viewModel: BalancesViewModel) {
+        super.init(viewModel)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     // MARK: View Lifecycle
     
     override func viewDidLoad() {

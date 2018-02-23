@@ -21,7 +21,7 @@ class ViewController<T: ViewModel>: UIViewController {
         
         super.init(nibName: toString(type(of: self)), bundle: .main)
         
-        viewModel.marketSubject
+        viewModel.selectMarketSubject
             .asObservable()
             .subscribe({ [weak self] _ in
                 if let currentUser = self?.viewModel.currentUser {

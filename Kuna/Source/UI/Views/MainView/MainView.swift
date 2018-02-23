@@ -60,12 +60,21 @@ class MainView: UIView {
     // MARK: Public Methods
     
     func fill<T: ViewModel>(with viewModel: T) {
+        self.headerView?.marketView?.market = viewModel.market
+        
         self.headerView?.marketTapGestureRecognizer?
             .rx
             .event
             .asObservable()
             .subscribe({ _ in 
-                viewModel.marketSubject.onNext(MarketModel())
+                viewModel.selectMarketSubject.onNext(())
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.marketSubject
+            .asObservable()
+            .subscribe(onNext: { [weak self] in
+                self?.headerView?.marketView?.market = $0
             })
             .disposed(by: self.disposeBag)
     }
@@ -73,24 +82,20 @@ class MainView: UIView {
     func setupHeaderItems() {
         guard let unwprappedHeaderView = self.headerView else { return }
         
-        let imageView = UIImageView(image: UIImage(named: "btc"))
-        let imageView2 = UIImageView(image: UIImage(named: "arrow"))
-        let imageView3 = UIImageView(image: UIImage(named: "uah"))
-        let stackView = UIStackView(arrangedSubviews: [imageView, imageView2, imageView3])
+        let marketView = UINib.object(with: MarketView.self, bundle: .main)
+        let size = CGSize.init(width: 100, height: 33)
+        let origin = CGPoint.init(x: unwprappedHeaderView.frame.width - size.width - 5,
+                                  y: unwprappedHeaderView.frame.height - size.height - 5)
         
-        stackView.axis = .horizontal
-        stackView.frame.size.height = 33
-        stackView.frame.size.width = 100
-        stackView.frame.origin.x = unwprappedHeaderView.frame.width - stackView.frame.width - 5
-        stackView.frame.origin.y = unwprappedHeaderView.frame.height - stackView.frame.height - 5
-        
-        stackView.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin]
+        marketView.frame = CGRect.init(origin: origin, size: size)
+        marketView.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin]
         
         let tapGestureRecognizer = UITapGestureRecognizer()
-        stackView.addGestureRecognizer(tapGestureRecognizer)
+        marketView.addGestureRecognizer(tapGestureRecognizer)
         unwprappedHeaderView.marketTapGestureRecognizer = tapGestureRecognizer
         
-        unwprappedHeaderView.addSubview(stackView)
+        unwprappedHeaderView.addSubview(marketView)
+        unwprappedHeaderView.marketView = marketView
     }
     
     private func setWindowLabelText() {

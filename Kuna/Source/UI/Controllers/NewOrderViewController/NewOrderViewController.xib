@@ -40,7 +40,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     <connections>
                                         <outlet property="delegate" destination="i5M-Pr-FkT" id="2OF-Ce-9Gb"/>
                                     </connections>
@@ -57,7 +57,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     <connections>
                                         <outlet property="delegate" destination="i5M-Pr-FkT" id="xXu-QQ-kj9"/>
                                     </connections>
@@ -74,7 +74,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     <connections>
                                         <outlet property="delegate" destination="i5M-Pr-FkT" id="1io-ur-IY6"/>
                                     </connections>
@@ -143,6 +143,9 @@
             <connections>
                 <outlet property="buyButton" destination="JfX-zT-7fc" id="WhX-FF-jAc"/>
                 <outlet property="cancelButton" destination="Ekx-No-iX4" id="jsy-EA-Xwd"/>
+                <outlet property="mainCurrencyVolumeTextField" destination="xWY-ym-NoH" id="b2S-dV-0KR"/>
+                <outlet property="priceTextField" destination="ZFG-I8-be5" id="9JR-3C-Yv8"/>
+                <outlet property="secondCurrencyVolumeTextField" destination="64q-Ic-2iR" id="LMb-Ux-bte"/>
                 <outlet property="sellButton" destination="ITM-G7-vIt" id="2ke-6N-MjP"/>
             </connections>
             <point key="canvasLocation" x="24.5" y="50.5"/>

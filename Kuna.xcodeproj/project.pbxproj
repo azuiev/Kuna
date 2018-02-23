@@ -97,6 +97,9 @@
 		1D93355E204089C800FFA724 /* NewOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D93355B204089C800FFA724 /* NewOrderViewController.xib */; };
 		1D93355F204089C800FFA724 /* NewOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93355C204089C800FFA724 /* NewOrderView.swift */; };
 		1D9335632040B16600FFA724 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9335622040B16600FFA724 /* UIColor+Extension.swift */; };
+		1D9335672040BC0A00FFA724 /* MarketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9335652040BC0A00FFA724 /* MarketView.xib */; };
+		1D9335682040BC0A00FFA724 /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9335662040BC0A00FFA724 /* MarketView.swift */; };
+		1D93356B2040D26800FFA724 /* MarketsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93356A2040D26800FFA724 /* MarketsModel.swift */; };
 		1FE5552D8B5E4588791BC788 /* Pods_Kuna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B6FC9A4D590457BB68ED47 /* Pods_Kuna.framework */; };
 /* End PBXBuildFile section */
 
@@ -194,6 +197,9 @@
 		1D93355B204089C800FFA724 /* NewOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewOrderViewController.xib; sourceTree = "<group>"; };
 		1D93355C204089C800FFA724 /* NewOrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrderView.swift; sourceTree = "<group>"; };
 		1D9335622040B16600FFA724 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		1D9335652040BC0A00FFA724 /* MarketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketView.xib; sourceTree = "<group>"; };
+		1D9335662040BC0A00FFA724 /* MarketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
+		1D93356A2040D26800FFA724 /* MarketsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketsModel.swift; sourceTree = "<group>"; };
 		92B6FC9A4D590457BB68ED47 /* Pods_Kuna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kuna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9381D65F42BE6BE7A1C10D23 /* Pods-Kuna.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuna.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kuna/Pods-Kuna.release.xcconfig"; sourceTree = "<group>"; };
 		CCBA8725F3E9D79814540397 /* Pods-Kuna.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuna.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kuna/Pods-Kuna.debug.xcconfig"; sourceTree = "<group>"; };
@@ -291,7 +297,7 @@
 				1D7C6D49202EFB5200D99F7D /* OrderModel */,
 				1D7C6D44202EDACF00D99F7D /* OrdersModel */,
 				1D7B9193203A21CC0068EEAC /* TradingModel */,
-				1D7B9194203A21CC0068EEAC /* TradingsModel */,
+				1D7B9194203A21CC0068EEAC /* MarketsModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -499,6 +505,7 @@
 				1D6A2303201671E300A25F13 /* HeaderView */,
 				1D8FEF2C2017BC9900C65D4C /* MainView */,
 				1D8B84BE203F465A004B74F1 /* MarketCell */,
+				1D9335642040BBF600FFA724 /* MarketView */,
 				1D7875682028F73A006C07C3 /* OrderCell */,
 			);
 			path = Views;
@@ -681,11 +688,12 @@
 			path = TradingModel;
 			sourceTree = "<group>";
 		};
-		1D7B9194203A21CC0068EEAC /* TradingsModel */ = {
+		1D7B9194203A21CC0068EEAC /* MarketsModel */ = {
 			isa = PBXGroup;
 			children = (
+				1D93356A2040D26800FFA724 /* MarketsModel.swift */,
 			);
-			path = TradingsModel;
+			path = MarketsModel;
 			sourceTree = "<group>";
 		};
 		1D7B9197203A29AD0068EEAC /* TradingsContext */ = {
@@ -856,6 +864,15 @@
 			path = NewOrderViewController;
 			sourceTree = "<group>";
 		};
+		1D9335642040BBF600FFA724 /* MarketView */ = {
+			isa = PBXGroup;
+			children = (
+				1D9335662040BC0A00FFA724 /* MarketView.swift */,
+				1D9335652040BC0A00FFA724 /* MarketView.xib */,
+			);
+			path = MarketView;
+			sourceTree = "<group>";
+		};
 		3B2C1464CCEEAFD2FBA9CB37 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -941,6 +958,7 @@
 				1D746A60203B3D9000153CAF /* OrdersViewController.xib in Resources */,
 				1D6B3DEC2014EF92009BBAF7 /* BalancesViewController.xib in Resources */,
 				1D8B84C4203F46B5004B74F1 /* MarketCell.xib in Resources */,
+				1D9335672040BC0A00FFA724 /* MarketView.xib in Resources */,
 				1D93355E204089C800FFA724 /* NewOrderViewController.xib in Resources */,
 				1D6B3DE92014EF92009BBAF7 /* LoginViewController.xib in Resources */,
 				1D6252A020190E710047CB7C /* BalanceCell.xib in Resources */,
@@ -1044,6 +1062,7 @@
 				1D78757620290569006C07C3 /* OrderCell.swift in Sources */,
 				1D8B89BA20265918002F7361 /* TradingsView.swift in Sources */,
 				1D62529D20190AEC0047CB7C /* CurrencyModel.swift in Sources */,
+				1D93356B2040D26800FFA724 /* MarketsModel.swift in Sources */,
 				1D573917200BD51500D7E431 /* String+Extension.swift in Sources */,
 				1D93355F204089C800FFA724 /* NewOrderView.swift in Sources */,
 				1D57391F200BD51500D7E431 /* ArrayModelMoveOption.swift in Sources */,
@@ -1083,6 +1102,7 @@
 				1D6B3DEB2014EF92009BBAF7 /* BalancesView.swift in Sources */,
 				1D8B84C7203F47BD004B74F1 /* MarketViewModel.swift in Sources */,
 				1D8B84D5203F8163004B74F1 /* UserHistoryContext.swift in Sources */,
+				1D9335682040BC0A00FFA724 /* MarketView.swift in Sources */,
 				1D573921200BD51500D7E431 /* ArrayModelRemoveOption.swift in Sources */,
 				1D746A70203B7ED600153CAF /* HistoryViewModel.swift in Sources */,
 				1D7B919E203A2D900068EEAC /* TradingViewModel.swift in Sources */,

@@ -6,7 +6,7 @@
 //  Copyright © 2018 Aleksey Zuiev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class MarketViewModel {
     
@@ -17,8 +17,10 @@ class MarketViewModel {
     // MARK: Public Properties
     
     var marketName: String { return self.market.marketName }
-    var mainCurrencyName: String {return self.market.mainCurrency?.name ?? ""}
-    var secondCurrencyName: String {return self.market.secondaryCurrency?.name ?? "" }
+    var mainCurrencyName: String { return self.market.mainCurrency.name }
+    var secondCurrencyName: String { return self.market.secondaryCurrency.name  }
+    var mainCurrencyImage: UIImage? { return UIImage(named: self.market.mainCurrency.code) }
+    var secondCurrencyImage: UIImage? { return UIImage(named: self.market.secondaryCurrency.code) }
     
     // MARK: Initialization
     

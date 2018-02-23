@@ -24,6 +24,10 @@ class NewOrderView: UIView, UITextFieldDelegate {
     
     // IBOutlets
     
+    @IBOutlet var priceTextField: UITextField?
+    @IBOutlet var mainCurrencyVolumeTextField: UITextField?
+    @IBOutlet var secondCurrencyVolumeTextField: UITextField?
+    
     @IBOutlet var buyButton: UIButton?
     @IBOutlet var sellButton: UIButton?
     @IBOutlet var cancelButton: UIButton?

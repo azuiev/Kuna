@@ -20,8 +20,8 @@ extension Hashable where Self: MarketModel {
 
 // MARK: Protocol Loadable
 
-extension MarketModel: Loadable {
-    static func performLoading() {
+extension MarketModel {
+    static func performLoading() -> [MarketModel] {
         
         // MARK: Local functions
         
@@ -42,9 +42,7 @@ extension MarketModel: Loadable {
             return nil
         }
         
-        DBModel.deleteObjectsWith(type: self)
-        
-        let markets = [("btc", "uah"),
+        let currenciesPair = [("btc", "uah"),
                        ("eth", "uah"),
                        ("waves", "uah"),
                        ("gbg", "uah"),
@@ -63,31 +61,33 @@ extension MarketModel: Loadable {
                        ("otx", "btc")]
         
         let currencies = CurrencyiesModel(DBModel.getObjectsWith(type: CurrencyModel.self))
-        for(mainCurrencyCode, secondaryCurrencyCode) in markets {
+        
+        var result: [MarketModel] = []
+        for(mainCurrencyCode, secondaryCurrencyCode) in currenciesPair {
             createMarket(currencies.getCurrency(with: mainCurrencyCode))?(currencies.getCurrency(with: secondaryCurrencyCode))
-                .map {
-                    $0.create()
+                .map {                    
+                    result.append($0)
             }
         }
+        
+        return result
     }
 }
 
-@objcMembers class MarketModel: DBModel {
+class MarketModel {
     
     // MARK: Public Properties
     
-    dynamic var mainCurrency: CurrencyModel? = nil
-    dynamic var secondaryCurrency: CurrencyModel? = nil
+    var mainCurrency: CurrencyModel
+    var secondaryCurrency: CurrencyModel
 
     var marketName: String {
-        return String(format: "%@%@", self.mainCurrency?.code ?? "", self.secondaryCurrency?.code ?? "")
+        return String(format: "%@%@", self.mainCurrency.code , self.secondaryCurrency.code)
     }
     
     // MARK: Initialization
     
-    convenience init(mainCurrency: CurrencyModel, secondaryCurrency: CurrencyModel) {
-        self.init()
-        
+    init(mainCurrency: CurrencyModel, secondaryCurrency: CurrencyModel) {
         self.mainCurrency = mainCurrency
         self.secondaryCurrency = secondaryCurrency
     }

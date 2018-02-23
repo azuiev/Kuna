@@ -69,7 +69,7 @@ class MarketsViewController: ViewController<MarketsViewModel>, UICollectionViewD
     
     init(_ viewModel: MarketsViewModel, completion: @escaping (MarketModel) -> ()) {
         self.completion = completion
-        self.markets = DBModel.getObjectsWith(type: MarketModel.self)
+        self.markets = MarketsModel.shared.markets
         
         super.init(viewModel)
     }
