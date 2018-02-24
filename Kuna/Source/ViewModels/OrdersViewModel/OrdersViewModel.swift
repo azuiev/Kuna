@@ -20,8 +20,7 @@ class OrdersViewModel: ViewModel {
             self.ordersSubject.onNext(self.orders)
         }
     }
-
-
+    
     // MARK: Initialization
     
     init(user: CurrentUserModel, orders: [OrderModel]) {
@@ -32,7 +31,7 @@ class OrdersViewModel: ViewModel {
     
     // MARK: Public Methods
     
-    func updateOrders() {
+    override func updateData() {
         UserOrdersContext(token: self.currentUser.token).execute(with: JSONArray.self) { [weak self] in
             self?.ordersResult.onNext($0)
         }

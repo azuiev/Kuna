@@ -15,6 +15,7 @@ class BalancesViewModel: ViewModel {
     var balances: BalancesModel
     
     // MARK: Initialization
+    
     init(user: CurrentUserModel, balances: BalancesModel) {
         self.balances = balances
         

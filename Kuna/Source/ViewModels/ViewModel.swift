@@ -19,9 +19,10 @@ class ViewModel {
     let selectMarketSubject = PublishSubject<Void>()
     
     var currentUser: CurrentUserModel
-    var market: MarketModel? = MarketsModel.shared.markets.first {
+    var market: MarketModel? {
         didSet {
             if let market = self.market {
+                self.updateData()
                 self.marketSubject.onNext(market)
             }
         }
@@ -31,5 +32,11 @@ class ViewModel {
     
     init(_ currentUserModel: CurrentUserModel) {
         self.currentUser = currentUserModel
+    }
+    
+    // MARK: Public Methods
+    
+    func updateData() {
+        
     }
 }

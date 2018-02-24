@@ -55,13 +55,14 @@ class TradingsViewModel: ViewModel {
     // Public Methods
     
     func onSelectSegment(with table: TableType) {
+        guard let unwrappedMarket = self.market else { return }
         switch table {
         case .buyTable, .sellTable: self.startUpdating(with: 30) { _ in
-            OrdersContext().execute(with: JSON.self) { [weak self] in
+            OrdersContext(market: unwrappedMarket).execute(with: JSON.self) { [weak self] in
                 self?.ordersResult.onNext($0)
             }}
-        case .tradingsTable:  self.startUpdating(with: 30) { _ in
-            TradingsContext().execute(with: JSONArray.self) { [weak self] in
+        case .tradingsTable: self.startUpdating(with: 30) { _ in
+            TradingsContext(market: unwrappedMarket).execute(with: JSONArray.self) { [weak self] in
                 self?.tradingsResult.onNext($0)
             }}
         }
@@ -74,6 +75,14 @@ class TradingsViewModel: ViewModel {
     
     func fillTradings(with tradings: [TradingModel]) {
         self.tradings = tradings
+    }
+    
+    override func updateData() {
+        self.market.map {
+            OrdersContext(market: $0).execute(with: JSON.self) { [weak self] in
+                self?.ordersResult.onNext($0)
+            }
+        }
     }
     
     // Private Methods

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class MarketsModel {
     
@@ -21,5 +22,6 @@ class MarketsModel {
     // MARK: Public Properties
     
     let markets = MarketModel.performLoading()
+    
     var currentMarket: MarketModel?
 }

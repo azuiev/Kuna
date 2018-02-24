@@ -16,6 +16,8 @@ class ViewController<T: ViewModel>: UIViewController {
     var disposeBag = DisposeBag()
     var viewModel: T
     
+    // MARK: Initialization
+    
     init(_ viewModel: T) {
         self.viewModel = viewModel
         
@@ -26,6 +28,8 @@ class ViewController<T: ViewModel>: UIViewController {
             .subscribe({ [weak self] _ in
                 if let currentUser = self?.viewModel.currentUser {
                     let controller = MarketsViewController(MarketsViewModel(user: currentUser)) { [weak self] in
+                        MarketsModel.shared.currentMarket = $0
+                        
                         self?.viewModel.market = $0
                     }
                     
@@ -40,7 +44,16 @@ class ViewController<T: ViewModel>: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Public Methods
+    // MARK: View Lifecycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.viewModel.market = MarketsModel.shared.currentMarket
+        self.viewModel.updateData()
+    }
+    
+    // MARK: Public Methods
     
     func check(response: Result<JSON>, with completionHandler: (JSON) -> ()) {
         let result = response.map {

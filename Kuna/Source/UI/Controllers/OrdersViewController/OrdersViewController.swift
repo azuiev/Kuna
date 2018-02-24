@@ -63,10 +63,6 @@ class OrdersViewController: ViewController<OrdersViewModel>, UITableViewDataSour
         self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(OrderCell.self))
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.viewModel.updateOrders()
-    }
-    
     // MARK: Private Methods
     
     private func parseOrders(with jsonArray: JSONArray) {

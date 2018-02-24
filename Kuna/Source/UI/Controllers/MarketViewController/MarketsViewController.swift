@@ -50,6 +50,19 @@ class MarketsViewController: ViewController<MarketsViewModel>, UICollectionViewD
     
     var markets: [MarketModel]
     
+    // MARK: Initialization
+    
+    init(_ viewModel: MarketsViewModel, completion: @escaping (MarketModel) -> ()) {
+        self.completion = completion
+        self.markets = MarketsModel.shared.markets
+        
+        super.init(viewModel)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
@@ -65,16 +78,5 @@ class MarketsViewController: ViewController<MarketsViewModel>, UICollectionViewD
         
         let nib = UINib(nibName: toString(MarketCell.self), bundle: .main)
         self.rootView?.collectionView?.register(nib, forCellWithReuseIdentifier: "MarketCell")
-    }
-    
-    init(_ viewModel: MarketsViewModel, completion: @escaping (MarketModel) -> ()) {
-        self.completion = completion
-        self.markets = MarketsModel.shared.markets
-        
-        super.init(viewModel)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

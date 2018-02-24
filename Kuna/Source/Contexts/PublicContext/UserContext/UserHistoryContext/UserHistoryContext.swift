@@ -19,17 +19,25 @@ class UserHistoryContext: UserContext {
     
     private struct Constants {
         static let marketKeyString  = "market"
-        static let marketValue      = "wavesuah"
     }
     
     // MARK: Public Properties
     
     override var urlPath: String { return "api/v2/trades/my" }
+    let market: MarketModel
+    
+    // MARK: Initialization
+    
+    init(token: AccessTokenModel, market: MarketModel) {
+        self.market = market
+        
+        super.init(token: token)
+    }
     
     // Public Methods
     
     override func updateParameters() {
-        self.parameters[Constants.marketKeyString]  = Constants.marketValue
+        self.parameters[Constants.marketKeyString]  = self.market.marketName
         
         super.updateParameters()
     }

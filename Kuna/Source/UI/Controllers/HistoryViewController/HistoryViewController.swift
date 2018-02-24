@@ -30,7 +30,7 @@ class HistoryViewController: ViewController<HistoryViewModel>, UITableViewDataSo
         return cell
     }
     
-    // MARK: View Lifecycle
+    // MARK: Initialization
     
     override init(_ viewModel: HistoryViewModel) {
         super.init(viewModel)
@@ -51,6 +51,9 @@ class HistoryViewController: ViewController<HistoryViewModel>, UITableViewDataSo
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // MARK: View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,10 +62,6 @@ class HistoryViewController: ViewController<HistoryViewModel>, UITableViewDataSo
         let nib = UINib(nibName: toString(OrderCell.self), bundle: .main)
         
         self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(OrderCell.self))
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.viewModel.updateOrders()
     }
     
     // MARK: Private Methods

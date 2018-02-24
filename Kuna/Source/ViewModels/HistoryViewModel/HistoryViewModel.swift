@@ -31,9 +31,12 @@ class HistoryViewModel: ViewModel {
     
     // MARK: Public Methods
     
-    func updateOrders() {
-        UserHistoryContext(token: self.currentUser.token).execute(with: JSONArray.self) { [weak self] in
-            self?.ordersResult.onNext($0)
+    override func updateData() {
+        guard let unwrappedMarket = self.market else { return }
+        
+        UserHistoryContext(token: self.currentUser.token, market: unwrappedMarket)
+            .execute(with: JSONArray.self) { [weak self] in
+                self?.ordersResult.onNext($0)
         }
     }
     
