@@ -19,8 +19,8 @@ class OrderViewModel {
     let priceFormatter = NumberFormatter()
     
     var price: String { return priceFormatter.string(from: NSNumber(value: self.order.price)) ?? "" }
-    var countMainCurrency: String { return String(format: "%.8f", self.order.volume) }
-    var countSecondCurrency: String { return String(format: "%.8f", self.order.price * self.order.volume) }
+    var countMainCurrency: String { return String(format: "%.8f", self.order.volumeMain) }
+    var countSecondCurrency: String { return String(format: "%.8f", self.order.price * self.order.volumeMain) }
     
     // MARK: Initialization
     

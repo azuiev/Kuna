@@ -12,7 +12,7 @@ class TradingViewModel {
     
     // MARK: Private Properties
     
-    private let trading: TradingModel
+    private let trading: CompletedOrderModel
     
     // MARK: Public Properties
     
@@ -24,7 +24,7 @@ class TradingViewModel {
     
     // MARK: Initialization
     
-    init(_ trading: TradingModel) {
+    init(_ trading: CompletedOrderModel) {
         self.trading = trading
         
         self.priceFormatter.minimumFractionDigits = 0

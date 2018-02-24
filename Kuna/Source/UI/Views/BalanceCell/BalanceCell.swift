@@ -31,4 +31,12 @@ class BalanceCell: UITableViewCell {
         self.countLabel?.text = viewModel.count
         self.currencyImageView?.image = viewModel.image
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.currencyNameLabel?.text = nil
+        self.currencyImageView?.image = nil
+        self.countLabel?.text = nil
+    }
 }

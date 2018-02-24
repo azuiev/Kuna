@@ -1,5 +1,5 @@
 //
-//  OrdersModel.swift
+//  ActiveOrdersModel.swift
 //  Kuna
 //
 //  Created by Aleksey Zuiev on 10/02/2018.
@@ -8,23 +8,23 @@
 
 import Foundation
 
-class OrdersModel {
+class ActiveOrdersModel {
     
     // MARK: Private Parameters
     
-    var buyOrders: [OrderModel]
-    var sellOrders: [OrderModel]
+    var buyOrders: [ActiveOrderModel]
+    var sellOrders: [ActiveOrderModel]
     
     // MARK: Initialization
     
-    init(buyOrders: [OrderModel], sellOrders: [OrderModel]) {
+    init(buyOrders: [ActiveOrderModel], sellOrders: [ActiveOrderModel]) {
         self.buyOrders = buyOrders
         self.sellOrders = sellOrders
     }
     
-    convenience init(orders: [OrderModel]) {
-        var buyOrders: [OrderModel] = []
-        var sellOrders: [OrderModel] = []
+    convenience init(orders: [ActiveOrderModel]) {
+        var buyOrders: [ActiveOrderModel] = []
+        var sellOrders: [ActiveOrderModel] = []
         
         for order in orders {
             order.side == .buy ? buyOrders.append(order) : sellOrders.append(order)

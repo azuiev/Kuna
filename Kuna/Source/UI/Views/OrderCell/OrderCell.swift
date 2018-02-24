@@ -32,17 +32,11 @@ class OrderCell: UITableViewCell {
         self.countSecondCurrencyLabel?.text = viewModel.countSecondCurrency
     }
     
-    var trading: TradingModel? {
-        willSet {
-            newValue.map { [weak self] in
-                self?.fill(trading: TradingViewModel($0))
-            }
-        }
-    }
-    
-    func fill(trading: TradingViewModel) {
-        self.priceLabel?.text = trading.price
-        self.countMainCurrencyLabel?.text = trading.countMainCurrency
-        self.countSecondCurrencyLabel?.text = trading.countSecondCurrency
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.priceLabel?.text = nil
+        self.countMainCurrencyLabel?.text = nil
+        self.countSecondCurrencyLabel?.text = nil
     }
 }

@@ -19,17 +19,26 @@ class UserOrdersContext: UserContext {
     
     private struct Constants {
         static let marketKeyString  = "market"
-        static let marketValue      = "wavesuah"
     }
     
     // MARK: Public Properties
     
+    let market: MarketModel
+    
     override var urlPath: String { return "api/v2/orders" }
+    
+    // MARK: Initialization
+    
+    init(token: AccessTokenModel, market: MarketModel) {
+        self.market = market
+        
+        super.init(token: token)
+    }
     
     // Public Methods
        
     override func updateParameters() {
-        self.parameters[Constants.marketKeyString]  = Constants.marketValue
+        self.parameters[Constants.marketKeyString]  = self.market.marketName
         
         super.updateParameters()
     }

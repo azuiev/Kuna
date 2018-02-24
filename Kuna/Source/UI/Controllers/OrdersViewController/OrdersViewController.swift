@@ -66,7 +66,7 @@ class OrdersViewController: ViewController<OrdersViewModel>, UITableViewDataSour
     // MARK: Private Methods
     
     private func parseOrders(with jsonArray: JSONArray) {
-        let orders = OrdersResponseParser().createAndUpdateOrdersWith(jsonArray: jsonArray)
+        let orders = OrdersParser().createAndUpdateOrdersWith(type: CompletedOrderModel.self, jsonArray: jsonArray)
         self.viewModel.fill(with: orders)
     }
 }

@@ -52,7 +52,7 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
         }
         
         if tableView == self.rootView?.tradings {
-            cell.trading = self.viewModel.tradings[indexPath.row]
+            cell.order = self.viewModel.tradings[indexPath.row]
         }
         
         return cell
@@ -125,12 +125,12 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
     // MARK: Private Methods
     
     private func parseOrders(with json: JSON) {
-        let orders = OrdersResponseParser().createAndUpdateOrdersWith(json: json)
-        self.viewModel.fillOrders(with: OrdersModel(orders: orders))
+        let orders = OrdersParser().createAndUpdateOrdersWith(type: ActiveOrderModel.self, json: json)
+        self.viewModel.fillOrders(with: ActiveOrdersModel(orders: orders))
     }
     
     private func parseTradings(with jsonArray: JSONArray) {
-        let tradings = TradingsResponseParser().createAndUpdateTradingsWith(jsonArray: jsonArray)
+        let tradings = OrdersParser().createAndUpdateOrdersWith(type: CompletedOrderModel.self, jsonArray: jsonArray)
         self.viewModel.fillTradings(with: tradings)
     }
 }

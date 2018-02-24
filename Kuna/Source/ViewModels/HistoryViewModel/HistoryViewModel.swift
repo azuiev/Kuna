@@ -34,6 +34,8 @@ class HistoryViewModel: ViewModel {
     override func updateData() {
         guard let unwrappedMarket = self.market else { return }
         
+        //TODO
+        
         UserHistoryContext(token: self.currentUser.token, market: unwrappedMarket)
             .execute(with: JSONArray.self) { [weak self] in
                 self?.ordersResult.onNext($0)

@@ -67,7 +67,7 @@ class HistoryViewController: ViewController<HistoryViewModel>, UITableViewDataSo
     // MARK: Private Methods
     
     private func parseOrders(with jsonArray: JSONArray) {
-        let orders = OrdersResponseParser().createAndUpdateOrdersWith(jsonArray: jsonArray)
+        let orders = OrdersParser().createAndUpdateOrdersWith(type: OrderModel.self, jsonArray: jsonArray)
         self.viewModel.fill(with: orders)
     }
 }

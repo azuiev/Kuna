@@ -32,7 +32,9 @@ class OrdersViewModel: ViewModel {
     // MARK: Public Methods
     
     override func updateData() {
-        UserOrdersContext(token: self.currentUser.token).execute(with: JSONArray.self) { [weak self] in
+        guard let market = self.market else { return }
+        
+        UserOrdersContext(token: self.currentUser.token, market: market).execute(with: JSONArray.self) { [weak self] in
             self?.ordersResult.onNext($0)
         }
     }

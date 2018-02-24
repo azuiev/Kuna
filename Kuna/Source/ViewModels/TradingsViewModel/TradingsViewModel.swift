@@ -18,7 +18,7 @@ class TradingsViewModel: ViewModel {
     let newOrderSubject = PublishSubject<Void>()
     let buyOrdersSubject = PublishSubject<[OrderModel]>()
     let sellOrdersSubject = PublishSubject<[OrderModel]>()
-    let tradingsSubject = PublishSubject<[TradingModel]>()
+    let tradingsSubject = PublishSubject<[CompletedOrderModel]>()
     
     var buyOrders: [OrderModel] {
         didSet {
@@ -32,7 +32,7 @@ class TradingsViewModel: ViewModel {
         }
     }
     
-    var tradings: [TradingModel] {
+    var tradings: [CompletedOrderModel] {
         didSet {
             self.tradingsSubject.onNext(self.tradings)
         }
@@ -68,12 +68,12 @@ class TradingsViewModel: ViewModel {
         }
     }
     
-    func fillOrders(with orders: OrdersModel) {
+    func fillOrders(with orders: ActiveOrdersModel) {
         self.buyOrders = orders.buyOrders
         self.sellOrders = orders.sellOrders
     }
     
-    func fillTradings(with tradings: [TradingModel]) {
+    func fillTradings(with tradings: [CompletedOrderModel]) {
         self.tradings = tradings
     }
     
