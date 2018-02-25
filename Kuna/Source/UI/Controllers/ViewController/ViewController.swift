@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import MBProgressHUD
 
 class ViewController<T: ControllerViewModel>: UIViewController {
 
@@ -56,6 +57,8 @@ class ViewController<T: ControllerViewModel>: UIViewController {
     // MARK: Public Methods
     
     func check(response: Result<JSON>, with completionHandler: (JSON) -> ()) {
+        self.view.hideHUD()
+        
         let result = response.map {
             completionHandler($0)
         }

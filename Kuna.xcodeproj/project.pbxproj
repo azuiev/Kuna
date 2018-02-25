@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D1567F620309ED800BE0D0A /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1567F520309ED800BE0D0A /* MarketModel.swift */; };
+		1D1C3C432043796A000CB3BB /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1C3C422043796A000CB3BB /* UIView + Extension.swift */; };
 		1D52962C2042B5800078A8E9 /* HistoryOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D52962A2042B5800078A8E9 /* HistoryOrderCell.xib */; };
 		1D52962D2042B5800078A8E9 /* HistoryOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D52962B2042B5800078A8E9 /* HistoryOrderCell.swift */; };
 		1D5296312042B8B60078A8E9 /* CompletedOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D52962F2042B8B50078A8E9 /* CompletedOrderCell.swift */; };
@@ -112,6 +113,7 @@
 
 /* Begin PBXFileReference section */
 		1D1567F520309ED800BE0D0A /* MarketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketModel.swift; sourceTree = "<group>"; };
+		1D1C3C422043796A000CB3BB /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		1D52962A2042B5800078A8E9 /* HistoryOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryOrderCell.xib; sourceTree = "<group>"; };
 		1D52962B2042B5800078A8E9 /* HistoryOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryOrderCell.swift; sourceTree = "<group>"; };
 		1D52962F2042B8B50078A8E9 /* CompletedOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedOrderCell.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 				1D82D6DC20128CC800AC8A84 /* Date+Extension.swift */,
 				1D77C31720134399004DC212 /* NSData+Extension.swift */,
 				1D9335622040B16600FFA724 /* UIColor+Extension.swift */,
+				1D1C3C422043796A000CB3BB /* UIView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1145,6 +1148,7 @@
 				1D71903A2021007F00EA2EC6 /* BalancesModel.swift in Sources */,
 				1D5D463A2034BF8700EF6384 /* CurrenciesModel.swift in Sources */,
 				1D6252A220190E940047CB7C /* BalanceCell.swift in Sources */,
+				1D1C3C432043796A000CB3BB /* UIView + Extension.swift in Sources */,
 				1D5296532042CA9A0078A8E9 /* MarketsViewModel.swift in Sources */,
 				1D52964F2042CA9A0078A8E9 /* BalancesViewModel.swift in Sources */,
 				1D746A61203B3D9000153CAF /* OrdersView.swift in Sources */,
