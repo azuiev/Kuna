@@ -1,14 +1,14 @@
 //
-//  OrderCell.swift
+//  HistoryOrderCell.swift
 //  Kuna
 //
-//  Created by Aleksey Zuiev on 05/02/2018.
+//  Created by Aleksey Zuiev on 24/02/2018.
 //  Copyright © 2018 Aleksey Zuiev. All rights reserved.
 //
 
 import UIKit
 
-class OrderCell: UITableViewCell {
+class HistoryOrderCell: UITableViewCell {
     
     // MARK: IBOutlets
     
@@ -18,15 +18,15 @@ class OrderCell: UITableViewCell {
     
     // MARK Public Properties
     
-    var order: ActiveOrderModel? {
+    var order: HistoryOrderModel? {
         willSet {
             newValue.map { [weak self] in
-                self?.fill(with: ActiveOrderViewModel($0))
+                self?.fill(with: HistoryOrderViewModel($0))
             }
         }
     }
     
-    func fill(with viewModel: ActiveOrderViewModel) {
+    func fill(with viewModel: HistoryOrderViewModel) {
         self.priceLabel?.text = viewModel.price
         self.countMainCurrencyLabel?.text = viewModel.countMainCurrency
         self.countSecondCurrencyLabel?.text = viewModel.countSecondCurrency

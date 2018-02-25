@@ -20,13 +20,13 @@ class TradingsViewModel: ViewModel {
     let sellOrdersSubject = PublishSubject<[OrderModel]>()
     let tradingsSubject = PublishSubject<[CompletedOrderModel]>()
     
-    var buyOrders: [OrderModel] {
+    var buyOrders: [ActiveOrderModel] {
         didSet {
             self.buyOrdersSubject.onNext(self.buyOrders)
         }
     }
     
-    var sellOrders: [OrderModel] {
+    var sellOrders: [ActiveOrderModel] {
         didSet {
             self.sellOrdersSubject.onNext(self.sellOrders)
         }

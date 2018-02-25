@@ -8,11 +8,11 @@
 
 import Foundation
 
-class OrderViewModel {
+class OrderViewModel<T: OrderModel> {
     
     // MARK: Private Properties
     
-    private let order: OrderModel
+    let order: T
     
     // MARK: Public Properties
     
@@ -20,11 +20,10 @@ class OrderViewModel {
     
     var price: String { return priceFormatter.string(from: NSNumber(value: self.order.price)) ?? "" }
     var countMainCurrency: String { return String(format: "%.8f", self.order.volumeMain) }
-    var countSecondCurrency: String { return String(format: "%.8f", self.order.price * self.order.volumeMain) }
     
     // MARK: Initialization
     
-    init(_ order: OrderModel) {
+    init(_ order: T) {
         self.order = order
         
         self.priceFormatter.minimumFractionDigits = 0

@@ -16,12 +16,7 @@ extension TradingsViewController: RootView {
 
 class TradingsViewController: ViewController<TradingsViewModel>, UITableViewDataSource {
 
-    // MARK: Enum
-    
-    private enum ResultType {
-        case orders
-        case tradings
-    }
+    // MARK:
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.rootView?.buyOrders  {
@@ -40,22 +35,28 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = OrderCell()
-        cell = tableView.reusableCell(with: OrderCell.self, indexPath: indexPath)
-        
-        if tableView == self.rootView?.buyOrders {
+        if tableView == self.rootView?.buyOrders  {
+            let cell = tableView.reusableCell(with: OrderCell.self, indexPath: indexPath)
             cell.order = self.viewModel.buyOrders[indexPath.row]
+            
+            return cell
         }
         
         if tableView == self.rootView?.sellOrders {
+            let cell = tableView.reusableCell(with: OrderCell.self, indexPath: indexPath)
             cell.order = self.viewModel.sellOrders[indexPath.row]
+            
+            return cell
         }
         
         if tableView == self.rootView?.tradings {
+            let cell = tableView.reusableCell(with: CompletedOrderCell.self, indexPath: indexPath)
             cell.order = self.viewModel.tradings[indexPath.row]
+            
+            return cell
         }
         
-        return cell
+        return tableView.reusableCell(with: OrderCell.self, indexPath: indexPath)
     }
     // MARK: Initialization
     
@@ -110,11 +111,12 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
         
         self.rootView?.fill(with: self.viewModel)
         
-        let nib = UINib(nibName: toString(OrderCell.self), bundle: .main)
+        let nibOrderCell = UINib(nibName: toString(OrderCell.self), bundle: .main)
+        let nibCompletedOrderCell = UINib(nibName: toString(CompletedOrderCell.self), bundle: .main)
         
-        self.rootView?.buyOrders?.register(nib, forCellReuseIdentifier: toString(OrderCell.self))
-        self.rootView?.sellOrders?.register(nib, forCellReuseIdentifier: toString(OrderCell.self))
-        self.rootView?.tradings?.register(nib, forCellReuseIdentifier: toString(OrderCell.self))
+        self.rootView?.buyOrders?.register(nibOrderCell, forCellReuseIdentifier: toString(OrderCell.self))
+        self.rootView?.sellOrders?.register(nibOrderCell, forCellReuseIdentifier: toString(OrderCell.self))
+        self.rootView?.tradings?.register(nibCompletedOrderCell, forCellReuseIdentifier: toString(CompletedOrderCell.self))
     }
 
     override func viewWillDisappear(_ animated: Bool) {

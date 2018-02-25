@@ -15,7 +15,7 @@ class OrdersViewModel: ViewModel {
     let ordersResult = PublishSubject<Result<JSONArray>>()
     let ordersSubject = PublishSubject<[OrderModel]>()
     
-    var orders: [OrderModel] {
+    var orders: [ActiveOrderModel] {
         didSet {
             self.ordersSubject.onNext(self.orders)
         }
@@ -23,7 +23,7 @@ class OrdersViewModel: ViewModel {
     
     // MARK: Initialization
     
-    init(user: CurrentUserModel, orders: [OrderModel]) {
+    init(user: CurrentUserModel, orders: [ActiveOrderModel]) {
         self.orders = orders
         
         super.init(user)
@@ -39,7 +39,7 @@ class OrdersViewModel: ViewModel {
         }
     }
     
-    func fill(with orders: [OrderModel]) {
+    func fill(with orders: [ActiveOrderModel]) {
         self.orders = orders
     }
 }

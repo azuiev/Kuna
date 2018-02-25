@@ -23,7 +23,7 @@ class HistoryViewController: ViewController<HistoryViewModel>, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.reusableCell(with: OrderCell.self, indexPath: indexPath)
+        let cell = tableView.reusableCell(with: HistoryOrderCell.self, indexPath: indexPath)
         
         cell.order = self.viewModel.orders[indexPath.row]
         
@@ -59,15 +59,15 @@ class HistoryViewController: ViewController<HistoryViewModel>, UITableViewDataSo
         
         self.rootView?.fill(with: self.viewModel)
         
-        let nib = UINib(nibName: toString(OrderCell.self), bundle: .main)
+        let nib = UINib(nibName: toString(HistoryOrderCell.self), bundle: .main)
         
-        self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(OrderCell.self))
+        self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(HistoryOrderCell.self))
     }
     
     // MARK: Private Methods
     
     private func parseOrders(with jsonArray: JSONArray) {
-        let orders = OrdersParser().createAndUpdateOrdersWith(type: OrderModel.self, jsonArray: jsonArray)
+        let orders = OrdersParser().createAndUpdateOrdersWith(type: HistoryOrderModel.self, jsonArray: jsonArray)
         self.viewModel.fill(with: orders)
     }
 }

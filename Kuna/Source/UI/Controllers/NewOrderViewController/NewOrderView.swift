@@ -34,7 +34,7 @@ class NewOrderView: UIView, UITextFieldDelegate {
     
     // MARK: Public Methods
     
-    func fill(with viewModel: OrderViewModel) {
+    func fill(with viewModel: ActiveOrderViewModel) {
         
     }
 }

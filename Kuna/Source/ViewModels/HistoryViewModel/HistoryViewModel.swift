@@ -13,9 +13,9 @@ class HistoryViewModel: ViewModel {
     // MARK: Public Properties
     
     let ordersResult = PublishSubject<Result<JSONArray>>()
-    let ordersSubject = PublishSubject<[OrderModel]>()
+    let ordersSubject = PublishSubject<[HistoryOrderModel]>()
     
-    var orders: [OrderModel] {
+    var orders: [HistoryOrderModel] {
         didSet {
             self.ordersSubject.onNext(self.orders)
         }
@@ -23,7 +23,7 @@ class HistoryViewModel: ViewModel {
 
     // MARK: Initialization
     
-    init(user: CurrentUserModel, orders: [OrderModel]) {
+    init(user: CurrentUserModel, orders: [HistoryOrderModel]) {
         self.orders = orders
         
         super.init(user)
@@ -42,7 +42,7 @@ class HistoryViewModel: ViewModel {
         }
     }
     
-    func fill(with orders: [OrderModel]) {
+    func fill(with orders: [HistoryOrderModel]) {
         self.orders = orders
     }
 }

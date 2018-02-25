@@ -87,6 +87,8 @@ class OrdersParser {
         switch orderType {
         case is ActiveOrderModel.Type:
             order = self.activeOrderModel(with: json)
+        case is HistoryOrderModel.Type:
+            order = self.historyOrderModel(with: json)
         case is CompletedOrderModel.Type:
             order = self.completedOrderModel(with: json)
         default:
@@ -103,7 +105,6 @@ class OrdersParser {
     }
     
     private func update(order: OrderModel, with json: JSON) {
-        let order = OrderModel()
         if let id = json[Constants.idKey] as? Int { order.id = id }
         if let market = json[Constants.marketKey] as? String { order.market = market }
         if let date = json[Constants.dateKey] as? Date { order.createdTime = date }
@@ -150,6 +151,21 @@ class OrdersParser {
         
         self.update(order: order, with: json)
         
+        if let volumeSecondString = json[Constants.volumeMainKey] as? String {
+            Double(volumeSecondString).map {
+                order.volumeSecond = $0
+            }
+        }
+        
+        return order
+    }
+    
+    private func historyOrderModel(with json: JSON) -> HistoryOrderModel {
+        let order = HistoryOrderModel()
+        
+        self.update(order: order, with: json)
+        
+        if let side = json[Constants.sideKey] as? String { order.side = OrderSide(rawValue: side) }
         if let volumeSecondString = json[Constants.volumeMainKey] as? String {
             Double(volumeSecondString).map {
                 order.volumeSecond = $0

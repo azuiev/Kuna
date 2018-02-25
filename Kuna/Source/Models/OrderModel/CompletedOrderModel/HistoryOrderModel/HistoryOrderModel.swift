@@ -1,5 +1,5 @@
 //
-//  UserCompletedOrderModel.swift
+//  HistoryOrderModel.swift
 //  Kuna
 //
 //  Created by Aleksey Zuiev on 18/02/2018.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-class UserCompletedOrderModel: OrderModel {
+class HistoryOrderModel: CompletedOrderModel {
     
     // MARK: Public Properties
     
-    var side: OrderSide = .buy
+    var side: OrderSide? = .buy
 }
