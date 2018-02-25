@@ -38,17 +38,10 @@ class OrdersViewModel: ControllerViewModel {
     }
     
     override func updateModelFromDbData(with market: MarketModel) {
-        let dbOrders = RealmService.shared.getObjectsWith(type: ActiveOrderModel.self,
-                                                          filter: self.configureFilter(with: market))
-        
-        if dbOrders.count > 0 {
-            self.orders = dbOrders
-        }
+
     }
     
     func fill(with orders: [ActiveOrderModel]) {
         self.orders = orders
-        
-        self.updateDbData(with: orders)
     }
 }

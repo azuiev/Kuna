@@ -8,7 +8,9 @@ target ‘Kuna’ do
   pod 'RxSwift’,    '~> 4.0'
   pod 'RxCocoa’,    '~> 4.0'  
   pod 'Alamofire',  ‘~> 4.5'
+  pod ’MBProgressHUD’, '~> 1.1.0'
   pod ’RealmSwift’
+
   # Pods for SwiftFB
 
 end
