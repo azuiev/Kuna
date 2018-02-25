@@ -11,20 +11,6 @@ import RealmSwift
 
 class DBModel: Object {
     
-    // MARK: Class Methods
-    
-    static func getObjectsWith<T: DBModel>(type: T.Type) -> [T] {
-        return RealmService.shared.getObjectsWith(type: type)
-    }
-    
-    static func deleteObjectsWith<T: DBModel>(type: T.Type) {
-        RealmService.shared.deleteObjectsWith(type: type)
-    }
-    
-    static func deleteAll() {
-        RealmService.shared.deleteAll()
-    }
-    
     // MARK: Public Methods
     
     func update() {

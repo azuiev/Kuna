@@ -67,7 +67,7 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
             .asObservable()
             .subscribe { [weak self] _ in
                 if let currentUser = self?.viewModel.currentUser {
-                    let controller = NewOrderViewController(ViewModel(currentUser)) { 
+                    let controller = NewOrderViewController(ControllerViewModel(currentUser)) { 
                         print($0)
                     }
                     

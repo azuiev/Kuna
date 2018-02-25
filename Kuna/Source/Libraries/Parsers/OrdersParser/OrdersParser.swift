@@ -166,7 +166,7 @@ class OrdersParser {
         self.update(order: order, with: json)
         
         if let side = json[Constants.sideKey] as? String { order.side = OrderSide(rawValue: side) }
-        if let volumeSecondString = json[Constants.volumeMainKey] as? String {
+        if let volumeSecondString = json[Constants.volumeSecondKey] as? String {
             Double(volumeSecondString).map {
                 order.volumeSecond = $0
             }

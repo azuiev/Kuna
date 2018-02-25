@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class TradingsViewModel: ViewModel {
+class TradingsViewModel: ControllerViewModel {
     
     // MARK: Public Properties
     
@@ -71,17 +71,45 @@ class TradingsViewModel: ViewModel {
     func fillOrders(with orders: ActiveOrdersModel) {
         self.buyOrders = orders.buyOrders
         self.sellOrders = orders.sellOrders
+        
+        for order in orders.buyOrders {
+            order.update()
+        }
+        
+        for order in orders.sellOrders {
+            order.update()
+        }
     }
     
     func fillTradings(with tradings: [CompletedOrderModel]) {
         self.tradings = tradings
+        
+        for order in tradings {
+            order.update()
+        }
     }
     
-    override func updateData() {
-        self.market.map {
-            OrdersContext(market: $0).execute(with: JSON.self) { [weak self] in
-                self?.ordersResult.onNext($0)
-            }
+    override func executeContext(with market: MarketModel) {
+        OrdersContext(market: market).execute(with: JSON.self) { [weak self] in
+            self?.ordersResult.onNext($0)
+        }
+    }
+    
+    override func updateModelFromDbData(with market: MarketModel) {
+        let dbActiveBuyOrders = RealmService.shared.getObjectsWith(type: ActiveOrderModel.self,
+                                                          filter: self.configureFilter(with: market))
+        let dbActiveSellOrders = RealmService.shared.getObjectsWith(type: ActiveOrderModel.self,
+                                                                   filter: self.configureFilter(with: market))
+        let dbCompletedOrders = RealmService.shared.getObjectsWith(type: CompletedOrderModel.self,
+                                                                    filter: self.configureFilter(with: market))
+        if dbActiveBuyOrders.count > 0 {
+            self.buyOrders = dbActiveBuyOrders
+        }
+        if dbActiveSellOrders.count > 0 {
+            self.sellOrders = dbActiveSellOrders
+        }
+        if dbCompletedOrders.count > 0 {
+            self.tradings = dbCompletedOrders
         }
     }
     

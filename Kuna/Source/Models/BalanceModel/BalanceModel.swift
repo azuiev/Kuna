@@ -11,6 +11,8 @@ import Foundation
 // MARK: Protocol Equtable
 
 extension Equatable where Self: BalanceModel {
+    var hashValue: Int { return self.currency.hashValue % self.count.hashValue }
+    
     static func ==(lhs: Self, rhs: Self) -> Bool {
         return lhs.currency == rhs.currency && lhs.count == rhs.count
     }

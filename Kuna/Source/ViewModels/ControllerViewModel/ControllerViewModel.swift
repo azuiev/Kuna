@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  ControllerViewModel.swift
 //  Kuna
 //
 //  Created by Aleksey Zuiev on 30/01/2018.
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class ViewModel {
+class ControllerViewModel {
     
     // MARK: Public Properties
     
@@ -37,6 +37,27 @@ class ViewModel {
     // MARK: Public Methods
     
     func updateData() {
+        guard let unwrappedMarket = self.market else { return }
         
+        self.updateModelFromDbData(with: unwrappedMarket)
+        self.executeContext(with: unwrappedMarket)
+    }
+    
+    func executeContext(with market: MarketModel) {
+        
+    }
+    
+    func updateModelFromDbData(with market: MarketModel) {
+       
+    }
+    
+    func updateDbData(with array: [DBModel]) {
+        for order in array {
+            order.update()
+        }
+    }
+    
+    func configureFilter(with market: MarketModel) -> NSPredicate {
+        return NSPredicate(format: "market = %@", market.marketName)
     }
 }

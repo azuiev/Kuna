@@ -8,13 +8,14 @@
 
 import UIKit
 
-class MarketsViewModel: ViewModel {
+class MarketsViewModel: ControllerViewModel {
     
     // MARK: Public Properties
     
     var markets: [MarketModel]?
     
     // MARK: Initialization
+    
     init(user: CurrentUserModel) {
         super.init(user)
     }

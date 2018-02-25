@@ -27,4 +27,10 @@ extension UITableView {
         
         self.endUpdates()
     }
+    
+    override open func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.tableFooterView = UIView(frame: .zero)
+    }
 }

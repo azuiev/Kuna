@@ -14,7 +14,7 @@ extension NewOrderViewController: RootView {
     typealias ViewType = NewOrderView
 }
 
-class NewOrderViewController: ViewController<ViewModel> {
+class NewOrderViewController: ViewController<ControllerViewModel> {
 
     // MARK: Public Properties
     
@@ -35,7 +35,7 @@ class NewOrderViewController: ViewController<ViewModel> {
             .disposed(by: self.viewModel.disposeBag)
     }
     
-    init(_ viewModel: ViewModel, completion: @escaping (OrderModel) -> ()) {
+    init(_ viewModel: ControllerViewModel, completion: @escaping (OrderModel) -> ()) {
         self.completion = completion
                 
         super.init(viewModel)

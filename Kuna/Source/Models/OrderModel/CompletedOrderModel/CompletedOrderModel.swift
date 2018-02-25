@@ -12,5 +12,5 @@ class CompletedOrderModel: OrderModel {
     
     // MARK: Public Properties
     
-    var volumeSecond: Double = 0.0
+    dynamic var volumeSecond: Double = 0.0
 }

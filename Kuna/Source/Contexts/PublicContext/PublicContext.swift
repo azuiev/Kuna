@@ -42,8 +42,15 @@ class PublicContext: Context {
     func execute<T>(with resultType: T.Type, completionHandler: @escaping (Result<T>) -> ()) {
         self.updateParameters()
         
-        Alamofire.request(self.fullUrl, method: self.httpMethod, parameters: parameters)
-            .responseJSON {
+        DispatchQueue.global(qos: .background).async {
+            
+        sleep(2)
+        
+        Alamofire.request(self.fullUrl,
+                          method: self.httpMethod,
+                          parameters: self.parameters)
+            .responseJSON(queue: DispatchQueue.main) {
+                
                 switch $0.result {
                 case .success(let value):
                     if let result = value as? T {
@@ -55,6 +62,7 @@ class PublicContext: Context {
                     completionHandler(Result.Failure(error))
                 }
         }
+    }
     }
     
     func parseSuccessResponse<T>(response: T, with completionHandler: (Result<T>) -> ()) {

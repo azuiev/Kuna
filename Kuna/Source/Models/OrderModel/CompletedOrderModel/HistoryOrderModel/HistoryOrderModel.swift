@@ -12,5 +12,5 @@ class HistoryOrderModel: CompletedOrderModel {
     
     // MARK: Public Properties
     
-    var side: OrderSide? = .buy
+    dynamic var side: OrderSide? = .buy
 }

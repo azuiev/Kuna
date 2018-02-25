@@ -10,14 +10,16 @@ import Foundation
 import RealmSwift
 
 class CurrencyiesModel {
-    
+
     // MARK: Private Properties
     
     private var currencies: [String : CurrencyModel] = [:]
     
     // MARK: Initialization
     
-    init(_ currencies: [CurrencyModel]) {
+    static let shared = CurrencyiesModel(CurrencyModel.performLoading())
+    
+    private init(_ currencies: [CurrencyModel]) {
         for currency in currencies {
             self.currencies[currency.code] = currency
         }
@@ -31,7 +33,6 @@ class CurrencyiesModel {
         }
         
         let currency = CurrencyModel(code: code)
-        currency.create()
         
         self.currencies[code] = currency
         

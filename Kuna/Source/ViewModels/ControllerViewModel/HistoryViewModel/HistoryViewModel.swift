@@ -8,7 +8,7 @@
 
 import RxSwift
 
-class HistoryViewModel: ViewModel {
+class HistoryViewModel: ControllerViewModel {
     
     // MARK: Public Properties
     
@@ -31,18 +31,25 @@ class HistoryViewModel: ViewModel {
     
     // MARK: Public Methods
     
-    override func updateData() {
-        guard let unwrappedMarket = self.market else { return }
-        
-        //TODO
-        
-        UserHistoryContext(token: self.currentUser.token, market: unwrappedMarket)
+    override func executeContext(with market: MarketModel) {
+        UserHistoryContext(token: self.currentUser.token, market: market)
             .execute(with: JSONArray.self) { [weak self] in
                 self?.ordersResult.onNext($0)
         }
     }
     
+    override func updateModelFromDbData(with market: MarketModel) {
+        let dbOrders = RealmService.shared.getObjectsWith(type: HistoryOrderModel.self,
+                                                          filter: self.configureFilter(with: market))
+        
+        if dbOrders.count > 0 {
+            self.orders = dbOrders
+        }
+    }
+    
     func fill(with orders: [HistoryOrderModel]) {
         self.orders = orders
+        
+        self.updateDbData(with: orders)
     }
 }

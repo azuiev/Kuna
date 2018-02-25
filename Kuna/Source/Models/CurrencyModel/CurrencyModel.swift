@@ -11,7 +11,7 @@ import RealmSwift
 
 // MARK: Protocols
 
-extension Hashable where Self: CurrencyModel {
+extension Equatable where Self: CurrencyModel {
     var hashValue: Int { return self.name.hashValue }
     
     static func ==(lhs: Self, rhs: Self) -> Bool {
@@ -19,11 +19,8 @@ extension Hashable where Self: CurrencyModel {
     }
 }
 
-extension CurrencyModel: Loadable {
-    
-    static func performLoading() {
-        DBModel.deleteObjectsWith(type: self)
-        
+extension CurrencyModel {
+    static func performLoading() -> [CurrencyModel] {
         let currencies = [("UAH", "Hryvnia"),
                           ("BTC", "Bitcoin"),
                           ("KUN", "KUN"),
@@ -42,25 +39,27 @@ extension CurrencyModel: Loadable {
                           ("FOOD", "FoodCoin"),
                           ("OTX", "Octanox")]
         
+        var result: [CurrencyModel] = []
+        
         for (code, name) in currencies {
-            CurrencyModel(code: code, name: name).create()
+            result.append(CurrencyModel(code: code, name: name))
         }
+        
+        return result
     }
 }
 
-@objcMembers class CurrencyModel: DBModel {
+class CurrencyModel: Equatable {
     
     // MARK: Public property
     
-    dynamic var code: String = ""
-    dynamic var name: String = ""
-    dynamic var image: String = "default"
+    var code: String = ""
+    var name: String = ""
+    var image: String = "default"
     
     // MARK: Inititalization
     
-    convenience init(code: String, name: String) {
-        self.init()
-        
+    init(code: String, name: String) {
         let lowercaseCode = code.lowercased()
         self.code = lowercaseCode
         self.name = name

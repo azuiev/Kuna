@@ -60,7 +60,7 @@ extension MarketModel {
                        ("food", "btc"),
                        ("otx", "btc")]
         
-        let currencies = CurrencyiesModel(DBModel.getObjectsWith(type: CurrencyModel.self))
+        let currencies = CurrencyiesModel.shared
         
         var result: [MarketModel] = []
         for(mainCurrencyCode, secondaryCurrencyCode) in currenciesPair {
@@ -94,7 +94,7 @@ class MarketModel {
     
     
     convenience init (_ mainCurrencyCode: String, _ secondaryCurrencyCode: String) {
-        let currencies = CurrencyiesModel(DBModel.getObjectsWith(type: CurrencyModel.self))
+        let currencies = CurrencyiesModel.shared
         
         self.init(mainCurrency: currencies.getCurrency(with: mainCurrencyCode),
                   secondaryCurrency: currencies.getCurrency(with: secondaryCurrencyCode))

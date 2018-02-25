@@ -22,11 +22,11 @@ class ActiveOrderModel: OrderModel {
    
     // MARK: Public Properties
     
-    var side: OrderSide? = .buy
-    var type: OrderType? = .limit
-    var averagePrice: Double = 0.0
-    var state: String = "wait"
-    var remainingVolume: Double = 0.0
-    var executedVolume: Double = 0.0
-    var tradesCount: Int = 0
+    dynamic var side: OrderSide? = .buy
+    dynamic var type: OrderType? = .limit
+    dynamic var averagePrice: Double = 0.0
+    dynamic var state: String = "wait"
+    dynamic var remainingVolume: Double = 0.0
+    dynamic var executedVolume: Double = 0.0
+    dynamic var tradesCount: Int = 0
 }

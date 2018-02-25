@@ -7,14 +7,19 @@
 //
 
 import Foundation
+import RealmSwift
 
-class OrderModel {
+@objcMembers class OrderModel: DBModel {
     
     // MARK: Public Properties
     
-    var id: Int = 0
-    var price: Double = 0.0
-    var volumeMain: Double = 0.0
-    var market: String = ""
-    var createdTime: Date = Date()
+    dynamic var id: Int = 0
+    dynamic var price: Double = 0.0
+    dynamic var volumeMain: Double = 0.0
+    dynamic var market: String = ""
+    dynamic var createdTime: Date = Date()
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 }

@@ -21,11 +21,11 @@ class RealmService {
     
     // MARK: Public Methods
     
-    func getObjectsWith<T: Object>(type: T.Type, filter: String? = nil) -> [T] {
+    func getObjectsWith<T: Object>(type: T.Type, filter: NSPredicate? = nil) -> [T] {
         if let unwrappedFilter = filter {
             return Array(realm.objects(type).filter(unwrappedFilter))
         }
-        
+ 
         return Array(realm.objects(type))
     }
     

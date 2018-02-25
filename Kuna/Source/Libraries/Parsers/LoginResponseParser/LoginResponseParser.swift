@@ -35,10 +35,10 @@ class LoginResponseParser {
         let balances = BalancesModel(array: [BalanceModel]())
         
         if let currenciesJSON = json[Constants.currenciesKey] as? JSONArray {
-            let dbCurrencies = CurrencyiesModel(DBModel.getObjectsWith(type: CurrencyModel.self))
+            let currencies = CurrencyiesModel.shared
             for currencyJSON in currenciesJSON {
                 if let currencyCode = currencyJSON[Constants.currencyKey] as? String {
-                    let currency = dbCurrencies.getCurrency(with: currencyCode)
+                    let currency = currencies.getCurrency(with: currencyCode)
                     let balance = BalanceModel(currency: currency)
                     
                     if let count = currencyJSON[Constants.balanceKey] as? String {

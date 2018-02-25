@@ -8,7 +8,7 @@
 
 import RxSwift
 
-class OrdersViewModel: ViewModel {
+class OrdersViewModel: ControllerViewModel {
     
     // MARK: Public Properties
     
@@ -31,15 +31,24 @@ class OrdersViewModel: ViewModel {
     
     // MARK: Public Methods
     
-    override func updateData() {
-        guard let market = self.market else { return }
-        
+    override func executeContext(with market: MarketModel) {
         UserOrdersContext(token: self.currentUser.token, market: market).execute(with: JSONArray.self) { [weak self] in
             self?.ordersResult.onNext($0)
         }
     }
     
+    override func updateModelFromDbData(with market: MarketModel) {
+        let dbOrders = RealmService.shared.getObjectsWith(type: ActiveOrderModel.self,
+                                                          filter: self.configureFilter(with: market))
+        
+        if dbOrders.count > 0 {
+            self.orders = dbOrders
+        }
+    }
+    
     func fill(with orders: [ActiveOrderModel]) {
         self.orders = orders
+        
+        self.updateDbData(with: orders)
     }
 }

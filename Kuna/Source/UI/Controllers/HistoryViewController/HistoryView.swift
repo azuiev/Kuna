@@ -20,11 +20,18 @@ class HistoryView: MainView {
     
     // IBOutlets
     
-    @IBOutlet var tableView: UITableView?
+    @IBOutlet var tableView: UITableView? 
     
     // MARK: Public Properties
     
     override var tabName: String { return Constants.tabName }
+    
+    // MARK: View Lifecycle
+    override func awakeFromNib() {
+        super .awakeFromNib()
+        
+
+    }
     
     // MARK: Public Methods
     

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BalancesViewModel: ViewModel {
+class BalancesViewModel: ControllerViewModel {
     
     // MARK: Public Properties
     

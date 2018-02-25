@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class LoginViewModel: ViewModel {
+class LoginViewModel: ControllerViewModel {
     
     // MARK: Public Properties
     

@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class ViewController<T: ViewModel>: UIViewController {
+class ViewController<T: ControllerViewModel>: UIViewController {
 
     // MARK: Public Properties
     
