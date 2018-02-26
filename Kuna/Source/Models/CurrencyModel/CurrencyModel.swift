@@ -21,28 +21,25 @@ extension Equatable where Self: CurrencyModel {
 
 extension CurrencyModel {
     static func performLoading() -> [CurrencyModel] {
-        let currencies = [("UAH", "Hryvnia"),
-                          ("BTC", "Bitcoin"),
-                          ("KUN", "KUN"),
-                          ("GOL", "GOLOS"),
-                          ("ETH", "Ethereum"),
-                          ("WAVES", "Waves"),
-                          ("BCH", "Bitcoin Cash"),
-                          ("GBG", "Golos Gold"),
-                          ("RMC", "Russian miner coin"),
-                          ("R", "Revain"),
-                          ("ARN", "Aeron"),
-                          ("EVR", "Everus"),
-                          ("B2B", "B2B"),
-                          ("XRP", "Ripple"),
-                          ("EOS", "EOS"),
-                          ("FOOD", "FoodCoin"),
-                          ("OTX", "Octanox")]
         
         var result: [CurrencyModel] = []
         
-        for (code, name) in currencies {
-            result.append(CurrencyModel(code: code, name: name))
+        if let path = Bundle.main.path(forResource: "Data", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? JSON {
+                    if let currencies = jsonResult["currencies"] as? JSONArray {
+                        for item in currencies {
+                            if let code = item["code"] as? String, let name = item["name"] as? String {
+                                result.append(CurrencyModel(code: code, name: name))
+                            }
+                        }
+                    }
+                }
+            } catch {
+                print("Achtung!")
+            }
         }
         
         return result

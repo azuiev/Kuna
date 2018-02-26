@@ -1,0 +1,45 @@
+{
+    "currencies" : [
+                    { "code":"btc","name":"Bitcoin" },
+                    { "code":"uah","name":"Hryvnia" },
+                    { "code":"kun","name":"Kun" },
+                    { "code":"gol","name":"Golos" },
+                    { "code":"eth","name":"Etherium" },
+                    { "code":"waves","name":"Waves" },
+                    { "code":"bch","name":"Bitcoin Cash" },
+                    { "code":"waves","name":"Waves" },
+                    { "code":"gbg","name":"Golos Gold" },
+                    { "code":"rmc","name":"Russian miner coin" },
+                    { "code":"r","name":"Revain" },
+                    { "code":"arn","name":"Aeron" },
+                    { "code":"evr","name":"Everus" },
+                    { "code":"b2b","name":"B2B" },
+                    { "code":"xrp","name":"Ripple" },
+                    { "code":"eos","name":"EOS" },
+                    { "code":"food","name":"FoodCoin" },
+                    { "code":"otx","name":"Octanox" },
+                    { "code":"hkn","name":"Hacken" }
+                    ],
+    "markets" : [
+                 {"main":"btc","second":"uah"},
+                 {"main":"eth","second":"uah"},
+                 {"main":"waves","second":"uah"},
+                 {"main":"gbg","second":"uah"},
+                 {"main":"bch","second":"uah"},
+                 {"main":"kun","second":"btc"},
+                 {"main":"gol","second":"gbg"},
+                 {"main":"bch","second":"btc"},
+                 {"main":"rmc","second":"btc"},
+                 {"main":"r","second":"btc"},
+                 {"main":"arn","second":"btc"},
+                 {"main":"evr","second":"btc"},
+                 {"main":"b2b","second":"btc"},
+                 {"main":"xrp","second":"uah"},
+                 {"main":"eos","second":"btc"},
+                 {"main":"food","second":"btc"},
+                 {"main":"otx","second":"btc"},
+                 {"main":"hkn","second":"btc"}
+                 ]
+}
+
+

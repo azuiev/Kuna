@@ -63,6 +63,7 @@
 		1D6B3DEC2014EF92009BBAF7 /* BalancesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6B3DE32014EF92009BBAF7 /* BalancesViewController.xib */; };
 		1D6F74FD20361560003E4326 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F74FC20361560003E4326 /* Loadable.swift */; };
 		1D71903A2021007F00EA2EC6 /* BalancesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7190392021007F00EA2EC6 /* BalancesModel.swift */; };
+		1D724BDB204493C300747A4D /* Data.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D724BDA204493C300747A4D /* Data.json */; };
 		1D72CEA7203E134C00288DED /* MarketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72CEA4203E134B00288DED /* MarketsView.swift */; };
 		1D72CEA8203E134C00288DED /* MarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72CEA5203E134B00288DED /* MarketsViewController.swift */; };
 		1D72CEA9203E134C00288DED /* MarketsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D72CEA6203E134B00288DED /* MarketsViewController.xib */; };
@@ -168,6 +169,7 @@
 		1D6B3DE32014EF92009BBAF7 /* BalancesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BalancesViewController.xib; sourceTree = "<group>"; };
 		1D6F74FC20361560003E4326 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		1D7190392021007F00EA2EC6 /* BalancesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesModel.swift; sourceTree = "<group>"; };
+		1D724BDA204493C300747A4D /* Data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Data.json; sourceTree = "<group>"; };
 		1D72CEA4203E134B00288DED /* MarketsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsView.swift; sourceTree = "<group>"; };
 		1D72CEA5203E134B00288DED /* MarketsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsViewController.swift; sourceTree = "<group>"; };
 		1D72CEA6203E134B00288DED /* MarketsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketsViewController.xib; sourceTree = "<group>"; };
@@ -771,6 +773,7 @@
 				1D7591181FFECED200573899 /* LaunchScreen.storyboard */,
 				1D75911A1FFECED200573899 /* Main.storyboard */,
 				1D82D6DF2012A40200AC8A84 /* Header.h */,
+				1D724BDA204493C300747A4D /* Data.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1030,6 +1033,7 @@
 				1D72CEA9203E134C00288DED /* MarketsViewController.xib in Resources */,
 				1D746A60203B3D9000153CAF /* OrdersViewController.xib in Resources */,
 				1D6B3DEC2014EF92009BBAF7 /* BalancesViewController.xib in Resources */,
+				1D724BDB204493C300747A4D /* Data.json in Resources */,
 				1D8B84C4203F46B5004B74F1 /* MarketCell.xib in Resources */,
 				1D9335672040BC0A00FFA724 /* MarketView.xib in Resources */,
 				1D93355E204089C800FFA724 /* NewOrderViewController.xib in Resources */,

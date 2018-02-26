@@ -42,31 +42,28 @@ extension MarketModel {
             return nil
         }
         
-        let currenciesPair = [("btc", "uah"),
-                       ("eth", "uah"),
-                       ("waves", "uah"),
-                       ("gbg", "uah"),
-                       ("bch", "uah"),
-                       ("kun", "btc"),
-                       ("gol", "gbg"),
-                       ("bch", "btc"),
-                       ("rmc", "btc"),
-                       ("r", "btc"),
-                       ("arn", "btc"),
-                       ("evr", "btc"),
-                       ("b2b", "btc"),
-                       ("xrp", "uah"),
-                       ("eos", "btc"),
-                       ("food", "btc"),
-                       ("otx", "btc")]
-        
         let currencies = CurrencyiesModel.shared
         
         var result: [MarketModel] = []
-        for(mainCurrencyCode, secondaryCurrencyCode) in currenciesPair {
-            createMarket(currencies.getCurrency(with: mainCurrencyCode))?(currencies.getCurrency(with: secondaryCurrencyCode))
-                .map {                    
-                    result.append($0)
+            
+        if let path = Bundle.main.path(forResource: "Data", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? JSON {
+                    if let markets = jsonResult["markets"] as? JSONArray {
+                        for market in markets {
+                            if let main = market["main"] as? String, let second = market["second"] as? String {
+                                createMarket(currencies.getCurrency(with: main))?(currencies.getCurrency(with: second))
+                                    .map {
+                                        result.append($0)
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch {
+                print("Achtung!")
             }
         }
         

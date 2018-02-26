@@ -18,7 +18,7 @@ class CurrencyiesModel {
     // MARK: Initialization
     
     static let shared = CurrencyiesModel(CurrencyModel.performLoading())
-    
+
     private init(_ currencies: [CurrencyModel]) {
         for currency in currencies {
             self.currencies[currency.code] = currency

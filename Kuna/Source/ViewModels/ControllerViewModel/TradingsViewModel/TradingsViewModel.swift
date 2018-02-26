@@ -20,6 +20,8 @@ class TradingsViewModel: ControllerViewModel {
     let sellOrdersSubject = PublishSubject<[OrderModel]>()
     let tradingsSubject = PublishSubject<[CompletedOrderModel]>()
     
+    var selectedTable: TableType = .buyTable
+    
     var buyOrders: [ActiveOrderModel] {
         didSet {
             self.buyOrdersSubject.onNext(self.buyOrders)
@@ -56,16 +58,16 @@ class TradingsViewModel: ControllerViewModel {
     
     func onSelectSegment(with table: TableType) {
         guard let unwrappedMarket = self.market else { return }
-        switch table {
-        case .buyTable, .sellTable: self.startUpdating(with: 30) { _ in
-            OrdersContext(market: unwrappedMarket).execute(with: JSON.self) { [weak self] in
-                self?.ordersResult.onNext($0)
-            }}
-        case .tradingsTable: self.startUpdating(with: 30) { _ in
-            TradingsContext(market: unwrappedMarket).execute(with: JSONArray.self) { [weak self] in
-                self?.tradingsResult.onNext($0)
-            }}
+        let oldValue = self.selectedTable
+        self.selectedTable = table
+        
+        if (oldValue == .buyTable && table == .sellTable)
+            || (oldValue == .sellTable && table == .buyTable)
+        {
+            return
         }
+        
+        self.configureUpdating(with: unwrappedMarket)
     }
     
     func fillOrders(with orders: ActiveOrdersModel) {
@@ -90,9 +92,7 @@ class TradingsViewModel: ControllerViewModel {
     }
     
     override func executeContext(with market: MarketModel) {
-        OrdersContext(market: market).execute(with: JSON.self) { [weak self] in
-            self?.ordersResult.onNext($0)
-        }
+       self.configureUpdating(with: market)
     }
     
     override func updateModelFromDbData(with market: MarketModel) {
@@ -113,7 +113,20 @@ class TradingsViewModel: ControllerViewModel {
         }
     }
     
-    // Private Methods
+     // Private Methods
+    
+    private func configureUpdating(with market: MarketModel) {
+        switch self.selectedTable {
+        case .buyTable, .sellTable: self.startUpdating(with: 30) { _ in
+            OrdersContext(market: market).execute(with: JSON.self) { [weak self] in
+                self?.ordersResult.onNext($0)
+            }}
+        case .tradingsTable: self.startUpdating(with: 30) { _ in
+            TradingsContext(market: market).execute(with: JSONArray.self) { [weak self] in
+                self?.tradingsResult.onNext($0)
+            }}
+        }
+    }
     
     private func startUpdating(with interval: Int, block: @escaping (Timer) -> ()) {
         self.disableUpdating()
