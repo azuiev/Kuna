@@ -14,9 +14,9 @@ extension TradingsViewController: RootView {
     typealias ViewType = TradingsView
 }
 
-class TradingsViewController: ViewController<TradingsViewModel>, UITableViewDataSource {
+class TradingsViewController: ViewController<TradingsViewModel>, UITableViewDataSource, UITableViewDelegate {
 
-    // MARK:
+    // MARK: Protocol UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.rootView?.buyOrders  {
@@ -58,6 +58,13 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
         
         return tableView.reusableCell(with: OrderCell.self, indexPath: indexPath)
     }
+    
+    // MARK: Protocol UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.viewModel.lastSelectedOrder = self.viewModel.buyOrders[indexPath.row]
+    }
+    
     // MARK: Initialization
     
     override init(_ viewModel: TradingsViewModel) {
@@ -66,14 +73,15 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
         self.viewModel.newOrderSubject
             .asObservable()
             .subscribe { [weak self] _ in
-                if let currentUser = self?.viewModel.currentUser {
-                    let controller = NewOrderViewController(ControllerViewModel(currentUser)) { 
-                        print($0)
-                    }
-                    
-                    controller.modalPresentationStyle = .overCurrentContext
-                    self?.present(controller, animated: true)
+                guard let unwrappedViewModel = self?.viewModel else { return }
+                
+                let newOrderViewModel = NewOrderViewModel(unwrappedViewModel.currentUser, order: unwrappedViewModel.lastSelectedOrder) {
+                    print($0)
                 }
+                
+                let controller = NewOrderViewController(newOrderViewModel)
+                controller.modalPresentationStyle = .overCurrentContext
+                self?.present(controller, animated: true)
             }
             .disposed(by: self.viewModel.disposeBag)
         

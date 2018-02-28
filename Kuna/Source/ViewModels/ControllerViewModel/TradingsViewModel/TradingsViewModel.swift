@@ -21,6 +21,7 @@ class TradingsViewModel: ControllerViewModel {
     let tradingsSubject = PublishSubject<[CompletedOrderModel]>()
     
     var selectedTable: TableType = .buyTable
+    var lastSelectedOrder: OrderModel?
     
     var buyOrders: [ActiveOrderModel] {
         didSet {

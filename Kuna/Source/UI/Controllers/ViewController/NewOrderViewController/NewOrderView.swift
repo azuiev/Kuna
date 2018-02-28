@@ -34,7 +34,13 @@ class NewOrderView: UIView, UITextFieldDelegate {
     
     // MARK: Public Methods
     
-    func fill(with viewModel: ActiveOrderViewModel) {
-        
+    func fill(with viewModel: NewOrderViewModel) {
+        viewModel.order.map { [weak self] in
+            let orderViewModel = OrderViewModel($0)
+            
+            self?.priceTextField?.text = orderViewModel.price
+            self?.mainCurrencyVolumeTextField?.text = orderViewModel.volumeMainCurrency
+            self?.secondCurrencyVolumeTextField?.text = orderViewModel.volumeSecondCurrency
+        }
     }
 }

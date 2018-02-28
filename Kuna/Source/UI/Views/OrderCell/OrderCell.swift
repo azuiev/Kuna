@@ -28,8 +28,8 @@ class OrderCell: UITableViewCell {
     
     func fill(with viewModel: ActiveOrderViewModel) {
         self.priceLabel?.text = viewModel.price
-        self.countMainCurrencyLabel?.text = viewModel.countMainCurrency
-        self.countSecondCurrencyLabel?.text = viewModel.countSecondCurrency
+        self.countMainCurrencyLabel?.text = viewModel.volumeMainCurrency
+        self.countSecondCurrencyLabel?.text = viewModel.volumeSecondCurrency
     }
     
     override func prepareForReuse() {

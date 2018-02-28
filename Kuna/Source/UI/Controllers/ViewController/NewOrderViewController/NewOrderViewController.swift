@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 // MARK: Protocol ViewViewModel
 
@@ -14,18 +15,27 @@ extension NewOrderViewController: RootView {
     typealias ViewType = NewOrderView
 }
 
-class NewOrderViewController: ViewController<ControllerViewModel> {
+class NewOrderViewController: ViewController<NewOrderViewModel> {
 
-    // MARK: Public Properties
+    // MARK: Initialization
     
-    var order: OrderModel?
-    var completion: (OrderModel) -> ()?
+    override init(_ viewModel: NewOrderViewModel) {
+        super.init(viewModel)
+        
+        // TODO
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.rootView?.fill(with: self.viewModel)
+        
         self.rootView?.cancelButton?
             .rx
             .tap
@@ -33,15 +43,5 @@ class NewOrderViewController: ViewController<ControllerViewModel> {
                 self?.dismiss(animated: true)
             })
             .disposed(by: self.viewModel.disposeBag)
-    }
-    
-    init(_ viewModel: ControllerViewModel, completion: @escaping (OrderModel) -> ()) {
-        self.completion = completion
-                
-        super.init(viewModel)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

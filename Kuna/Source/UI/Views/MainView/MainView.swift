@@ -59,7 +59,7 @@ class MainView: UIView {
     
     // MARK: Public Methods
     
-    func fill<T: ControllerViewModel>(with viewModel: T) {
+    func fill(with viewModel: ControllerViewModel) {
         self.headerView?.marketView?.market = viewModel.market
         
         self.headerView?.marketTapGestureRecognizer?

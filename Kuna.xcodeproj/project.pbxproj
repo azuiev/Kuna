@@ -32,7 +32,7 @@
 		1D573919200BD51500D7E431 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738F6200BD51500D7E431 /* UITableView+Extension.swift */; };
 		1D57391A200BD51500D7E431 /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738F7200BD51500D7E431 /* UIWindow+Extension.swift */; };
 		1D57391B200BD51500D7E431 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738F8200BD51500D7E431 /* Global.swift */; };
-		1D57391C200BD51500D7E431 /* ViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738FA200BD51500D7E431 /* ViewViewModel.swift */; };
+		1D57391C200BD51500D7E431 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738FA200BD51500D7E431 /* RootView.swift */; };
 		1D57391D200BD51500D7E431 /* ArrayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738FD200BD51500D7E431 /* ArrayModel.swift */; };
 		1D57391E200BD51500D7E431 /* ArrayModelAddOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5738FF200BD51500D7E431 /* ArrayModelAddOption.swift */; };
 		1D57391F200BD51500D7E431 /* ArrayModelMoveOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D573900200BD51500D7E431 /* ArrayModelMoveOption.swift */; };
@@ -45,6 +45,29 @@
 		1D5B1C5B2041F21800F59E3D /* ActiveOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5B1C5A2041F21700F59E3D /* ActiveOrderModel.swift */; };
 		1D5B1C5E2041F3F300F59E3D /* CompletedOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5B1C5D2041F3F300F59E3D /* CompletedOrderModel.swift */; };
 		1D5B1C612041F4FC00F59E3D /* HistoryOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5B1C602041F4FC00F59E3D /* HistoryOrderModel.swift */; };
+		1D5CE6792046156F0052C441 /* NewOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6782046156F0052C441 /* NewOrderViewModel.swift */; };
+		1D5CE6D720461A660052C441 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6B920461A660052C441 /* LoginView.swift */; };
+		1D5CE6D820461A660052C441 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6BA20461A660052C441 /* LoginViewController.swift */; };
+		1D5CE6D920461A660052C441 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5CE6BB20461A660052C441 /* LoginViewController.xib */; };
+		1D5CE6DA20461A660052C441 /* MarketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6BD20461A660052C441 /* MarketsView.swift */; };
+		1D5CE6DB20461A660052C441 /* MarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6BE20461A660052C441 /* MarketsViewController.swift */; };
+		1D5CE6DC20461A660052C441 /* MarketsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5CE6BF20461A660052C441 /* MarketsViewController.xib */; };
+		1D5CE6E020461A660052C441 /* BalancesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6C620461A660052C441 /* BalancesView.swift */; };
+		1D5CE6E120461A660052C441 /* BalancesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6C720461A660052C441 /* BalancesViewController.swift */; };
+		1D5CE6E220461A660052C441 /* BalancesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5CE6C820461A660052C441 /* BalancesViewController.xib */; };
+		1D5CE6E320461A660052C441 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6CA20461A660052C441 /* HistoryView.swift */; };
+		1D5CE6E420461A660052C441 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6CB20461A660052C441 /* HistoryViewController.swift */; };
+		1D5CE6E520461A660052C441 /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5CE6CC20461A660052C441 /* HistoryViewController.xib */; };
+		1D5CE6E620461A660052C441 /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6CE20461A660052C441 /* OrdersView.swift */; };
+		1D5CE6E720461A660052C441 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6CF20461A660052C441 /* OrdersViewController.swift */; };
+		1D5CE6E820461A660052C441 /* OrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5CE6D020461A660052C441 /* OrdersViewController.xib */; };
+		1D5CE6E920461A660052C441 /* TradingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6D220461A660052C441 /* TradingsView.swift */; };
+		1D5CE6EA20461A660052C441 /* TradingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6D320461A660052C441 /* TradingsViewController.swift */; };
+		1D5CE6EB20461A660052C441 /* TradingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5CE6D420461A660052C441 /* TradingsViewController.xib */; };
+		1D5CE6EC20461A660052C441 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6D520461A660052C441 /* ViewController.swift */; };
+		1D5CE6F120461AF10052C441 /* NewOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6EE20461AF10052C441 /* NewOrderView.swift */; };
+		1D5CE6F220461AF10052C441 /* NewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5CE6EF20461AF10052C441 /* NewOrderViewController.swift */; };
+		1D5CE6F320461AF10052C441 /* NewOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5CE6F020461AF10052C441 /* NewOrderViewController.xib */; };
 		1D5D1552202B6F10001DB417 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5D1549202B6F10001DB417 /* Context.swift */; };
 		1D5D1553202B6F10001DB417 /* PublicContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5D154B202B6F10001DB417 /* PublicContext.swift */; };
 		1D5D1554202B6F10001DB417 /* OrdersContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5D154D202B6F10001DB417 /* OrdersContext.swift */; };
@@ -55,25 +78,9 @@
 		1D6252A220190E940047CB7C /* BalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6252A120190E940047CB7C /* BalanceCell.swift */; };
 		1D6A23052016721500A25F13 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6A23042016721500A25F13 /* HeaderView.xib */; };
 		1D6A23072016723500A25F13 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6A23062016723500A25F13 /* HeaderView.swift */; };
-		1D6B3DE72014EF92009BBAF7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DDD2014EF92009BBAF7 /* LoginView.swift */; };
-		1D6B3DE82014EF92009BBAF7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DDE2014EF92009BBAF7 /* LoginViewController.swift */; };
-		1D6B3DE92014EF92009BBAF7 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6B3DDF2014EF92009BBAF7 /* LoginViewController.xib */; };
-		1D6B3DEA2014EF92009BBAF7 /* BalancesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DE12014EF92009BBAF7 /* BalancesViewController.swift */; };
-		1D6B3DEB2014EF92009BBAF7 /* BalancesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3DE22014EF92009BBAF7 /* BalancesView.swift */; };
-		1D6B3DEC2014EF92009BBAF7 /* BalancesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6B3DE32014EF92009BBAF7 /* BalancesViewController.xib */; };
-		1D6F74FD20361560003E4326 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6F74FC20361560003E4326 /* Loadable.swift */; };
 		1D71903A2021007F00EA2EC6 /* BalancesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7190392021007F00EA2EC6 /* BalancesModel.swift */; };
 		1D724BDB204493C300747A4D /* Data.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D724BDA204493C300747A4D /* Data.json */; };
-		1D72CEA7203E134C00288DED /* MarketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72CEA4203E134B00288DED /* MarketsView.swift */; };
-		1D72CEA8203E134C00288DED /* MarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D72CEA5203E134B00288DED /* MarketsViewController.swift */; };
-		1D72CEA9203E134C00288DED /* MarketsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D72CEA6203E134B00288DED /* MarketsViewController.xib */; };
 		1D73B02E201A47090087A775 /* BalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73B02D201A47090087A775 /* BalanceModel.swift */; };
-		1D746A5F203B3D9000153CAF /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D746A5C203B3D8F00153CAF /* OrdersViewController.swift */; };
-		1D746A60203B3D9000153CAF /* OrdersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D746A5D203B3D9000153CAF /* OrdersViewController.xib */; };
-		1D746A61203B3D9000153CAF /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D746A5E203B3D9000153CAF /* OrdersView.swift */; };
-		1D746A6B203B7DFC00153CAF /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D746A68203B7DFC00153CAF /* HistoryViewController.swift */; };
-		1D746A6C203B7DFC00153CAF /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D746A69203B7DFC00153CAF /* HistoryViewController.xib */; };
-		1D746A6D203B7DFC00153CAF /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D746A6A203B7DFC00153CAF /* HistoryView.swift */; };
 		1D758AC62024D8CF00419689 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D758AC52024D8CF00419689 /* RealmService.swift */; };
 		1D7591221FFECED200573899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7591141FFECED200573899 /* AppDelegate.swift */; };
 		1D7591241FFECED200573899 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D7591171FFECED200573899 /* Assets.xcassets */; };
@@ -81,7 +88,6 @@
 		1D7591261FFECED200573899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D75911A1FFECED200573899 /* Main.storyboard */; };
 		1D77C31820134399004DC212 /* NSData+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D77C31720134399004DC212 /* NSData+Extension.swift */; };
 		1D77C31B20136B73004DC212 /* AccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D77C31A20136B73004DC212 /* AccessTokenModel.swift */; };
-		1D7875652028EFA7006C07C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7875642028EFA7006C07C3 /* ViewController.swift */; };
 		1D78757620290569006C07C3 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D78757520290569006C07C3 /* OrderCell.swift */; };
 		1D7B9196203A21F30068EEAC /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7B9195203A21F30068EEAC /* OrderModel.swift */; };
 		1D7B9199203A29D10068EEAC /* TradingsContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7B9198203A29D10068EEAC /* TradingsContext.swift */; };
@@ -98,13 +104,7 @@
 		1D8B84D4203F8163004B74F1 /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B84CE203F8163004B74F1 /* UserContext.swift */; };
 		1D8B84D5203F8163004B74F1 /* UserHistoryContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B84D0203F8163004B74F1 /* UserHistoryContext.swift */; };
 		1D8B84D6203F8163004B74F1 /* UserOrdersContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B84D2203F8163004B74F1 /* UserOrdersContext.swift */; };
-		1D8B89B720264FC0002F7361 /* TradingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B89B520264FC0002F7361 /* TradingsViewController.swift */; };
-		1D8B89B820264FC0002F7361 /* TradingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D8B89B620264FC0002F7361 /* TradingsViewController.xib */; };
-		1D8B89BA20265918002F7361 /* TradingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8B89B920265918002F7361 /* TradingsView.swift */; };
 		1D8FEF2E2017BCAB00C65D4C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8FEF2D2017BCAB00C65D4C /* MainView.swift */; };
-		1D93355D204089C800FFA724 /* NewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93355A204089C800FFA724 /* NewOrderViewController.swift */; };
-		1D93355E204089C800FFA724 /* NewOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D93355B204089C800FFA724 /* NewOrderViewController.xib */; };
-		1D93355F204089C800FFA724 /* NewOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93355C204089C800FFA724 /* NewOrderView.swift */; };
 		1D9335632040B16600FFA724 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9335622040B16600FFA724 /* UIColor+Extension.swift */; };
 		1D9335672040BC0A00FFA724 /* MarketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9335652040BC0A00FFA724 /* MarketView.xib */; };
 		1D9335682040BC0A00FFA724 /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9335662040BC0A00FFA724 /* MarketView.swift */; };
@@ -138,7 +138,7 @@
 		1D5738F6200BD51500D7E431 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		1D5738F7200BD51500D7E431 /* UIWindow+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
 		1D5738F8200BD51500D7E431 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		1D5738FA200BD51500D7E431 /* ViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewViewModel.swift; sourceTree = "<group>"; };
+		1D5738FA200BD51500D7E431 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		1D5738FD200BD51500D7E431 /* ArrayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayModel.swift; sourceTree = "<group>"; };
 		1D5738FF200BD51500D7E431 /* ArrayModelAddOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayModelAddOption.swift; sourceTree = "<group>"; };
 		1D573900200BD51500D7E431 /* ArrayModelMoveOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayModelMoveOption.swift; sourceTree = "<group>"; };
@@ -151,6 +151,29 @@
 		1D5B1C5A2041F21700F59E3D /* ActiveOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveOrderModel.swift; sourceTree = "<group>"; };
 		1D5B1C5D2041F3F300F59E3D /* CompletedOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedOrderModel.swift; sourceTree = "<group>"; };
 		1D5B1C602041F4FC00F59E3D /* HistoryOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryOrderModel.swift; sourceTree = "<group>"; };
+		1D5CE6782046156F0052C441 /* NewOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderViewModel.swift; sourceTree = "<group>"; };
+		1D5CE6B920461A660052C441 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1D5CE6BA20461A660052C441 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1D5CE6BB20461A660052C441 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		1D5CE6BD20461A660052C441 /* MarketsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsView.swift; sourceTree = "<group>"; };
+		1D5CE6BE20461A660052C441 /* MarketsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsViewController.swift; sourceTree = "<group>"; };
+		1D5CE6BF20461A660052C441 /* MarketsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketsViewController.xib; sourceTree = "<group>"; };
+		1D5CE6C620461A660052C441 /* BalancesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesView.swift; sourceTree = "<group>"; };
+		1D5CE6C720461A660052C441 /* BalancesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesViewController.swift; sourceTree = "<group>"; };
+		1D5CE6C820461A660052C441 /* BalancesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BalancesViewController.xib; sourceTree = "<group>"; };
+		1D5CE6CA20461A660052C441 /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		1D5CE6CB20461A660052C441 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		1D5CE6CC20461A660052C441 /* HistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
+		1D5CE6CE20461A660052C441 /* OrdersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
+		1D5CE6CF20461A660052C441 /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		1D5CE6D020461A660052C441 /* OrdersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrdersViewController.xib; sourceTree = "<group>"; };
+		1D5CE6D220461A660052C441 /* TradingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradingsView.swift; sourceTree = "<group>"; };
+		1D5CE6D320461A660052C441 /* TradingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradingsViewController.swift; sourceTree = "<group>"; };
+		1D5CE6D420461A660052C441 /* TradingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradingsViewController.xib; sourceTree = "<group>"; };
+		1D5CE6D520461A660052C441 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1D5CE6EE20461AF10052C441 /* NewOrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrderView.swift; sourceTree = "<group>"; };
+		1D5CE6EF20461AF10052C441 /* NewOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrderViewController.swift; sourceTree = "<group>"; };
+		1D5CE6F020461AF10052C441 /* NewOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewOrderViewController.xib; sourceTree = "<group>"; };
 		1D5D1549202B6F10001DB417 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		1D5D154B202B6F10001DB417 /* PublicContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicContext.swift; sourceTree = "<group>"; };
 		1D5D154D202B6F10001DB417 /* OrdersContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersContext.swift; sourceTree = "<group>"; };
@@ -161,25 +184,9 @@
 		1D6252A120190E940047CB7C /* BalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCell.swift; sourceTree = "<group>"; };
 		1D6A23042016721500A25F13 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		1D6A23062016723500A25F13 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		1D6B3DDD2014EF92009BBAF7 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		1D6B3DDE2014EF92009BBAF7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		1D6B3DDF2014EF92009BBAF7 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		1D6B3DE12014EF92009BBAF7 /* BalancesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesViewController.swift; sourceTree = "<group>"; };
-		1D6B3DE22014EF92009BBAF7 /* BalancesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesView.swift; sourceTree = "<group>"; };
-		1D6B3DE32014EF92009BBAF7 /* BalancesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BalancesViewController.xib; sourceTree = "<group>"; };
-		1D6F74FC20361560003E4326 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		1D7190392021007F00EA2EC6 /* BalancesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesModel.swift; sourceTree = "<group>"; };
 		1D724BDA204493C300747A4D /* Data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Data.json; sourceTree = "<group>"; };
-		1D72CEA4203E134B00288DED /* MarketsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsView.swift; sourceTree = "<group>"; };
-		1D72CEA5203E134B00288DED /* MarketsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketsViewController.swift; sourceTree = "<group>"; };
-		1D72CEA6203E134B00288DED /* MarketsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketsViewController.xib; sourceTree = "<group>"; };
 		1D73B02D201A47090087A775 /* BalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceModel.swift; sourceTree = "<group>"; };
-		1D746A5C203B3D8F00153CAF /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
-		1D746A5D203B3D9000153CAF /* OrdersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrdersViewController.xib; sourceTree = "<group>"; };
-		1D746A5E203B3D9000153CAF /* OrdersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
-		1D746A68203B7DFC00153CAF /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		1D746A69203B7DFC00153CAF /* HistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
-		1D746A6A203B7DFC00153CAF /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		1D758AC52024D8CF00419689 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		1D7590FE1FFECED200573899 /* Kuna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D7591141FFECED200573899 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -189,7 +196,6 @@
 		1D75911B1FFECED200573899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D77C31720134399004DC212 /* NSData+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+Extension.swift"; sourceTree = "<group>"; };
 		1D77C31A20136B73004DC212 /* AccessTokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenModel.swift; sourceTree = "<group>"; };
-		1D7875642028EFA7006C07C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1D78757520290569006C07C3 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		1D7B9195203A21F30068EEAC /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		1D7B9198203A29D10068EEAC /* TradingsContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingsContext.swift; sourceTree = "<group>"; };
@@ -207,13 +213,7 @@
 		1D8B84CE203F8163004B74F1 /* UserContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
 		1D8B84D0203F8163004B74F1 /* UserHistoryContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHistoryContext.swift; sourceTree = "<group>"; };
 		1D8B84D2203F8163004B74F1 /* UserOrdersContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserOrdersContext.swift; sourceTree = "<group>"; };
-		1D8B89B520264FC0002F7361 /* TradingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingsViewController.swift; sourceTree = "<group>"; };
-		1D8B89B620264FC0002F7361 /* TradingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradingsViewController.xib; sourceTree = "<group>"; };
-		1D8B89B920265918002F7361 /* TradingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingsView.swift; sourceTree = "<group>"; };
 		1D8FEF2D2017BCAB00C65D4C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		1D93355A204089C800FFA724 /* NewOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrderViewController.swift; sourceTree = "<group>"; };
-		1D93355B204089C800FFA724 /* NewOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewOrderViewController.xib; sourceTree = "<group>"; };
-		1D93355C204089C800FFA724 /* NewOrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrderView.swift; sourceTree = "<group>"; };
 		1D9335622040B16600FFA724 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		1D9335652040BC0A00FFA724 /* MarketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketView.xib; sourceTree = "<group>"; };
 		1D9335662040BC0A00FFA724 /* MarketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
@@ -285,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				1D5296392042CA990078A8E9 /* ControllerViewModel.swift */,
+				1D5CE677204615500052C441 /* NewOrderViewModel */,
 				1D5296372042CA990078A8E9 /* BalancesViewModel */,
 				1D52963A2042CA990078A8E9 /* HistoryViewModel */,
 				1D52963C2042CA990078A8E9 /* LoginViewModel */,
@@ -354,9 +355,9 @@
 		1D5296462042CA9A0078A8E9 /* OrderViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1D52964D2042CA9A0078A8E9 /* OrderViewModel.swift */,
 				1D5296472042CA9A0078A8E9 /* ActiveOrderViewModel */,
 				1D5296492042CA9A0078A8E9 /* CompletedOrderViewModel */,
-				1D52964D2042CA9A0078A8E9 /* OrderViewModel.swift */,
 			);
 			path = OrderViewModel;
 			sourceTree = "<group>";
@@ -438,8 +439,7 @@
 		1D5738F9200BD51500D7E431 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				1D5738FA200BD51500D7E431 /* ViewViewModel.swift */,
-				1D6F74FC20361560003E4326 /* Loadable.swift */,
+				1D5738FA200BD51500D7E431 /* RootView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -513,25 +513,10 @@
 		1D57390A200BD51500D7E431 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1D5CE6B520461A660052C441 /* Controllers */,
 				1D6A2302201671E300A25F13 /* Views */,
-				1D57390B200BD51500D7E431 /* Controllers */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		1D57390B200BD51500D7E431 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				1D6B3DE02014EF92009BBAF7 /* BalancesViewController */,
-				1D6252972019010A0047CB7C /* HistoryViewController */,
-				1D6B3DDC2014EF92009BBAF7 /* LoginViewController */,
-				1D72CEA3203E134B00288DED /* MarketViewController */,
-				1D933559204089A700FFA724 /* NewOrderViewController */,
-				1D625298201901100047CB7C /* OrdersViewController */,
-				1D625299201901170047CB7C /* TradingsViewController */,
-				1D7875632028EF8A006C07C3 /* ViewController */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		1D5B1C592041F21700F59E3D /* ActiveOrderModel */ = {
@@ -557,6 +542,107 @@
 				1D5B1C602041F4FC00F59E3D /* HistoryOrderModel.swift */,
 			);
 			path = HistoryOrderModel;
+			sourceTree = "<group>";
+		};
+		1D5CE677204615500052C441 /* NewOrderViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1D5CE6782046156F0052C441 /* NewOrderViewModel.swift */,
+			);
+			path = NewOrderViewModel;
+			sourceTree = "<group>";
+		};
+		1D5CE6B520461A660052C441 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1D5CE6B820461A660052C441 /* LoginViewController */,
+				1D5CE6BC20461A660052C441 /* MarketViewController */,
+				1D5CE6C420461A660052C441 /* ViewController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1D5CE6B820461A660052C441 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D5CE6B920461A660052C441 /* LoginView.swift */,
+				1D5CE6BA20461A660052C441 /* LoginViewController.swift */,
+				1D5CE6BB20461A660052C441 /* LoginViewController.xib */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		1D5CE6BC20461A660052C441 /* MarketViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D5CE6BD20461A660052C441 /* MarketsView.swift */,
+				1D5CE6BE20461A660052C441 /* MarketsViewController.swift */,
+				1D5CE6BF20461A660052C441 /* MarketsViewController.xib */,
+			);
+			path = MarketViewController;
+			sourceTree = "<group>";
+		};
+		1D5CE6C420461A660052C441 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D5CE6D520461A660052C441 /* ViewController.swift */,
+				1D5CE6C520461A660052C441 /* BalancesViewController */,
+				1D5CE6C920461A660052C441 /* HistoryViewController */,
+				1D5CE6ED20461AF10052C441 /* NewOrderViewController */,
+				1D5CE6CD20461A660052C441 /* OrdersViewController */,
+				1D5CE6D120461A660052C441 /* TradingsViewController */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1D5CE6C520461A660052C441 /* BalancesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D5CE6C620461A660052C441 /* BalancesView.swift */,
+				1D5CE6C720461A660052C441 /* BalancesViewController.swift */,
+				1D5CE6C820461A660052C441 /* BalancesViewController.xib */,
+			);
+			path = BalancesViewController;
+			sourceTree = "<group>";
+		};
+		1D5CE6C920461A660052C441 /* HistoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D5CE6CA20461A660052C441 /* HistoryView.swift */,
+				1D5CE6CB20461A660052C441 /* HistoryViewController.swift */,
+				1D5CE6CC20461A660052C441 /* HistoryViewController.xib */,
+			);
+			path = HistoryViewController;
+			sourceTree = "<group>";
+		};
+		1D5CE6CD20461A660052C441 /* OrdersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D5CE6CE20461A660052C441 /* OrdersView.swift */,
+				1D5CE6CF20461A660052C441 /* OrdersViewController.swift */,
+				1D5CE6D020461A660052C441 /* OrdersViewController.xib */,
+			);
+			path = OrdersViewController;
+			sourceTree = "<group>";
+		};
+		1D5CE6D120461A660052C441 /* TradingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D5CE6D220461A660052C441 /* TradingsView.swift */,
+				1D5CE6D320461A660052C441 /* TradingsViewController.swift */,
+				1D5CE6D420461A660052C441 /* TradingsViewController.xib */,
+			);
+			path = TradingsViewController;
+			sourceTree = "<group>";
+		};
+		1D5CE6ED20461AF10052C441 /* NewOrderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D5CE6EE20461AF10052C441 /* NewOrderView.swift */,
+				1D5CE6EF20461AF10052C441 /* NewOrderViewController.swift */,
+				1D5CE6F020461AF10052C441 /* NewOrderViewController.xib */,
+			);
+			path = NewOrderViewController;
 			sourceTree = "<group>";
 		};
 		1D5D1548202B6F10001DB417 /* Contexts */ = {
@@ -603,36 +689,6 @@
 			path = AlertService;
 			sourceTree = "<group>";
 		};
-		1D6252972019010A0047CB7C /* HistoryViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1D746A6A203B7DFC00153CAF /* HistoryView.swift */,
-				1D746A68203B7DFC00153CAF /* HistoryViewController.swift */,
-				1D746A69203B7DFC00153CAF /* HistoryViewController.xib */,
-			);
-			path = HistoryViewController;
-			sourceTree = "<group>";
-		};
-		1D625298201901100047CB7C /* OrdersViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1D746A5E203B3D9000153CAF /* OrdersView.swift */,
-				1D746A5C203B3D8F00153CAF /* OrdersViewController.swift */,
-				1D746A5D203B3D9000153CAF /* OrdersViewController.xib */,
-			);
-			path = OrdersViewController;
-			sourceTree = "<group>";
-		};
-		1D625299201901170047CB7C /* TradingsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1D8B89B920265918002F7361 /* TradingsView.swift */,
-				1D8B89B520264FC0002F7361 /* TradingsViewController.swift */,
-				1D8B89B620264FC0002F7361 /* TradingsViewController.xib */,
-			);
-			path = TradingsViewController;
-			sourceTree = "<group>";
-		};
 		1D62529B20190AD90047CB7C /* CurrencyModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,42 +730,12 @@
 			path = HeaderView;
 			sourceTree = "<group>";
 		};
-		1D6B3DDC2014EF92009BBAF7 /* LoginViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1D6B3DDD2014EF92009BBAF7 /* LoginView.swift */,
-				1D6B3DDE2014EF92009BBAF7 /* LoginViewController.swift */,
-				1D6B3DDF2014EF92009BBAF7 /* LoginViewController.xib */,
-			);
-			path = LoginViewController;
-			sourceTree = "<group>";
-		};
-		1D6B3DE02014EF92009BBAF7 /* BalancesViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1D6B3DE22014EF92009BBAF7 /* BalancesView.swift */,
-				1D6B3DE12014EF92009BBAF7 /* BalancesViewController.swift */,
-				1D6B3DE32014EF92009BBAF7 /* BalancesViewController.xib */,
-			);
-			path = BalancesViewController;
-			sourceTree = "<group>";
-		};
 		1D7190382021007F00EA2EC6 /* BalancesModel */ = {
 			isa = PBXGroup;
 			children = (
 				1D7190392021007F00EA2EC6 /* BalancesModel.swift */,
 			);
 			path = BalancesModel;
-			sourceTree = "<group>";
-		};
-		1D72CEA3203E134B00288DED /* MarketViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1D72CEA4203E134B00288DED /* MarketsView.swift */,
-				1D72CEA5203E134B00288DED /* MarketsViewController.swift */,
-				1D72CEA6203E134B00288DED /* MarketsViewController.xib */,
-			);
-			path = MarketViewController;
 			sourceTree = "<group>";
 		};
 		1D73B02C201A46ED0087A775 /* BalanceModel */ = {
@@ -784,14 +810,6 @@
 				1D77C31A20136B73004DC212 /* AccessTokenModel.swift */,
 			);
 			path = AccessTokenModel;
-			sourceTree = "<group>";
-		};
-		1D7875632028EF8A006C07C3 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1D7875642028EFA7006C07C3 /* ViewController.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		1D7875682028F73A006C07C3 /* OrderCell */ = {
@@ -930,16 +948,6 @@
 			path = MainView;
 			sourceTree = "<group>";
 		};
-		1D933559204089A700FFA724 /* NewOrderViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1D93355C204089C800FFA724 /* NewOrderView.swift */,
-				1D93355A204089C800FFA724 /* NewOrderViewController.swift */,
-				1D93355B204089C800FFA724 /* NewOrderViewController.xib */,
-			);
-			path = NewOrderViewController;
-			sourceTree = "<group>";
-		};
 		1D9335642040BBF600FFA724 /* MarketView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1028,23 +1036,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D5CE6E220461A660052C441 /* BalancesViewController.xib in Resources */,
 				1D7B919B203A2B100068EEAC /* OrderCell.xib in Resources */,
+				1D5CE6DC20461A660052C441 /* MarketsViewController.xib in Resources */,
 				1D7591251FFECED200573899 /* LaunchScreen.storyboard in Resources */,
-				1D72CEA9203E134C00288DED /* MarketsViewController.xib in Resources */,
-				1D746A60203B3D9000153CAF /* OrdersViewController.xib in Resources */,
-				1D6B3DEC2014EF92009BBAF7 /* BalancesViewController.xib in Resources */,
+				1D5CE6E820461A660052C441 /* OrdersViewController.xib in Resources */,
 				1D724BDB204493C300747A4D /* Data.json in Resources */,
+				1D5CE6EB20461A660052C441 /* TradingsViewController.xib in Resources */,
 				1D8B84C4203F46B5004B74F1 /* MarketCell.xib in Resources */,
 				1D9335672040BC0A00FFA724 /* MarketView.xib in Resources */,
-				1D93355E204089C800FFA724 /* NewOrderViewController.xib in Resources */,
-				1D6B3DE92014EF92009BBAF7 /* LoginViewController.xib in Resources */,
 				1D6252A020190E710047CB7C /* BalanceCell.xib in Resources */,
 				1D7591241FFECED200573899 /* Assets.xcassets in Resources */,
-				1D746A6C203B7DFC00153CAF /* HistoryViewController.xib in Resources */,
-				1D8B89B820264FC0002F7361 /* TradingsViewController.xib in Resources */,
 				1D52962C2042B5800078A8E9 /* HistoryOrderCell.xib in Resources */,
+				1D5CE6E520461A660052C441 /* HistoryViewController.xib in Resources */,
+				1D5CE6D920461A660052C441 /* LoginViewController.xib in Resources */,
 				1D7591261FFECED200573899 /* Main.storyboard in Resources */,
 				1D6A23052016721500A25F13 /* HeaderView.xib in Resources */,
+				1D5CE6F320461AF10052C441 /* NewOrderViewController.xib in Resources */,
 				1D5296322042B8B60078A8E9 /* CompletedOrderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1122,79 +1130,79 @@
 			files = (
 				1D8B84D6203F8163004B74F1 /* UserOrdersContext.swift in Sources */,
 				1D5296312042B8B60078A8E9 /* CompletedOrderCell.swift in Sources */,
-				1D93355D204089C800FFA724 /* NewOrderViewController.swift in Sources */,
 				1D5D1554202B6F10001DB417 /* OrdersContext.swift in Sources */,
 				1D7591221FFECED200573899 /* AppDelegate.swift in Sources */,
 				1D573916200BD51500D7E431 /* FileManager+Extension.swift in Sources */,
 				1D57391A200BD51500D7E431 /* UIWindow+Extension.swift in Sources */,
 				1D5296502042CA9A0078A8E9 /* ControllerViewModel.swift in Sources */,
 				1D73B02E201A47090087A775 /* BalanceModel.swift in Sources */,
-				1D6B3DE82014EF92009BBAF7 /* LoginViewController.swift in Sources */,
 				1D5D1553202B6F10001DB417 /* PublicContext.swift in Sources */,
+				1D5CE6E020461A660052C441 /* BalancesView.swift in Sources */,
 				1D7C6D43202ED94F00D99F7D /* OrdersParser.swift in Sources */,
 				1D52962D2042B5800078A8E9 /* HistoryOrderCell.swift in Sources */,
 				1D57391D200BD51500D7E431 /* ArrayModel.swift in Sources */,
-				1D746A6D203B7DFC00153CAF /* HistoryView.swift in Sources */,
 				1D5B1C612041F4FC00F59E3D /* HistoryOrderModel.swift in Sources */,
 				1D77C31820134399004DC212 /* NSData+Extension.swift in Sources */,
 				1D5B1C5B2041F21800F59E3D /* ActiveOrderModel.swift in Sources */,
 				1D57391E200BD51500D7E431 /* ArrayModelAddOption.swift in Sources */,
 				1D573918200BD51500D7E431 /* UINib+Extension.swift in Sources */,
+				1D5CE6F120461AF10052C441 /* NewOrderView.swift in Sources */,
 				1D78757620290569006C07C3 /* OrderCell.swift in Sources */,
-				1D8B89BA20265918002F7361 /* TradingsView.swift in Sources */,
 				1D62529D20190AEC0047CB7C /* CurrencyModel.swift in Sources */,
+				1D5CE6E120461A660052C441 /* BalancesViewController.swift in Sources */,
 				1D93356B2040D26800FFA724 /* MarketsModel.swift in Sources */,
 				1D573917200BD51500D7E431 /* String+Extension.swift in Sources */,
+				1D5CE6F220461AF10052C441 /* NewOrderViewController.swift in Sources */,
 				1D52964E2042CA9A0078A8E9 /* BalanceViewModel.swift in Sources */,
-				1D93355F204089C800FFA724 /* NewOrderView.swift in Sources */,
 				1D57391F200BD51500D7E431 /* ArrayModelMoveOption.swift in Sources */,
-				1D6F74FD20361560003E4326 /* Loadable.swift in Sources */,
+				1D5CE6E620461A660052C441 /* OrdersView.swift in Sources */,
 				1D71903A2021007F00EA2EC6 /* BalancesModel.swift in Sources */,
 				1D5D463A2034BF8700EF6384 /* CurrenciesModel.swift in Sources */,
 				1D6252A220190E940047CB7C /* BalanceCell.swift in Sources */,
 				1D1C3C432043796A000CB3BB /* UIView + Extension.swift in Sources */,
 				1D5296532042CA9A0078A8E9 /* MarketsViewModel.swift in Sources */,
+				1D5CE6E920461A660052C441 /* TradingsView.swift in Sources */,
+				1D5CE6D820461A660052C441 /* LoginViewController.swift in Sources */,
 				1D52964F2042CA9A0078A8E9 /* BalancesViewModel.swift in Sources */,
-				1D746A61203B3D9000153CAF /* OrdersView.swift in Sources */,
+				1D5CE6EA20461A660052C441 /* TradingsViewController.swift in Sources */,
+				1D5CE6E420461A660052C441 /* HistoryViewController.swift in Sources */,
+				1D5CE6D720461A660052C441 /* LoginView.swift in Sources */,
 				1D5D1552202B6F10001DB417 /* Context.swift in Sources */,
 				1D82D6E22012A78D00AC8A84 /* Hmac.swift in Sources */,
 				1D8B84D4203F8163004B74F1 /* UserContext.swift in Sources */,
 				1D82D6DD20128CC800AC8A84 /* Date+Extension.swift in Sources */,
 				1D5296522042CA9A0078A8E9 /* LoginViewModel.swift in Sources */,
 				1D5296582042CA9A0078A8E9 /* CompletedOrderViewModel.swift in Sources */,
+				1D5CE6EC20461A660052C441 /* ViewController.swift in Sources */,
 				1D5296552042CA9A0078A8E9 /* TradingsViewModel.swift in Sources */,
 				1D5296572042CA9A0078A8E9 /* ActiveOrderViewModel.swift in Sources */,
+				1D5CE6DA20461A660052C441 /* MarketsView.swift in Sources */,
 				1D5296542042CA9A0078A8E9 /* OrdersViewModel.swift in Sources */,
-				1D8B89B720264FC0002F7361 /* TradingsViewController.swift in Sources */,
 				1D5D78C9203359F2009906C3 /* AlertService.swift in Sources */,
 				1D9335632040B16600FFA724 /* UIColor+Extension.swift in Sources */,
 				1D57391B200BD51500D7E431 /* Global.swift in Sources */,
-				1D746A6B203B7DFC00153CAF /* HistoryViewController.swift in Sources */,
-				1D746A5F203B3D9000153CAF /* OrdersViewController.swift in Sources */,
 				1D1567F620309ED800BE0D0A /* MarketModel.swift in Sources */,
 				1D573919200BD51500D7E431 /* UITableView+Extension.swift in Sources */,
 				1D5296562042CA9A0078A8E9 /* MarketViewModel.swift in Sources */,
 				1D7B9199203A29D10068EEAC /* TradingsContext.swift in Sources */,
 				1D5296592042CA9A0078A8E9 /* HistoryOrderViewModel.swift in Sources */,
 				1D573923200BD51500D7E431 /* ImageModel.swift in Sources */,
-				1D72CEA7203E134C00288DED /* MarketsView.swift in Sources */,
-				1D72CEA8203E134C00288DED /* MarketsViewController.swift in Sources */,
 				1D7CE9BA201E308500A1F189 /* LoginResponseParser.swift in Sources */,
 				1D573922200BD51500D7E431 /* FileSystemImageModel.swift in Sources */,
-				1D7875652028EFA7006C07C3 /* ViewController.swift in Sources */,
+				1D5CE6E320461A660052C441 /* HistoryView.swift in Sources */,
 				1D8B84C3203F46B5004B74F1 /* MarketCell.swift in Sources */,
 				1D573925200BD51500D7E431 /* DBModel.swift in Sources */,
 				1D758AC62024D8CF00419689 /* RealmService.swift in Sources */,
-				1D6B3DE72014EF92009BBAF7 /* LoginView.swift in Sources */,
 				1D573920200BD51500D7E431 /* ArrayModelOption.swift in Sources */,
-				1D6B3DEB2014EF92009BBAF7 /* BalancesView.swift in Sources */,
 				1D8B84D5203F8163004B74F1 /* UserHistoryContext.swift in Sources */,
+				1D5CE6E720461A660052C441 /* OrdersViewController.swift in Sources */,
 				1D9335682040BC0A00FFA724 /* MarketView.swift in Sources */,
 				1D5296512042CA9A0078A8E9 /* HistoryViewModel.swift in Sources */,
+				1D5CE6DB20461A660052C441 /* MarketsViewController.swift in Sources */,
 				1D573921200BD51500D7E431 /* ArrayModelRemoveOption.swift in Sources */,
+				1D5CE6792046156F0052C441 /* NewOrderViewModel.swift in Sources */,
 				1D6A23072016723500A25F13 /* HeaderView.swift in Sources */,
 				1D7C6D46202EDADE00D99F7D /* ActiveOrdersModel.swift in Sources */,
-				1D6B3DEA2014EF92009BBAF7 /* BalancesViewController.swift in Sources */,
 				1D52965A2042CA9A0078A8E9 /* OrderViewModel.swift in Sources */,
 				1D77C31B20136B73004DC212 /* AccessTokenModel.swift in Sources */,
 				1D8B84D3203F8163004B74F1 /* LoginContext.swift in Sources */,
@@ -1202,7 +1210,7 @@
 				1D7CE9BD201E317600A1F189 /* CurrentUserModel.swift in Sources */,
 				1D8FEF2E2017BCAB00C65D4C /* MainView.swift in Sources */,
 				1D573924200BD51500D7E431 /* InternetImageModel.swift in Sources */,
-				1D57391C200BD51500D7E431 /* ViewViewModel.swift in Sources */,
+				1D57391C200BD51500D7E431 /* RootView.swift in Sources */,
 				1D5B1C5E2041F3F300F59E3D /* CompletedOrderModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
