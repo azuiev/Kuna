@@ -78,7 +78,7 @@ class LoginView: UIView, UITextFieldDelegate {
     func fillAccessFields() {
         
         //FullToken
-        self.publicKeyTextField?.text = "xVI2OYUtfNWaFQi6ywAx6qyYhS5fOlfzHtCBjfex"
-        self.secretKeyTextField?.text = "hTx5aoDot1N0a0LoRkzAzk12jjsQSERG7l7FMIu4"
+        self.publicKeyTextField?.text = ""
+        self.secretKeyTextField?.text = ""
     }
 }
