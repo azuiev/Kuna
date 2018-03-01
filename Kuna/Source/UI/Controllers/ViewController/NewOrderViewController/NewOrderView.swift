@@ -22,7 +22,7 @@ class NewOrderView: UIView, UITextFieldDelegate {
         return true
     }
     
-    // IBOutlets
+    // MARK: IBOutlets
     
     @IBOutlet var priceTextField: UITextField?
     @IBOutlet var mainCurrencyVolumeTextField: UITextField?
@@ -32,6 +32,25 @@ class NewOrderView: UIView, UITextFieldDelegate {
     @IBOutlet var sellButton: UIButton?
     @IBOutlet var cancelButton: UIButton?
     
+    // MARK: Private Properties
+    
+    private var disposeBag = DisposeBag()
+    private var price: String = ""
+    private var volume: String = ""
+    
+    // MARK: View Lifecycle
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.mainCurrencyVolumeTextField?
+            .rx
+            .controlEvent([.editingDidEnd])
+            .subscribe(onNext: {
+                print("TEST")
+            })
+            .disposed(by: self.disposeBag)
+    }
     // MARK: Public Methods
     
     func fill(with viewModel: NewOrderViewModel) {
@@ -42,5 +61,27 @@ class NewOrderView: UIView, UITextFieldDelegate {
             self?.mainCurrencyVolumeTextField?.text = orderViewModel.volumeMainCurrency
             self?.secondCurrencyVolumeTextField?.text = orderViewModel.volumeSecondCurrency
         }
+        
+        self.buyButton?
+        .rx
+        .tap
+        .asObservable()
+            .subscribe({ [weak self] _ in
+                viewModel.createOrder(side: .buy,
+                                      volume: self?.volume ?? "",
+                                      price: self?.priceTextField?.text ?? "")
+            })
+            .disposed(by: viewModel.disposeBag)
+        
+        self.sellButton?
+            .rx
+            .tap
+            .asObservable()
+            .subscribe({ [weak self] _ in
+                viewModel.createOrder(side: .sell,
+                                      volume: self?.mainCurrencyVolumeTextField?.text ?? "",
+                                      price: self?.priceTextField?.text ?? "")
+            })
+            .disposed(by: viewModel.disposeBag)
     }
 }

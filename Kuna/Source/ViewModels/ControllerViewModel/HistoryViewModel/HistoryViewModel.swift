@@ -31,16 +31,16 @@ class HistoryViewModel: ControllerViewModel {
     
     // MARK: Public Methods
     
-    override func executeContext(with market: MarketModel) {
-        UserHistoryContext(token: self.currentUser.token, market: market)
+    override func executeContext(with marketName: String) {
+        UserHistoryContext(token: self.currentUser.token, market: marketName)
             .execute(with: JSONArray.self) { [weak self] in
                 self?.ordersResult.onNext($0)
         }
     }
     
-    override func updateModelFromDbData(with market: MarketModel) {
+    override func updateModelFromDbData(with marketName: String) {
         let dbOrders = RealmService.shared.getObjectsWith(type: HistoryOrderModel.self,
-                                                          filter: self.configureFilter(with: market))
+                                                          filter: self.configureFilter(with: marketName))
         
         if dbOrders.count > 0 {
             self.orders = dbOrders

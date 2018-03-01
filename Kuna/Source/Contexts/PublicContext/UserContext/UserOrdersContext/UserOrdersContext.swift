@@ -23,13 +23,13 @@ class UserOrdersContext: UserContext {
     
     // MARK: Public Properties
     
-    let market: MarketModel
+    let market: String
     
     override var urlPath: String { return "api/v2/orders" }
     
     // MARK: Initialization
     
-    init(token: AccessTokenModel, market: MarketModel) {
+    init(token: AccessTokenModel, market: String) {
         self.market = market
         
         super.init(token: token)
@@ -38,7 +38,7 @@ class UserOrdersContext: UserContext {
     // Public Methods
        
     override func updateParameters() {
-        self.parameters[Constants.marketKeyString]  = self.market.marketName
+        self.parameters[Constants.marketKeyString]  = self.market
         
         super.updateParameters()
     }

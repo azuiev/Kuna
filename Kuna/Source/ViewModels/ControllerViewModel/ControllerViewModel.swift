@@ -39,15 +39,16 @@ class ControllerViewModel {
     func updateData() {
         guard let unwrappedMarket = self.market else { return }
         
-        self.updateModelFromDbData(with: unwrappedMarket)
-        self.executeContext(with: unwrappedMarket)
+        let marketName = unwrappedMarket.marketName
+        self.updateModelFromDbData(with: marketName)
+        self.executeContext(with: marketName)
     }
     
-    func executeContext(with market: MarketModel) {
+    func executeContext(with marketName: String) {
         
     }
     
-    func updateModelFromDbData(with market: MarketModel) {
+    func updateModelFromDbData(with marketName: String) {
        
     }
     
@@ -57,7 +58,7 @@ class ControllerViewModel {
         }
     }
     
-    func configureFilter(with market: MarketModel) -> NSPredicate {
-        return NSPredicate(format: "market = %@", market.marketName)
+    func configureFilter(with marketName: String) -> NSPredicate {
+        return NSPredicate(format: "market = %@", marketName)
     }
 }

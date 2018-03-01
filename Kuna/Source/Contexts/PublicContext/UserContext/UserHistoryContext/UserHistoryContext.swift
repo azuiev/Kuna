@@ -24,11 +24,11 @@ class UserHistoryContext: UserContext {
     // MARK: Public Properties
     
     override var urlPath: String { return "api/v2/trades/my" }
-    let market: MarketModel
+    let market: String
     
     // MARK: Initialization
     
-    init(token: AccessTokenModel, market: MarketModel) {
+    init(token: AccessTokenModel, market: String) {
         self.market = market
         
         super.init(token: token)
@@ -37,7 +37,7 @@ class UserHistoryContext: UserContext {
     // Public Methods
     
     override func updateParameters() {
-        self.parameters[Constants.marketKeyString]  = self.market.marketName
+        self.parameters[Constants.marketKeyString]  = self.market
         
         super.updateParameters()
     }

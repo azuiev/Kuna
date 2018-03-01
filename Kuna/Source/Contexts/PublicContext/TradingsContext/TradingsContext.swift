@@ -20,17 +20,17 @@ class TradingsContext: PublicContext {
     // MARK: Private Properties
     
     override var urlPath: String { return "api/v2/trades" }
-    let market: MarketModel
+    let market: String
     
     // MARK: Initialization
     
-    init( market: MarketModel) {
+    init( market: String) {
         self.market = market
     }
     
     // MARK: Public Methods
     
     override func updateParameters() {
-        self.parameters[Constants.marketKeyString]  = self.market.marketName
+        self.parameters[Constants.marketKeyString]  = self.market
     }
 }

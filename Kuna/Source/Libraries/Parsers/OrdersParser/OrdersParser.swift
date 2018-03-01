@@ -129,7 +129,7 @@ class OrdersParser {
         if let id = json[Constants.idKey] as? Int { order.id = id }
         if let market = json[Constants.marketKey] as? String { order.market = market }
         if let date = json[Constants.dateKey] as? Date { order.createdTime = date }
-        if let side = json[Constants.sideKey] as? String { order.side = OrderSide(rawValue: side) }
+        if let side = json[Constants.sideKey] as? String { order.sideEnum = OrderSide(rawValue: side) }
         
         if let volumeString = json[Constants.volumeMainKey] as? String {
             Double(volumeString).map {

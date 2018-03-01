@@ -62,18 +62,24 @@ class TradingsViewModel: ControllerViewModel {
         let oldValue = self.selectedTable
         self.selectedTable = table
         
+        self.updateSelectedOrder()
+        
         if (oldValue == .buyTable && table == .sellTable)
             || (oldValue == .sellTable && table == .buyTable)
         {
             return
         }
         
-        self.configureUpdating(with: unwrappedMarket)
+        self.configureUpdating(with: unwrappedMarket.marketName)
     }
     
     func fillOrders(with orders: ActiveOrdersModel) {
         self.buyOrders = orders.buyOrders
         self.sellOrders = orders.sellOrders
+        
+        self.updateSelectedOrder()
+        
+        RealmService.shared.deleteObjectsWith(type: ActiveOrderModel.self)
         
         for order in orders.buyOrders {
             order.update()
@@ -87,22 +93,25 @@ class TradingsViewModel: ControllerViewModel {
     func fillTradings(with tradings: [CompletedOrderModel]) {
         self.tradings = tradings
         
+        self.updateSelectedOrder()
+        
+        RealmService.shared.deleteObjectsWith(type: CompletedOrderModel.self)
         for order in tradings {
             order.update()
         }
     }
     
-    override func executeContext(with market: MarketModel) {
-       self.configureUpdating(with: market)
+    override func executeContext(with marketName: String) {
+       self.configureUpdating(with: marketName)
     }
     
-    override func updateModelFromDbData(with market: MarketModel) {
+    override func updateModelFromDbData(with marketName: String) {
         let dbActiveBuyOrders = RealmService.shared.getObjectsWith(type: ActiveOrderModel.self,
-                                                          filter: self.configureFilter(with: market))
+                                                                   filter: self.configureFilter(with: marketName, side: .buy))
         let dbActiveSellOrders = RealmService.shared.getObjectsWith(type: ActiveOrderModel.self,
-                                                                   filter: self.configureFilter(with: market))
+                                                                    filter: self.configureFilter(with: marketName, side: .sell))
         let dbCompletedOrders = RealmService.shared.getObjectsWith(type: CompletedOrderModel.self,
-                                                                    filter: self.configureFilter(with: market))
+                                                                    filter: self.configureFilter(with: marketName))
         if dbActiveBuyOrders.count > 0 {
             self.buyOrders = dbActiveBuyOrders
         }
@@ -114,16 +123,34 @@ class TradingsViewModel: ControllerViewModel {
         }
     }
     
-     // Private Methods
+    func disableUpdating() {
+        self.timer?.invalidate()
+    }
     
-    private func configureUpdating(with market: MarketModel) {
+    // MARK: Private Methods
+    private func configureFilter(with marketName: String, side: OrderSide) -> NSPredicate {
+        return NSPredicate(format: "market = %@ AND side = %@", marketName, side.rawValue)
+    }
+    
+    private func updateSelectedOrder() {
+        switch self.selectedTable {
+        case .buyTable:
+            self.lastSelectedOrder = self.buyOrders.first
+        case .sellTable:
+            self.lastSelectedOrder = self.sellOrders.first
+        case .tradingsTable:
+            self.lastSelectedOrder = self.tradings.first
+        }
+    }
+    
+    private func configureUpdating(with marketName: String) {
         switch self.selectedTable {
         case .buyTable, .sellTable: self.startUpdating(with: 30) { _ in
-            OrdersContext(market: market).execute(with: JSON.self) { [weak self] in
+            OrdersContext(market: marketName).execute(with: JSON.self) { [weak self] in
                 self?.ordersResult.onNext($0)
             }}
         case .tradingsTable: self.startUpdating(with: 30) { _ in
-            TradingsContext(market: market).execute(with: JSONArray.self) { [weak self] in
+            TradingsContext(market: marketName).execute(with: JSONArray.self) { [weak self] in
                 self?.tradingsResult.onNext($0)
             }}
         }
@@ -136,9 +163,5 @@ class TradingsViewModel: ControllerViewModel {
         timer.fire()
         
         self.timer = timer
-    }
-    
-    func disableUpdating() {
-        self.timer?.invalidate()
     }
 }

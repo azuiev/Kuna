@@ -81,8 +81,4 @@ class ViewController<T: ControllerViewModel>: UIViewController {
     func showAlert(with description: String) {
         AlertService.addAlert(to: self, with: description)
     }
-    
-    func selectMarket() {
-        AlertService.addAlert(to: self, with: "ADD MARKET")
-    }
 }

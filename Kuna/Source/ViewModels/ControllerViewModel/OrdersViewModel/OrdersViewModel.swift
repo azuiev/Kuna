@@ -31,13 +31,13 @@ class OrdersViewModel: ControllerViewModel {
     
     // MARK: Public Methods
     
-    override func executeContext(with market: MarketModel) {
-        UserOrdersContext(token: self.currentUser.token, market: market).execute(with: JSONArray.self) { [weak self] in
+    override func executeContext(with marketName: String) {
+        UserOrdersContext(token: self.currentUser.token, market: marketName).execute(with: JSONArray.self) { [weak self] in
             self?.ordersResult.onNext($0)
         }
     }
     
-    override func updateModelFromDbData(with market: MarketModel) {
+    override func updateModelFromDbData(with marketName: String) {
 
     }
     

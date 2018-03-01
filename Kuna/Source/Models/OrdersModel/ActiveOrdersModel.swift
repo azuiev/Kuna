@@ -27,7 +27,7 @@ class ActiveOrdersModel {
         var sellOrders: [ActiveOrderModel] = []
         
         for order in orders {
-            order.side == .buy ? buyOrders.append(order) : sellOrders.append(order)
+            order.sideEnum == .buy ? buyOrders.append(order) : sellOrders.append(order)
         }
         
         self.init(buyOrders: buyOrders, sellOrders: sellOrders)
