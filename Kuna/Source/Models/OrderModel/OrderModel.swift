@@ -13,11 +13,12 @@ import RealmSwift
     
     // MARK: Public Properties
     
-    dynamic var id: Int = 0
+    dynamic var id: Int64 = 0
     dynamic var price: Double = 0.0
     dynamic var volumeMain: Double = 0.0
     dynamic var market: String = ""
     dynamic var createdTime: Date = Date()
+    dynamic var currentUserOrder: Bool = false
     
     override class func primaryKey() -> String? {
         return "id"

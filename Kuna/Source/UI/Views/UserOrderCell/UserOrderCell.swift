@@ -15,7 +15,7 @@ class UserOrderCell: UITableViewCell {
     @IBOutlet var priceLabel: UILabel?
     @IBOutlet var countMainCurrencyLabel: UILabel?
     @IBOutlet var countSecondCurrencyLabel: UILabel?
-    @IBOutlet var cancelOrderButton: UIButton?
+    @IBOutlet var orderSideImageView: UIImageView?
     
     // MARK Public Properties
     
@@ -28,12 +28,6 @@ class UserOrderCell: UITableViewCell {
     }
     
     // MARK: View Lifecycle
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        self.cancelOrderButton?.layer.borderColor = UIColor(red: 255, green: 128, blue: 0).cgColor
-    }
     
     override func prepareForReuse() {
         super.prepareForReuse()

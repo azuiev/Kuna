@@ -62,7 +62,7 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
     // MARK: Protocol UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewModel.lastSelectedOrder = self.viewModel.buyOrders[indexPath.row]
+        self.viewModel.updateSelectedOrder(with: indexPath.row)
     }
     
     // MARK: Initialization

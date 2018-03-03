@@ -105,7 +105,7 @@ class OrdersParser {
     }
     
     private func update(order: OrderModel, with json: JSON) {
-        if let id = json[Constants.idKey] as? Int { order.id = id }
+        if let id = json[Constants.idKey] as? Int64 { order.id = id }
         if let market = json[Constants.marketKey] as? String { order.market = market }
         if let date = json[Constants.dateKey] as? Date { order.createdTime = date }
         if let volumeString = json[Constants.volumeMainKey] as? String {
@@ -126,9 +126,6 @@ class OrdersParser {
         
         self.update(order: order, with: json)
         
-        if let id = json[Constants.idKey] as? Int { order.id = id }
-        if let market = json[Constants.marketKey] as? String { order.market = market }
-        if let date = json[Constants.dateKey] as? Date { order.createdTime = date }
         if let side = json[Constants.sideKey] as? String { order.sideEnum = OrderSide(rawValue: side) }
         
         if let volumeString = json[Constants.volumeMainKey] as? String {

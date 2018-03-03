@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RealmSwift
 
 class TradingsViewModel: ControllerViewModel {
     
@@ -16,26 +17,26 @@ class TradingsViewModel: ControllerViewModel {
     let tradingsResult = PublishSubject<Result<JSONArray>>()
     let ordersResult = PublishSubject<Result<JSON>>()
     let newOrderSubject = PublishSubject<Void>()
-    let buyOrdersSubject = PublishSubject<[OrderModel]>()
-    let sellOrdersSubject = PublishSubject<[OrderModel]>()
-    let tradingsSubject = PublishSubject<[CompletedOrderModel]>()
+    let buyOrdersSubject = PublishSubject<ArrayModel<ActiveOrderModel>>()
+    let sellOrdersSubject = PublishSubject<ArrayModel<ActiveOrderModel>>()
+    let tradingsSubject = PublishSubject<ArrayModel<CompletedOrderModel>>()
     
     var selectedTable: TableType = .buyTable
     var lastSelectedOrder: OrderModel?
     
-    var buyOrders: [ActiveOrderModel] {
+    var buyOrders: ArrayModel<ActiveOrderModel> {
         didSet {
             self.buyOrdersSubject.onNext(self.buyOrders)
         }
     }
     
-    var sellOrders: [ActiveOrderModel] {
+    var sellOrders: ArrayModel<ActiveOrderModel> {
         didSet {
             self.sellOrdersSubject.onNext(self.sellOrders)
         }
     }
     
-    var tradings: [CompletedOrderModel] {
+    var tradings: ArrayModel<CompletedOrderModel> {
         didSet {
             self.tradingsSubject.onNext(self.tradings)
         }
@@ -47,10 +48,10 @@ class TradingsViewModel: ControllerViewModel {
     
     // MARK: Initialization
     
-    init(user: CurrentUserModel, balances: BalancesModel) {
-        self.buyOrders = []
-        self.sellOrders = []
-        self.tradings = []
+    init(user: CurrentUserModel) {
+        self.buyOrders = ArrayModel(array: [ActiveOrderModel]())
+        self.sellOrders = ArrayModel(array: [ActiveOrderModel]())
+        self.tradings = ArrayModel(array: [CompletedOrderModel]())
         
         super.init(user)
     }
@@ -74,31 +75,42 @@ class TradingsViewModel: ControllerViewModel {
     }
     
     func fillOrders(with orders: ActiveOrdersModel) {
-        self.buyOrders = orders.buyOrders
-        self.sellOrders = orders.sellOrders
+        self.buyOrders = ArrayModel(array: orders.buyOrders)
+        self.sellOrders = ArrayModel(array: orders.sellOrders)
         
         self.updateSelectedOrder()
-        
-        RealmService.shared.deleteObjectsWith(type: ActiveOrderModel.self)
-        
-        for order in orders.buyOrders {
-            order.update()
+        let dbOrders = orders.buyOrders + orders.sellOrders
+        if let marketName = self.market?.marketName {
+            let userOrders = RealmService.shared.getObjectsWith(type: ActiveOrderModel.self,
+                                                                filter: self.configureFilter(marketName: marketName, userOrder: true))
+            var ids = [Int64]()
+            _ = userOrders.map {
+                ids.append($0.id)
+            }
+
+            _ = dbOrders.map {
+                if ids.contains($0.id) {
+                    $0.currentUserOrder = true
+                }
+            }
         }
         
-        for order in orders.sellOrders {
+        self.updateDbData(with: dbOrders, type: ActiveOrderModel.self)
+    }
+    
+    func fillTradings(with tradings: [CompletedOrderModel]) {
+        self.tradings = ArrayModel(array: tradings)
+        
+        self.updateSelectedOrder()
+        self.updateDbData(with: tradings, type: CompletedOrderModel.self)
+
+        for order in tradings {
             order.update()
         }
     }
     
-    func fillTradings(with tradings: [CompletedOrderModel]) {
-        self.tradings = tradings
-        
-        self.updateSelectedOrder()
-        
-        RealmService.shared.deleteObjectsWith(type: CompletedOrderModel.self)
-        for order in tradings {
-            order.update()
-        }
+    func disableUpdating() {
+        self.timer?.invalidate()
     }
     
     override func executeContext(with marketName: String) {
@@ -107,41 +119,48 @@ class TradingsViewModel: ControllerViewModel {
     
     override func updateModelFromDbData(with marketName: String) {
         let dbActiveBuyOrders = RealmService.shared.getObjectsWith(type: ActiveOrderModel.self,
-                                                                   filter: self.configureFilter(with: marketName, side: .buy))
+                                                                   filter: self.configureFilter(marketName: marketName, side: .buy))
         let dbActiveSellOrders = RealmService.shared.getObjectsWith(type: ActiveOrderModel.self,
-                                                                    filter: self.configureFilter(with: marketName, side: .sell))
+                                                                    filter: self.configureFilter(marketName: marketName, side: .sell))
         let dbCompletedOrders = RealmService.shared.getObjectsWith(type: CompletedOrderModel.self,
-                                                                    filter: self.configureFilter(with: marketName))
+                                                                   filter: self.configureFilter(marketName: marketName))
         if dbActiveBuyOrders.count > 0 {
-            self.buyOrders = dbActiveBuyOrders
+            self.buyOrders = ArrayModel(array: dbActiveBuyOrders)
         }
         if dbActiveSellOrders.count > 0 {
-            self.sellOrders = dbActiveSellOrders
+            self.sellOrders = ArrayModel(array: dbActiveSellOrders)
         }
         if dbCompletedOrders.count > 0 {
-            self.tradings = dbCompletedOrders
+            self.tradings = ArrayModel(array: dbCompletedOrders)
         }
         
         self.updateSelectedOrder()
     }
     
-    func disableUpdating() {
-        self.timer?.invalidate()
+    // MARK: Private Methods
+    
+    func updateDbData<T: Object>(with array: [DBModel], type: T.Type) {
+        if let marketName = self.market?.marketName {
+            RealmService.shared.deleteObjectsWith(type: type, filter: self.configureFilter(marketName: marketName, userOrder: false))
+        }
+        
+        for order in array {
+            order.update()
+        }
     }
     
-    // MARK: Private Methods
-    private func configureFilter(with marketName: String, side: OrderSide) -> NSPredicate {
+    private func configureFilter(marketName: String, side: OrderSide) -> NSPredicate {
         return NSPredicate(format: "market = %@ AND side = %@", marketName, side.rawValue)
     }
     
-    private func updateSelectedOrder() {
+    func updateSelectedOrder(with index: Int = 0) {
         switch self.selectedTable {
         case .buyTable:
-            self.lastSelectedOrder = self.buyOrders.first
+            self.lastSelectedOrder = self.buyOrders[index]
         case .sellTable:
-            self.lastSelectedOrder = self.sellOrders.first
+            self.lastSelectedOrder = self.sellOrders[index]
         case .tradingsTable:
-            self.lastSelectedOrder = self.tradings.first
+            self.lastSelectedOrder = self.tradings[index]
         }
     }
     

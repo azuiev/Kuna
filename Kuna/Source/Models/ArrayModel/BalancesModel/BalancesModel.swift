@@ -11,12 +11,6 @@ import RxSwift
 
 class BalancesModel: ArrayModel<BalanceModel> {
     
-    // MARK: Public Methods
-
-    override func add(object: BalanceModel) {
-        super.add(object: object)
-    }
-    
     // MARK: Subscript
     
     override subscript(index: Int) -> BalanceModel? {

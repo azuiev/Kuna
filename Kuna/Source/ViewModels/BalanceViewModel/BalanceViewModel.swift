@@ -19,7 +19,7 @@ class BalanceViewModel {
     var code: String { return self.balance.currency.code }
     var name: String { return self.balance.currency.name }
     var count: String { return String(format: "%.8f", self.balance.count) }
-    var image: UIImage { return  UIImage(named: balance.currency.image) ?? UIImage(named: "btc")! }
+    var image: UIImage? { return  UIImage(named: balance.currency.image) ?? UIImage(named: "noicon") }
     
     // MARK: Initialization
     

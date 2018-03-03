@@ -47,29 +47,17 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZH-RY-tfh">
-                        <rect key="frame" x="420" y="14" width="24" height="24"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Mk-sU-wi6">
+                        <rect key="frame" x="420" y="9" width="30" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                        <state key="normal" title="-">
-                            <color key="titleColor" red="1" green="0.0012486093739999999" blue="0.2735051939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </state>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                <integer key="value" value="2"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="12"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </button>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             </tableViewCellContentView>
             <connections>
-                <outlet property="cancelOrderButton" destination="fZH-RY-tfh" id="qjv-w9-xNw"/>
                 <outlet property="countMainCurrencyLabel" destination="mF3-IU-uzr" id="XO6-Ks-umP"/>
                 <outlet property="countSecondCurrencyLabel" destination="iLB-90-TtH" id="aPy-8u-AnF"/>
+                <outlet property="orderSideImageView" destination="1Mk-sU-wi6" id="M8y-an-Lfb"/>
                 <outlet property="priceLabel" destination="XDb-TH-IJD" id="KCP-ld-f6B"/>
             </connections>
             <point key="canvasLocation" x="-376" y="17"/>

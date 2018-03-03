@@ -22,6 +22,12 @@ class ActiveOrderModel: OrderModel {
    
     // MARK: Public Properties
     
+    dynamic var type: OrderType? = .limit
+    dynamic var averagePrice: Double = 0.0
+    dynamic var state: String = "wait"
+    dynamic var remainingVolume: Double = 0.0
+    dynamic var executedVolume: Double = 0.0
+    dynamic var tradesCount: Int = 0
     dynamic var side: String = OrderSide.buy.rawValue
     var sideEnum: OrderSide? {
         get {
@@ -31,10 +37,4 @@ class ActiveOrderModel: OrderModel {
             self.side = newValue?.rawValue ?? "buy"
         }
     }
-    dynamic var type: OrderType? = .limit
-    dynamic var averagePrice: Double = 0.0
-    dynamic var state: String = "wait"
-    dynamic var remainingVolume: Double = 0.0
-    dynamic var executedVolume: Double = 0.0
-    dynamic var tradesCount: Int = 0
 }

@@ -20,14 +20,6 @@ extension UITableView {
         return result
     }
     
-    func applyChanges(with object: ArrayModelOption) {
-        self.beginUpdates()
-        
-        object.applyChanges(to: self)
-        
-        self.endUpdates()
-    }
-    
     override open func awakeFromNib() {
         super.awakeFromNib()
         

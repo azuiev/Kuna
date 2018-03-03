@@ -14,8 +14,20 @@ extension OrdersViewController: RootView {
     typealias ViewType = OrdersView
 }
 
-class OrdersViewController: ViewController<OrdersViewModel>, UITableViewDataSource {
+class OrdersViewController: ViewController<OrdersViewModel>, UITableViewDataSource, UITableViewDelegate {
 
+    // MARK: Protocol UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.viewModel.cancelOrder(with: indexPath.row)
+        }
+    }
+    
     // MARK: Protocol UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,7 +47,18 @@ class OrdersViewController: ViewController<OrdersViewModel>, UITableViewDataSour
     override init(_ viewModel: OrdersViewModel) {
         super.init(viewModel)
         
-        self.viewModel.ordersResult
+        viewModel.cancelOrderResult
+            .asObservable()
+            .subscribe {
+                _ = $0.map { [weak self] in
+                    self?.check(response: $0) { [weak self] in
+                        self?.parseOrder(with: $0)
+                    }
+                }
+            }
+            .disposed(by: self.viewModel.disposeBag)
+        
+        viewModel.ordersResult
             .asObservable()
             .subscribe {
                 _ = $0.map { [weak self] in
@@ -61,6 +84,7 @@ class OrdersViewController: ViewController<OrdersViewModel>, UITableViewDataSour
         let nib = UINib(nibName: toString(UserOrderCell.self), bundle: .main)
         
         self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(UserOrderCell.self))
+        self.rootView?.tableView?.allowsMultipleSelectionDuringEditing = false
     }
     
     // MARK: Private Methods
@@ -68,5 +92,12 @@ class OrdersViewController: ViewController<OrdersViewModel>, UITableViewDataSour
     private func parseOrders(with jsonArray: JSONArray) {
         let orders = OrdersParser().createAndUpdateOrdersWith(type: ActiveOrderModel.self, jsonArray: jsonArray)
         self.viewModel.fill(with: orders)
+    }
+    
+    private func parseOrder(with json: JSON) {
+        let order = OrdersParser().order(orderType: ActiveOrderModel.self, json: json)
+        order.map { [weak self] in
+            self?.viewModel.delete(order: $0)
+        }
     }
 }

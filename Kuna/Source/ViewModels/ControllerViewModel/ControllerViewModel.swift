@@ -58,7 +58,11 @@ class ControllerViewModel {
         }
     }
     
-    func configureFilter(with marketName: String) -> NSPredicate {
+    func configureFilter(marketName: String, userOrder: Bool? = nil) -> NSPredicate {
+        if let unwrappedBool = userOrder {
+            return NSPredicate(format: "market = %@ AND currentUserOrder = %@", marketName, NSNumber(value: unwrappedBool))
+        }
+        
         return NSPredicate(format: "market = %@", marketName)
     }
 }

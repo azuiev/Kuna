@@ -57,7 +57,7 @@ class LoginViewController: ViewController<LoginViewModel> {
     private func finishLogging(with balances:BalancesModel) {
         let balancesController = BalancesViewController(BalancesViewModel(user: self.viewModel.currentUser, balances: balances))
         balancesController.title = "My Balances"
-        let tradingsController = TradingsViewController(TradingsViewModel(user: self.viewModel.currentUser, balances: balances))
+        let tradingsController = TradingsViewController(TradingsViewModel(user: self.viewModel.currentUser))
         tradingsController.title = "Tradings"
         let ordersController = OrdersViewController(OrdersViewModel(user: self.viewModel.currentUser, orders: []))
         ordersController.title = "My Orders"

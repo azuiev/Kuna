@@ -29,11 +29,14 @@ class RealmService {
         return Array(realm.objects(type))
     }
     
-    func deleteObjectsWith<T: Object>(type: T.Type) {
-        let allUploadingObjects = realm.objects(type)
+    func deleteObjectsWith<T: Object>(type: T.Type, filter: NSPredicate? = nil) {
+        var objectsToDelete = realm.objects(type)
+        if let unwrappedFilter = filter {
+            objectsToDelete = objectsToDelete.filter(unwrappedFilter)
+        }
         do {
             try realm.write {
-                realm.delete(allUploadingObjects)
+                realm.delete(objectsToDelete)
             }
         } catch {
             print(error)

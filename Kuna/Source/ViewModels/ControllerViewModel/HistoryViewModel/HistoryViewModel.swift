@@ -40,7 +40,7 @@ class HistoryViewModel: ControllerViewModel {
     
     override func updateModelFromDbData(with marketName: String) {
         let dbOrders = RealmService.shared.getObjectsWith(type: HistoryOrderModel.self,
-                                                          filter: self.configureFilter(with: marketName))
+                                                          filter: self.configureFilter(marketName: marketName))
         
         if dbOrders.count > 0 {
             self.orders = dbOrders

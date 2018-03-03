@@ -19,13 +19,13 @@ class CancelOrderContext: UserContext {
     
     // MARK: Public Properties
     
-    let orderId: Int
+    let orderId: Int64
     override var urlPath: String { return "api/v2/order/delete" }
     override var httpMethod: HTTPMethod { return .post }
     
     // MARK: Initialization
     
-    init(token: AccessTokenModel, orderId: Int) {
+    init(token: AccessTokenModel, orderId: Int64) {
         self.orderId = orderId
         
         super.init(token: token)
