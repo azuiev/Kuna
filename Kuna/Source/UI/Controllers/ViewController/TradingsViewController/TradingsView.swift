@@ -37,7 +37,7 @@ class TradingsView: MainView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.createOrder?.layer.borderColor = UIColor.init(red: 0, green: 128, blue: 255).cgColor
+        self.createOrder?.layer.borderColor = UIColor(red: 0, green: 128, blue: 255).cgColor
     }
     
     // MARK: Public Properties

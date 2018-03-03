@@ -43,9 +43,9 @@ class UserContext: PublicContext {
             if let jsonError = json["error"] as? JSON {
                 completionHandler(Result.Failure(JSONError.otherError(jsonError["message"] as? String ?? "")))
             }
+        } else {
+            super.parseFailedResponse(response: response, with: completionHandler)
         }
-        
-        super.parseFailedResponse(response: response, with: completionHandler)
     }
     
     // MARK: Private methods

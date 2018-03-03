@@ -121,6 +121,8 @@ class TradingsViewModel: ControllerViewModel {
         if dbCompletedOrders.count > 0 {
             self.tradings = dbCompletedOrders
         }
+        
+        self.updateSelectedOrder()
     }
     
     func disableUpdating() {

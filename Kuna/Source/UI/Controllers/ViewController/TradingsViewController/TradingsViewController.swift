@@ -70,13 +70,14 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
     override init(_ viewModel: TradingsViewModel) {
         super.init(viewModel)
         
-        self.viewModel.newOrderSubject
+        viewModel.newOrderSubject
             .asObservable()
             .subscribe { [weak self] _ in
                 guard let unwrappedViewModel = self?.viewModel else { return }
                 
                 let newOrderViewModel = NewOrderViewModel(unwrappedViewModel.currentUser, order: unwrappedViewModel.lastSelectedOrder) {
                     print($0)
+                    self?.tabBarController?.selectedIndex = 2
                 }
                 
                 let controller = NewOrderViewController(newOrderViewModel)
@@ -85,7 +86,7 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
             }
             .disposed(by: self.viewModel.disposeBag)
         
-        self.viewModel.ordersResult
+        viewModel.ordersResult
             .asObservable()
             .subscribe {
                 _ = $0.map { [weak self] in
@@ -96,7 +97,7 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
             }
             .disposed(by: self.viewModel.disposeBag)
         
-        self.viewModel.tradingsResult
+        viewModel.tradingsResult
             .asObservable()
             .subscribe {
                 _ = $0.map { [weak self] in
@@ -132,6 +133,7 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
         
         self.viewModel.disableUpdating()
     }
+    
     // MARK: Private Methods
     
     private func parseOrders(with json: JSON) {

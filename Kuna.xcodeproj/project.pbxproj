@@ -73,6 +73,9 @@
 		1D5D1554202B6F10001DB417 /* OrdersContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5D154D202B6F10001DB417 /* OrdersContext.swift */; };
 		1D5D463A2034BF8700EF6384 /* CurrenciesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5D46392034BF8700EF6384 /* CurrenciesModel.swift */; };
 		1D5D78C9203359F2009906C3 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5D78C8203359F2009906C3 /* AlertService.swift */; };
+		1D5E1691204A092100CE6954 /* CancelOrderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E1690204A092100CE6954 /* CancelOrderContext.swift */; };
+		1D5E1695204A0FB600CE6954 /* UserOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5E1693204A0FB600CE6954 /* UserOrderCell.swift */; };
+		1D5E1696204A0FB600CE6954 /* UserOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5E1694204A0FB600CE6954 /* UserOrderCell.xib */; };
 		1D62529D20190AEC0047CB7C /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D62529C20190AEC0047CB7C /* CurrencyModel.swift */; };
 		1D6252A020190E710047CB7C /* BalanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D62529F20190E710047CB7C /* BalanceCell.xib */; };
 		1D6252A220190E940047CB7C /* BalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6252A120190E940047CB7C /* BalanceCell.swift */; };
@@ -180,6 +183,9 @@
 		1D5D154D202B6F10001DB417 /* OrdersContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersContext.swift; sourceTree = "<group>"; };
 		1D5D46392034BF8700EF6384 /* CurrenciesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesModel.swift; sourceTree = "<group>"; };
 		1D5D78C8203359F2009906C3 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
+		1D5E1690204A092100CE6954 /* CancelOrderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelOrderContext.swift; sourceTree = "<group>"; };
+		1D5E1693204A0FB600CE6954 /* UserOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserOrderCell.swift; sourceTree = "<group>"; };
+		1D5E1694204A0FB600CE6954 /* UserOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserOrderCell.xib; sourceTree = "<group>"; };
 		1D62529C20190AEC0047CB7C /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		1D62529F20190E710047CB7C /* BalanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceCell.xib; sourceTree = "<group>"; };
 		1D6252A120190E940047CB7C /* BalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCell.swift; sourceTree = "<group>"; };
@@ -691,6 +697,24 @@
 			path = AlertService;
 			sourceTree = "<group>";
 		};
+		1D5E168F204A08F000CE6954 /* CancelOrderContext */ = {
+			isa = PBXGroup;
+			children = (
+				1D5E1690204A092100CE6954 /* CancelOrderContext.swift */,
+			);
+			name = CancelOrderContext;
+			path = Kuna/Source/Contexts/PublicContext/CancelOrderContext;
+			sourceTree = SOURCE_ROOT;
+		};
+		1D5E1692204A0FB600CE6954 /* UserOrderCell */ = {
+			isa = PBXGroup;
+			children = (
+				1D5E1693204A0FB600CE6954 /* UserOrderCell.swift */,
+				1D5E1694204A0FB600CE6954 /* UserOrderCell.xib */,
+			);
+			path = UserOrderCell;
+			sourceTree = "<group>";
+		};
 		1D62529B20190AD90047CB7C /* CurrencyModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -719,6 +743,7 @@
 		1D6A2302201671E300A25F13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1D5E1692204A0FB600CE6954 /* UserOrderCell */,
 				1D62529E20190E320047CB7C /* BalanceCell */,
 				1D6A2303201671E300A25F13 /* HeaderView */,
 				1D8FEF2C2017BC9900C65D4C /* MainView */,
@@ -919,6 +944,7 @@
 			isa = PBXGroup;
 			children = (
 				1D8B84CE203F8163004B74F1 /* UserContext.swift */,
+				1D5E168F204A08F000CE6954 /* CancelOrderContext */,
 				1D8B84CC203F8163004B74F1 /* LoginContext */,
 				1D8B84CF203F8163004B74F1 /* UserHistoryContext */,
 				1D8B84D1203F8163004B74F1 /* UserOrdersContext */,
@@ -1060,6 +1086,7 @@
 				1D7591241FFECED200573899 /* Assets.xcassets in Resources */,
 				1D52962C2042B5800078A8E9 /* HistoryOrderCell.xib in Resources */,
 				1D5CE6E520461A660052C441 /* HistoryViewController.xib in Resources */,
+				1D5E1696204A0FB600CE6954 /* UserOrderCell.xib in Resources */,
 				1D5CE6D920461A660052C441 /* LoginViewController.xib in Resources */,
 				1D7591261FFECED200573899 /* Main.storyboard in Resources */,
 				1D6A23052016721500A25F13 /* HeaderView.xib in Resources */,
@@ -1203,6 +1230,8 @@
 				1D573922200BD51500D7E431 /* FileSystemImageModel.swift in Sources */,
 				1D5CE6E320461A660052C441 /* HistoryView.swift in Sources */,
 				1D8B84C3203F46B5004B74F1 /* MarketCell.swift in Sources */,
+				1D5E1695204A0FB600CE6954 /* UserOrderCell.swift in Sources */,
+				1D5E1691204A092100CE6954 /* CancelOrderContext.swift in Sources */,
 				1D573925200BD51500D7E431 /* DBModel.swift in Sources */,
 				1D758AC62024D8CF00419689 /* RealmService.swift in Sources */,
 				1D573920200BD51500D7E431 /* ArrayModelOption.swift in Sources */,

@@ -22,7 +22,17 @@ class NewOrderViewController: ViewController<NewOrderViewModel> {
     override init(_ viewModel: NewOrderViewModel) {
         super.init(viewModel)
         
-        // TODO
+        viewModel.newOrderResult
+            .asObservable()
+            .subscribe {
+                _ = $0.map { [weak self] in
+                    self?.check(response: $0) { [weak self] in
+                        self?.parseOrder(with: $0)
+                    }
+                }
+            }
+            .disposed(by: self.viewModel.disposeBag)
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,5 +53,16 @@ class NewOrderViewController: ViewController<NewOrderViewModel> {
                 self?.dismiss(animated: true)
             })
             .disposed(by: self.viewModel.disposeBag)
+    }
+    
+    // MARK: Private Methods
+
+    private func parseOrder(with json: JSON) {
+        let order = OrdersParser().order(orderType: ActiveOrderModel.self, json: json)
+        self.dismiss(animated: true) {
+            order.map { [weak self] in
+                self?.viewModel.completion($0)
+            }
+        }
     }
 }

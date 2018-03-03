@@ -23,9 +23,11 @@ class LoginContext: UserContext {
         if let json = response as? JSON {
             if let jsonError = json["error"] as? JSON {
                 completionHandler(Result.Failure(JSONError.otherError(jsonError["message"] as? String ?? "")))
+            } else {
+                completionHandler(Result.Success(response))
             }
+        } else {
+            super.parseSuccessResponse(response: response, with: completionHandler)
         }
-        
-        completionHandler(Result.Success(response))
     }
 }

@@ -23,7 +23,7 @@ class OrdersViewController: ViewController<OrdersViewModel>, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.reusableCell(with: OrderCell.self, indexPath: indexPath)
+        let cell = tableView.reusableCell(with: UserOrderCell.self, indexPath: indexPath)
         
         cell.order = self.viewModel.orders[indexPath.row]
         
@@ -58,9 +58,9 @@ class OrdersViewController: ViewController<OrdersViewModel>, UITableViewDataSour
         
         self.rootView?.fill(with: self.viewModel)
         
-        let nib = UINib(nibName: toString(OrderCell.self), bundle: .main)
+        let nib = UINib(nibName: toString(UserOrderCell.self), bundle: .main)
         
-        self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(OrderCell.self))
+        self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(UserOrderCell.self))
     }
     
     // MARK: Private Methods

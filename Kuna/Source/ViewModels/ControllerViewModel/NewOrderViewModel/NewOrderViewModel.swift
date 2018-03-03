@@ -7,16 +7,18 @@
 //
 
 import UIKit
+import RxSwift
 
 class NewOrderViewModel: ControllerViewModel {
 
     // MARK: Public Properties
     
+    let newOrderResult = PublishSubject<Result<JSON>>()
     var order: OrderModel?
     
     // MARK: Private Properties
     
-    private var completion: (OrderModel) -> ()?
+    var completion: (OrderModel) -> ()?
     
     // MARK: Initialization
     
@@ -29,16 +31,16 @@ class NewOrderViewModel: ControllerViewModel {
     
     // MARK: Public Methods
     
-    func createOrder(side: OrderSide, volume: String, price: String) {
-        let marketName = MarketsModel.shared.currentMarket?.marketName
+    func createOrder(side: OrderSide, volume: Double, price: Double) {
+        guard let marketName = MarketsModel.shared.currentMarket?.marketName else { return }
         
         NewOrderContext(token: self.currentUser.token,
-                        market: "wavesuah",
-                        price: 200.00,
-                        volume: 1.00,
-                        side: "sell")
-            .execute(with: JSON.self) {
-                print($0)
+                        market: marketName,
+                        price: price,
+                        volume: volume,
+                        side: side.rawValue)
+            .execute(with: JSON.self) { [weak self] in
+                self?.newOrderResult.onNext($0)
         }
     }
 }

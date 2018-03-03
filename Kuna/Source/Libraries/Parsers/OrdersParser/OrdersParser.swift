@@ -82,7 +82,7 @@ class OrdersParser {
     
     // MARK: Private Methods
     
-    private func order<T: OrderModel>(orderType: T.Type, json: JSON) -> T? {
+    func order<T: OrderModel>(orderType: T.Type, json: JSON) -> T? {
         let order: Any
         switch orderType {
         case is ActiveOrderModel.Type:
