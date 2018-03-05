@@ -17,6 +17,25 @@ enum TableType: Int {
 
 class TradingsView: MainView {
     
+    // MARK: Protocol TableView
+    
+    override var tableView: [UITableView] {
+        var result = [UITableView]()
+        if let view = self.buyOrdersTableView {
+            result.append(view)
+        }
+        
+        if let view = self.sellOrdersTableView {
+            result.append(view)
+        }
+        
+        if let view = self.tradingsTableView {
+            result.append(view)
+        }
+        
+        return result
+    }
+    
     // MARK: Constants
     
     private struct Constants {
@@ -26,9 +45,9 @@ class TradingsView: MainView {
     // IBOutlets
     
     @IBOutlet var createOrder: UIButton?
-    @IBOutlet var buyOrders: UITableView?
-    @IBOutlet var sellOrders: UITableView?
-    @IBOutlet var tradings: UITableView?
+    @IBOutlet var buyOrdersTableView: UITableView?
+    @IBOutlet var sellOrdersTableView: UITableView?
+    @IBOutlet var tradingsTableView: UITableView?
     @IBOutlet var segmentedView: UISegmentedControl?
     
     
@@ -69,9 +88,9 @@ class TradingsView: MainView {
                 let view: UITableView?
                 
                 switch tableType {
-                case .buyTable: view = self?.buyOrders
-                case .sellTable: view = self?.sellOrders
-                case .tradingsTable: view = self?.tradings
+                case .buyTable: view = self?.buyOrdersTableView
+                case .sellTable: view = self?.sellOrdersTableView
+                case .tradingsTable: view = self?.tradingsTableView
                 }
                 
                 view.map { [weak self] in
@@ -83,7 +102,7 @@ class TradingsView: MainView {
         viewModel.buyOrdersSubject
             .asObservable()
             .subscribe({ [weak self] _ in
-                self?.buyOrders?.reloadData()
+                self?.buyOrdersTableView?.reloadDataAndHideHud()
             })
                 
             .disposed(by: self.disposeBag)
@@ -91,14 +110,14 @@ class TradingsView: MainView {
         viewModel.sellOrdersSubject
             .asObservable()
             .subscribe({ [weak self] _ in
-               self?.sellOrders?.reloadData()
+               self?.sellOrdersTableView?.reloadDataAndHideHud()
             })
             .disposed(by: self.disposeBag)
         
         viewModel.tradingsSubject
             .asObservable()
             .subscribe({ [weak self] _ in
-                self?.tradings?.reloadData()
+                self?.tradingsTableView?.reloadDataAndHideHud()
             })
             .disposed(by: self.disposeBag)
     }

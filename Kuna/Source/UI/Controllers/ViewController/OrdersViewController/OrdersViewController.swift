@@ -83,8 +83,8 @@ class OrdersViewController: ViewController<OrdersViewModel>, UITableViewDataSour
         
         let nib = UINib(nibName: toString(UserOrderCell.self), bundle: .main)
         
-        self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(UserOrderCell.self))
-        self.rootView?.tableView?.allowsMultipleSelectionDuringEditing = false
+        self.rootView?.ordersTableView?.register(nib, forCellReuseIdentifier: toString(UserOrderCell.self))
+        self.rootView?.ordersTableView?.allowsMultipleSelectionDuringEditing = false
     }
     
     // MARK: Private Methods

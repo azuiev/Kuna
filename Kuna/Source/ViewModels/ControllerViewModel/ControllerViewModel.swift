@@ -17,6 +17,8 @@ class ControllerViewModel {
     let disposeBag = DisposeBag()
     let marketSubject = PublishSubject<MarketModel>()
     let selectMarketSubject = PublishSubject<Void>()
+    let logoutSubject = PublishSubject<Void>()
+    let hudSubject = PublishSubject<Bool>()
     
     var currentUser: CurrentUserModel
     var market: MarketModel? {
@@ -36,12 +38,23 @@ class ControllerViewModel {
     
     // MARK: Public Methods
     
+    func logout() {
+        RealmService.shared.deleteAll()
+        logoutSubject.onNext(())
+        print("logout")
+    }
+    
     func updateData() {
         guard let unwrappedMarket = self.market else { return }
         
         let marketName = unwrappedMarket.marketName
+        self.clearTables()
         self.updateModelFromDbData(with: marketName)
         self.executeContext(with: marketName)
+    }
+    
+    func clearTables() {
+        self.hudSubject.onNext(true)
     }
     
     func executeContext(with marketName: String) {

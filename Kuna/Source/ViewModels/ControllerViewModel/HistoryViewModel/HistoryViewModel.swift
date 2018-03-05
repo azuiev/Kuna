@@ -13,9 +13,9 @@ class HistoryViewModel: ControllerViewModel {
     // MARK: Public Properties
     
     let ordersResult = PublishSubject<Result<JSONArray>>()
-    let ordersSubject = PublishSubject<[HistoryOrderModel]>()
+    let ordersSubject = PublishSubject<ArrayModel<HistoryOrderModel>>()
     
-    var orders: [HistoryOrderModel] {
+    var orders: ArrayModel<HistoryOrderModel> {
         didSet {
             self.ordersSubject.onNext(self.orders)
         }
@@ -24,12 +24,18 @@ class HistoryViewModel: ControllerViewModel {
     // MARK: Initialization
     
     init(user: CurrentUserModel, orders: [HistoryOrderModel]) {
-        self.orders = orders
+        self.orders = ArrayModel(array: orders)
         
         super.init(user)
     }
     
     // MARK: Public Methods
+
+    override func clearTables() {
+        self.orders = ArrayModel(array: [HistoryOrderModel]())
+        
+        super.clearTables()
+    }
     
     override func executeContext(with marketName: String) {
         UserHistoryContext(token: self.currentUser.token, market: marketName)
@@ -43,12 +49,12 @@ class HistoryViewModel: ControllerViewModel {
                                                           filter: self.configureFilter(marketName: marketName))
         
         if dbOrders.count > 0 {
-            self.orders = dbOrders
+            self.orders = ArrayModel(array: dbOrders)
         }
     }
     
     func fill(with orders: [HistoryOrderModel]) {
-        self.orders = orders
+        self.orders = ArrayModel(array: orders)
         
         self.updateDbData(with: orders)
     }

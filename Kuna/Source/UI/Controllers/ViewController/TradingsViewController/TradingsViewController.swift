@@ -19,15 +19,16 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
     // MARK: Protocol UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.rootView?.buyOrders  {
+        let view = self.rootView
+        if tableView == view?.buyOrdersTableView  {
             return self.viewModel.buyOrders.count
         }
         
-        if tableView == self.rootView?.sellOrders {
+        if tableView == view?.sellOrdersTableView {
             return self.viewModel.sellOrders.count
         }
         
-        if tableView == self.rootView?.tradings {
+        if tableView == view?.tradingsTableView {
             return self.viewModel.tradings.count
         }
         
@@ -35,21 +36,22 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == self.rootView?.buyOrders  {
+        let view = self.rootView
+        if tableView == view?.buyOrdersTableView  {
             let cell = tableView.reusableCell(with: OrderCell.self, indexPath: indexPath)
             cell.order = self.viewModel.buyOrders[indexPath.row]
             
             return cell
         }
         
-        if tableView == self.rootView?.sellOrders {
+        if tableView == view?.sellOrdersTableView {
             let cell = tableView.reusableCell(with: OrderCell.self, indexPath: indexPath)
             cell.order = self.viewModel.sellOrders[indexPath.row]
             
             return cell
         }
         
-        if tableView == self.rootView?.tradings {
+        if tableView == view?.tradingsTableView {
             let cell = tableView.reusableCell(with: CompletedOrderCell.self, indexPath: indexPath)
             cell.order = self.viewModel.tradings[indexPath.row]
             
@@ -118,14 +120,15 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.rootView?.fill(with: self.viewModel)
+        let view = self.rootView
+        view?.fill(with: self.viewModel)
         
         let nibOrderCell = UINib(nibName: toString(OrderCell.self), bundle: .main)
         let nibCompletedOrderCell = UINib(nibName: toString(CompletedOrderCell.self), bundle: .main)
         
-        self.rootView?.buyOrders?.register(nibOrderCell, forCellReuseIdentifier: toString(OrderCell.self))
-        self.rootView?.sellOrders?.register(nibOrderCell, forCellReuseIdentifier: toString(OrderCell.self))
-        self.rootView?.tradings?.register(nibCompletedOrderCell, forCellReuseIdentifier: toString(CompletedOrderCell.self))
+        view?.buyOrdersTableView?.register(nibOrderCell, forCellReuseIdentifier: toString(OrderCell.self))
+        view?.sellOrdersTableView?.register(nibOrderCell, forCellReuseIdentifier: toString(OrderCell.self))
+        view?.tradingsTableView?.register(nibCompletedOrderCell, forCellReuseIdentifier: toString(CompletedOrderCell.self))
     }
 
     override func viewWillDisappear(_ animated: Bool) {

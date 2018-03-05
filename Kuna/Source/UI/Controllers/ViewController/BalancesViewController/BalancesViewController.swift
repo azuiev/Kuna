@@ -45,10 +45,11 @@ class BalancesViewController: ViewController<BalancesViewModel>, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.rootView?.fill(with: self.viewModel)
-        
+        let balancesView = self.rootView
+        balancesView?.fill(with: self.viewModel)
+    
         let nib = UINib(nibName: toString(BalanceCell.self), bundle: .main)
         
-        self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(BalanceCell.self))
+        balancesView?.balancesTableView?.register(nib, forCellReuseIdentifier: toString(BalanceCell.self))
     }
 }

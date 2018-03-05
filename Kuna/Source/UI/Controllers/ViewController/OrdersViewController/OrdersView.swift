@@ -12,6 +12,16 @@ import RxCocoa
 
 class OrdersView: MainView {
 
+    // MARK: Protocol TableView
+    
+    override var tableView: [UITableView] {
+        if let view = self.ordersTableView {
+            return [view]
+        }
+        
+        return super.tableView
+    }
+    
     // MARK: Constants
     
     private struct Constants {
@@ -20,7 +30,7 @@ class OrdersView: MainView {
     
     // IBOutlets
     
-    @IBOutlet var tableView: UITableView?
+    @IBOutlet var ordersTableView: UITableView?
     
     // MARK: Public Properties
     
@@ -34,7 +44,8 @@ class OrdersView: MainView {
         viewModel.ordersSubject
             .asObservable()
             .subscribe({ [weak self] _ in
-                self?.tableView?.reloadData()
+                self?.ordersTableView?.reloadDataAndHideHud()
+
             })
             
             .disposed(by: self.disposeBag)
@@ -42,9 +53,8 @@ class OrdersView: MainView {
         viewModel.cancelOrdersSubject
             .asObservable()
             .subscribe({ [weak self] _ in
-                self?.tableView?.reloadData()
+                self?.ordersTableView?.reloadData()
             })
-            
             .disposed(by: self.disposeBag)
     }
 }

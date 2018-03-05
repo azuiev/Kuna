@@ -9,8 +9,14 @@
 import UIKit
 import RxSwift
 
-class MainView: UIView {
-
+class MainView: UIView, TableView {
+    
+    // MARK: Prtotcol TableView
+    
+    var tableView: [UITableView] {
+        return []
+    }
+    
     // MARK: Constants
     
     private struct Constants {
@@ -60,14 +66,31 @@ class MainView: UIView {
     // MARK: Public Methods
     
     func fill(with viewModel: ControllerViewModel) {
-        self.headerView?.marketView?.market = viewModel.market
+        let header = self.headerView
+        header?.marketView?.market = viewModel.market
         
-        self.headerView?.marketTapGestureRecognizer?
+        header?.marketTapGestureRecognizer?
             .rx
             .event
             .asObservable()
             .subscribe({ _ in 
                 viewModel.selectMarketSubject.onNext(())
+            })
+            .disposed(by: self.disposeBag)
+        
+        header?.exitButton?
+            .rx
+            .tap
+            .asObservable()
+            .subscribe({ _ in
+                viewModel.logout()
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.hudSubject
+            .asObservable()
+            .subscribe(onNext: { [weak self] in
+                self?.displayHud($0)
             })
             .disposed(by: self.disposeBag)
         
@@ -97,6 +120,14 @@ class MainView: UIView {
         unwprappedHeaderView.addSubview(marketView)
         unwprappedHeaderView.marketView = marketView
     }
+    
+    func displayHud(_ flag: Bool) {
+        for view in tableView {
+            flag ? view.showHUD(text: "Loading...") : view.hideHUD()
+        }
+    }
+    
+    // MARK: Private Methods
     
     private func setWindowLabelText() {
         self.headerView.map { [weak self] in

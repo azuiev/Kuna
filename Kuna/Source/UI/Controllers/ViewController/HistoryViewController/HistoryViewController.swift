@@ -57,11 +57,12 @@ class HistoryViewController: ViewController<HistoryViewModel>, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.rootView?.fill(with: self.viewModel)
+        let historyView = self.rootView
+        historyView?.fill(with: self.viewModel)
         
         let nib = UINib(nibName: toString(HistoryOrderCell.self), bundle: .main)
         
-        self.rootView?.tableView?.register(nib, forCellReuseIdentifier: toString(HistoryOrderCell.self))
+        historyView?.historyTableView?.register(nib, forCellReuseIdentifier: toString(HistoryOrderCell.self))
     }
     
     // MARK: Private Methods

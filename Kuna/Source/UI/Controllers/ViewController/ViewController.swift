@@ -24,6 +24,13 @@ class ViewController<T: ControllerViewModel>: UIViewController {
         
         super.init(nibName: toString(type(of: self)), bundle: .main)
         
+        viewModel.logoutSubject
+            .asObservable()
+            .subscribe({ [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: viewModel.disposeBag)
+        
         viewModel.selectMarketSubject
             .asObservable()
             .subscribe({ [weak self] _ in

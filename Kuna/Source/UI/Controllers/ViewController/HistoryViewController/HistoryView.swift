@@ -12,6 +12,16 @@ import RxCocoa
 
 class HistoryView: MainView {
 
+    // MARK: Protocol TableView
+    
+    override var tableView: [UITableView] {
+        if let view = self.historyTableView {
+            return [view]
+        }
+        
+        return super.tableView
+    }
+    
     // MARK: Constants
     
     private struct Constants {
@@ -20,18 +30,11 @@ class HistoryView: MainView {
     
     // IBOutlets
     
-    @IBOutlet var tableView: UITableView? 
+    @IBOutlet var historyTableView: UITableView?
     
     // MARK: Public Properties
     
     override var tabName: String { return Constants.tabName }
-    
-    // MARK: View Lifecycle
-    override func awakeFromNib() {
-        super .awakeFromNib()
-        
-
-    }
     
     // MARK: Public Methods
     
@@ -41,7 +44,7 @@ class HistoryView: MainView {
         viewModel.ordersSubject
             .asObservable()
             .subscribe({ [weak self] _ in
-                self?.tableView?.reloadData()
+                self?.historyTableView?.reloadDataAndHideHud()
             })
             
             .disposed(by: self.disposeBag)

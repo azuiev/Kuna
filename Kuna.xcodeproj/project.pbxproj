@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D1567F620309ED800BE0D0A /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1567F520309ED800BE0D0A /* MarketModel.swift */; };
 		1D1C3C432043796A000CB3BB /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1C3C422043796A000CB3BB /* UIView + Extension.swift */; };
+		1D51C5DA204DE25700BB8959 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D51C5D9204DE25700BB8959 /* TableView.swift */; };
 		1D52962C2042B5800078A8E9 /* HistoryOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D52962A2042B5800078A8E9 /* HistoryOrderCell.xib */; };
 		1D52962D2042B5800078A8E9 /* HistoryOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D52962B2042B5800078A8E9 /* HistoryOrderCell.swift */; };
 		1D5296312042B8B60078A8E9 /* CompletedOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D52962F2042B8B50078A8E9 /* CompletedOrderCell.swift */; };
@@ -115,6 +116,7 @@
 /* Begin PBXFileReference section */
 		1D1567F520309ED800BE0D0A /* MarketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketModel.swift; sourceTree = "<group>"; };
 		1D1C3C422043796A000CB3BB /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		1D51C5D9204DE25700BB8959 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		1D52962A2042B5800078A8E9 /* HistoryOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryOrderCell.xib; sourceTree = "<group>"; };
 		1D52962B2042B5800078A8E9 /* HistoryOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryOrderCell.swift; sourceTree = "<group>"; };
 		1D52962F2042B8B50078A8E9 /* CompletedOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedOrderCell.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				1D5738FA200BD51500D7E431 /* RootView.swift */,
+				1D51C5D9204DE25700BB8959 /* TableView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1217,6 +1220,7 @@
 				1D9335682040BC0A00FFA724 /* MarketView.swift in Sources */,
 				1D5296512042CA9A0078A8E9 /* HistoryViewModel.swift in Sources */,
 				1D5CE6DB20461A660052C441 /* MarketsViewController.swift in Sources */,
+				1D51C5DA204DE25700BB8959 /* TableView.swift in Sources */,
 				1D5CE6792046156F0052C441 /* NewOrderViewModel.swift in Sources */,
 				1D6A23072016723500A25F13 /* HeaderView.swift in Sources */,
 				1D7C6D46202EDADE00D99F7D /* ActiveOrdersModel.swift in Sources */,

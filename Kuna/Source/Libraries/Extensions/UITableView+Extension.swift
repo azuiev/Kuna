@@ -25,4 +25,9 @@ extension UITableView {
         
         self.tableFooterView = UIView(frame: .zero)
     }
+    
+    func reloadDataAndHideHud() {
+        self.reloadData()
+        self.hideHUD()
+    }
 }

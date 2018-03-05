@@ -41,8 +41,8 @@
             <gestureRecognizers/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <connections>
+                <outlet property="balancesTableView" destination="geX-ou-w0H" id="ztg-Np-wOf"/>
                 <outlet property="bodyView" destination="Uy5-r4-tHN" id="yeW-dV-2lr"/>
-                <outlet property="tableView" destination="geX-ou-w0H" id="nXV-Xj-iOi"/>
             </connections>
             <point key="canvasLocation" x="24.5" y="50.5"/>
         </view>

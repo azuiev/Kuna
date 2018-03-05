@@ -14,6 +14,7 @@ class HeaderView: UIView {
     
     @IBOutlet var windowNameLabel:  UILabel?
     @IBOutlet var tabNameLabel:     UILabel?
+    @IBOutlet var exitButton:       UIButton?
     
     // MARK: Public Properties
     

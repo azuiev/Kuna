@@ -32,6 +32,11 @@
                                 <segment title="Sell Orders"/>
                                 <segment title="Tradings"/>
                             </segments>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </segmentedControl>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RSO-Ka-Gxb">
                             <rect key="frame" x="0.0" y="38" width="379" height="631"/>
@@ -83,11 +88,11 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <connections>
                 <outlet property="bodyView" destination="Qa9-i6-2v1" id="tVY-RZ-iRu"/>
-                <outlet property="buyOrders" destination="RSO-Ka-Gxb" id="mbM-ye-Oqt"/>
+                <outlet property="buyOrdersTableView" destination="RSO-Ka-Gxb" id="kOq-hK-15w"/>
                 <outlet property="createOrder" destination="2Hg-5N-Rft" id="I5u-N8-X3W"/>
                 <outlet property="segmentedView" destination="GMh-lL-HnQ" id="jgv-29-rrj"/>
-                <outlet property="sellOrders" destination="e6Z-hl-VN9" id="OU3-Vb-MfX"/>
-                <outlet property="tradings" destination="50m-rK-gJ9" id="Kfb-rQ-XJb"/>
+                <outlet property="sellOrdersTableView" destination="e6Z-hl-VN9" id="Qxq-Mo-2RD"/>
+                <outlet property="tradingsTableView" destination="50m-rK-gJ9" id="rF5-CM-qhG"/>
             </connections>
             <point key="canvasLocation" x="24.5" y="50.5"/>
         </view>

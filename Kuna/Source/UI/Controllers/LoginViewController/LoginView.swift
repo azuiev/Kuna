@@ -33,7 +33,6 @@ class LoginView: UIView, UITextFieldDelegate {
     // MARK: Public Properties
     
     let disposeBag = DisposeBag()
-
     
     // MARK: View Lifecycle
     
@@ -66,7 +65,7 @@ class LoginView: UIView, UITextFieldDelegate {
             .rx
             .tap
             .subscribe(onNext: { [weak self] _ in
-                self?.showHUD(mode: .annularDeterminate , text: "test")
+                self?.showHUD(mode: .indeterminate, text: "Please wait...")
                 viewModel.onLogin(with: AccessTokenModel(publicKey: self?.publicKeyTextField?.text,
                                                          secretKey: self?.secretKeyTextField?.text))
             })

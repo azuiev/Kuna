@@ -117,6 +117,14 @@ class TradingsViewModel: ControllerViewModel {
        self.configureUpdating(with: marketName)
     }
     
+    override func clearTables() {
+        self.buyOrders = ArrayModel(array: [ActiveOrderModel]())
+        self.sellOrders = ArrayModel(array: [ActiveOrderModel]())
+        self.tradings =  ArrayModel(array: [CompletedOrderModel]())
+        
+        super.clearTables()
+    }
+    
     override func updateModelFromDbData(with marketName: String) {
         let dbActiveBuyOrders = RealmService.shared.getObjectsWith(type: ActiveOrderModel.self,
                                                                    filter: self.configureFilter(marketName: marketName, side: .buy))
@@ -137,8 +145,6 @@ class TradingsViewModel: ControllerViewModel {
         self.updateSelectedOrder()
     }
     
-    // MARK: Private Methods
-    
     func updateDbData<T: Object>(with array: [DBModel], type: T.Type) {
         if let marketName = self.market?.marketName {
             RealmService.shared.deleteObjectsWith(type: type, filter: self.configureFilter(marketName: marketName, userOrder: false))
@@ -147,10 +153,6 @@ class TradingsViewModel: ControllerViewModel {
         for order in array {
             order.update()
         }
-    }
-    
-    private func configureFilter(marketName: String, side: OrderSide) -> NSPredicate {
-        return NSPredicate(format: "market = %@ AND side = %@", marketName, side.rawValue)
     }
     
     func updateSelectedOrder(with index: Int = 0) {
@@ -162,6 +164,12 @@ class TradingsViewModel: ControllerViewModel {
         case .tradingsTable:
             self.lastSelectedOrder = self.tradings[index]
         }
+    }
+    
+    // MARK: Private Methods
+    
+    private func configureFilter(marketName: String, side: OrderSide) -> NSPredicate {
+        return NSPredicate(format: "market = %@ AND side = %@", marketName, side.rawValue)
     }
     
     private func configureUpdating(with marketName: String) {

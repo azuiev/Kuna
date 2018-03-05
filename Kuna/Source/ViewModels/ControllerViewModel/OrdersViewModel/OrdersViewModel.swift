@@ -54,6 +54,12 @@ class OrdersViewModel: ControllerViewModel {
         }
     }
     
+    override func clearTables() {
+        self.orders = ArrayModel(array: [ActiveOrderModel]())
+        
+        super.clearTables()
+    }
+    
     override func executeContext(with marketName: String) {
         UserOrdersContext(token: self.currentUser.token, market: marketName).execute(with: JSONArray.self) { [weak self] in
             self?.ordersResult.onNext($0)

@@ -20,7 +20,7 @@ class BalancesView: MainView {
     
     // IBOutlets
     
-    @IBOutlet var tableView: UITableView?
+    @IBOutlet var balancesTableView: UITableView?
     
     // MARK: Public Properties
     
