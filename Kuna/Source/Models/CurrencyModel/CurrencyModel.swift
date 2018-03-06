@@ -19,26 +19,14 @@ extension Equatable where Self: CurrencyModel {
     }
 }
 
-extension CurrencyModel {
-    static func performLoading() -> [CurrencyModel] {
-        
+extension CurrencyModel: JsonProperty {
+    static func loadProperty() -> [CurrencyModel] {
         var result: [CurrencyModel] = []
         
-        if let path = Bundle.main.path(forResource: "Data", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                if let jsonResult = jsonResult as? JSON {
-                    if let currencies = jsonResult["currencies"] as? JSONArray {
-                        for item in currencies {
-                            if let code = item["code"] as? String, let name = item["name"] as? String {
-                                result.append(CurrencyModel(code: code, name: name))
-                            }
-                        }
-                    }
-                }
-            } catch {
-                print("Achtung!")
+        let currencies = PropertyService.shared.getJsonFromPropertyFile(for: Constants.propertyName)
+        for item in currencies {
+            if let code = item[Constants.codeKey] as? String, let name = item[Constants.nameKey] as? String {
+                result.append(CurrencyModel(code: code, name: name))
             }
         }
         
@@ -46,13 +34,22 @@ extension CurrencyModel {
     }
 }
 
-class CurrencyModel: Equatable {
+final class CurrencyModel: Equatable {
+    
+    // MARK: Constants
+    
+    private enum Constants {
+        static let propertyName     = "currencies"
+        static let codeKey          = "code"
+        static let nameKey          = "name"
+        static let defaultImageName = "default"
+    }
     
     // MARK: Public property
     
     var code: String = ""
     var name: String = ""
-    var image: String = "default"
+    var image: String = Constants.defaultImageName
     
     // MARK: Inititalization
     

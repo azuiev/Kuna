@@ -10,8 +10,6 @@ import Foundation
 
 class Context {
     
-    // MARK: Public Properties
-    
     // MARK: Initialization
     
     init() {

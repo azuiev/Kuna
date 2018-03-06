@@ -18,52 +18,40 @@ extension Hashable where Self: MarketModel {
     }
 }
 
-// MARK: Protocol Loadable
+// MARK: Protocol JsonProperty
 
-extension MarketModel {
-    static func performLoading() -> [MarketModel] {
-        
-        // MARK: Local functions
-        
-        func createMarket(_ mainCurrency: CurrencyModel?) -> ((CurrencyModel?) -> MarketModel?)? {
-            if let unwrappedMainCurrency = mainCurrency {
-                func createMarketNested(_ secondCurrency: CurrencyModel?) -> MarketModel? {
-                    if let unwrappedSecondCurrency = secondCurrency {
-                        return MarketModel(mainCurrency: unwrappedMainCurrency,
-                                           secondaryCurrency: unwrappedSecondCurrency)
-                    }
-                    
-                    return nil
+extension MarketModel: JsonProperty {
+    static func createMarket(_ mainCurrency: CurrencyModel?) -> ((CurrencyModel?) -> MarketModel?)? {
+        if let unwrappedMainCurrency = mainCurrency {
+            func createMarketNested(_ secondCurrency: CurrencyModel?) -> MarketModel? {
+                if let unwrappedSecondCurrency = secondCurrency {
+                    return MarketModel(mainCurrency: unwrappedMainCurrency,
+                                       secondaryCurrency: unwrappedSecondCurrency)
                 }
                 
-                return createMarketNested
+                return nil
             }
             
-            return nil
+            return createMarketNested
         }
         
+        return nil
+    }
+    
+    static func loadProperty() -> [MarketModel] {
+        var result: [MarketModel] = []
+        
+        let markets = PropertyService.shared.getJsonFromPropertyFile(for: Constants.propertyName)
         let currencies = CurrencyiesModel.shared
         
-        var result: [MarketModel] = []
-            
-        if let path = Bundle.main.path(forResource: "Data", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                if let jsonResult = jsonResult as? JSON {
-                    if let markets = jsonResult["markets"] as? JSONArray {
-                        for market in markets {
-                            if let main = market["main"] as? String, let second = market["second"] as? String {
-                                createMarket(currencies.getCurrency(with: main))?(currencies.getCurrency(with: second))
-                                    .map {
-                                        result.append($0)
-                                }
-                            }
-                        }
-                    }
+        for market in markets {
+            if let main = market[Constants.mainCurrencyKey] as? String,
+                let second = market[Constants.secondCurrencyKey] as? String
+            {
+                createMarket(currencies.getCurrency(with: main))?(currencies.getCurrency(with: second))
+                    .map {
+                        result.append($0)
                 }
-            } catch {
-                print("Achtung!")
             }
         }
         
@@ -71,12 +59,20 @@ extension MarketModel {
     }
 }
 
-class MarketModel {
+final class MarketModel {
+    
+    // MARK: Constants
+    
+    private enum Constants {
+        static let propertyName         = "markets"
+        static let mainCurrencyKey      = "main"
+        static let secondCurrencyKey    = "second"
+    }
     
     // MARK: Public Properties
     
-    var mainCurrency: CurrencyModel
-    var secondaryCurrency: CurrencyModel
+    var mainCurrency:       CurrencyModel
+    var secondaryCurrency:  CurrencyModel
 
     var marketName: String {
         return String(format: "%@%@", self.mainCurrency.code , self.secondaryCurrency.code)
@@ -89,12 +85,10 @@ class MarketModel {
         self.secondaryCurrency = secondaryCurrency
     }
     
-    
     convenience init (_ mainCurrencyCode: String, _ secondaryCurrencyCode: String) {
         let currencies = CurrencyiesModel.shared
         
         self.init(mainCurrency: currencies.getCurrency(with: mainCurrencyCode),
                   secondaryCurrency: currencies.getCurrency(with: secondaryCurrencyCode))
     }
- 
 }

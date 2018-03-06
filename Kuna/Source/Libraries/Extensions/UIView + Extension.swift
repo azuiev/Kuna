@@ -10,7 +10,7 @@ import Foundation
 import MBProgressHUD
 
 extension UIView {
-    func showHUD(animated: Bool = true, mode: MBProgressHUDMode = .indeterminate, text: String? = "") {
+    func showHUD(animated: Bool = true, mode: MBProgressHUDMode = .indeterminate, text: String = "") {
         let hud = MBProgressHUD.showAdded(to: self, animated: animated)
         hud.mode = mode
         hud.label.text = text

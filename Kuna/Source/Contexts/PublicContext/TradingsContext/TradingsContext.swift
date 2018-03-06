@@ -14,14 +14,16 @@ class TradingsContext: PublicContext {
     // MARK: Constants
     
     private struct Constants {
-        static let marketKeyString  = "market"
+        static let marketKey        = "market"
+        static let urlPathString    = "api/v2/trades"
     }
     
     // MARK: Private Properties
     
-    override var urlPath: String { return "api/v2/trades" }
     let market: String
     
+    override var urlPath: String { return Constants.urlPathString }
+
     // MARK: Initialization
     
     init( market: String) {
@@ -31,6 +33,6 @@ class TradingsContext: PublicContext {
     // MARK: Public Methods
     
     override func updateParameters() {
-        self.parameters[Constants.marketKeyString]  = self.market
+        self.parameters[Constants.marketKey]  = self.market
     }
 }

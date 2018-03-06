@@ -14,14 +14,16 @@ class CancelOrderContext: UserContext {
     // MARK: Constants
     
     private struct Constants {
-        static let orderIdKeyString  = "id"
+        static let orderIdKey       = "id"
+        static let urlPathString    = "api/v2/order/delete"
     }
     
     // MARK: Public Properties
     
     let orderId: Int64
-    override var urlPath: String { return "api/v2/order/delete" }
-    override var httpMethod: HTTPMethod { return .post }
+    
+    override var httpMethod:    HTTPMethod { return .post }
+    override var urlPath:       String { return Constants.urlPathString }
     
     // MARK: Initialization
     
@@ -31,12 +33,11 @@ class CancelOrderContext: UserContext {
         super.init(token: token)
     }
     
-    // Public Methods
+    // MARK: Public Methods
     
     override func updateParameters() {
-        self.parameters[Constants.orderIdKeyString] = String(self.orderId)
+        self.parameters[Constants.orderIdKey] = String(self.orderId)
 
         super.updateParameters()
     }
-    
 }

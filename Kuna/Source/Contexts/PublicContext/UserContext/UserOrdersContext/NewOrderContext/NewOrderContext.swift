@@ -14,9 +14,11 @@ class NewOrderContext: UserOrdersContext {
     // MARK: Constants
     
     private struct Constants {
-        static let priceKeyString  = "price"
-        static let volumeKeyString  = "volume"
-        static let sideKeyString  = "side"
+        static let errorKey     = "error"
+        static let messageKey   = "message"
+        static let priceKey     = "price"
+        static let volumeKey    = "volume"
+        static let sideKey      = "side"
     }
     
     // MARK: Public Properties
@@ -42,17 +44,17 @@ class NewOrderContext: UserOrdersContext {
     // Public Methods
     
     override func updateParameters() {
-        self.parameters[Constants.sideKeyString] = self.side
-        self.parameters[Constants.volumeKeyString] = String(self.volume)
-        self.parameters[Constants.priceKeyString] = String(self.price)
+        self.parameters[Constants.sideKey] = self.side
+        self.parameters[Constants.volumeKey] = String(self.volume)
+        self.parameters[Constants.priceKey] = String(self.price)
         
         super.updateParameters()
     }
     
     override func parseSuccessResponse<T>(response: T, with completionHandler: (Result<T>) -> ()) {
         if let json = response as? JSON {
-            if let jsonError = json["error"] as? JSON {
-                completionHandler(Result.Failure(JSONError.otherError(jsonError["message"] as? String ?? "")))
+            if let jsonError = json[Constants.errorKey] as? JSON {
+                completionHandler(Result.Failure(JSONError.otherError(jsonError[Constants.messageKey] as? String ?? "")))
             } else {
                 completionHandler(Result.Success(response))
             }

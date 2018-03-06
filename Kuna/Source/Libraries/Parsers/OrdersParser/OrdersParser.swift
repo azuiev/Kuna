@@ -80,8 +80,6 @@ class OrdersParser {
         return orders
     }
     
-    // MARK: Private Methods
-    
     func order<T: OrderModel>(orderType: T.Type, json: JSON) -> T? {
         let order: Any
         switch orderType {
@@ -103,6 +101,8 @@ class OrdersParser {
         
         return nil
     }
+    
+    // MARK: Private Methods
     
     private func update(order: OrderModel, with json: JSON) {
         if let id = json[Constants.idKey] as? Int64 { order.id = id }

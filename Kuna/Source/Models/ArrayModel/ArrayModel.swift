@@ -22,6 +22,10 @@ class ArrayModel<T: Equatable> {
     
     // MARK: Initialization
     
+    init() {
+        self.array = Array<T>()
+    }
+    
     init(array: Array<T>) {
         self.array = array
     }

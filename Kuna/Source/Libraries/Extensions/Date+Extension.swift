@@ -10,6 +10,8 @@ import Foundation
 
 extension Date {
     
+    // MARK: Public Properties
+    
     var currentTimeInMiliseconds: Int {
         return Int((self.timeIntervalSince1970 * 1000.0).rounded(.down))
     }

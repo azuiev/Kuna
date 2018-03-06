@@ -16,6 +16,8 @@ class CurrentUserModel {
     var activated: Bool = false
     var token: AccessTokenModel
     
+    // MARK: Initialization
+    
     init(_ token: AccessTokenModel) {
         self.token = token
     }

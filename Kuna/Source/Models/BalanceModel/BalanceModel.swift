@@ -22,15 +22,16 @@ class BalanceModel: Equatable {
     
     // MARK: Public Properties
     
-    let currency: CurrencyModel
-    var count: Double
-    var locked: Double
+    let currency:   CurrencyModel
+    var locked:     Double
+    var count:      Double
+
     
     // MARK: Initialization
     
     init(currency: CurrencyModel, count: Double = 0.0, locked: Double = 0.0) {
-        self.currency = currency
-        self.count = count
-        self.locked = locked
+        self.currency   = currency
+        self.locked     = locked
+        self.count      = count
     }
 }

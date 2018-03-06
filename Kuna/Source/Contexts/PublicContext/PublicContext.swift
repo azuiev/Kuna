@@ -9,33 +9,18 @@
 import UIKit
 import Alamofire
 
-enum JSONError: Error {
-    case parseError(String)
-    case otherError(String)
-}
-
-extension JSONError: LocalizedError {
-    var errorDescription: String? {
-        switch self {
-        case .parseError(let description):
-            return description
-        case .otherError(let description):
-            return description
-        }
-    }
-}
-
 class PublicContext: Context {
 
     // MARK: Public Properties
+
+    var url:        String              = "https://kuna.io/"
+    var parameters: [String : String]   = [:]
     
-    var httpMethod: HTTPMethod { return .get }
-    var graphPath: String { return "" }
-    var parameters: [String : String] = [:]
-    var tonce = { return 12345678 }
-    var url = "https://kuna.io/"
-    var urlPath: String { return "" }
-    var fullUrl: String { return self.url + self.urlPath }
+    var httpMethod: HTTPMethod  { return .get }
+    var graphPath:  String      { return "" }
+    var urlPath:    String      { return "" }
+    var fullUrl:    String      { return self.url + self.urlPath }
+    var tonce:      String      { return "" }
     
     // MARK: Public Methods
     
@@ -44,25 +29,25 @@ class PublicContext: Context {
         
         DispatchQueue.global(qos: .background).async {
             
-        sleep(2)
-        
-        Alamofire.request(self.fullUrl,
-                          method: self.httpMethod,
-                          parameters: self.parameters)
-            .responseJSON(queue: DispatchQueue.main) {
-                
-                switch $0.result {
-                case .success(let value):
-                    if let result = value as? T {
-                        return self.parseSuccessResponse(response: result, with: completionHandler)
-                    } else {
-                        return self.parseFailedResponse(response: value, with: completionHandler)
+            sleep(2)
+            
+            Alamofire.request(self.fullUrl,
+                              method: self.httpMethod,
+                              parameters: self.parameters)
+                .responseJSON(queue: DispatchQueue.main) {
+                    
+                    switch $0.result {
+                    case .success(let value):
+                        if let result = value as? T {
+                            return self.parseSuccessResponse(response: result, with: completionHandler)
+                        } else {
+                            return self.parseFailedResponse(response: value, with: completionHandler)
+                        }
+                    case .failure(let error):
+                        completionHandler(Result.Failure(error))
                     }
-                case .failure(let error):
-                    completionHandler(Result.Failure(error))
-                }
+            }
         }
-    }
     }
     
     func parseSuccessResponse<T>(response: T, with completionHandler: (Result<T>) -> ()) {

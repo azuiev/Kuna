@@ -10,6 +10,16 @@ import UIKit
 
 extension UITableView {
 
+    // MARK: View Lifecycle
+    
+    override open func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.tableFooterView = UIView(frame: .zero)
+    }
+    
+    // MARK: Public Methods
+    
     func reusableCell<T: UITableViewCell>(with cls: T.Type, indexPath: IndexPath) -> T {
         let cell = self.dequeueReusableCell(withIdentifier: toString(cls), for: indexPath)
         
@@ -18,12 +28,6 @@ extension UITableView {
         }
         
         return result
-    }
-    
-    override open func awakeFromNib() {
-        super.awakeFromNib()
-        
-        self.tableFooterView = UIView(frame: .zero)
     }
     
     func reloadDataAndHideHud() {

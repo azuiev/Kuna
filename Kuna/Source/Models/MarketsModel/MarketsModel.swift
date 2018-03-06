@@ -21,7 +21,7 @@ class MarketsModel {
 
     // MARK: Public Properties
     
-    let markets = MarketModel.performLoading()
+    let markets = MarketModel.loadProperty()
     
     var currentMarket: MarketModel?
 }

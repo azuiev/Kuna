@@ -23,6 +23,7 @@ extension String {
     func asURL() -> URL? {
         _ = self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             .map { return URL(fileURLWithPath: $0) }
+        
         return nil
     }
 }

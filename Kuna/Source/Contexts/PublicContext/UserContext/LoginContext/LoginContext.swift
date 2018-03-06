@@ -13,16 +13,24 @@ import Alamofire
 
 class LoginContext: UserContext {
     
-    // MARK: Private Properties
+    // MARK: Constants
     
-    override var urlPath: String { return "api/v2/members/me" }
+    private struct Constants {
+        static let errorKey         = "error"
+        static let messageKey       = "message"
+        static let urlPathString    = "api/v2/members/me"
+    }
+    
+    // MARK: Public Properties
+    
+    override var urlPath: String { return Constants.urlPathString }
     
     // MARK: Public Methods
     
     override func parseSuccessResponse<T>(response: T, with completionHandler: (Result<T>) -> ()) {
         if let json = response as? JSON {
-            if let jsonError = json["error"] as? JSON {
-                completionHandler(Result.Failure(JSONError.otherError(jsonError["message"] as? String ?? "")))
+            if let jsonError = json[Constants.errorKey] as? JSON {
+                completionHandler(Result.Failure(JSONError.otherError(jsonError[Constants.messageKey] as? String ?? "")))
             } else {
                 completionHandler(Result.Success(response))
             }

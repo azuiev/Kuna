@@ -11,13 +11,15 @@ import RealmSwift
 
 class RealmService {
 
+    // MARK: Public Properties
+    
+    var realm = try! Realm()
+    
     // MARK: Initialization
     
     static let shared = RealmService()
     
     private init() {}
-    
-    var realm = try! Realm()
     
     // MARK: Public Methods
     

@@ -13,9 +13,13 @@ class UserContext: PublicContext {
     // MARK: Constants
     
     private struct Constants {
-        static let accessKeyString  = "access_key"
-        static let tonceString      = "tonce"
-        static let signatureString  = "signature"
+        static let accessKey        = "access_key"
+        static let signatureKey     = "signature"
+        static let tonceKey         = "tonce"
+        static let errorKey         = "error"
+        static let messageKey       = "message"
+        static let secretFormat     = "%@|/%@|"
+        static let parametersFormat = "%@=%@&"
     }
     
     // MARK: Private Properties
@@ -33,31 +37,29 @@ class UserContext: PublicContext {
     // MARK: Public Methods
     
     override func updateParameters() {
-        self.parameters[Constants.accessKeyString]  = self.token.publicKey
-        self.parameters[Constants.tonceString]      = String(Date().currentTimeInMiliseconds)
-        self.parameters[Constants.signatureString]  = self.evaluateSecret()
+        self.parameters[Constants.accessKey]    = self.token.publicKey
+        self.parameters[Constants.tonceKey]     = String(Date().currentTimeInMiliseconds)
+        self.parameters[Constants.signatureKey] = self.evaluateSecret()
     }
     
     override func parseFailedResponse<T>(response: Any, with completionHandler: (Result<T>) -> ()) {
         if let json = response as? JSON {
-            if let jsonError = json["error"] as? JSON {
-                completionHandler(Result.Failure(JSONError.otherError(jsonError["message"] as? String ?? "")))
+            if let jsonError = json[Constants.errorKey] as? JSON {
+                completionHandler(Result.Failure(JSONError.otherError(jsonError[Constants.messageKey] as? String ?? "")))
             }
         } else {
             super.parseFailedResponse(response: response, with: completionHandler)
         }
     }
     
-    // MARK: Private methods
+    // MARK: Private Methods
     
     private func evaluateSecret() -> String {
-        //HEX(HMAC-SHA256("HTTP-verb|URI|params", secret_key))
-        var stringForCoding = String(format: "%@|/%@|", self.httpMethod.rawValue, self.urlPath)
+        var stringForCoding = String(format: Constants.secretFormat, self.httpMethod.rawValue, self.urlPath)
         let keys = self.parameters.keys.sorted()
-        //let keys = self.parameters.keys
         
         for key in keys {
-            stringForCoding.append(String(format:"%@=%@&", key, self.parameters[key] ?? ""))
+            stringForCoding.append(String(format:Constants.parametersFormat, key, self.parameters[key] ?? ""))
         }
         
         stringForCoding = String(stringForCoding.dropLast())
