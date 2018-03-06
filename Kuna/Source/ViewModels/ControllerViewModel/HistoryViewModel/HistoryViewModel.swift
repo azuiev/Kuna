@@ -23,7 +23,7 @@ class HistoryViewModel: ControllerViewModel {
 
     // MARK: Initialization
     
-    init(user: CurrentUserModel, orders: [HistoryOrderModel]) {
+    init(user: CurrentUserModel, orders: [HistoryOrderModel] = [HistoryOrderModel]()) {
         self.orders = ArrayModel(array: orders)
         
         super.init(user)
@@ -38,7 +38,7 @@ class HistoryViewModel: ControllerViewModel {
     }
     
     override func executeContext(with marketName: String) {
-        UserHistoryContext(token: self.currentUser.token, market: marketName)
+        UserHistoryContext(user: self.currentUser, market: marketName)
             .execute(with: JSONArray.self) { [weak self] in
                 self?.ordersResult.onNext($0)
         }

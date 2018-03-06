@@ -7,18 +7,28 @@
 //
 
 import Foundation
+import RxSwift
 
-class CurrentUserModel {
+@objcMembers class CurrentUserModel: DBModel {
     
     // MARK: Public Properties
     
-    var email: String?
-    var activated: Bool = false
-    var token: AccessTokenModel
-    
+    dynamic var id: Int                     = 0
+    dynamic var token: AccessTokenModel?    = AccessTokenModel()
+    dynamic var activated: Bool             = false
+    dynamic var email: String               = ""
+  
     // MARK: Initialization
     
-    init(_ token: AccessTokenModel) {
+    convenience init(_ token: AccessTokenModel) {
+        self.init()
+        
         self.token = token
+    }
+    
+    // MARK: Realm PrimaryKey
+    
+    override class func primaryKey() -> String? {
+        return "id"
     }
 }

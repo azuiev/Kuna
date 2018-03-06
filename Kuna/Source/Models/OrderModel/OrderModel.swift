@@ -20,6 +20,8 @@ import RealmSwift
     dynamic var createdTime:        Date    = Date()
     dynamic var currentUserOrder:   Bool    = false
     
+    // MARK: Realm PrimaryKey
+    
     override class func primaryKey() -> String? {
         return "id"
     }

@@ -20,7 +20,8 @@ class ControllerViewModel {
     let logoutSubject = PublishSubject<Void>()
     let hudSubject = PublishSubject<Bool>()
     
-    var currentUser: CurrentUserModel
+    var currentUser: CurrentUserModel 
+    
     var market: MarketModel? {
         didSet {
             if let market = self.market {
@@ -41,7 +42,6 @@ class ControllerViewModel {
     func logout() {
         RealmService.shared.deleteAll()
         logoutSubject.onNext(())
-        print("logout")
     }
     
     func updateData() {

@@ -53,7 +53,7 @@ class OrdersView: MainView {
         viewModel.cancelOrdersSubject
             .asObservable()
             .subscribe({ [weak self] _ in
-                self?.ordersTableView?.reloadData()
+                self?.ordersTableView?.reloadDataAndHideHud()
             })
             .disposed(by: self.disposeBag)
     }

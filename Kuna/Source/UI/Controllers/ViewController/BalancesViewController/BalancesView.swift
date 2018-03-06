@@ -25,4 +25,19 @@ class BalancesView: MainView {
     // MARK: Public Properties
     
     override var tabName: String { return Constants.tabName }
+    
+    // MARK: Public Methods
+    
+    func fill(with viewModel: BalancesViewModel) {
+        super.fill(with: viewModel)
+        
+        viewModel.balancesSubject
+            .asObservable()
+            .skip(1)
+            .subscribe({ [weak self] _ in
+                self?.balancesTableView?.reloadData()
+            })
+            
+            .disposed(by: self.disposeBag)
+    }
 }

@@ -15,17 +15,17 @@ class OrdersViewModel: ControllerViewModel {
     let cancelOrderResult = PublishSubject<Result<JSON>>()
     let cancelOrdersSubject = PublishSubject<Void>()
     let ordersResult = PublishSubject<Result<JSONArray>>()
-    let ordersSubject = PublishSubject<ArrayModel<ActiveOrderModel>>()
+    let ordersSubject = PublishSubject<Void>()
     
     var orders: ArrayModel<ActiveOrderModel> {
         didSet {
-            self.ordersSubject.onNext(self.orders)
+            self.ordersSubject.onNext(())
         }
     }
     
     // MARK: Initialization
     
-    init(user: CurrentUserModel, orders: [ActiveOrderModel]) {
+    init(user: CurrentUserModel, orders: [ActiveOrderModel] = [ActiveOrderModel]()) {
         self.orders = ArrayModel(array: orders)
         
         super.init(user)
@@ -36,10 +36,10 @@ class OrdersViewModel: ControllerViewModel {
     func cancelOrder(with index: Int) {
         let order = self.orders[index]
         order.map { [weak self] in
-            guard let unwrappedToken = self?.currentUser.token else { return }
-            
-            CancelOrderContext(token: unwrappedToken, orderId: $0.id).execute(with: JSON.self) { [weak self] in
-                self?.cancelOrderResult.onNext($0)
+            if let user = self?.currentUser {
+                CancelOrderContext(user: user, orderId: $0.id).execute(with: JSON.self) { [weak self] in
+                    self?.cancelOrderResult.onNext($0)
+                }
             }
         }
     }
@@ -61,7 +61,7 @@ class OrdersViewModel: ControllerViewModel {
     }
     
     override func executeContext(with marketName: String) {
-        UserOrdersContext(token: self.currentUser.token, market: marketName).execute(with: JSONArray.self) { [weak self] in
+        UserOrdersContext(user: self.currentUser, market: marketName).execute(with: JSONArray.self) { [weak self] in
             self?.ordersResult.onNext($0)
         }
     }

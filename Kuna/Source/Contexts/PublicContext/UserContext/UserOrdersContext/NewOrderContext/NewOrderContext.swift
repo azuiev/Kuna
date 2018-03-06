@@ -33,12 +33,12 @@ class NewOrderContext: UserOrdersContext {
     
     // MARK: Initialization
     
-    init(token: AccessTokenModel, market: String, price: Double, volume: Double, side: String) {
+    init(user: CurrentUserModel, market: String, price: Double, volume: Double, side: String) {
         self.price = price
         self.volume = volume
         self.side = side
         
-        super.init(token: token, market: market)
+        super.init(user: user, market: market)
     }
     
     // Public Methods

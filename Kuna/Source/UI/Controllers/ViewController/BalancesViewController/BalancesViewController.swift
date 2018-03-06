@@ -34,6 +34,17 @@ class BalancesViewController: ViewController<BalancesViewModel>, UITableViewData
     
     override init(_ viewModel: BalancesViewModel) {
         super.init(viewModel)
+        
+        self.viewModel.balancesResult
+            .asObservable()
+            .subscribe({
+                _ = $0.map { [weak self] in
+                    self?.check(response:$0) { [weak self] in
+                        self?.parse(json: $0)
+                    }
+                }
+            })
+            .disposed(by: self.disposeBag)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,5 +62,13 @@ class BalancesViewController: ViewController<BalancesViewModel>, UITableViewData
         let nib = UINib(nibName: toString(BalanceCell.self), bundle: .main)
         
         balancesView?.balancesTableView?.register(nib, forCellReuseIdentifier: toString(BalanceCell.self))
+    }
+    
+    // MARK: Private Methods
+    
+    private func parse(json: JSON) {
+        let balances = LoginResponseParser().update(user: self.viewModel.currentUser, with: json)
+        
+        self.viewModel.fill(with: balances)
     }
 }

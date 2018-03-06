@@ -16,6 +16,12 @@ extension OrdersViewController: RootView {
 
 class OrdersViewController: ViewController<OrdersViewModel>, UITableViewDataSource, UITableViewDelegate {
 
+    // MARK: Constants
+    
+    private enum Constants {
+    static let deleteString = "Deleting..."
+    }
+    
     // MARK: Protocol UITableViewDelegate
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -24,6 +30,8 @@ class OrdersViewController: ViewController<OrdersViewModel>, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            tableView.showHUD(text: Constants.deleteString)
+            
             self.viewModel.cancelOrder(with: indexPath.row)
         }
     }
@@ -79,12 +87,13 @@ class OrdersViewController: ViewController<OrdersViewModel>, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.rootView?.fill(with: self.viewModel)
+        let view = self.rootView
+        view?.fill(with: self.viewModel)
         
         let nib = UINib(nibName: toString(UserOrderCell.self), bundle: .main)
         
-        self.rootView?.ordersTableView?.register(nib, forCellReuseIdentifier: toString(UserOrderCell.self))
-        self.rootView?.ordersTableView?.allowsMultipleSelectionDuringEditing = false
+        view?.ordersTableView?.register(nib, forCellReuseIdentifier: toString(UserOrderCell.self))
+        view?.ordersTableView?.allowsMultipleSelectionDuringEditing = false
     }
     
     // MARK: Private Methods

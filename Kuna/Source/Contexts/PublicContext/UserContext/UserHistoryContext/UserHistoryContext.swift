@@ -30,10 +30,10 @@ class UserHistoryContext: UserContext {
     
     // MARK: Initialization
     
-    init(token: AccessTokenModel, market: String) {
+    init(user: CurrentUserModel, market: String) {
         self.market = market
         
-        super.init(token: token)
+        super.init(user: user)
     }
     
     // Public Methods

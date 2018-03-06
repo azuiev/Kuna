@@ -58,7 +58,6 @@ class ViewController<T: ControllerViewModel>: UIViewController {
         super.viewWillAppear(animated)
         
         self.viewModel.market = MarketsModel.shared.currentMarket
-        //self.viewModel.updateData()
     }
     
     // MARK: Public Methods

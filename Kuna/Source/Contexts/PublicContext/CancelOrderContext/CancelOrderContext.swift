@@ -27,10 +27,10 @@ class CancelOrderContext: UserContext {
     
     // MARK: Initialization
     
-    init(token: AccessTokenModel, orderId: Int64) {
+    init(user: CurrentUserModel, orderId: Int64) {
         self.orderId = orderId
         
-        super.init(token: token)
+        super.init(user: user)
     }
     
     // MARK: Public Methods

@@ -34,7 +34,7 @@ class NewOrderViewModel: ControllerViewModel {
     func createOrder(side: OrderSide, volume: Double, price: Double) {
         guard let marketName = MarketsModel.shared.currentMarket?.marketName else { return }
         
-        NewOrderContext(token: self.currentUser.token,
+        NewOrderContext(user: self.currentUser,
                         market: marketName,
                         price: price,
                         volume: volume,

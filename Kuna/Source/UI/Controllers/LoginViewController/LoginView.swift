@@ -65,7 +65,7 @@ class LoginView: UIView, UITextFieldDelegate {
             .rx
             .tap
             .subscribe(onNext: { [weak self] _ in
-                self?.showHUD(mode: .indeterminate, text: "Please wait...")
+                self?.showHUD(text: "Please wait...")
                 viewModel.onLogin(with: AccessTokenModel(publicKey: self?.publicKeyTextField?.text,
                                                          secretKey: self?.secretKeyTextField?.text))
             })

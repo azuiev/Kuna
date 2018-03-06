@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import RealmSwift
 
-class AccessTokenModel {
+@objcMembers class AccessTokenModel: DBModel {
 
     //MARK: Public Properties
     
-    var publicKey: String
-    var secretKey: String
+    dynamic var publicKey: String = ""
+    dynamic var secretKey: String = ""
     
     // MARK: Initialization
     
-    init(publicKey: String?, secretKey: String?) {
+    convenience init(publicKey: String?, secretKey: String?) {
+        self.init()
+        
         self.publicKey = publicKey ?? ""
         self.secretKey = secretKey ?? ""
     }

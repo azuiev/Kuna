@@ -24,12 +24,22 @@ class UserContext: PublicContext {
     
     // MARK: Private Properties
     
-    private var token: AccessTokenModel
+    var token: AccessTokenModel {
+        if let token = self.user.token {
+            return token
+        }
+        
+        return AccessTokenModel()
+    }
     
+    // MARK: Private Properties
+    
+    private var user: CurrentUserModel
+
     // MARK: Initialization
     
-    init(token: AccessTokenModel) {
-        self.token = token
+    init(user: CurrentUserModel) {
+        self.user = user
         
         super.init()
     }
