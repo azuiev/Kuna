@@ -60,7 +60,7 @@ class LoginView: UIView, UITextFieldDelegate {
     
     // MARK: Public Methods
     
-    func fill(with viewModel:LoginViewModel) {
+    func fill(with viewModel: LoginViewModel) {
         self.loginButton?
             .rx
             .tap
@@ -69,6 +69,14 @@ class LoginView: UIView, UITextFieldDelegate {
                 viewModel.onLogin(with: AccessTokenModel(publicKey: self?.publicKeyTextField?.text,
                                                          secretKey: self?.secretKeyTextField?.text))
             })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.loginSubject
+            .asObservable()
+            .subscribe({ [weak self] _ in
+                self?.hideHUD()
+            })
+            
             .disposed(by: self.disposeBag)
     }
     

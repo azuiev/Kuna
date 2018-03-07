@@ -21,6 +21,7 @@ class BalancesView: MainView {
     // IBOutlets
     
     @IBOutlet var balancesTableView: UITableView?
+    var switchView: SwitchView?
     
     // MARK: Public Properties
     
@@ -39,5 +40,31 @@ class BalancesView: MainView {
             })
             
             .disposed(by: self.disposeBag)
+        
+        self.switchView?.switchButton?
+            .rx
+            .value
+            .asObservable()
+            .subscribe(onNext: {
+                viewModel.showEmpty($0)
+            })
+            .disposed(by: self.disposeBag)
+    }
+    
+    override func setupHeaderItems() {
+        super.setupHeaderItems()
+        
+        guard let unwrappedHeaderView = self.headerView else { return }
+        
+        let switchView = UINib.object(with: SwitchView.self, bundle: .main)
+        let size = CGSize(width: 100, height: 33)
+        let origin = CGPoint(x: unwrappedHeaderView.frame.width - size.width - 105,
+                             y: unwrappedHeaderView.frame.height - size.height - 5)
+        
+        switchView.frame = CGRect(origin: origin, size: size)
+        switchView.switchLabel?.text = "Show empty"
+        
+        self.switchView = switchView
+        headerView?.addSubview(switchView)
     }
 }

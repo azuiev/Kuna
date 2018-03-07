@@ -13,26 +13,37 @@ class LoginViewModel: ControllerViewModel {
     
     // MARK: Public Properties
     
+    let loginSubject = PublishSubject<Void>()
     let loginResult = PublishSubject<Result<JSON>>()
     
     // MARK: Initialization
     
     override init(_ currentUserModel: CurrentUserModel) {
         super.init(currentUserModel)
-        
-        if let user = RealmService.shared.getObjectsWith(type: CurrentUserModel.self).first {
-            self.currentUser = user
-            self.executeContext()
-        }
     }
+    
+    // MARK: Private Properties
+    
+    private var isFirstLogin = true
     
     // MARK: UI Actions
     
     func onLogin(with token: AccessTokenModel) {
-        let user = self.currentUser
-        user.token = token
-        
-        self.executeContext()
+        if self.isFirstLogin {
+            self.isFirstLogin = false
+            
+            if let user = RealmService.shared.getObjectsWith(type: CurrentUserModel.self).first {
+                self.currentUser = user
+                self.executeContext()
+            } else {
+                self.loginSubject.onNext(())
+            }
+        } else {
+            let user = self.currentUser
+            user.token = token
+            
+            self.executeContext()
+        }
     }
     
     // MARK: Public Methods

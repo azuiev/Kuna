@@ -37,6 +37,8 @@
 		1D573925200BD51500D7E431 /* DBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D573909200BD51500D7E431 /* DBModel.swift */; };
 		1D57AB9A204AD7F4005F68F8 /* ArrayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D57AB97204AD7F4005F68F8 /* ArrayModel.swift */; };
 		1D57AB9B204AD7F4005F68F8 /* BalancesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D57AB99204AD7F4005F68F8 /* BalancesModel.swift */; };
+		1D58422D2050476700A8DD66 /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D58422B2050476700A8DD66 /* SwitchView.swift */; };
+		1D58422E2050476700A8DD66 /* SwitchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D58422C2050476700A8DD66 /* SwitchView.xib */; };
 		1D5B1C5B2041F21800F59E3D /* ActiveOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5B1C5A2041F21700F59E3D /* ActiveOrderModel.swift */; };
 		1D5B1C5E2041F3F300F59E3D /* CompletedOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5B1C5D2041F3F300F59E3D /* CompletedOrderModel.swift */; };
 		1D5B1C612041F4FC00F59E3D /* HistoryOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5B1C602041F4FC00F59E3D /* HistoryOrderModel.swift */; };
@@ -144,6 +146,8 @@
 		1D573909200BD51500D7E431 /* DBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBModel.swift; sourceTree = "<group>"; };
 		1D57AB97204AD7F4005F68F8 /* ArrayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayModel.swift; sourceTree = "<group>"; };
 		1D57AB99204AD7F4005F68F8 /* BalancesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalancesModel.swift; sourceTree = "<group>"; };
+		1D58422B2050476700A8DD66 /* SwitchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
+		1D58422C2050476700A8DD66 /* SwitchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchView.xib; sourceTree = "<group>"; };
 		1D5B1C5A2041F21700F59E3D /* ActiveOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveOrderModel.swift; sourceTree = "<group>"; };
 		1D5B1C5D2041F3F300F59E3D /* CompletedOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletedOrderModel.swift; sourceTree = "<group>"; };
 		1D5B1C602041F4FC00F59E3D /* HistoryOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryOrderModel.swift; sourceTree = "<group>"; };
@@ -493,6 +497,15 @@
 			path = BalancesModel;
 			sourceTree = "<group>";
 		};
+		1D58422A2050475A00A8DD66 /* SwitchView */ = {
+			isa = PBXGroup;
+			children = (
+				1D58422B2050476700A8DD66 /* SwitchView.swift */,
+				1D58422C2050476700A8DD66 /* SwitchView.xib */,
+			);
+			path = SwitchView;
+			sourceTree = "<group>";
+		};
 		1D5B1C592041F21700F59E3D /* ActiveOrderModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,6 +722,7 @@
 		1D6A2302201671E300A25F13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1D58422A2050475A00A8DD66 /* SwitchView */,
 				1D5E1692204A0FB600CE6954 /* UserOrderCell */,
 				1D62529E20190E320047CB7C /* BalanceCell */,
 				1D6A2303201671E300A25F13 /* HeaderView */,
@@ -1062,6 +1076,7 @@
 				1D52962C2042B5800078A8E9 /* HistoryOrderCell.xib in Resources */,
 				1D5CE6E520461A660052C441 /* HistoryViewController.xib in Resources */,
 				1D5E1696204A0FB600CE6954 /* UserOrderCell.xib in Resources */,
+				1D58422E2050476700A8DD66 /* SwitchView.xib in Resources */,
 				1D5CE6D920461A660052C441 /* LoginViewController.xib in Resources */,
 				1D7591261FFECED200573899 /* Main.storyboard in Resources */,
 				1D6A23052016721500A25F13 /* HeaderView.xib in Resources */,
@@ -1157,6 +1172,7 @@
 				1D69299B2048797A0018D527 /* NewOrderContext.swift in Sources */,
 				1D5B1C612041F4FC00F59E3D /* HistoryOrderModel.swift in Sources */,
 				1D77C31820134399004DC212 /* NSData+Extension.swift in Sources */,
+				1D58422D2050476700A8DD66 /* SwitchView.swift in Sources */,
 				1D5B1C5B2041F21800F59E3D /* ActiveOrderModel.swift in Sources */,
 				1D573918200BD51500D7E431 /* UINib+Extension.swift in Sources */,
 				1D5CE6F120461AF10052C441 /* NewOrderView.swift in Sources */,

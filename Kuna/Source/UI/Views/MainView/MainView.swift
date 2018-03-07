@@ -106,11 +106,11 @@ class MainView: UIView, TableView {
         guard let unwprappedHeaderView = self.headerView else { return }
         
         let marketView = UINib.object(with: MarketView.self, bundle: .main)
-        let size = CGSize.init(width: 100, height: 33)
-        let origin = CGPoint.init(x: unwprappedHeaderView.frame.width - size.width - 5,
-                                  y: unwprappedHeaderView.frame.height - size.height - 5)
+        let size = CGSize(width: 100, height: 33)
+        let origin = CGPoint(x: unwprappedHeaderView.frame.width - size.width - 5,
+                             y: unwprappedHeaderView.frame.height - size.height - 5)
         
-        marketView.frame = CGRect.init(origin: origin, size: size)
+        marketView.frame = CGRect(origin: origin, size: size)
         marketView.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin]
         
         let tapGestureRecognizer = UITapGestureRecognizer()

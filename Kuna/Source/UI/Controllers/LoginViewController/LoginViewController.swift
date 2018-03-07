@@ -50,7 +50,10 @@ class LoginViewController: ViewController<LoginViewModel> {
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
-        self.rootView?.fill(with: self.viewModel)
+        let view = self.rootView
+        view?.fill(with: self.viewModel)
+        
+        view?.loginButton?.sendActions(for: .touchUpInside)
     }
     
     // MARK: Public Methods

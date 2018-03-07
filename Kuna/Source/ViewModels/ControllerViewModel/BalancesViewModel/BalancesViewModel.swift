@@ -20,7 +20,7 @@ class BalancesViewModel: ControllerViewModel {
         didSet { }
     }
     
-    var balances: BalancesModel {
+    var balances: BalancesModel = BalancesModel() {
         didSet {
             self.balancesSubject.onNext(())
         }
@@ -29,12 +29,38 @@ class BalancesViewModel: ControllerViewModel {
     // MARK: Initialization
     
     init(user: CurrentUserModel, balances: BalancesModel) {
-        self.balances = balances
+        self.allBalances = balances.array
         
         super.init(user)
     }
     
+    // MARK: Private Properties
+    
+    private var displayEmpty: Bool = true {
+        willSet {
+            if newValue {
+                self.balances = BalancesModel(array: self.allBalances)
+            } else {
+                self.balances = BalancesModel(array: self.allBalances.filter { $0.count > 0 })
+            }
+        }
+    }
+    
+    private var allBalances: [BalanceModel] {
+        willSet {
+            if self.displayEmpty {
+                self.balances = BalancesModel(array: newValue)
+            } else {
+                self.balances = BalancesModel(array: newValue.filter { $0.count > 0 })
+            }
+        }
+    }
+    
     // MARK: Public Methods
+    
+    func showEmpty(_ flag: Bool) {
+        self.displayEmpty = flag
+    }
     
     override func updateData() {
          self.executeContext()
@@ -47,6 +73,6 @@ class BalancesViewModel: ControllerViewModel {
     }
     
     func fill(with balances: BalancesModel) {
-        self.balances = balances
+        self.allBalances = balances.array
     }
 }
