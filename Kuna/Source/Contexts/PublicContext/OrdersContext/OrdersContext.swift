@@ -22,18 +22,19 @@ class OrdersContext: PublicContext {
     
     // MARK: Public Properties
     
-    let market: String
     override var urlPath: String { return Constants.urlPathString }
     
     // MARK: Initialization
     
     init(market: String) {
-        self.market = market
+        super.init()
+        
+        self.marketName = market
     }
     
     // MARK: Public Methods
     
     override func updateParameters() {
-        self.parameters[Constants.marketKey] = self.market
+        self.parameters[Constants.marketKey] = self.marketName
     }
 }

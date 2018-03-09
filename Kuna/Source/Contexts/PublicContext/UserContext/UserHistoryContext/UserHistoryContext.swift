@@ -24,22 +24,20 @@ class UserHistoryContext: UserContext {
     
     // MARK: Public Properties
     
-    let market: String
-    
     override var urlPath: String { return Constants.urlPathString }
     
     // MARK: Initialization
     
     init(user: CurrentUserModel, market: String) {
-        self.market = market
-        
         super.init(user: user)
+        
+        self.marketName = market
     }
     
     // Public Methods
     
     override func updateParameters() {
-        self.parameters[Constants.marketKey]  = self.market
+        self.parameters[Constants.marketKey]  = self.marketName
         
         super.updateParameters()
     }

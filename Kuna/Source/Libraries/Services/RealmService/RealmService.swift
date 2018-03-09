@@ -48,7 +48,7 @@ class RealmService {
     func create<T: Object>(_ object: T) {
         do {
             try realm.write {
-                realm.add(object)
+                realm.add(object, update: true)
             }
         } catch {
             print(error)
@@ -75,10 +75,14 @@ class RealmService {
         }
     }
     
-    func update<T: Object>(_ object: T) {
+    func update<T: Object>(_ object: T, with dictionary: [String: Any?]) {
         do {
             try realm.write {
                 realm.add(object, update: true)
+                
+                for (key, value) in dictionary {
+                    object.setValue(value, forKey: key)
+                }
             }
         } catch {
             print(error)

@@ -11,16 +11,15 @@ import RxSwift
 
 class LoginViewModel: ControllerViewModel {
     
+    // MARK: Constants
+    
+    private enum Constants {
+        static let tokenKey = "token"
+    }
     // MARK: Public Properties
     
     let loginSubject = PublishSubject<Void>()
     let loginResult = PublishSubject<Result<JSON>>()
-    
-    // MARK: Initialization
-    
-    override init(_ currentUserModel: CurrentUserModel) {
-        super.init(currentUserModel)
-    }
     
     // MARK: Private Properties
     
@@ -32,32 +31,24 @@ class LoginViewModel: ControllerViewModel {
         if self.isFirstLogin {
             self.isFirstLogin = false
             
-            if let user = RealmService.shared.getObjectsWith(type: CurrentUserModel.self).first {
-                self.currentUser = user
+            if let token = RealmService.shared.getObjectsWith(type: AccessTokenModel.self).first {
+                self.currentUser.update(with: [Constants.tokenKey: token])
                 self.executeContext()
             } else {
                 self.loginSubject.onNext(())
             }
         } else {
-            let user = self.currentUser
-            user.token = token
+            self.currentUser.update(with: [Constants.tokenKey: token])
             
             self.executeContext()
         }
     }
     
-    // MARK: Public Methods
-    
-    func saveUser() {
-        self.currentUser.update()
-    }
-    
     // MARK: Private Methods
     
     private func executeContext() {
-        LoginContext(user: self.currentUser).execute(with: JSON.self) { [weak self] in
-            self?.loginResult.onNext($0)
+        LoginContext(user: self.currentUser).execute(with: JSON.self) { [weak self] result, _ in
+            self?.loginResult.onNext(result)
         }
     }
-
 }

@@ -52,10 +52,10 @@ class UserContext: PublicContext {
         self.parameters[Constants.signatureKey] = self.evaluateSecret()
     }
     
-    override func parseFailedResponse<T>(response: Any, with completionHandler: (Result<T>) -> ()) {
+    override func parseFailedResponse<T>(response: Any, with completionHandler: (Result<T>, String) -> ()) {
         if let json = response as? JSON {
             if let jsonError = json[Constants.errorKey] as? JSON {
-                completionHandler(Result.Failure(JSONError.otherError(jsonError[Constants.messageKey] as? String ?? "")))
+                completionHandler(Result.Failure(JSONError.otherError(jsonError[Constants.messageKey] as? String ?? "")), self.marketName)
             }
         } else {
             super.parseFailedResponse(response: response, with: completionHandler)

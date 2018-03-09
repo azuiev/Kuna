@@ -15,7 +15,8 @@ class BalancesView: MainView {
     // MARK: Constants
     
     private struct Constants {
-        static let tabName = "My Balances"
+        static let tabName      = "My Balances"
+        static let switchText   = "Show empty"
     }
     
     // IBOutlets
@@ -62,7 +63,8 @@ class BalancesView: MainView {
                              y: unwrappedHeaderView.frame.height - size.height - 5)
         
         switchView.frame = CGRect(origin: origin, size: size)
-        switchView.switchLabel?.text = "Show empty"
+        switchView.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin]
+        switchView.switchLabel?.text = Constants.switchText
         
         self.switchView = switchView
         headerView?.addSubview(switchView)

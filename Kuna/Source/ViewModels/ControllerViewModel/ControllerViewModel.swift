@@ -33,14 +33,19 @@ class ControllerViewModel {
     
     // MARK: Initialization
     
-    init(_ currentUserModel: CurrentUserModel) {
-        self.currentUser = currentUserModel
+    init(_ user: CurrentUserModel) {
+        self.currentUser = user
     }
     
     // MARK: Public Methods
     
     func logout() {
-        RealmService.shared.deleteAll()
+        let realm = RealmService.shared
+        realm.deleteObjectsWith(type: AccessTokenModel.self)
+        realm.deleteObjectsWith(type: ActiveOrderModel.self)
+        realm.deleteObjectsWith(type: HistoryOrderModel.self)
+        realm.deleteObjectsWith(type: CompletedOrderModel.self)
+        
         logoutSubject.onNext(())
     }
     
@@ -67,7 +72,7 @@ class ControllerViewModel {
     
     func updateDbData(with array: [DBModel]) {
         for order in array {
-            order.update()
+            order.create()
         }
     }
     

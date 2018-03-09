@@ -26,14 +26,9 @@ class LoginResponseParser {
     func update(user: CurrentUserModel, with json: JSON) -> BalancesModel {
         if let state = json[Constants.activatedKey] as? Bool,
             let email = json[Constants.emailKey] as? String {
-            do {
-                try RealmService.shared.realm.write {
-                    user.activated = state
-                    user.email = email
-                }
-            } catch {
-                print(error)
-            }
+           
+            let dictionary: [String: Any?] = [Constants.activatedKey: state, Constants.emailKey: email]
+            user.update(with: dictionary)
         }
 
         let balances = BalancesModel(array: [BalanceModel]())

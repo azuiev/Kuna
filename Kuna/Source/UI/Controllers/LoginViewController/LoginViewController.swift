@@ -67,20 +67,18 @@ class LoginViewController: ViewController<LoginViewModel> {
     // MARK: Private Methods
  
     private func finishLogging(with balances:BalancesModel) {
-        self.viewModel.saveUser()
-        
         let user = self.viewModel.currentUser
         
         let balancesController = BalancesViewController(BalancesViewModel(user: user, balances: balances))
         balancesController.title = Constants.balancesTitle
         
-        let tradingsController = TradingsViewController(TradingsViewModel(user: user))
+        let tradingsController = TradingsViewController(TradingsViewModel(user))
         tradingsController.title = Constants.tradingsTitle
         
-        let ordersController = OrdersViewController(OrdersViewModel(user: user))
+        let ordersController = OrdersViewController(OrdersViewModel(user))
         ordersController.title = Constants.ordersTitle
         
-        let historyController = HistoryViewController(HistoryViewModel(user: user))
+        let historyController = HistoryViewController(HistoryViewModel(user))
         historyController.title = Constants.historyTitle
         
         let controllers = [balancesController, tradingsController, ordersController, historyController]

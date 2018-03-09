@@ -51,12 +51,12 @@ class NewOrderContext: UserOrdersContext {
         super.updateParameters()
     }
     
-    override func parseSuccessResponse<T>(response: T, with completionHandler: (Result<T>) -> ()) {
+    override func parseSuccessResponse<T>(response: T, with completionHandler: (Result<T>, String) -> ()) {
         if let json = response as? JSON {
             if let jsonError = json[Constants.errorKey] as? JSON {
-                completionHandler(Result.Failure(JSONError.otherError(jsonError[Constants.messageKey] as? String ?? "")))
+                completionHandler(Result.Failure(JSONError.otherError(jsonError[Constants.messageKey] as? String ?? "")), self.marketName)
             } else {
-                completionHandler(Result.Success(response))
+                completionHandler(Result.Success(response), self.marketName)
             }
         } else {
             super.parseSuccessResponse(response: response, with: completionHandler)

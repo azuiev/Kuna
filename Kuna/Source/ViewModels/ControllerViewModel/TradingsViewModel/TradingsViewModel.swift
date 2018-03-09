@@ -24,19 +24,19 @@ class TradingsViewModel: ControllerViewModel {
     var selectedTable: TableType = .buyTable
     var lastSelectedOrder: OrderModel?
     
-    var buyOrders: ArrayModel<ActiveOrderModel> {
+    var buyOrders = ArrayModel<ActiveOrderModel>() {
         didSet {
             self.buyOrdersSubject.onNext(self.buyOrders)
         }
     }
     
-    var sellOrders: ArrayModel<ActiveOrderModel> {
+    var sellOrders = ArrayModel<ActiveOrderModel>() {
         didSet {
             self.sellOrdersSubject.onNext(self.sellOrders)
         }
     }
     
-    var tradings: ArrayModel<CompletedOrderModel> {
+    var tradings = ArrayModel<CompletedOrderModel>() {
         didSet {
             self.tradingsSubject.onNext(self.tradings)
         }
@@ -45,16 +45,6 @@ class TradingsViewModel: ControllerViewModel {
     // MARK: Private Properties
     
     private var timer: Timer?
-    
-    // MARK: Initialization
-    
-    init(user: CurrentUserModel) {
-        self.buyOrders = ArrayModel(array: [ActiveOrderModel]())
-        self.sellOrders = ArrayModel(array: [ActiveOrderModel]())
-        self.tradings = ArrayModel(array: [CompletedOrderModel]())
-        
-        super.init(user)
-    }
     
     // Public Methods
     
@@ -105,7 +95,7 @@ class TradingsViewModel: ControllerViewModel {
         self.updateDbData(with: tradings, type: CompletedOrderModel.self)
 
         for order in tradings {
-            order.update()
+            order.create()
         }
     }
     
@@ -151,7 +141,7 @@ class TradingsViewModel: ControllerViewModel {
         }
         
         for order in array {
-            order.update()
+            order.create()
         }
     }
     
@@ -176,11 +166,15 @@ class TradingsViewModel: ControllerViewModel {
         switch self.selectedTable {
         case .buyTable, .sellTable: self.startUpdating(with: 30) { _ in
             OrdersContext(market: marketName).execute(with: JSON.self) { [weak self] in
-                self?.ordersResult.onNext($0)
+                if $1 == self?.market?.marketName {
+                    self?.ordersResult.onNext($0)
+                }
             }}
         case .tradingsTable: self.startUpdating(with: 30) { _ in
             TradingsContext(market: marketName).execute(with: JSONArray.self) { [weak self] in
-                self?.tradingsResult.onNext($0)
+                if $1 == self?.market?.marketName {
+                    self?.tradingsResult.onNext($0)
+                }
             }}
         }
     }

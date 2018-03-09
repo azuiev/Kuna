@@ -17,18 +17,10 @@ class OrdersViewModel: ControllerViewModel {
     let ordersResult = PublishSubject<Result<JSONArray>>()
     let ordersSubject = PublishSubject<Void>()
     
-    var orders: ArrayModel<ActiveOrderModel> {
+    var orders = ArrayModel<ActiveOrderModel>() {
         didSet {
             self.ordersSubject.onNext(())
         }
-    }
-    
-    // MARK: Initialization
-    
-    init(user: CurrentUserModel, orders: [ActiveOrderModel] = [ActiveOrderModel]()) {
-        self.orders = ArrayModel(array: orders)
-        
-        super.init(user)
     }
     
     // MARK: Public Methods
@@ -37,8 +29,8 @@ class OrdersViewModel: ControllerViewModel {
         let order = self.orders[index]
         order.map { [weak self] in
             if let user = self?.currentUser {
-                CancelOrderContext(user: user, orderId: $0.id).execute(with: JSON.self) { [weak self] in
-                    self?.cancelOrderResult.onNext($0)
+                CancelOrderContext(user: user, orderId: $0.id).execute(with: JSON.self) { [weak self] response, _ in
+                    self?.cancelOrderResult.onNext(response)
                 }
             }
         }
@@ -61,11 +53,15 @@ class OrdersViewModel: ControllerViewModel {
     }
     
     override func executeContext(with marketName: String) {
-        UserOrdersContext(user: self.currentUser, market: marketName).execute(with: JSONArray.self) { [weak self] in
-            self?.ordersResult.onNext($0)
+        UserOrdersContext(user: self.currentUser, market: marketName)
+            .execute(with: JSONArray.self) { [weak self] result, marketName in
+            if marketName == self?.market?.marketName {
+                self?.ordersResult.onNext(result)
+            }
         }
     }
-    
+
+
     override func updateModelFromDbData(with marketName: String) {
         let dbUserOrders = RealmService.shared.getObjectsWith(type: ActiveOrderModel.self,
                                                            filter: self.configureFilter(marketName: marketName, userOrder: true))

@@ -15,6 +15,7 @@ class PublicContext: Context {
 
     var url:        String              = "https://kuna.io/"
     var parameters: [String : String]   = [:]
+    var marketName: String              = ""
     
     var httpMethod: HTTPMethod  { return .get }
     var graphPath:  String      { return "" }
@@ -24,41 +25,37 @@ class PublicContext: Context {
     
     // MARK: Public Methods
     
-    func execute<T>(with resultType: T.Type, completionHandler: @escaping (Result<T>) -> ()) {
+    func execute<T>(with resultType: T.Type, completionHandler: @escaping (Result<T>, String) -> ()) {
         self.updateParameters()
         
-        DispatchQueue.global(qos: .background).async {
-            
-            sleep(2)
-            
-            Alamofire.request(self.fullUrl,
-                              method: self.httpMethod,
-                              parameters: self.parameters)
-                .responseJSON(queue: DispatchQueue.main) {
-                    
-                    switch $0.result {
-                    case .success(let value):
-                        if let result = value as? T {
-                            return self.parseSuccessResponse(response: result, with: completionHandler)
-                        } else {
-                            return self.parseFailedResponse(response: value, with: completionHandler)
-                        }
-                    case .failure(let error):
-                        completionHandler(Result.Failure(error))
+        Alamofire.request(self.fullUrl,
+                          method: self.httpMethod,
+                          parameters: self.parameters)
+            .responseJSON() {
+                switch $0.result {
+                case .success(let value):
+                    if let result = value as? T {
+                        return self.parseSuccessResponse(response: result, with: completionHandler)
+                    } else {
+                        return self.parseFailedResponse(response: value, with: completionHandler)
                     }
-            }
+                case .failure(let error):
+                    completionHandler(Result.Failure(error), self.marketName)
+                }
         }
     }
     
-    func parseSuccessResponse<T>(response: T, with completionHandler: (Result<T>) -> ()) {
-        completionHandler(Result.Success(response))
+    func parseSuccessResponse<T>(response: T, with completionHandler: (Result<T>, String) -> ()) {
+        completionHandler(Result.Success(response), self.marketName)
     }
     
-    func parseFailedResponse<T>(response: Any, with completionHandler: (Result<T>) -> ()) {
-        return completionHandler(Result.Failure(JSONError.parseError("Unable to convert \(response) to type \(T.self)")))
+    func parseFailedResponse<T>(response: Any, with completionHandler: (Result<T>, String) -> ()) {
+        return completionHandler(Result.Failure(JSONError.parseError("Unable to convert \(response) to type \(T.self)")), self.marketName)
     }
     
     func updateParameters() {
 
     }
+    
+    
 }

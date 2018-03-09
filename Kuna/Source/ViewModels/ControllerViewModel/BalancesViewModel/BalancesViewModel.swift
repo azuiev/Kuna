@@ -67,8 +67,8 @@ class BalancesViewModel: ControllerViewModel {
     }
     
     func executeContext() {
-        LoginContext(user: self.currentUser).execute(with: JSON.self) { [weak self] in
-            self?.balancesResult.onNext($0)
+        LoginContext(user: self.currentUser).execute(with: JSON.self) { [weak self] result, _ in
+            self?.balancesResult.onNext(result)
         }
     }
     

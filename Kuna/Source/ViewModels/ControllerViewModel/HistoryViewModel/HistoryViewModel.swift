@@ -15,20 +15,12 @@ class HistoryViewModel: ControllerViewModel {
     let ordersResult = PublishSubject<Result<JSONArray>>()
     let ordersSubject = PublishSubject<ArrayModel<HistoryOrderModel>>()
     
-    var orders: ArrayModel<HistoryOrderModel> {
+    var orders = ArrayModel<HistoryOrderModel>() {
         didSet {
             self.ordersSubject.onNext(self.orders)
         }
     }
 
-    // MARK: Initialization
-    
-    init(user: CurrentUserModel, orders: [HistoryOrderModel] = [HistoryOrderModel]()) {
-        self.orders = ArrayModel(array: orders)
-        
-        super.init(user)
-    }
-    
     // MARK: Public Methods
 
     override func clearTables() {
@@ -39,8 +31,10 @@ class HistoryViewModel: ControllerViewModel {
     
     override func executeContext(with marketName: String) {
         UserHistoryContext(user: self.currentUser, market: marketName)
-            .execute(with: JSONArray.self) { [weak self] in
-                self?.ordersResult.onNext($0)
+            .execute(with: JSONArray.self) { [weak self] result, marketName in
+                if marketName == self?.market?.marketName {
+                    self?.ordersResult.onNext(result)
+                }
         }
     }
     

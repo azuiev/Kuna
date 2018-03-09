@@ -22,7 +22,7 @@ import RxSwift
     
     convenience init(_ token: AccessTokenModel) {
         self.init()
-        
+
         self.token = token
     }
     

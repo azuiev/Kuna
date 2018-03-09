@@ -13,8 +13,8 @@ class DBModel: Object {
     
     // MARK: Public Methods
     
-    func update() {
-        RealmService.shared.update(self)
+    func update(with dictionary: [String: Any?]) {
+        RealmService.shared.update(self, with: dictionary)
     }
     
     func create() {

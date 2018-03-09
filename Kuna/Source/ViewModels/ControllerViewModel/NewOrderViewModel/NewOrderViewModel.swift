@@ -39,8 +39,8 @@ class NewOrderViewModel: ControllerViewModel {
                         price: price,
                         volume: volume,
                         side: side.rawValue)
-            .execute(with: JSON.self) { [weak self] in
-                self?.newOrderResult.onNext($0)
+            .execute(with: JSON.self) { [weak self] result, _ in
+                self?.newOrderResult.onNext(result)
         }
     }
 }

@@ -87,5 +87,9 @@ class LoginView: UIView, UITextFieldDelegate {
         //FullToken
         self.publicKeyTextField?.text = "xVI2OYUtfNWaFQi6ywAx6qyYhS5fOlfzHtCBjfex"
         self.secretKeyTextField?.text = "hTx5aoDot1N0a0LoRkzAzk12jjsQSERG7l7FMIu4"
+        
+        //Empty
+        //self.publicKeyTextField?.text = "Jv70orbYnucbZftwoAc0xvFgjC5mY3IHUxWtiN5I"
+        //self.secretKeyTextField?.text = "5USpCbmM0iQIuAKZB7dcv1lhBVnb8VaLRPZEtYqu"
     }
 }
