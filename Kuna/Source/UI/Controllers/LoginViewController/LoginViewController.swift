@@ -17,15 +17,6 @@ extension LoginViewController: RootView {
 
 class LoginViewController: ViewController<LoginViewModel> {
     
-    // MARK: Constants
-    
-    private enum Constants {
-        static let balancesTitle    = "My Balances"
-        static let tradingsTitle    = "Tradings"
-        static let ordersTitle      = "My Orders"
-        static let historyTitle     = "History"
-    }
-    
     // MARK: Initialization
     
     override init(_ viewModel: LoginViewModel) {
@@ -64,27 +55,16 @@ class LoginViewController: ViewController<LoginViewModel> {
         self.finishLogging(with: balances)
     }
     
+    override func completeFail(with error: Error) {
+        RealmService.shared.deleteObjectsWith(type: AccessTokenModel.self)
+        
+        super.completeFail(with: error)
+    }
+    
     // MARK: Private Methods
  
-    private func finishLogging(with balances:BalancesModel) {
-        let user = self.viewModel.currentUser
-        
-        let balancesController = BalancesViewController(BalancesViewModel(user: user, balances: balances))
-        balancesController.title = Constants.balancesTitle
-        
-        let tradingsController = TradingsViewController(TradingsViewModel(user))
-        tradingsController.title = Constants.tradingsTitle
-        
-        let ordersController = OrdersViewController(OrdersViewModel(user))
-        ordersController.title = Constants.ordersTitle
-        
-        let historyController = HistoryViewController(HistoryViewModel(user))
-        historyController.title = Constants.historyTitle
-        
-        let controllers = [balancesController, tradingsController, ordersController, historyController]
-
-        let tabBarController = UITabBarController()
-        tabBarController.setViewControllers(controllers, animated: true)
+    private func finishLogging(with balances: BalancesModel) {
+        let tabBarController = TabBarController(user: self.viewModel.currentUser, balances: balances)
         
         self.present(tabBarController, animated: true, completion: nil)
     }

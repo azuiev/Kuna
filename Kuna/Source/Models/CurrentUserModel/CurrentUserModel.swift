@@ -14,7 +14,7 @@ import RxSwift
     // MARK: Public Properties
     
     dynamic var id: Int                     = 0
-    dynamic var token: AccessTokenModel?    = AccessTokenModel()
+    dynamic var token: AccessTokenModel?    = nil
     dynamic var activated: Bool             = false
     dynamic var email: String               = ""
   

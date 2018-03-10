@@ -70,7 +70,7 @@ class ViewController<T: ControllerViewModel>: UIViewController {
         }
         
         if case Result.Failure(let error) = result {
-            self.showAlert(with: error.localizedDescription)
+            self.completeFail(with: error)
         }
     }
     
@@ -86,5 +86,9 @@ class ViewController<T: ControllerViewModel>: UIViewController {
     
     func showAlert(with description: String) {
         AlertService.addAlert(to: self, with: description)
+    }
+    
+    func completeFail(with error: Error) {
+        self.showAlert(with: error.localizedDescription)
     }
 }

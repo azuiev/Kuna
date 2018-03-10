@@ -20,8 +20,12 @@ class MainView: UIView, TableView {
     // MARK: Constants
     
     private struct Constants {
-        static let windowName = "Kuna"
-        static let tabName = "Main"
+        static let windowName                   = "Kuna"
+        static let tabName                      = "Main"
+        static let marketWidth                  = 100
+        static let marketHeight                 = 33
+        static let headerMultiplier: CGFloat    = 6
+        static let viewHorizontalGap: CGFloat   = 5
     }
     
     // MARK: IBOutlets
@@ -46,9 +50,18 @@ class MainView: UIView, TableView {
         let headerView = UINib.object(with: HeaderView.self, bundle: .main)
         self.addSubview(headerView)
         
-        let height = UIScreen.main.bounds.height
-        let width = UIScreen.main.bounds.width
-        let headerHeight = height / 6
+        let width, height: CGFloat
+        
+        switch UIDevice.current.orientation {
+        case .landscapeLeft, .landscapeRight:
+            width = UIScreen.main.bounds.height
+            height = UIScreen.main.bounds.width
+        default:
+            height = UIScreen.main.bounds.height
+            width = UIScreen.main.bounds.width
+        }
+        
+        let headerHeight = height / Constants.headerMultiplier
         let bodyHeight = height - headerHeight
         let bodyView = self.bodyView
         
@@ -103,22 +116,22 @@ class MainView: UIView, TableView {
     }
     
     func setupHeaderItems() {
-        guard let unwprappedHeaderView = self.headerView else { return }
+        guard let headerView = self.headerView else { return }
         
         let marketView = UINib.object(with: MarketView.self, bundle: .main)
-        let size = CGSize(width: 100, height: 33)
-        let origin = CGPoint(x: unwprappedHeaderView.frame.width - size.width - 5,
-                             y: unwprappedHeaderView.frame.height - size.height - 5)
+        let size = CGSize(width: Constants.marketWidth, height: Constants.marketHeight)
+        let origin = CGPoint(x: headerView.frame.width - size.width - Constants.viewHorizontalGap,
+                             y: headerView.frame.height - size.height - Constants.viewHorizontalGap)
         
         marketView.frame = CGRect(origin: origin, size: size)
         marketView.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin]
         
         let tapGestureRecognizer = UITapGestureRecognizer()
         marketView.addGestureRecognizer(tapGestureRecognizer)
-        unwprappedHeaderView.marketTapGestureRecognizer = tapGestureRecognizer
         
-        unwprappedHeaderView.addSubview(marketView)
-        unwprappedHeaderView.marketView = marketView
+        headerView.marketTapGestureRecognizer = tapGestureRecognizer
+        headerView.addSubview(marketView)
+        headerView.marketView = marketView
     }
     
     func displayHud(_ flag: Bool) {

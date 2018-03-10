@@ -31,7 +31,7 @@ class LoginViewModel: ControllerViewModel {
         if self.isFirstLogin {
             self.isFirstLogin = false
             
-            if let token = RealmService.shared.getObjectsWith(type: AccessTokenModel.self).first {
+            if let token = RealmService.shared.getObjectsWith(type: AccessTokenModel.self).last {
                 self.currentUser.update(with: [Constants.tokenKey: token])
                 self.executeContext()
             } else {
@@ -39,7 +39,6 @@ class LoginViewModel: ControllerViewModel {
             }
         } else {
             self.currentUser.update(with: [Constants.tokenKey: token])
-            
             self.executeContext()
         }
     }

@@ -77,13 +77,15 @@ class TradingsViewController: ViewController<TradingsViewModel>, UITableViewData
             .subscribe { [weak self] _ in
                 guard let unwrappedViewModel = self?.viewModel else { return }
                 
-                let newOrderViewModel = NewOrderViewModel(unwrappedViewModel.currentUser, order: unwrappedViewModel.lastSelectedOrder) {
-                    print($0)
+                let newOrderViewModel = NewOrderViewModel(unwrappedViewModel.currentUser,
+                                                          order: unwrappedViewModel.lastSelectedOrder)
+                { _ in
                     self?.tabBarController?.selectedIndex = 2
                 }
                 
                 let controller = NewOrderViewController(newOrderViewModel)
                 controller.modalPresentationStyle = .overCurrentContext
+                
                 self?.present(controller, animated: true)
             }
             .disposed(by: self.viewModel.disposeBag)

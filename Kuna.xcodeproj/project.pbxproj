@@ -83,6 +83,7 @@
 		1D71FF95204EB0C600AE07C9 /* JsonProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71FF94204EB0C600AE07C9 /* JsonProperty.swift */; };
 		1D71FF98204EB54600AE07C9 /* PropertyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71FF97204EB54600AE07C9 /* PropertyService.swift */; };
 		1D724BDB204493C300747A4D /* Data.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D724BDA204493C300747A4D /* Data.json */; };
+		1D735A5B2054244F00312B66 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D735A5A2054244F00312B66 /* TabBarController.swift */; };
 		1D73B02E201A47090087A775 /* BalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D73B02D201A47090087A775 /* BalanceModel.swift */; };
 		1D758AC62024D8CF00419689 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D758AC52024D8CF00419689 /* RealmService.swift */; };
 		1D7591221FFECED200573899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7591141FFECED200573899 /* AppDelegate.swift */; };
@@ -192,6 +193,7 @@
 		1D71FF94204EB0C600AE07C9 /* JsonProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonProperty.swift; sourceTree = "<group>"; };
 		1D71FF97204EB54600AE07C9 /* PropertyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyService.swift; sourceTree = "<group>"; };
 		1D724BDA204493C300747A4D /* Data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Data.json; sourceTree = "<group>"; };
+		1D735A5A2054244F00312B66 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		1D73B02D201A47090087A775 /* BalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceModel.swift; sourceTree = "<group>"; };
 		1D758AC52024D8CF00419689 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		1D7590FE1FFECED200573899 /* Kuna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuna.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -542,6 +544,7 @@
 		1D5CE6B520461A660052C441 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1D735A572054240600312B66 /* TabBarController */,
 				1D5CE6B820461A660052C441 /* LoginViewController */,
 				1D5CE6BC20461A660052C441 /* MarketViewController */,
 				1D5CE6C420461A660052C441 /* ViewController */,
@@ -759,6 +762,14 @@
 				1D71FF97204EB54600AE07C9 /* PropertyService.swift */,
 			);
 			path = PropertyService;
+			sourceTree = "<group>";
+		};
+		1D735A572054240600312B66 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				1D735A5A2054244F00312B66 /* TabBarController.swift */,
+			);
+			path = TabBarController;
 			sourceTree = "<group>";
 		};
 		1D73B02C201A46ED0087A775 /* BalanceModel */ = {
@@ -1181,6 +1192,7 @@
 				1D5CE6E120461A660052C441 /* BalancesViewController.swift in Sources */,
 				1D57AB9A204AD7F4005F68F8 /* ArrayModel.swift in Sources */,
 				1D93356B2040D26800FFA724 /* MarketsModel.swift in Sources */,
+				1D735A5B2054244F00312B66 /* TabBarController.swift in Sources */,
 				1D573917200BD51500D7E431 /* String+Extension.swift in Sources */,
 				1D5CE6F220461AF10052C441 /* NewOrderViewController.swift in Sources */,
 				1D52964E2042CA9A0078A8E9 /* BalanceViewModel.swift in Sources */,
@@ -1314,7 +1326,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1365,7 +1377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1379,11 +1391,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6R6MW3CR4E;
+				DEVELOPMENT_TEAM = UM282LK2QR;
 				INFOPLIST_FILE = Kuna/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = idap.Kuna;
+				PRODUCT_BUNDLE_IDENTIFIER = idap.Kuna123321123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = Kuna/Resources/Header.h;
 				SWIFT_VERSION = 4.0;
@@ -1397,11 +1409,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6R6MW3CR4E;
+				DEVELOPMENT_TEAM = UM282LK2QR;
 				INFOPLIST_FILE = Kuna/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = idap.Kuna;
+				PRODUCT_BUNDLE_IDENTIFIER = idap.Kuna123321123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = Kuna/Resources/Header.h;
 				SWIFT_VERSION = 4.0;

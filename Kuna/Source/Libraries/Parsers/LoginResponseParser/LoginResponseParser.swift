@@ -26,7 +26,7 @@ class LoginResponseParser {
     func update(user: CurrentUserModel, with json: JSON) -> BalancesModel {
         if let state = json[Constants.activatedKey] as? Bool,
             let email = json[Constants.emailKey] as? String {
-           
+            
             let dictionary: [String: Any?] = [Constants.activatedKey: state, Constants.emailKey: email]
             user.update(with: dictionary)
         }

@@ -19,7 +19,7 @@ class OrdersViewController: ViewController<OrdersViewModel>, UITableViewDataSour
     // MARK: Constants
     
     private enum Constants {
-    static let deleteString = "Deleting..."
+        static let deleteString = "Deleting..."
     }
     
     // MARK: Protocol UITableViewDelegate
