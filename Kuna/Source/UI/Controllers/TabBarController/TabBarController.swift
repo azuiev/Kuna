@@ -14,13 +14,13 @@ class TabBarController: UITabBarController {
     
     private enum Constants {
         static let balancesTitle            = "My Balances"
-        static let balancesImage            = "rmc"
+        static let balancesImage            = "balances"
         static let tradingsTitle            = "Tradings"
-        static let tradingsImage            = "evr"
+        static let tradingsImage            = "tradings"
         static let ordersTitle              = "My Orders"
-        static let ordersImage              = "eth"
+        static let ordersImage              = "orders"
         static let historyTitle             = "History"
-        static let historyImage             = "arrow"
+        static let historyImage             = "history"
     }
     
     // MARK: Private Properties

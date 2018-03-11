@@ -24,6 +24,15 @@ class ViewController<T: ControllerViewModel>: UIViewController {
         
         super.init(nibName: toString(type(of: self)), bundle: .main)
         
+        RealmService.shared.dbErrorSubject
+            .asObservable()
+            .subscribe({ [weak self] error in
+                self.map {
+                    AlertService.addAlert(to: $0, with: error.debugDescription)
+                }
+            })
+            .disposed(by: viewModel.disposeBag)
+        
         viewModel.logoutSubject
             .asObservable()
             .subscribe({ [weak self] _ in

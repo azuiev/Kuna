@@ -25,6 +25,7 @@ class MainView: UIView, TableView {
         static let marketWidth                  = 100
         static let marketHeight                 = 33
         static let headerMultiplier: CGFloat    = 6
+        static let viewVerticalGap: CGFloat     = 5
         static let viewHorizontalGap: CGFloat   = 5
     }
     
@@ -48,7 +49,6 @@ class MainView: UIView, TableView {
         super.awakeFromNib()
         
         let headerView = UINib.object(with: HeaderView.self, bundle: .main)
-        self.addSubview(headerView)
         
         let width, height: CGFloat
         
@@ -62,16 +62,13 @@ class MainView: UIView, TableView {
         }
         
         let headerHeight = height / Constants.headerMultiplier
-        let bodyHeight = height - headerHeight
-        let bodyView = self.bodyView
         
         headerView.frame.size.height = headerHeight
         headerView.frame.size.width = width
         
-        bodyView?.frame.size.height = bodyHeight
-        bodyView?.frame.origin.y = headerHeight
-        
         self.headerView = headerView
+        self.addSubview(headerView)
+        self.setupConstraints()
         self.setupHeaderItems()
         self.setWindowLabelText()
     }
@@ -141,6 +138,23 @@ class MainView: UIView, TableView {
     }
     
     // MARK: Private Methods
+    
+    private func setupConstraints() {
+        if let bodyView = self.bodyView {
+            
+            bodyView.translatesAutoresizingMaskIntoConstraints = false
+            
+            if let bottomAnchor = self.headerView?.bottomAnchor {
+                bodyView.topAnchor.constraint(equalTo: bottomAnchor).isActive = true
+            }
+            
+            NSLayoutConstraint.activate([
+                bodyView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+                bodyView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+                bodyView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor)
+                ])
+        }
+    }
     
     private func setWindowLabelText() {
         self.headerView.map { [weak self] in

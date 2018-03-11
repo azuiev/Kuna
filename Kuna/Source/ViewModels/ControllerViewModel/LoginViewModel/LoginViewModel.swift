@@ -30,22 +30,25 @@ class LoginViewModel: ControllerViewModel {
     func onLogin(with token: AccessTokenModel) {
         if self.isFirstLogin {
             self.isFirstLogin = false
-            
-            if let token = RealmService.shared.getObjectsWith(type: AccessTokenModel.self).last {
-                self.currentUser.update(with: [Constants.tokenKey: token])
-                self.executeContext()
-            } else {
-                self.loginSubject.onNext(())
+            let tokens = RealmService.shared.getObjectsWith(type: AccessTokenModel.self)
+            for token in tokens {
+                if token.publicKey != "" {
+                    self.executeContext(with: [Constants.tokenKey: token])
+                    
+                    return
+                }
             }
+
+            self.loginSubject.onNext(())
         } else {
-            self.currentUser.update(with: [Constants.tokenKey: token])
-            self.executeContext()
+            self.executeContext(with: [Constants.tokenKey: token])
         }
     }
     
     // MARK: Private Methods
     
-    private func executeContext() {
+    private func executeContext(with dictionary: [String : Any]) {
+        self.currentUser.update(with: dictionary)
         LoginContext(user: self.currentUser).execute(with: JSON.self) { [weak self] result, _ in
             self?.loginResult.onNext(result)
         }

@@ -8,12 +8,14 @@
 
 import UIKit
 import RealmSwift
+import RxSwift
 
 class RealmService {
 
     // MARK: Public Properties
     
     var realm = try! Realm()
+    let dbErrorSubject = PublishSubject<Error>()
     
     // MARK: Initialization
     
@@ -41,7 +43,7 @@ class RealmService {
                 realm.delete(objectsToDelete)
             }
         } catch {
-            print(error)
+            notify(with: error)
         }
     }
     
@@ -51,7 +53,7 @@ class RealmService {
                 realm.add(object, update: true)
             }
         } catch {
-            print(error)
+            notify(with: error)
         }
     }
     
@@ -61,7 +63,7 @@ class RealmService {
                 realm.delete(object)
             }
         } catch {
-            print(error)
+            notify(with: error)
         }
     }
     
@@ -71,7 +73,7 @@ class RealmService {
                 realm.deleteAll()
             }
         } catch {
-            print(error)
+            notify(with: error)
         }
     }
     
@@ -87,5 +89,11 @@ class RealmService {
         } catch {
             print(error)
         }
+    }
+    
+    // MARK Private Methods
+    
+    private func notify(with error: Error) {
+        self.dbErrorSubject.onNext(error)
     }
 }
